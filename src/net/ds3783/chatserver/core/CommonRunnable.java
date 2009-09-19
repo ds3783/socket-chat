@@ -2,7 +2,7 @@ package net.ds3783.chatserver.core;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import net.ds3783.chatserver.tools.Uuid;
+import net.ds3783.chatserver.tools.Utils;
 
 /**
  * Created by IntelliJ IDEA.
@@ -13,7 +13,7 @@ import net.ds3783.chatserver.tools.Uuid;
 public abstract class CommonRunnable implements Runnable {
     private Log logger = LogFactory.getLog(CommonRunnable.class);
     private boolean running = false;
-    private String uuid= Uuid.newUuid();
+    private String uuid= Utils.newUuid();
     protected long sleeptime=100;
 
     public void run() {
@@ -44,11 +44,6 @@ public abstract class CommonRunnable implements Runnable {
     public String getUuid() {
         return uuid;
     }
-
-    public void setLogger(Log logger) {
-        this.logger = logger;
-    }
-
     public void setUuid(String uuid) {
         this.uuid = uuid;
     }

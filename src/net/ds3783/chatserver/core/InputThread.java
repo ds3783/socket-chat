@@ -1,5 +1,9 @@
 package net.ds3783.chatserver.core;
 
+import net.ds3783.chatserver.Client;
+import net.ds3783.chatserver.Message;
+import net.ds3783.chatserver.dao.ClientDao;
+import net.ds3783.chatserver.tools.Utils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -13,8 +17,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import net.ds3783.chatserver.Message;
-
 /**
  * Created by IntelliJ IDEA.
  * User: ds3783
@@ -26,6 +28,8 @@ public class InputThread extends SlaveThread implements Runnable {
     private String ignoreBytes = "\0";
     private Log logger = LogFactory.getLog(InputThread.class);
     protected List<InputFilter> filters = new ArrayList<InputFilter>();
+    private ClientDao clientDao;
+    private ProcessThread processThread;
 
     public void assign(SocketChannel client, String uuid) throws ClosedChannelException {
         SelectionKey key = client.register(channelSelector, SelectionKey.OP_READ);
@@ -35,7 +39,9 @@ public class InputThread extends SlaveThread implements Runnable {
 
     public void doRun() throws Exception {
         while (true) {
+            doRemove();
             try {
+                channelSelector.selectedKeys().clear();
                 channelSelector.select(1000);
             } catch (IOException e) {
                 logger.error(e.getMessage(), e);
@@ -53,6 +59,9 @@ public class InputThread extends SlaveThread implements Runnable {
             for (Iterator it = channelSelector.selectedKeys().iterator(); it.hasNext();) {
                 SelectionKey key = (SelectionKey) it.next();
                 SocketChannel channel = (SocketChannel) key.channel();
+                String uuid = keyUsers.get(key);
+                Client client = clientDao.getClient(uuid);
+                if (key == null || uuid == null || !key.isValid()) continue;
                 if (key.isReadable()) {
                     if (readBuffer == null) {
                         readBuffer = ByteBuffer.allocate(2048);
@@ -89,24 +98,24 @@ public class InputThread extends SlaveThread implements Runnable {
                         if (messageBuffer.length > 0) {
                             String message = new String(messageBuffer, charset);
                             //调用过滤器
-                            Message msg=new Message();
-                            if (filters!=null){
+                            Message msg = new Message();
+                            if (filters != null) {
                                 for (InputFilter filter : filters) {
-                                    msg=filter.unmarshal(message,msg);
-                                    msg=filter.filte(msg);
+                                    msg = filter.unmarshal(client, message, msg);
+                                    msg = filter.filte(client, msg);
                                 }
                             }
-                            //TODO:发送消息
-                            System.out.println("收到消息:" + message);
+                            logger.debug("Revceived Message:" + Utils.describeBean(msg));
+                            processThread.addMessage(msg);
                         }
                     } catch (IOException e) {
-
-                        logger.error(e.getMessage(), e);
-                        //TODO::用户已断线，清除该用户
+                        logger.warn(client.getName() + ":" + e.getMessage());
+                        //用户已断线，清除该用户
+                        this.remove(client.getUid());
+                        processThread.addOfflineUser(client);
                     }
                     readBuffer.clear();
                 }
-                it.remove();
             }
 
             try {
@@ -133,5 +142,13 @@ public class InputThread extends SlaveThread implements Runnable {
 
     public void setFilters(List<InputFilter> filters) {
         this.filters = filters;
+    }
+
+    public void setClientDao(ClientDao clientDao) {
+        this.clientDao = clientDao;
+    }
+
+    public void setProcessThread(ProcessThread processThread) {
+        this.processThread = processThread;
     }
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 <beans default-autowire="byName">
     <bean id="config" class="net.ds3783.chatserver.Configuration" scope="singleton">
-        <property name="readThread" value="3"/>
+        <property name="readThread" value="1"/>
         <property name="writeThread" value="2"/>
     </bean>
 
@@ -17,12 +17,33 @@
     <bean id="inputThread" class="net.ds3783.chatserver.core.InputThread" scope="prototype" init-method="initialize">
         <property name="charset" value="GBK"/>
         <property name="ignoreBytes" value="\0"/>
+        <property name="filters">
+            <list>
+                <bean class="net.ds3783.chatserver.filters.gproject.InputFilterV1"/>
+            </list>
+        </property>
     </bean>
 
     <bean id="outputThread" class="net.ds3783.chatserver.core.OutputThread" scope="prototype" init-method="initialize">
         <property name="charset" value="GBK"/>
+        <property name="filters">
+            <list>
+                <bean class="net.ds3783.chatserver.filters.gproject.OutputfilterV1"/>
+            </list>
+        </property>
     </bean>
 
+    <bean id="processThread" class="net.ds3783.chatserver.core.ProcessThread" scope="singleton">
+        <property name="maxMessageInQueue" value="200"/>
+    </bean>
+
+    <bean id="clientDao" class="net.ds3783.chatserver.dao.ClientDao" scope="singleton"/>
+
+
+    <bean id="messageProcessor" class="net.ds3783.chatserver.delivery.MessageProcessor" scope="singleton"/>
+
+
+    <bean id="gson" class="com.google.gson.Gson" scope="prototype"/>
     <!-- <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location" value="classpath:config.properties"/>
     </bean>-->

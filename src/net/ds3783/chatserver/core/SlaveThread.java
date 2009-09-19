@@ -1,6 +1,8 @@
 package net.ds3783.chatserver.core;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.io.IOException;
 import java.nio.channels.ClosedChannelException;
@@ -8,6 +10,7 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
 import java.util.Hashtable;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * Created by IntelliJ IDEA.
@@ -21,19 +24,37 @@ public abstract class SlaveThread extends CommonRunnable implements Runnable {
     protected Hashtable<String, SelectionKey> userKeys = new Hashtable<String, SelectionKey>();
     protected Hashtable<SelectionKey, String> keyUsers = new Hashtable<SelectionKey, String>();
     protected String charset = "GBK";
+    protected LinkedBlockingQueue<String> toRemove = new LinkedBlockingQueue<String>();
+    private Log logger = LogFactory.getLog(SlaveThread.class);
 
 
     public abstract void assign(SocketChannel client, String uuid) throws ClosedChannelException;
 
 
-    public void remove(String uuid) throws IOException {
+    public void remove(String uuid) {
         if (StringUtils.isEmpty(uuid)) return;
-        SelectionKey key = userKeys.get(uuid);
-        if (key != null) {
-            userKeys.remove(uuid);
-            keyUsers.remove(key);
-            key.channel().close();
-            key.cancel();
+        try {
+            toRemove.put(uuid);
+        } catch (InterruptedException e) {
+            logger.fatal(e.getMessage(), e);
+        }
+    }
+
+    protected void doRemove() throws IOException {
+        while (!toRemove.isEmpty()) {
+            String uuid = toRemove.poll();
+            SelectionKey key = userKeys.get(uuid);
+            if (key != null) {
+                userKeys.remove(uuid);
+                keyUsers.remove(key);
+                key.channel().close();
+                key.cancel();
+                /*try {
+                    channelSelector.keys().remove(key);
+                } catch (Exception e) {
+
+                }*/
+            }
         }
     }
 

@@ -36,7 +36,12 @@ public class Main {
             Thread t = new Thread(outputThread);
             t.start();
         }
-        //初始化写入线程
+        //初始化处理线程
+        ProcessThread processThread= (ProcessThread) context.getBean("processThread");
+        threadResource.register(processThread.getUuid(),ThreadResourceType.PROCESS_THREAD,processThread);
+        Thread process = new Thread(processThread);
+        process.start();
+
         //启动监听服务
         ServerThread server = (ServerThread) context.getBean("serverThread");
         threadResource.register(server.getUuid(), ThreadResourceType.SERVER_THREAD, server);

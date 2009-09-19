@@ -1,6 +1,8 @@
 package net.ds3783.chatserver.core;
 
+import net.ds3783.chatserver.Client;
 import net.ds3783.chatserver.Message;
+import net.ds3783.chatserver.dao.ClientDao;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -12,8 +14,7 @@ import java.nio.channels.SocketChannel;
 import java.nio.channels.spi.SelectorProvider;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
-import java.util.Iterator;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * Created by IntelliJ IDEA.
@@ -23,8 +24,10 @@ import java.util.Iterator;
  */
 public class OutputThread extends SlaveThread implements Runnable {
     private Log logger = LogFactory.getLog(InputThread.class);
-    private List<Message> toSendMessages = new Vector<Message>();
+    private LinkedBlockingQueue<Message> toSendMessages = new LinkedBlockingQueue<Message>();
     protected List<OutputFilter> filters = new ArrayList<OutputFilter>();
+    private ClientDao clientDao;
+    private ProcessThread processThread;
 
     public void assign(SocketChannel client, String uuid) throws ClosedChannelException {
         SelectionKey key = client.register(channelSelector, SelectionKey.OP_WRITE);
@@ -34,52 +37,52 @@ public class OutputThread extends SlaveThread implements Runnable {
 
     public void send(Message message) {
         if (message != null) {
-            toSendMessages.add(message);
+            try {
+                toSendMessages.put(message);
+            } catch (InterruptedException e) {
+                logger.error(e.getMessage(), e);
+            }
         }
     }
 
 
     public void doRun() throws Exception {
         while (true) {
-            try {
-                channelSelector.select(1000);
-            } catch (IOException e) {
-                logger.error(e.getMessage(), e);
-                //选择器故障
+            doRemove();
+            //向网络流中写入数据
+            if (toSendMessages.isEmpty()) {
                 try {
-                    channelSelector.keys().clear();
-                } catch (Exception e1) {
+                    Thread.sleep(sleeptime);
+                } catch (InterruptedException e) {
                     logger.error(e.getMessage(), e);
                 }
-                break;
+                continue;
             }
-            //向网络流中写入数据
-            for (Iterator<Message> iterator = toSendMessages.iterator(); iterator.hasNext();) {
-                Message message = iterator.next();
+            while (!toSendMessages.isEmpty()) {
+                Message message = toSendMessages.poll();
                 String data = "";
+                Client client = clientDao.getClientByName(message.getDestName());
+                if (client==null) continue;
+                SelectionKey key = userKeys.get(client.getUid());
+                 if (key==null||!key.isValid()) continue;
                 if (filters != null) {
                     for (OutputFilter filter : filters) {
-                        data = filter.marshal(message, data);
-                        data = filter.filte(data);
+                        data = filter.marshal(client, message, data);
+                        data = filter.filte(client, data);
                     }
                 }
-                SocketChannel channel = (SocketChannel) userKeys.get(message.getUserUuid()).channel();
+                SocketChannel channel = (SocketChannel) key.channel();
                 ByteBuffer writeBuffer = ByteBuffer.wrap(data.getBytes(charset));
                 try {
                     channel.write(writeBuffer);
                 } catch (IOException e) {
-                    logger.error(e.getMessage(), e);
-                    //TODO::用户已断线，清除该用户
+                    logger.warn(client.getName() + ":" + e.getMessage());
+                    //用户已断线，清除该用户
+                    this.remove(client.getUid());
+                    processThread.addOfflineUser(client);
                 }
-                iterator.remove();
             }
 
-
-            try {
-                Thread.sleep(sleeptime);
-            } catch (InterruptedException e) {
-                logger.error(e.getMessage(), e);
-            }
         }
     }
 
@@ -93,4 +96,15 @@ public class OutputThread extends SlaveThread implements Runnable {
         channelSelector = provider.openSelector();
     }
 
+    public void setClientDao(ClientDao clientDao) {
+        this.clientDao = clientDao;
+    }
+
+    public void setProcessThread(ProcessThread processThread) {
+        this.processThread = processThread;
+    }
+
+    public void setFilters(List<OutputFilter> filters) {
+        this.filters = filters;
+    }
 }

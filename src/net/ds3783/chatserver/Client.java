@@ -1,5 +1,7 @@
 package net.ds3783.chatserver;
 
+import net.ds3783.chatserver.delivery.Channel;
+
 import java.util.Date;
 
 /**
@@ -11,14 +13,19 @@ import java.util.Date;
 public class Client {
     private String uid;
     private String name;
+    private ClientType type;
     private String ip;
     private Integer port;
     private String readThread;
     private String writeThread;
-    private String type;
     private boolean authed;
+    private boolean logined;
     private Date connectTime;
     private Date lastMessageTime;
+
+    private String party;
+    private Channel channel;
+    private String team;
 
     public String getUid() {
         return uid;
@@ -34,6 +41,14 @@ public class Client {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public ClientType getType() {
+        return type;
+    }
+
+    public void setType(ClientType type) {
+        this.type = type;
     }
 
     public String getIp() {
@@ -68,20 +83,20 @@ public class Client {
         this.writeThread = writeThread;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public boolean isAuthed() {
         return authed;
     }
 
     public void setAuthed(boolean authed) {
         this.authed = authed;
+    }
+
+    public boolean isLogined() {
+        return logined;
+    }
+
+    public void setLogined(boolean logined) {
+        this.logined = logined;
     }
 
     public Date getConnectTime() {
@@ -100,5 +115,49 @@ public class Client {
         this.lastMessageTime = lastMessageTime;
     }
 
+    public String getParty() {
+        return party;
+    }
 
+    public void setParty(String party) {
+        this.party = party;
+    }
+
+    public Channel getChannel() {
+        return channel;
+    }
+
+    public void setChannel(Channel channel) {
+        this.channel = channel;
+    }
+
+    public String getTeam() {
+        return team;
+    }
+
+    public void setTeam(String team) {
+        this.team = team;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Client client = (Client) o;
+
+        if (name != null ? !name.equals(client.name) : client.name != null) return false;
+        if (type != null ? !type.equals(client.type) : client.type != null) return false;
+        if (uid != null ? !uid.equals(client.uid) : client.uid != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = uid != null ? uid.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        return result;
+    }
 }

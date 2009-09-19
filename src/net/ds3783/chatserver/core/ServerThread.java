@@ -1,7 +1,8 @@
 package net.ds3783.chatserver.core;
 
-import net.ds3783.chatserver.tools.Uuid;
 import net.ds3783.chatserver.Client;
+import net.ds3783.chatserver.dao.ClientDao;
+import net.ds3783.chatserver.tools.Utils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -14,6 +15,7 @@ import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.nio.channels.spi.SelectorProvider;
+import java.util.Date;
 import java.util.List;
 
 
@@ -32,6 +34,7 @@ public class ServerThread extends CommonRunnable implements Runnable {
     private Selector clientAcceptSelector;
     private ServerSocketChannel serverChannel;
     private SelectionKey serverSocketSelectKey;
+    private ClientDao clientDao;
 
     public void doRun() throws Exception {
         InetAddress addr = null;
@@ -75,7 +78,7 @@ public class ServerThread extends CommonRunnable implements Runnable {
                         socketChannel.configureBlocking(false);
 
 
-                        String uuid = Uuid.newUuid();
+                        String uuid = Utils.newUuid();
                         //取得线程资源
                         //读取线程
                         List<CommonRunnable> inputThreads = threadResource.getThreads(ThreadResourceType.INPUT_THREAD);
@@ -115,8 +118,16 @@ public class ServerThread extends CommonRunnable implements Runnable {
                         client.setUid(uuid);
                         client.setIp(socketChannel.socket().getInetAddress().getHostAddress());
                         client.setPort(socketChannel.socket().getPort());
+                        client.setLastMessageTime(new Date());
+                        client.setConnectTime(new Date());
+                        client.setReadThread(readSlave.getUuid());
+                        client.setWriteThread(writeSlave.getUuid());
+                        client.setAuthed(false);
+                        client.setLogined(false);
+                        client.setName(client.getIp() + ":" + client.getPort());
 
-                        //TODO::ProcessThread.connected
+                        //纳入客户端管理中
+                        clientDao.addClient(client);
                     }
                 }
             } catch (IOException e) {
@@ -160,5 +171,9 @@ public class ServerThread extends CommonRunnable implements Runnable {
 
     public void setThreadResource(ThreadResource threadResource) {
         this.threadResource = threadResource;
+    }
+
+    public void setClientDao(ClientDao clientDao) {
+        this.clientDao = clientDao;
     }
 }
