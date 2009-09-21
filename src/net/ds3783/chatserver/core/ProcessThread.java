@@ -35,7 +35,7 @@ public class ProcessThread extends CommonRunnable implements Runnable {
         try {
             if (receivedMessages.size() > maxMessageInQueue) {
                 //TODO:超出最大消息数量限制
-                logger.warn("系统负载大,待处理消息数量:" + receivedMessages.size() + " 待发送消息数量:" + toSendMessages.size());
+                logger.fatal("系统负载大,待处理消息数量:" + receivedMessages.size() + " 待发送消息数量:" + toSendMessages.size());
             }else{
                 receivedMessages.put(message);
             }
