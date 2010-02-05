@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="GBK" ?>
+<project name="g-chat-server" basedir="." default="All">
+    <property name="project.dir" value="${basedir}"/>
+    <property name="project.version" value="1.0alpha"/>
+    <property name="output.dir" value="${project.dir}/out/${ant.project.name}"/>
+    <property name="pack.dir" value="${project.dir}/out/pack"/>
+    <property name="buildwarpper.dir" value="${project.dir}/build/wrapper"/>
+    <path id="class.path">
+        <fileset dir="${project.dir}/libs">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+    <target name="All">
+        <ant target="clean"/>
+        <ant target="compile"/>
+        <ant target="pack"/>
+    </target>
+
+    <target name="clean">
+        <echo message="${output.dir}"/>
+        <delete dir="${output.dir}"/>
+        <mkdir dir="${output.dir}"/>
+    </target>
+
+    <target name="compile">
+        <javac classpathref="class.path"
+               debug="true"
+               listfiles="true"
+               source="1.5"
+               failonerror="true"
+               verbose="-Xlint:unchecked"
+               srcdir="${basedir}/src"
+               destdir="${output.dir}"
+                >
+            <include name="**/*.java"/>
+            <exclude name="**/Test.java"/>
+        </javac>
+        <copy todir="${output.dir}" overwrite="true">
+            <fileset dir="${basedir}/src">
+                <include name="**/*.*"/>
+                <include name="**/*"/>
+                <include name="*"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="jar" depends="compile">
+        <delete failonerror="false">
+            <fileset dir="${output.dir}">
+                <include name="*.properties"/>
+                <include name="*.xml"/>
+            </fileset>
+        </delete>
+        <jar file="${output.dir}/${ant.project.name}.jar">
+            <manifest>
+                <attribute name="producer" value="Ds.3783 Cyber"/>
+            </manifest>
+            <fileset dir="${output.dir}">
+                <include name="**/*.*"/>
+                <include name="**/*"/>
+                <include name="*"/>
+                <exclude name="${ant.project.name}.jar"/>
+            </fileset>
+        </jar>
+    </target>
+
+    <target name="pack" depends="jar">
+        <delete dir="${pack.dir}"/>
+        <mkdir dir="${pack.dir}"/>
+        <mkdir dir="${pack.dir}/libs"/>
+        <mkdir dir="${pack.dir}/classes"/>
+        <copy todir="${pack.dir}/classes">
+            <fileset dir="${basedir}/src">
+                <include name="*.properties"/>
+                <include name="*.xml"/>
+            </fileset>
+        </copy>
+        <copy todir="${pack.dir}">
+            <fileset dir="${buildwarpper.dir}">
+                <include name="**/*.*"/>
+                <include name="**/*"/>
+                <include name="*"/>
+                <exclude name=".svn/**/*.*"/>
+                <exclude name=".svn/**/*"/>
+            </fileset>
+        </copy>
+        <copy todir="${pack.dir}/libs" overwrite="true">
+            <fileset dir="${output.dir}">
+                <include name="${ant.project.name}.jar"/>
+                <exclude name=".svn/**/*.*"/>
+                <exclude name=".svn/**/*"/>
+            </fileset>
+            <fileset dir="${project.dir}/libs">
+                <include name="*.jar"/>
+                <exclude name=".svn/**/*.*"/>
+                <exclude name=".svn/**/*"/>
+            </fileset>
+        </copy>
+        <mkdir dir="${project.dir}/build"/>
+        <zip destfile="${project.dir}/build/g-chat-server-${project.version}.zip">
+            <fileset dir="${pack.dir}">
+                <include name="**/*.*"/>
+                <include name="**/*"/>
+            </fileset>
+        </zip>
+
+    </target>
+</project>
