@@ -17,37 +17,25 @@
   <component name="ChangeListManager">
     <list default="true" readonly="true" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core-beans.xml" afterPath="$PROJECT_DIR$/src/core-beans.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/OutputThread.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/OutputThread.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/GuardThread.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/GuardThread.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/Client.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/Client.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/Message.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/Message.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/filters/gproject/InputFilterV1.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/filters/gproject/InputFilterV1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/log4j.properties" afterPath="$PROJECT_DIR$/src/log4j.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/SlaveThread.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/SlaveThread.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/filters/gproject/TreeNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/ProcessThread.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/ProcessThread.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/wrapper/installService.cmd" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/wrapper/wrap" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/wrapper/wrap/linuxwrapper.conf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/wrapper/chatserver.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/wrapper/wrap/wrapper" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/wrapper/wrap/libwrapper.so" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/wrapper/wrap/winwrapper.conf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/wrapper" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/wrapper/startChatServer.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/wrapper/removeService.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/wrapper/wrap/wrapper.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/wrapper/wrap/wrapper.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/wrapper/wrap/wrappertest.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/g-chat-server.iws" afterPath="$PROJECT_DIR$/g-chat-server.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/InputThread.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/InputThread.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/filters/gproject/ClientMessage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/CommonRunnable.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/CommonRunnable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/ServerThread.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/ServerThread.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/delivery/Channel.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/delivery/Channel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/ThreadResourceType.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/ThreadResourceType.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/ThreadStartException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/OutputFilter.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/OutputFilter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/ClientType.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/ClientType.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/ClientDao.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/ClientDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/filters/gproject/OutputfilterV1.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/filters/gproject/OutputfilterV1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/delivery/MessageProcessor.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/delivery/MessageProcessor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/ThreadResource.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/ThreadResource.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/filters/gproject/ReplyMessage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/MessageType.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/MessageType.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/filters/gproject/KeywordInputFilterV1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/Configuration.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/Configuration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/tools/Utils.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/tools/Utils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/InputFilter.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/InputFilter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/Main.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/g-chat-server.ipr" afterPath="$PROJECT_DIR$/g-chat-server.ipr" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/wrapper/startChatServer.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/wrapper/wrap/wrapper.exe" />
     </list>
     <ignored path="g-chat-server.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -132,26 +120,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OutputThread.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/OutputThread.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="13" selection-start="837" selection-end="837" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InputThread.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/InputThread.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="114" column="46" selection-start="5104" selection-end="5104" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1265390044156" expanded="false" signature="44:592" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ProcessThread.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/ProcessThread.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -213,10 +181,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KeywordInputFilterV1.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="KeywordInputFilterV1.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/filters/gproject/KeywordInputFilterV1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="19" selection-start="1156" selection-end="1156" vertical-scroll-proportion="0.4516129">
+            <state line="21" column="14" selection-start="596" selection-end="596" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="core-beans.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core-beans.xml">
+          <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="100" selection-start="138" selection-end="139" vertical-scroll-proportion="7.5225224">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/build.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="35" selection-start="653" selection-end="653" vertical-scroll-proportion="0.69211197">
               <folding />
             </state>
           </provider>
@@ -459,6 +448,46 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="g-chat-server" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="g-chat-server" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="g-chat-server" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="build" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="g-chat-server" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="g-chat-server" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="g-chat-server" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="build" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="wrapper" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
     </subPane>
   </component>
   <component name="ProjectReloadState">
@@ -665,19 +694,19 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32955974" sideWeight="0.5" order="8" side_tool="false" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.6616352" order="1" side_tool="false" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39748427" sideWeight="0.0" order="3" side_tool="false" />
       <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32955974" sideWeight="0.5" order="8" side_tool="false" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32955974" sideWeight="0.5" order="8" side_tool="false" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.6616352" order="1" side_tool="false" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30597016" sideWeight="0.9987437" order="0" side_tool="false" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30597016" sideWeight="0.6616352" order="0" side_tool="false" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" />
       <window_info id="Web Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32955974" sideWeight="0.5" order="8" side_tool="false" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" />
@@ -754,22 +783,16 @@
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
+    <buildFile url="file://$PROJECT_DIR$/build.xml">
+      <antCommandLine value="" />
+      <runInBackground value="true" />
+      <targetFilters />
+      <treeView value="true" />
+      <verbose value="true" />
+      <viewClosedWhenNoErrors value="false" />
+    </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/SlaveThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="21" selection-start="1176" selection-end="1176" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/CommonRunnable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="556" selection-end="556" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/GuardThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="13" selection-start="140" selection-end="140" vertical-scroll-proportion="0.0">
@@ -874,7 +897,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/filters/gproject/KeywordInputFilterV1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="19" selection-start="1156" selection-end="1156" vertical-scroll-proportion="0.4516129">
+        <state line="21" column="14" selection-start="596" selection-end="596" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core-beans.xml">
+      <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="100" selection-start="138" selection-end="139" vertical-scroll-proportion="7.5225224">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="35" selection-start="653" selection-end="653" vertical-scroll-proportion="0.69211197">
           <folding />
         </state>
       </provider>
