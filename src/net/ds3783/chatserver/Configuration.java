@@ -11,6 +11,9 @@ import java.io.Serializable;
 public class Configuration implements Serializable {
     private int readThread = 1;
     private int writeThread = 1;
+    private String address;
+    private long blackListKeepTime = 10 * 60 * 1000;
+    private int port;
 
     public int getReadThread() {
         return readThread;
@@ -26,5 +29,29 @@ public class Configuration implements Serializable {
 
     public void setWriteThread(int writeThread) {
         this.writeThread = writeThread;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
+    }
+
+    public long getBlackListKeepTime() {
+        return blackListKeepTime;
+    }
+
+    public void setBlackListKeepTime(long blackListKeepTime) {
+        this.blackListKeepTime = blackListKeepTime;
     }
 }

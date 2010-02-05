@@ -15,7 +15,6 @@ import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.nio.channels.spi.SelectorProvider;
-import java.util.Date;
 import java.util.List;
 
 
@@ -118,8 +117,8 @@ public class ServerThread extends CommonRunnable implements Runnable {
                         client.setUid(uuid);
                         client.setIp(socketChannel.socket().getInetAddress().getHostAddress());
                         client.setPort(socketChannel.socket().getPort());
-                        client.setLastMessageTime(new Date());
-                        client.setConnectTime(new Date());
+                        client.setLastMessageTime(System.currentTimeMillis());
+                        client.setConnectTime(System.currentTimeMillis());
                         client.setReadThread(readSlave.getUuid());
                         client.setWriteThread(writeSlave.getUuid());
                         client.setAuthed(false);
@@ -154,6 +153,10 @@ public class ServerThread extends CommonRunnable implements Runnable {
             serverSocketSelectKey.cancel();
         }
 
+    }
+
+    public void cleanuUp() throws Exception {
+        this.destroy();
     }
 
 

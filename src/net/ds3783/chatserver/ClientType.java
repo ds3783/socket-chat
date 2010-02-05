@@ -9,9 +9,9 @@ import java.io.Serializable;
  * Time: 17:45:30
  */
 public class ClientType implements Serializable {
-    public static ClientType GM=new ClientType("GM");
-    public static ClientType USER=new ClientType("USER");
-    public static ClientType GAMESERVER=new ClientType("GAMESERVER");
+    public static ClientType GM = new ClientType("GM");
+    public static ClientType USER = new ClientType("USER");
+    public static ClientType GAMESERVER = new ClientType("GAMESERVER");
 
     private ClientType(String code) {
         this.code = code;

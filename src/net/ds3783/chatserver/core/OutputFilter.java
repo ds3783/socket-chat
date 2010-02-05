@@ -1,7 +1,6 @@
 package net.ds3783.chatserver.core;
 
 import net.ds3783.chatserver.Message;
-import net.ds3783.chatserver.Client;
 
 /**
  * Created by IntelliJ IDEA.
@@ -10,11 +9,11 @@ import net.ds3783.chatserver.Client;
  * Time: 15:40:30
  */
 public class OutputFilter {
-    public String marshal(Client client,Message message, String content) {
+    public String marshal(Message message, String content) {
         return content;
     }
 
-    public String filte(Client client,String content) {
+    public String filte(String content) {
         return content;
     }
 }

@@ -56,8 +56,9 @@ public class InputThread extends SlaveThread implements Runnable {
             //从网络流中读取数据
             ByteBuffer readBuffer = null;
             byte[] ignoreBytes = this.ignoreBytes.getBytes(charset);
-            for (Iterator it = channelSelector.selectedKeys().iterator(); it.hasNext();) {
-                SelectionKey key = (SelectionKey) it.next();
+            long now = System.currentTimeMillis();
+            for (Object o : channelSelector.selectedKeys()) {
+                SelectionKey key = (SelectionKey) o;
                 SocketChannel channel = (SocketChannel) key.channel();
                 String uuid = keyUsers.get(key);
                 Client client = clientDao.getClient(uuid);
@@ -100,16 +101,24 @@ public class InputThread extends SlaveThread implements Runnable {
                             //调用过滤器
                             Message msg = new Message();
                             if (filters != null) {
-                                for (InputFilter filter : filters) {
-                                    msg = filter.unmarshal(client, message, msg);
-                                    msg = filter.filte(client, msg);
+                                try {
+                                    for (InputFilter filter : filters) {
+                                        msg = filter.unmarshal(client, message, msg);
+                                        msg = filter.filte(client, msg);
+                                    }
+                                } catch (Exception e) {
+                                    logger.error(message);
+                                    logger.error(e.getMessage(), e);
                                 }
                             }
                             logger.debug("Revceived Message:" + Utils.describeBean(msg));
                             processThread.addMessage(msg);
+                            client.setLastMessageTime(now);
                         }
                     } catch (IOException e) {
-                        logger.warn(client.getName() + ":" + e.getMessage());
+                        if (client != null) {
+                            logger.warn(client.getName() + ":" + e.getMessage());
+                        }
                         //用户已断线，清除该用户
                         this.remove(client.getUid());
                         processThread.addOfflineUser(client);
@@ -129,6 +138,23 @@ public class InputThread extends SlaveThread implements Runnable {
     public void destroy() throws Exception {
         userKeys.clear();
         channelSelector.close();
+    }
+
+    public void cleanuUp() throws Exception {
+        if (channelSelector.selectedKeys() != null) {
+            Iterator<SelectionKey> iterator = channelSelector.selectedKeys().iterator();
+            if (iterator.hasNext()) {
+                SelectionKey key = iterator.next();
+                if (keyUsers.get(key) != null) {
+                    Client client = clientDao.getClient(keyUsers.get(key));
+                    if (client != null) {
+                        logger.warn("忽略" + client.getName() + "的一条消息，消息内容未知！");
+                    }
+                }
+                iterator.remove();
+            }
+        }
+
     }
 
     public void initialize() throws IOException {

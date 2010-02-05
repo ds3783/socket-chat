@@ -47,8 +47,16 @@ public abstract class SlaveThread extends CommonRunnable implements Runnable {
             if (key != null) {
                 userKeys.remove(uuid);
                 keyUsers.remove(key);
-                key.channel().close();
-                key.cancel();
+                try {
+                    key.channel().close();
+                } catch (IOException e) {
+                    logger.warn(e.getMessage(), e);
+                }
+                try {
+                    key.cancel();
+                } catch (Exception e) {
+                    logger.warn(e.getMessage(), e);
+                }
                 /*try {
                     channelSelector.keys().remove(key);
                 } catch (Exception e) {

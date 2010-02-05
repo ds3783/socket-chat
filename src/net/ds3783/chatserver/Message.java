@@ -3,7 +3,8 @@ package net.ds3783.chatserver;
 import net.ds3783.chatserver.tools.Utils;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA.
@@ -14,11 +15,15 @@ import java.util.List;
 public class Message implements Serializable {
     private String id = Utils.newUuid();
     private String userUuid;
-    private List<String> destUserName;
+    private HashMap<String, String> destUserUids = new HashMap<String, String>();
     private MessageType type;
     private String subType;
-    private String destName;
+    private String destUid;
     private String content;
+    private String authCode;
+    private HashMap<String, String> otherProperty = new HashMap<String, String>();
+
+    private boolean dropClientAfterReply;
 
     public String getId() {
         return id;
@@ -32,13 +37,12 @@ public class Message implements Serializable {
         this.userUuid = userUuid;
     }
 
-
-    public List<String> getDestUserName() {
-        return destUserName;
+    public HashMap<String, String> getDestUserUids() {
+        return destUserUids;
     }
 
-    public void setDestUserName(List<String> destUserName) {
-        this.destUserName = destUserName;
+    public void setDestUserUids(HashMap<String, String> destUserUids) {
+        this.destUserUids = destUserUids;
     }
 
     public MessageType getType() {
@@ -57,12 +61,12 @@ public class Message implements Serializable {
         this.subType = subType;
     }
 
-    public String getDestName() {
-        return destName;
+    public String getDestUid() {
+        return destUid;
     }
 
-    public void setDestName(String destName) {
-        this.destName = destName;
+    public void setDestUid(String destUid) {
+        this.destUid = destUid;
     }
 
     public String getContent() {
@@ -71,5 +75,40 @@ public class Message implements Serializable {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getAuthCode() {
+        return authCode;
+    }
+
+    public void setAuthCode(String authCode) {
+        this.authCode = authCode;
+    }
+
+    public Map<String, String> getOtherProperty() {
+        return otherProperty;
+    }
+
+    public boolean isDropClientAfterReply() {
+        return dropClientAfterReply;
+    }
+
+    public void setDropClientAfterReply(boolean dropClientAfterReply) {
+        this.dropClientAfterReply = dropClientAfterReply;
+    }
+
+    public Message simpleClone() {
+        Message result = new Message();
+        result.id = id;
+        result.userUuid = userUuid;
+        result.destUserUids = new HashMap<String, String>();
+        result.type = this.getType();
+        result.subType = subType;
+        result.destUid = destUid;
+        result.content = content;
+        result.authCode = authCode;
+        result.otherProperty = otherProperty;
+        result.dropClientAfterReply = dropClientAfterReply;
+        return result;
     }
 }
