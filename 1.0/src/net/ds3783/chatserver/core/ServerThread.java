@@ -95,7 +95,6 @@ public class ServerThread extends CommonRunnable implements Runnable {
                                 }
                             }
                         }
-                        readSlave.assign(socketChannel, uuid);
                         //写入线程
                         List<CommonRunnable> outputThreads = threadResource.getThreads(ThreadResourceType.OUTPUT_THREAD);
                         SlaveThread writeSlave = null;
@@ -112,7 +111,12 @@ public class ServerThread extends CommonRunnable implements Runnable {
                                 }
                             }
                         }
+
+                        //必须先分配写入线程后分配读取线程
                         writeSlave.assign(socketChannel, uuid);
+
+                        readSlave.assign(socketChannel, uuid);
+
                         Client client = new Client();
                         client.setUid(uuid);
                         client.setIp(socketChannel.socket().getInetAddress().getHostAddress());
