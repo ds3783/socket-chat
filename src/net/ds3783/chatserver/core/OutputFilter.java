@@ -9,11 +9,8 @@ import net.ds3783.chatserver.Message;
  * Time: 15:40:30
  */
 public class OutputFilter {
-    public String marshal(Message message, String content) {
-        return content;
-    }
 
-    public String filte(String content) {
+    public Message filte(Message content) {
         return content;
     }
 }

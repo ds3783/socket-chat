@@ -10,11 +10,8 @@ import net.ds3783.chatserver.Message;
  * Time: 15:39:49
  */
 public abstract class InputFilter {
-    public Message unmarshal(Client client, String content, Message message) {
-        return message;
-    }
 
-    public Message filte(Client client, Message message) {
-        return message;
+    public void filte(Client client, Message message) {
+
     }
 }

@@ -4,6 +4,7 @@ import net.ds3783.chatserver.Client;
 import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;
 import net.ds3783.chatserver.dao.ClientDao;
+import net.ds3783.chatserver.protocol.OutputProtocal;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -32,7 +33,7 @@ public class OutputThread extends SlaveThread implements Runnable {
     private LinkedBlockingQueue<Message> enmergencyMessages = new LinkedBlockingQueue<Message>();
     protected List<OutputFilter> filters = new ArrayList<OutputFilter>();
     private ClientDao clientDao;
-    private ProcessThread processThread;
+    private OutputProtocal protocal;
     private int maxQueueLength = 500;
     private int maxMessagePerTime = 100;
 
@@ -103,14 +104,18 @@ public class OutputThread extends SlaveThread implements Runnable {
     }
 
     private int sendMessage(Message message, long now) throws UnsupportedEncodingException {
-        String data = "";
+        byte[] data = new byte[0];
         int counter = 0;
         if (filters != null) {
             try {
+                //输出过滤器
                 for (OutputFilter filter : filters) {
-                    data = filter.marshal(message, data);
-                    data = filter.filte(data);
+                    filter.filte(message);
                 }
+                //输出协议
+                protocal.addMessage(message);
+                data = protocal.marshal();
+
             } catch (Exception e) {
                 logger.error(e.getMessage(), e);
             }
@@ -143,14 +148,14 @@ public class OutputThread extends SlaveThread implements Runnable {
             Client sender = clientDao.getClient(message.getUserUuid());
             if (sender != null && StringUtils.isNotEmpty(sender.getUid())) {
                 if (!sender.isLogined()) {
-                    processThread.addOfflineUser(sender);
+                    //TODO::processThread.addOfflineUser(sender);
                 }
             }
         }
         return counter;
     }
 
-    private void doSend(String destuid, String data, long now) throws UnsupportedEncodingException {
+    private void doSend(String destuid, byte[] data, long now) throws UnsupportedEncodingException {
 
         Client client = clientDao.getClient(destuid);
         if (client == null) return;
@@ -158,7 +163,7 @@ public class OutputThread extends SlaveThread implements Runnable {
         if (key == null || !key.isValid()) return;
 
         SocketChannel channel = (SocketChannel) key.channel();
-        ByteBuffer writeBuffer = ByteBuffer.wrap(data.getBytes(charset));
+        ByteBuffer writeBuffer = ByteBuffer.wrap(data);
         try {
             logger.debug("say to: " + client.getName() + ":" + data);
             channel.write(writeBuffer);
@@ -167,7 +172,7 @@ public class OutputThread extends SlaveThread implements Runnable {
             logger.warn(client.getName() + ":" + e.getMessage());
             //用户已断线，清除该用户
             this.remove(client.getUid());
-            processThread.addOfflineUser(client);
+            //TODO::processThread.addOfflineUser(client);
         }
     }
 
@@ -189,10 +194,6 @@ public class OutputThread extends SlaveThread implements Runnable {
 
     public void setClientDao(ClientDao clientDao) {
         this.clientDao = clientDao;
-    }
-
-    public void setProcessThread(ProcessThread processThread) {
-        this.processThread = processThread;
     }
 
     public void setFilters(List<OutputFilter> filters) {

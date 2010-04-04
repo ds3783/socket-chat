@@ -18,7 +18,6 @@ public class OutputfilterV1 extends OutputFilter {
     private Gson gson;
     private ClientDao clientDao;
 
-    @Override
     public String marshal(Message message, String content) {
         if (MessageType.AUTH_MESSAGE.equals(message.getType())) {
             return (message.getContent() == null) ? "" : message.getContent();
@@ -118,7 +117,6 @@ public class OutputfilterV1 extends OutputFilter {
         return "";
     }
 
-    @Override
     public String filte(String content) {
         return content + "\0";
     }

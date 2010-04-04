@@ -29,6 +29,7 @@ public class KeywordInputFilterV1 extends InputFilter {
     /*
    ³õÊ¼»¯
     */
+
     public void init() {
         String[] arrKeywords = this.keywords.split(",");
         for (String sKey : arrKeywords) {
@@ -44,13 +45,12 @@ public class KeywordInputFilterV1 extends InputFilter {
         }
     }
 
-    @Override
-    public Message filte(Client client, Message message) {
+    public void filte(Client client, Message message) {
         if (MessageType.COMMAND_MESSAGE.equals(message.getType())) {
-            return message;
+            return;
         }
         if (MessageType.CHAT_MESSAGE.equals(message.getType()) && "SYSTEM".equals(message.getSubType())) {
-            return message;
+            return;
         }
         if (message != null && message.getContent() != null && message.getContent().length() > 0) {
 
@@ -66,7 +66,7 @@ public class KeywordInputFilterV1 extends InputFilter {
             }
             message.setContent(new String(chars));
         }
-        return message;
+        return;
     }
 
     private char randomChar() {

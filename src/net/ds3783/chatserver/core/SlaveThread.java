@@ -23,7 +23,6 @@ public abstract class SlaveThread extends CommonRunnable implements Runnable {
     protected Selector channelSelector;
     protected Hashtable<String, SelectionKey> userKeys = new Hashtable<String, SelectionKey>();
     protected Hashtable<SelectionKey, String> keyUsers = new Hashtable<SelectionKey, String>();
-    protected String charset = "GBK";
     protected LinkedBlockingQueue<String> toRemove = new LinkedBlockingQueue<String>();
     private Log logger = LogFactory.getLog(SlaveThread.class);
 
@@ -70,7 +69,4 @@ public abstract class SlaveThread extends CommonRunnable implements Runnable {
         return clients;
     }
 
-    public void setCharset(String charset) {
-        this.charset = charset;
-    }
 }

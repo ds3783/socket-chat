@@ -21,7 +21,6 @@ public class InputFilterV1 extends InputFilter {
     private Gson gson;
     private ClientDao clientDao;
 
-    @Override
     public Message unmarshal(Client client, String content, Message message) {
         /*if (content.endsWith("\0")){
             content =content.substring(0,content.length()-1);
@@ -66,8 +65,8 @@ public class InputFilterV1 extends InputFilter {
     }
 
     @Override
-    public Message filte(Client client, Message message) {
-        return super.filte(client, message);
+    public void filte(Client client, Message message) {
+        return;
     }
 
     public void setGson(Gson gson) {
