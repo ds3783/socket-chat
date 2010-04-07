@@ -11,6 +11,7 @@ import java.io.Serializable;
 public class Configuration implements Serializable {
     private int readThread = 1;
     private int writeThread = 1;
+    private int processThread = 1;
     private String address;
     private long blackListKeepTime = 10 * 60 * 1000;
     private int port;
@@ -53,5 +54,13 @@ public class Configuration implements Serializable {
 
     public void setBlackListKeepTime(long blackListKeepTime) {
         this.blackListKeepTime = blackListKeepTime;
+    }
+
+    public int getProcessThread() {
+        return processThread;
+    }
+
+    public void setProcessThread(int processThread) {
+        this.processThread = processThread;
     }
 }

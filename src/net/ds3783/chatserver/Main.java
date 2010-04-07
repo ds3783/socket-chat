@@ -6,7 +6,9 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -29,6 +31,21 @@ public class Main {
         Configuration config = (Configuration) context.getBean("config");
         //线程资源管理
         ThreadResource threadResource = (ThreadResource) context.getBean("threadResource");
+
+        //初始化处理线程
+        List<ProcessThread> processThreads = new ArrayList<ProcessThread>();
+        for (int i = 0; i < config.getReadThread(); i++) {
+            ProcessThread processThread = (ProcessThread) context.getBean("processThread");
+            threadResource.register(processThread.getUuid(), ThreadResourceType.PROCESS_THREAD, processThread);
+            Thread process = new Thread(processThread);
+            processThread.setWrapThread(process);
+            process.start();
+            processThreads.add(processThread);
+        }
+
+        //初始化消息处理负载均衡
+        LoadBalanceSwitcher processThreadSwitcher = (LoadBalanceSwitcher) context.getBean("processThreadSwitcher");
+        processThreadSwitcher.setTargets(processThreads);
         //初始化读取线程
         for (int i = 0; i < config.getReadThread(); i++) {
             InputThread inputThread = (InputThread) context.getBean("inputThread");
@@ -45,12 +62,6 @@ public class Main {
             outputThread.setWrapThread(t);
             t.start();
         }
-        //初始化处理线程
-        ProcessThread processThread = (ProcessThread) context.getBean("processThread");
-        threadResource.register(processThread.getUuid(), ThreadResourceType.PROCESS_THREAD, processThread);
-        Thread process = new Thread(processThread);
-        processThread.setWrapThread(process);
-        process.start();
 
 
         //启动监听服务

@@ -1,5 +1,6 @@
 package net.ds3783.chatserver.core;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -7,11 +8,27 @@ import java.util.List;
  * User: Ds.3783
  * Date: 2010-4-2
  * Time: 23:27:11
- * To change this template use File | Settings | File Templates.
+ * 线程选择器
  */
 public interface Switcher<T> {
-    public void route(T data);
+    /**
+     * 将数据发送到目标
+     *
+     * @param data 数据
+     */
+    public void switchData(T data);
 
-    public void route(List<T> datas);
+    /**
+     * 将数据发送到目标
+     *
+     * @param datas 数据
+     */
+    public void switchData(List<T> datas);
 
+    /**
+     * 设置可选择的目标，目标必须在选择过程前设置
+     *
+     * @param targets
+     */
+    public void setTargets(Collection<? extends Switchable> targets);
 }

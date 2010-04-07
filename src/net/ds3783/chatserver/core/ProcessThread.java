@@ -20,7 +20,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  * Date: 2009-9-16
  * Time: 15:40:48
  */
-public class ProcessThread extends CommonRunnable implements Runnable {
+public class ProcessThread extends CommonRunnable implements Runnable, Switchable<Message> {
     private Log logger = LogFactory.getLog(ProcessThread.class);
     private LinkedBlockingQueue<Message> receivedMessages = new LinkedBlockingQueue<Message>();
     private LinkedBlockingQueue<Message> enmergencyMessages = new LinkedBlockingQueue<Message>();
@@ -183,5 +183,24 @@ public class ProcessThread extends CommonRunnable implements Runnable {
 
     public void setMaxMessageInQueue(long maxMessageInQueue) {
         this.maxMessageInQueue = maxMessageInQueue;
+    }
+
+    /**
+     * 取得权重
+     * 权重关系到选择器的选择结果
+     *
+     * @return
+     */
+    public int getWeight() {
+        return this.receivedMessages.size();
+    }
+
+    /**
+     * 接收数据
+     *
+     * @param data
+     */
+    public void receive(Message data) {
+        this.addMessage(data);
     }
 }

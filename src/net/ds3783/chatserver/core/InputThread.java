@@ -94,7 +94,7 @@ public class InputThread extends SlaveThread implements Runnable {
                                     }
                                 }
                             }
-                            processThreadSwitcher.route(messages);
+                            processThreadSwitcher.switchData(messages);
                             client.setLastMessageTime(now);
                         }
                     } catch (IOException e) {

@@ -15,7 +15,6 @@
     <bean id="threadResource" class="net.ds3783.chatserver.core.ThreadResource" scope="singleton"/>
 
     <bean id="inputThread" class="net.ds3783.chatserver.core.InputThread" scope="prototype" init-method="initialize">
-        <property name="charset" value="GBK"/>
         <property name="sleeptime" value="50"/>
         <property name="filters">
             <list>
@@ -29,7 +28,6 @@
     </bean>
 
     <bean id="outputThread" class="net.ds3783.chatserver.core.OutputThread" scope="prototype" init-method="initialize">
-        <property name="charset" value="GBK"/>
         <property name="sleeptime" value="100"/>
         <property name="filters">
             <list>
@@ -61,6 +59,9 @@
         <property name="unLoginExpireTime" value="60000"/>
     </bean>
 
+    <bean id="processThreadSwitcher" class="net.ds3783.chatserver.core.LoadBalanceSwitcher" scope="singleton">
+        <property name="weightCritical" value="10"/>
+    </bean>
 
     <bean id="gson" class="com.google.gson.Gson" scope="prototype"/>
     <!-- <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
