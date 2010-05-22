@@ -25,7 +25,7 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
     private LinkedBlockingQueue<Message> receivedMessages = new LinkedBlockingQueue<Message>();
     private LinkedBlockingQueue<Message> enmergencyMessages = new LinkedBlockingQueue<Message>();
     private LinkedBlockingQueue<Client> toKickClient = new LinkedBlockingQueue<Client>();
-
+    private OutputerSwitcher outputerSwitcher;
 
     private MessageProcessor messageProcessor;
     private ClientDao clientDao;
@@ -119,25 +119,7 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
         List<Message> toDeliver = messageProcessor.processMsg(msg, now);
         if (toDeliver != null) {
             for (Message message : toDeliver) {
-                if (MessageType.CHAT_MESSAGE.equals(message.getType()) && "BROADCAST".equals(message.getSubType())) {
-                    List<CommonRunnable> outputs = threadResource.getThreads(ThreadResourceType.OUTPUT_THREAD);
-                    for (CommonRunnable output : outputs) {
-                        OutputThread opThread = (OutputThread) output;
-                        opThread.send(message);
-                    }
-                } else {
-                    for (String destUserId : message.getDestUserUids().keySet()) {
-                        Client client = clientDao.getClient(destUserId);
-                        if (client != null) {
-                            if (kickedClent.containsKey(client.getName())) continue;
-                            OutputThread writethread = (OutputThread) threadResource.getThread(client.getWriteThread());
-                            if (writethread == null) continue;
-                            Message mm = message.simpleClone();
-                            mm.setDestUid(client.getUid());
-                            writethread.send(mm);
-                        }
-                    }
-                }
+                outputerSwitcher.switchTo(message);
             }
         }
     }
@@ -183,6 +165,10 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
 
     public void setMaxMessageInQueue(long maxMessageInQueue) {
         this.maxMessageInQueue = maxMessageInQueue;
+    }
+
+    public void setOutputerSwitcher(OutputerSwitcher outputerSwitcher) {
+        this.outputerSwitcher = outputerSwitcher;
     }
 
     /**

@@ -63,6 +63,8 @@
         <property name="weightCritical" value="10"/>
     </bean>
 
+    <bean id="outputerSwitcher" class="net.ds3783.chatserver.core.OutputerSwitcher"/>
+
     <bean id="gson" class="com.google.gson.Gson" scope="prototype"/>
     <!-- <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location" value="classpath:config.properties"/>
