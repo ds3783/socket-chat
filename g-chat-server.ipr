@@ -217,6 +217,13 @@
             <SvnBranchConfiguration />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../TGBUS/emprise">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="trunkUrl" value="" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
       </map>
     </option>
     <option name="myVersion" value="124" />

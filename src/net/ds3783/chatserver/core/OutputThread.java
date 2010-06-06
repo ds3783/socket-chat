@@ -207,4 +207,8 @@ public class OutputThread extends SlaveThread implements Runnable {
     public void setMaxMessagePerTime(int maxMessagePerTime) {
         this.maxMessagePerTime = maxMessagePerTime;
     }
+
+    public void setProtocal(OutputProtocal protocal) {
+        this.protocal = protocal;
+    }
 }

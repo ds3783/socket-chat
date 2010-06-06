@@ -77,5 +77,5 @@ public abstract class InputProtocal {
     /**
      * ½âÂë
      */
-    public abstract void unmarshal();
+    public abstract void unmarshal() throws UnmarshalException;
 }

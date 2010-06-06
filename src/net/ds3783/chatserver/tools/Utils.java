@@ -149,5 +149,61 @@ public class Utils {
         return sbuf.toString();
     }
 
+    public static byte[] intToByte(int v) {
+        byte[] writeBuffer = new byte[4];
+        writeBuffer[0] = (byte) (v >>> 24);
+        writeBuffer[1] = (byte) (v >>> 16);
+        writeBuffer[2] = (byte) (v >>> 8);
+        writeBuffer[3] = (byte) (v);
+        return writeBuffer;
+    }
 
+    public static int byteToInteger(byte[] readBuffer) {
+        if (readBuffer == null || readBuffer.length < 4) {
+            return 0;
+        } else {
+            return ((readBuffer[0] & 255) << 24) +
+                    ((readBuffer[1] & 255) << 16) +
+                    ((readBuffer[2] & 255) << 8) +
+                    ((readBuffer[3] & 255));
+        }
+    }
+
+
+    public static boolean isSuperClass(Class type, Class clazz) {
+        if (clazz.equals(Object.class)) return true;
+        while (!type.equals(Object.class)) {
+            if (type.equals(clazz)) {
+                return true;
+            } else {
+                type = type.getSuperclass();
+            }
+        }
+        return false;
+    }
+
+    public static Object mutliCast(Object o, Class clazz) {
+        if (o == null) {
+            return null;
+        }
+        if (isSuperClass(o.getClass(), clazz)) {
+            return o;
+        }
+        if (isSuperClass(clazz, Integer.class)) {
+            return Integer.parseInt(o.toString());
+        }
+        if (isSuperClass(clazz, Double.class)) {
+            return Double.parseDouble(o.toString());
+        }
+        if (isSuperClass(clazz, Long.class)) {
+            return Long.parseLong(o.toString());
+        }
+        if (isSuperClass(clazz, Boolean.class)) {
+            return Boolean.parseBoolean(o.toString());
+        }
+        if (isSuperClass(clazz, String.class)) {
+            return (o.toString());
+        }
+        return null;
+    }
 }

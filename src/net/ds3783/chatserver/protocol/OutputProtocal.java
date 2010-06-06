@@ -39,6 +39,6 @@ public abstract class OutputProtocal {
      *
      * @return 待输出到网络上的字节数组
      */
-    public abstract byte[] marshal();
+    public abstract byte[] marshal() throws MarshalException;
 
 }
