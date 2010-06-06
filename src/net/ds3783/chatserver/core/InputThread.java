@@ -63,16 +63,17 @@ public class InputThread extends SlaveThread implements Runnable {
                 SocketChannel channel = (SocketChannel) key.channel();
                 String uuid = keyUsers.get(key);
                 Client client = clientDao.getClient(uuid);
-                ByteBuffer readBuffer = ByteBuffer.allocate(2048);
+
                 if (uuid == null || !key.isValid()) continue;
                 if (key.isReadable()) {
                     try {
                         int bytecount;
                         do {
-                            readBuffer.reset();
+                            ByteBuffer readBuffer = ByteBuffer.allocate(2048);
                             bytecount = channel.read(readBuffer);
                             if (bytecount > 0) {
                                 byte[] bytes = new byte[bytecount];
+                                readBuffer.rewind();
                                 readBuffer.get(bytes, 0, bytecount);
                                 pool.offerBytes(client.getUid(), bytes);
                             }
@@ -106,7 +107,6 @@ public class InputThread extends SlaveThread implements Runnable {
                             //TODO::processThread.addOfflineUser(client);
                         }
                     }
-                    readBuffer.clear();
                 }
             }
 

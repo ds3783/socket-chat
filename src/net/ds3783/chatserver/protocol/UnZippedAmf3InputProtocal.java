@@ -4,6 +4,7 @@ import flex.messaging.io.SerializationContext;
 import flex.messaging.io.amf.ASObject;
 import flex.messaging.io.amf.Amf3Input;
 import net.ds3783.chatserver.Message;
+import net.ds3783.chatserver.MessageType;
 import net.ds3783.chatserver.tools.Utils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -28,6 +29,15 @@ public class UnZippedAmf3InputProtocal extends InputProtocal {
     public void unmarshal() throws UnmarshalException {
         if (this.data == null || this.data.length < 4) {
             return;
+        }
+        String strTester = new String(data, 0, "<policy-file-request/>".length());
+        if ("<policy-file-request/>".equals(strTester)) {
+            Message authMessage = new Message();
+            authMessage.setContent("<policy-file-request/>");
+            authMessage.setType(MessageType.AUTH_MESSAGE);
+            this.messages.add(authMessage);
+            int len = "<policy-file-request/>".length();
+            data = new byte[0];
         }
         if (this.data.length < 4) {
             this.remains = this.data;
@@ -79,6 +89,8 @@ public class UnZippedAmf3InputProtocal extends InputProtocal {
         result.setContent((String) Utils.mutliCast(cMsg.get("content"), String.class));
         result.setAuthCode((String) Utils.mutliCast(cMsg.get("authCode"), String.class));
         result.setSubType((String) Utils.mutliCast(cMsg.get("subType"), String.class));
+
+        result.setType(MessageType.CHAT_MESSAGE);
         return result;
     }
 

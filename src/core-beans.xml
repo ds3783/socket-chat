@@ -27,6 +27,9 @@
         <property name="protocal">
             <bean class="net.ds3783.chatserver.protocol.UnZippedAmf3InputProtocal"/>
         </property>
+        <property name="pool">
+            <bean class="net.ds3783.chatserver.pool.BytePoolImpl"/>
+        </property>
     </bean>
 
     <bean id="outputThread" class="net.ds3783.chatserver.core.OutputThread" scope="prototype" init-method="initialize">
