@@ -4,6 +4,7 @@
     <bean id="config" class="net.ds3783.chatserver.Configuration" scope="singleton">
         <property name="readThread" value="3"/>
         <property name="writeThread" value="20"/>
+        <property name="processThread" value="2"/>
         <property name="address" value="*"/>
         <property name="port" value="6001"/>
     </bean>
@@ -28,7 +29,7 @@
             <bean class="net.ds3783.chatserver.protocol.UnZippedAmf3InputProtocal"/>
         </property>
         <property name="pool">
-            <bean class="net.ds3783.chatserver.pool.BytePoolImpl"/>
+            <bean class="net.ds3783.chatserver.pool.BytePoolImpl" scope="prototype"/>
         </property>
     </bean>
 

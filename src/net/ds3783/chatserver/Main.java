@@ -23,6 +23,7 @@ public class Main {
 
 
     public static void main(String[] args) throws Exception {
+        logger.info("Server Starting");
         mainThread = Thread.currentThread();
         Main instance = new Main();
         //所有资源
@@ -79,6 +80,7 @@ public class Main {
         t = new Thread(guardThread);
         guardThread.setWrapThread(t);
         t.start();
+        logger.info("Server Started");
     }
 
     public static void shutdown() {

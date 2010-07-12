@@ -39,7 +39,7 @@ public abstract class SlaveThread extends CommonRunnable implements Runnable {
         }
     }
 
-    protected void doRemove() throws IOException {
+    protected void doRemove() {
         while (!toRemove.isEmpty()) {
             String uuid = toRemove.poll();
             SelectionKey key = userKeys.get(uuid);

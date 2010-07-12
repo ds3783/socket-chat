@@ -24,7 +24,7 @@ public class MessageProcessor {
     private Configuration config;
     private String publicKey;
     private ProcessThread processThread;
-    private Log logger = LogFactory.getLog(ClientDao.class);
+    private Log logger = LogFactory.getLog(MessageProcessor.class);
 
     public List<Message> processMsg(Message msg, long now) {
         HashMap<String, String> destUsers = new HashMap<String, String>();
@@ -42,7 +42,6 @@ public class MessageProcessor {
         } else if (MessageType.LOGIN_MESSAGE.equals(msg.getType())) {
             //登录
             destUsers.put(client.getUid(), client.getUid());
-            msg.setContent("true");
             //登录成功
             if (clientDao.getClientByName(msg.getSubType()) != null) {
                 //通知此人有重名，并踢下线
@@ -55,7 +54,7 @@ public class MessageProcessor {
                 result.add(msg);
                 return result;
             }
-            clientDao.updateClientName(msg.getUserUuid(), msg.getSubType());
+            clientDao.updateClientName(msg.getUserUuid(), msg.getContent());
             clientDao.updateClientToken(msg.getUserUuid(), msg.getAuthCode());
             clientDao.updateClientLogined(msg.getUserUuid(), true);
             logger.info(client.getIp() + ":" + client.getPort() + "(" + client.getName() + ") 成功登录。");
@@ -68,6 +67,7 @@ public class MessageProcessor {
             broadCast.setSubType("SYSTEM");
             broadCast.setContent(client.getName() + " 成功登录");
             result.add(broadCast);
+            logger.debug(msg.getContent() + " online");
             return result;
         } else if (MessageType.CHAT_MESSAGE.equals(msg.getType())) {
             if (clientDao.isInBlackList(client.getName(), config.getBlackListKeepTime(), now)) {
@@ -86,7 +86,7 @@ public class MessageProcessor {
                     msg.setDestUserUids(destUsers);
                     result.add(msg);
                 }
-                processThread.addOfflineUser(client);
+                //processThread.addOfflineUser(client);
             }
         } else if (MessageType.COMMAND_MESSAGE.equals(msg.getType())) {
             if (clientDao.isInBlackList(client.getName(), config.getBlackListKeepTime(), now)) {

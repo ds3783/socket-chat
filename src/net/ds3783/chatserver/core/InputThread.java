@@ -5,6 +5,7 @@ import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.dao.ClientDao;
 import net.ds3783.chatserver.pool.BytePool;
 import net.ds3783.chatserver.protocol.InputProtocal;
+import net.ds3783.chatserver.protocol.UnmarshalException;
 import net.ds3783.chatserver.tools.Utils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -40,7 +41,7 @@ public class InputThread extends SlaveThread implements Runnable {
         keyUsers.put(key, uuid);
     }
 
-    public void doRun() throws Exception {
+    public void doRun() {
         while (true) {
             doRemove();
             try {
@@ -81,22 +82,27 @@ public class InputThread extends SlaveThread implements Runnable {
                         if (pool.getCachedSize(client.getUid()) > 0) {
                             //使用协议解码
                             protocal.reset();
-                            byte[] data = pool.getBytes(client.getUid());
+                            byte[] data = pool.poolBytes(client.getUid());
                             protocal.setData(data);
-                            protocal.unmarshal();
-                            List<Message> messages = protocal.getMessages();
-                            pool.offerBytes(client.getUid(), protocal.getRemains());
-                            //调用过滤器
-                            for (Message message : messages) {
-                                if (filters != null) {
-                                    for (InputFilter filter : filters) {
-                                        filter.filte(client, message);
-                                        logger.debug("Revceived Message:" + Utils.describeBean(message));
+                            try {
+                                protocal.unmarshal();
+                                List<Message> messages = protocal.getMessages();
+                                pool.offerBytes(client.getUid(), protocal.getRemains());
+                                //调用过滤器
+                                for (Message message : messages) {
+                                    message.setUserUuid(client.getUid());
+                                    if (filters != null) {
+                                        for (InputFilter filter : filters) {
+                                            filter.filte(client, message);
+                                            logger.debug("Revceived Message:" + Utils.describeBean(message));
+                                        }
                                     }
                                 }
+                                processThreadSwitcher.switchData(messages);
+                                client.setLastMessageTime(now);
+                            } catch (UnmarshalException e) {
+                                logger.error(e.getMessage(), e);
                             }
-                            processThreadSwitcher.switchData(messages);
-                            client.setLastMessageTime(now);
                         }
                     } catch (IOException e) {
                         if (client != null) {
@@ -119,8 +125,8 @@ public class InputThread extends SlaveThread implements Runnable {
     }
 
     public void destroy() throws Exception {
-        userKeys.clear();
-        channelSelector.close();
+//        userKeys.clear();
+//        channelSelector.close();
     }
 
     public void cleanuUp() throws Exception {

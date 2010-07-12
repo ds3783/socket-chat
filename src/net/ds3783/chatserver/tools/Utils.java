@@ -62,7 +62,7 @@ public class Utils {
         return null;
     }
 
-    private static String toHexString(byte[] bytes) {
+    public static String toHexString(byte[] bytes) {
         if (bytes == null || bytes.length == 0) {
             return null;
         }

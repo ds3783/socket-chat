@@ -5,6 +5,7 @@ import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;
 import net.ds3783.chatserver.dao.ClientDao;
 import net.ds3783.chatserver.protocol.OutputProtocal;
+import net.ds3783.chatserver.tools.Utils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -28,7 +29,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  * Time: 18:41:10
  */
 public class OutputThread extends SlaveThread implements Runnable {
-    private Log logger = LogFactory.getLog(InputThread.class);
+    private Log logger = LogFactory.getLog(OutputThread.class);
     private LinkedBlockingQueue<Message> toSendMessages = new LinkedBlockingQueue<Message>();
     private LinkedBlockingQueue<Message> enmergencyMessages = new LinkedBlockingQueue<Message>();
     protected List<OutputFilter> filters = new ArrayList<OutputFilter>();
@@ -165,7 +166,7 @@ public class OutputThread extends SlaveThread implements Runnable {
         SocketChannel channel = (SocketChannel) key.channel();
         ByteBuffer writeBuffer = ByteBuffer.wrap(data);
         try {
-            logger.debug("say to: " + client.getName() + ":" + data);
+            logger.debug("say to: " + client.getName() + ":" + new String(data) + "HEX VAL:" + Utils.toHexString(data));
             channel.write(writeBuffer);
             client.setLastMessageTime(now);
         } catch (IOException e) {

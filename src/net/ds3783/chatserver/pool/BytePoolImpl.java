@@ -118,16 +118,21 @@ public class BytePoolImpl implements BytePool {
      */
     public int getCachedSize(String clientId) {
         Buffer buffer = buffers.get(clientId);
-        return buffer.getSize();
+        if (buffer == null) {
+            return 0;
+        } else {
+            return buffer.getSize();
+        }
     }
 
     private class Buffer {
-        List<byte[]> data = new ArrayList<byte[]>();
-        int size = 0;
+        private List<byte[]> data = new ArrayList<byte[]>();
+        private int size = 0;
 
         public Buffer(byte[] data) {
             if (data != null && data.length > 0) {
                 this.data.add(data);
+                size += data.length;
             }
             //To change body of created methods use File | Settings | File Templates.
         }
@@ -155,6 +160,7 @@ public class BytePoolImpl implements BytePool {
 
         public void clear() {
             data.clear();
+            size = 0;
         }
 
         public byte[] get(int length) {
@@ -196,6 +202,7 @@ public class BytePoolImpl implements BytePool {
             newDatas.addAll(data);
             data.clear();
             data.addAll(newDatas);
+            size = newData.length;
         }
 
         public int getSize() {
