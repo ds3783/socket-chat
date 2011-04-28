@@ -106,7 +106,7 @@ public class InputThread extends SlaveThread implements Runnable {
                         }
                     } catch (IOException e) {
                         if (client != null) {
-                            logger.warn(client.getName() + ":" + e.getMessage());
+                            logger.warn(client.getName() + ":" + e.getMessage(),e);
 
                             //用户已断线，清除该用户
                             this.remove(client.getUid());

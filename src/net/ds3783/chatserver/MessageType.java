@@ -12,45 +12,9 @@ import java.io.Serializable;
  * Time: 11:44:25
  */
 public class MessageType implements Serializable {
-    public static MessageType AUTH_MESSAGE = new MessageType("AUTHMSG", "授权消息");
-    public static MessageType LOGIN_MESSAGE = new MessageType("LOGINMSG", "登录消息");
-    public static MessageType CHAT_MESSAGE = new MessageType("CHATMSG", "聊天消息");
-    public static MessageType COMMAND_MESSAGE = new MessageType("COMMANDMSG", "命令消息");
+    public static String AUTH_MESSAGE = "AUTHMSG";
+    public static String LOGIN_MESSAGE = "LOGINMSG";
+    public static String CHAT_MESSAGE = "CHATMSG";
+    public static String COMMAND_MESSAGE = "COMMANDMSG";
 
-    private MessageType(String code, String name) {
-        this.code = code;
-        this.name = name;
-    }
-
-    private String code;
-    private String name;
-
-    public String getCode() {
-        return code;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        MessageType that = (MessageType) o;
-
-        return !(code != null ? !code.equals(that.code) : that.code != null);
-
-    }
-
-    @Override
-    public int hashCode() {
-        return code != null ? code.hashCode() : 0;
-    }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
-    }
 }

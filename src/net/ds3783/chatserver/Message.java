@@ -16,7 +16,7 @@ public class Message implements Serializable {
     private String id = Utils.newUuid();
     private String userUuid;
     private HashMap<String, String> destUserUids = new HashMap<String, String>();
-    private MessageType type;
+    private String type;
     private String subType;
     private String destUid;
     private String content;
@@ -45,11 +45,11 @@ public class Message implements Serializable {
         this.destUserUids = destUserUids;
     }
 
-    public MessageType getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(MessageType type) {
+    public void setType(String type) {
         this.type = type;
     }
 

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+    <!--
+         G-Chat Actionscript 3.0 example application:
+
+         Ds.3783
+         version 1.0.0
+     -->
+
+    <mx:Script>
+        import net.ds3783.chatserver.ChatEvent;
+        import net.ds3783.chatserver.ChatServerClient;
+
+        private var gClient:ChatServerClient;
+        private var username:String;
+        private var password:String;
+
+        public function initApp():void {
+        }
+
+        public function doConnect():void {
+            gClient = new ChatServerClient();
+            gClient.addEventListener(ChatServerClient.EVENT_CONNECTED, connected);
+            bt_enter.setStyle("disabled", "true");
+
+            gClient.connect(tf_host.text, parseInt(tf_port.text));
+            trace("connecting to :" + tf_host.text + ":" + parseInt(tf_port.text));
+            username = tf_username.text;
+            password = tf_password.text
+
+
+        }
+
+        public function connected(ect:ChatEvent):void {
+            gClient.login(username, password);
+        }
+    </mx:Script>
+    <mx:ViewStack id="viewstack" left="10" right="10" top="10" bottom="10" selectedIndex="1">
+        <mx:Canvas width="100%" height="100%" id="view_connecting">
+            <mx:Panel width="362" height="260" layout="absolute" horizontalCenter="0.5" verticalCenter="-7"
+                      title="::.. Connection ..::" color="#ffffff">
+                <mx:Label y="115" text="Connecting to server ..." horizontalCenter="0.5" width="321" textAlign="center"
+                          height="21" fontWeight="bold" fontSize="14" color="#ff0000" id="lb_connStatus"/>
+                <mx:Image y="23" source="images/logo.png" horizontalCenter="0"/>
+                <mx:ProgressBar y="154" indeterminate="true" enabled="true" horizontalCenter="0" barColor="#0033ff"
+                                height="7"/>
+            </mx:Panel>
+        </mx:Canvas>
+        <mx:Canvas width="100%" height="100%" id="view_login">
+            <mx:Panel width="440" height="310" layout="absolute" horizontalCenter="0" verticalCenter="1" title="Login"
+                      color="#ffffff">
+                <mx:TextInput x="134.75" y="100" width="125.75" color="#000000" id="tf_host" textAlign="left"
+                              themeColor="#ffcc00" height="24" text="255.255.255.255" editable="true" enabled="true"
+                              fontSize="12" maxChars="128"/>
+                <mx:TextInput x="313" y="100" maxChars="5" width="53.25" color="#000000" id="tf_port" textAlign="left"
+                              themeColor="#ffcc00" height="24" text="12345" editable="true" enabled="true"
+                              fontSize="12"/>
+                <mx:TextInput x="135" y="132" width="231.25" color="#000000" id="tf_username" textAlign="center"
+                              themeColor="#ffcc00" height="24" text="255.255.255.255" editable="true" enabled="true"
+                              fontSize="12" maxChars="128"/>
+                <mx:TextInput x="135" y="164" width="231.25" color="#000000" id="tf_password" textAlign="center"
+                              themeColor="#ffcc00" height="24" text="255.255.255.255" editable="true" enabled="true"
+                              fontSize="12"/>
+                <mx:Label y="102" text="ServerIp:" textAlign="right" color="#800000" fontWeight="bold"
+                          horizontalCenter="-120" width="73" height="24" fontSize="12"/>
+                <mx:Label y="134" text="Username:" textAlign="right" color="#800000" fontWeight="bold"
+                          horizontalCenter="-136" width="105" height="24" fontSize="12"/>
+                <mx:Label y="166" text="Password:" textAlign="right" color="#800000" fontWeight="bold"
+                          horizontalCenter="-136" width="105" height="24" fontSize="12"/>
+                <mx:Label y="102" text="Port:" textAlign="center" color="#800000" fontWeight="bold"
+                          horizontalCenter="76" width="38" height="24" fontSize="12"/>
+                <mx:Label x="49" y="226" textAlign="center" color="#ff0000" fontWeight="bold" width="322"
+                          id="lb_errorMsg"/>
+                <mx:Button x="163.5" y="196" label="Connect" width="93" color="#333333" id="bt_enter"
+                           themeColor="#ffcc00" click="doConnect()"/>
+                <mx:Image x="176.5" y="25" source="images/logo.png"/>
+            </mx:Panel>
+        </mx:Canvas>
+        <mx:Canvas width="100%" height="100%" id="view_logout">
+            <mx:Panel width="406" height="200" layout="absolute" horizontalCenter="0.5" verticalCenter="-7"
+                      title="::.. Logged out ..::" color="#ffffff">
+                <mx:Button y="88" label="Return to login screen" width="198" horizontalCenter="0" color="#333333"
+                           themeColor="#ffcc00"/>
+                <mx:Label y="45" text="Connection was lost" horizontalCenter="0" width="273" textAlign="center"
+                          height="29" fontWeight="bold" fontSize="18" color="#ff0000"/>
+            </mx:Panel>
+        </mx:Canvas>
+        <mx:Canvas width="100%" height="100%" id="view_chat">
+            <mx:Panel width="695" height="537" layout="absolute" horizontalCenter="0" verticalCenter="0.5"
+                      title="::.. G-Chat-Demo ..:: ( 0.0.1 )" backgroundColor="#f0f0f0">
+                <mx:TextArea x="10" y="37" height="382" width="458" id="ta_chat" fontSize="11" themeColor="#ffcc00"/>
+
+                <mx:List x="476" y="273" width="189" height="146" rollOverColor="#ffff66" selectionColor="#FFCC00"
+                         id="userList" themeColor="#ffcc00">
+
+                </mx:List>
+                <mx:Label x="476" y="18" text=":: ROOM LIST"/>
+                <mx:Label x="10" y="18" text=":: CHAT HISTORY"/>
+                <mx:Label x="476" y="247" text=":: USER LIST"/>
+                <mx:TextInput x="10" y="428" width="289" id="tf_pubmsg" themeColor="#ffcc00"/>
+                <mx:Button x="307" y="427" label="Send &gt;&gt;" width="75" themeColor="#ffcc00"/>
+                <mx:Button x="390" y="427" label="LOG OUT" width="78" color="#ff0000" themeColor="#ffcc00"/>
+                <mx:Button x="476" y="217" label="Create room" width="104"/>
+                <mx:HRule y="457" width="655" left="10" height="14"/>
+                <mx:Label text="www.gproject.com" width="655" textAlign="center" color="#333333" y="472"/>
+                <mx:VBox x="476" y="37" width="189" height="172" id="roomList" themeColor="#ffcc00"
+                         horizontalAlign="left" borderStyle="solid" verticalGap="0">
+                    <mx:CheckBox label="Checkbox" paddingLeft="10"/>
+                    <mx:CheckBox label="Checkbox" paddingLeft="10"/>
+                </mx:VBox>
+
+            </mx:Panel>
+        </mx:Canvas>
+    </mx:ViewStack>
+</mx:Application>

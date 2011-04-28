@@ -128,7 +128,7 @@ public class ServerThread extends CommonRunnable implements Runnable {
                         client.setAuthed(false);
                         client.setLogined(false);
                         client.setName(client.getIp() + ":" + client.getPort());
-
+                        logger.debug(client.getName() + " connected");
                         //纳入客户端管理中
                         clientDao.addClient(client);
                     }
