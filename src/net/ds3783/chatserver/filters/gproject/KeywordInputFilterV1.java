@@ -49,7 +49,7 @@ public class KeywordInputFilterV1 extends InputFilter {
         if (MessageType.COMMAND_MESSAGE.equals(message.getType())) {
             return;
         }
-        if (MessageType.CHAT_MESSAGE.equals(message.getType()) && "SYSTEM".equals(message.getSubType())) {
+        if (MessageType.CHAT_MESSAGE.equals(message.getType()) && "SYSTEM".equals(message.getChannel())) {
             return;
         }
         if (message != null && message.getContent() != null && message.getContent().length() > 0) {

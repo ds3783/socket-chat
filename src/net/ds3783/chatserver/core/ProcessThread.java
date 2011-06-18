@@ -10,7 +10,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -38,8 +37,8 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
             if ((MessageType.AUTH_MESSAGE.equals(message.getType()) || MessageType.LOGIN_MESSAGE.equals(message.getType()))) {
                 enmergencyMessages.put(message);
             } else if (receivedMessages.size() > maxMessageInQueue) {
-                //³¬³ö×î´óÏûÏ¢ÊýÁ¿ÏÞÖÆ
-                logger.fatal("ÏµÍ³¸ºÔØ´ó,´ý´¦ÀíÏûÏ¢ÊýÁ¿:" + receivedMessages.size());
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                logger.fatal("ÏµÍ³ï¿½ï¿½ï¿½Ø´ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½:" + receivedMessages.size());
                 logger.warn("Dropped Message:" + Utils.describeBean(message));
             } else {
                 receivedMessages.put(message);
@@ -60,7 +59,7 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
                 Client client = toKickClient.poll();
                 kickedClent.put(client.getName(), client);
 
-                //Çå³ý·þÎñÏß³Ì×ÊÔ´
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½ï¿½ï¿½Ô´
                 clientDao.removeClient(client.getUid());
                 SlaveThread writeThread = (SlaveThread) threadResource.getThread(client.getWriteThread());
                 SlaveThread readThread = (SlaveThread) threadResource.getThread(client.getReadThread());
@@ -78,7 +77,7 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
                 }
 
                 if (client.isLogined()) {
-                    logger.info(client.getIp() + ":" + client.getPort() + "(" + client.getName() + ") ¶Ï¿ªÁ¬½Ó¡£");
+                    logger.info(client.getIp() + ":" + client.getPort() + "(" + client.getName() + ") ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ó¡ï¿½");
                 }
             }
 
@@ -116,12 +115,7 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
 
     public void deliverMessage(Message msg, long now, Map<String, Client> kickedClent) {
         if (msg == null) return;
-        List<Message> toDeliver = messageProcessor.processMsg(msg, now);
-        if (toDeliver != null) {
-            for (Message message : toDeliver) {
-                outputerSwitcher.switchTo(message);
-            }
-        }
+        messageProcessor.processMsg(msg, now);
     }
 
 
@@ -130,7 +124,7 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
         msg.setUserUuid(client.getUid());
         msg.setType(MessageType.COMMAND_MESSAGE);
         msg.setContent("echo");
-        msg.setSubType("ECHO");
+        msg.setChannel("ECHO");
         msg.setDestUid(client.getUid());
         this.addMessage(msg);
     }
@@ -172,8 +166,8 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
     }
 
     /**
-     * È¡µÃÈ¨ÖØ
-     * È¨ÖØ¹ØÏµµ½Ñ¡ÔñÆ÷µÄÑ¡Ôñ½á¹û
+     * È¡ï¿½ï¿½È¨ï¿½ï¿½
+     * È¨ï¿½Ø¹ï¿½Ïµï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½
      *
      * @return
      */
@@ -182,7 +176,7 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
     }
 
     /**
-     * ½ÓÊÕÊý¾Ý
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      *
      * @param data
      */

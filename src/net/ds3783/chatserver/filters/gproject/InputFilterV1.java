@@ -42,14 +42,14 @@ public class InputFilterV1 extends InputFilter {
         if ("login".equals(cMsg.getCommand())) {
             message.setType(MessageType.LOGIN_MESSAGE);
             //½ÇÉ«Ãû×Ö
-            message.setSubType(cMsg.getData());
+            message.setChannel(cMsg.getData());
             message.setAuthCode(cMsg.getToken());
 
         }
 
         if ("say".equals(cMsg.getCommand())) {
             message.setType(MessageType.CHAT_MESSAGE);
-            message.setSubType("BROADCAST");
+            message.setChannel("BROADCAST");
             message.setContent(cMsg.getData());
             message.setAuthCode(cMsg.getToken());
         }
@@ -57,7 +57,7 @@ public class InputFilterV1 extends InputFilter {
         if ("changeName".equals(cMsg.getCommand())) {
             message.setType(MessageType.COMMAND_MESSAGE);
             message.setContent(cMsg.getData());
-            message.setSubType("CHANGENAME");
+            message.setChannel("CHANGENAME");
         }
 
 

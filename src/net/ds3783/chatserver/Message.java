@@ -17,7 +17,7 @@ public class Message implements Serializable {
     private String userUuid;
     private HashMap<String, String> destUserUids = new HashMap<String, String>();
     private String type;
-    private String subType;
+    private String channel;
     private String destUid;
     private String content;
     private String authCode;
@@ -53,12 +53,12 @@ public class Message implements Serializable {
         this.type = type;
     }
 
-    public String getSubType() {
-        return subType;
+    public String getChannel() {
+        return channel;
     }
 
-    public void setSubType(String subType) {
-        this.subType = subType;
+    public void setChannel(String channel) {
+        this.channel = channel;
     }
 
     public String getDestUid() {
@@ -103,7 +103,7 @@ public class Message implements Serializable {
         result.userUuid = userUuid;
         result.destUserUids = new HashMap<String, String>();
         result.type = this.getType();
-        result.subType = subType;
+        result.channel = channel;
         result.destUid = destUid;
         result.content = content;
         result.authCode = authCode;

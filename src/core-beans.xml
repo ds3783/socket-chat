@@ -49,12 +49,17 @@
     <bean id="processThread" class="net.ds3783.chatserver.core.ProcessThread" scope="singleton">
         <property name="maxMessageInQueue" value="300"/>
         <property name="sleeptime" value="50"/>
+        <property name="messageProcessor" ref="messageEventProcessor"/>
     </bean>
 
     <bean id="clientDao" class="net.ds3783.chatserver.dao.ClientDao" scope="singleton"/>
 
 
-    <bean id="messageProcessor" class="net.ds3783.chatserver.delivery.MessageProcessor" scope="singleton">
+    <bean id="messageEventProcessor" class="net.ds3783.chatserver.delivery.MessageProcessorEventImpl"
+          scope="singleton"/>
+
+    <bean id="messageStupidProcessor" class="net.ds3783.chatserver.delivery.MessageProcessorStupidImpl"
+          scope="singleton">
         <property name="publicKey" value="ttss"/>
     </bean>
 
@@ -73,7 +78,11 @@
         <property name="weightCritical" value="10"/>
     </bean>
 
+    <bean id="messageDispatcher" class="net.ds3783.chatserver.delivery.MessageDispatcher"/>
+
+
     <bean id="outputerSwitcher" class="net.ds3783.chatserver.core.OutputerSwitcher"/>
+    <bean id="channelListener" class="net.ds3783.chatserver.delivery.ChannelListener" init-method="init"/>
 
     <bean id="gson" class="com.google.gson.Gson" scope="prototype"/>
 </beans>

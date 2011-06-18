@@ -88,7 +88,7 @@ public class UnZippedAmf3InputProtocal extends InputProtocal {
         result.setDestUid((String) Utils.mutliCast(cMsg.get("destUid"), String.class));
         result.setContent((String) Utils.mutliCast(cMsg.get("content"), String.class));
         result.setAuthCode((String) Utils.mutliCast(cMsg.get("authCode"), String.class));
-        result.setSubType((String) Utils.mutliCast(cMsg.get("subType"), String.class));
+        result.setChannel((String) Utils.mutliCast(cMsg.get("subType"), String.class));
         if ("LOGIN".equals(cMsg.get("type"))) {
             result.setType(MessageType.LOGIN_MESSAGE);
         } else {
