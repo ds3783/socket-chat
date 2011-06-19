@@ -78,11 +78,14 @@
         <property name="weightCritical" value="10"/>
     </bean>
 
-    <bean id="messageDispatcher" class="net.ds3783.chatserver.delivery.MessageDispatcher"/>
-
 
     <bean id="outputerSwitcher" class="net.ds3783.chatserver.core.OutputerSwitcher"/>
+
+    <bean id="messageDispatcher" class="net.ds3783.chatserver.delivery.MessageDispatcher"/>
+    <bean id="channelDispatcher" class="net.ds3783.chatserver.delivery.MessageDispatcher"/>
     <bean id="channelListener" class="net.ds3783.chatserver.delivery.ChannelListener" init-method="init"/>
 
     <bean id="gson" class="com.google.gson.Gson" scope="prototype"/>
+
+    <import resource="extend-beans.xml"/>
 </beans>

@@ -11,18 +11,24 @@ import net.ds3783.chatserver.MessageType;
  */
 public class ChannelListener implements EventListener {
     private MessageDispatcher messageDispatcher;
+    private MessageDispatcher channelDispatcher;
 
-    public void onEvent(Event event) {
+    public boolean onEvent(Event event) {
         if (MessageType.CHAT_MESSAGE.equals(event.getMessage().getType())) {
             Event evt = new Event();
             evt.setName(event.getMessage().getChannel());
             evt.setMessage(event.getMessage());
-            messageDispatcher.dispatchEvent(evt);
+            channelDispatcher.dispatchEvent(evt);
         }
+        return true;
     }
 
     public void setMessageDispatcher(MessageDispatcher messageDispatcher) {
         this.messageDispatcher = messageDispatcher;
+    }
+
+    public void setChannelDispatcher(MessageDispatcher channelDispatcher) {
+        this.channelDispatcher = channelDispatcher;
     }
 
     public void init() {
