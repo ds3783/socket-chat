@@ -4,7 +4,9 @@ import net.ds3783.chatserver.tools.Utils;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,7 +17,7 @@ import java.util.Map;
 public class Message implements Serializable {
     private String id = Utils.newUuid();
     private String userUuid;
-    private HashMap<String, String> destUserUids = new HashMap<String, String>();
+    private Set<String> destUserUids = new HashSet<String>();
     private String type;
     private String channel;
     private String destUid;
@@ -37,11 +39,11 @@ public class Message implements Serializable {
         this.userUuid = userUuid;
     }
 
-    public HashMap<String, String> getDestUserUids() {
+    public Set<String> getDestUserUids() {
         return destUserUids;
     }
 
-    public void setDestUserUids(HashMap<String, String> destUserUids) {
+    public void setDestUserUids(Set<String> destUserUids) {
         this.destUserUids = destUserUids;
     }
 
@@ -101,7 +103,7 @@ public class Message implements Serializable {
         Message result = new Message();
         result.id = id;
         result.userUuid = userUuid;
-        result.destUserUids = new HashMap<String, String>();
+        result.destUserUids = new HashSet<String>();
         result.type = this.getType();
         result.channel = channel;
         result.destUid = destUid;

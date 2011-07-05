@@ -1,8 +1,8 @@
 package net.ds3783.chatserver.core;
 
-import net.ds3783.chatserver.Client;
 import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;
+import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
 import net.ds3783.chatserver.delivery.MessageProcessor;
 import net.ds3783.chatserver.tools.Utils;
@@ -37,8 +37,8 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
             if ((MessageType.AUTH_MESSAGE.equals(message.getType()) || MessageType.LOGIN_MESSAGE.equals(message.getType()))) {
                 enmergencyMessages.put(message);
             } else if (receivedMessages.size() > maxMessageInQueue) {
-                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-                logger.fatal("ÏµÍ³ï¿½ï¿½ï¿½Ø´ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½:" + receivedMessages.size());
+                //³¬³ö×î´óÏûÏ¢ÊýÁ¿ÏÞÖÆ
+                logger.fatal("ÏµÍ³¸ºÔØ´ó,´ý´¦ÀíÏûÏ¢ÊýÁ¿:" + receivedMessages.size());
                 logger.warn("Dropped Message:" + Utils.describeBean(message));
             } else {
                 receivedMessages.put(message);
@@ -59,7 +59,7 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
                 Client client = toKickClient.poll();
                 kickedClent.put(client.getName(), client);
 
-                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½ï¿½ï¿½Ô´
+                //Çå³ý·þÎñÏß³Ì×ÊÔ´
                 clientDao.removeClient(client.getUid());
                 SlaveThread writeThread = (SlaveThread) threadResource.getThread(client.getWriteThread());
                 SlaveThread readThread = (SlaveThread) threadResource.getThread(client.getReadThread());
@@ -77,7 +77,7 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
                 }
 
                 if (client.isLogined()) {
-                    logger.info(client.getIp() + ":" + client.getPort() + "(" + client.getName() + ") ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ó¡ï¿½");
+                    logger.info(client.getIp() + ":" + client.getPort() + "(" + client.getName() + ") ¶Ï¿ªÁ¬½Ó¡£");
                 }
             }
 
@@ -166,8 +166,8 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
     }
 
     /**
-     * È¡ï¿½ï¿½È¨ï¿½ï¿½
-     * È¨ï¿½Ø¹ï¿½Ïµï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½
+     * È¡µÃÈ¨ÖØ
+     * È¨ÖØ¹ØÏµµ½Ñ¡ÔñÆ÷µÄÑ¡Ôñ½á¹û
      *
      * @return
      */
@@ -176,7 +176,7 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
     }
 
     /**
-     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+     * ½ÓÊÕÊý¾Ý
      *
      * @param data
      */

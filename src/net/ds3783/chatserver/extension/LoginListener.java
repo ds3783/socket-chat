@@ -1,8 +1,8 @@
 package net.ds3783.chatserver.extension;
 
-import net.ds3783.chatserver.Client;
 import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;
+import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
 import net.ds3783.chatserver.delivery.Channel;
 import net.ds3783.chatserver.delivery.Event;
@@ -10,7 +10,7 @@ import net.ds3783.chatserver.delivery.EventListener;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import java.util.HashMap;
+import java.util.HashSet;
 
 /**
  * Created by IntelliJ IDEA.
@@ -26,7 +26,7 @@ public class LoginListener extends AbstractDefaultListener implements EventListe
     public boolean onEvent(Event event) {
         Message reply = event.getMessage().simpleClone();
         //登录
-        reply.getDestUserUids().put(reply.getUserUuid(), reply.getUserUuid());
+        reply.getDestUserUids().add(reply.getUserUuid());
         //登录成功
         if (clientDao.getClientByName(reply.getChannel()) != null) {
             //通知此人有重名，并踢下线
@@ -46,7 +46,7 @@ public class LoginListener extends AbstractDefaultListener implements EventListe
 
             //全局广播某人上线
             Message broadCast = reply.simpleClone();
-            broadCast.setDestUserUids(new HashMap<String, String>(clientDao.getLoginClientUids()));
+            broadCast.setDestUserUids(new HashSet<String>(clientDao.getLoginClientUids()));
             broadCast.setType(MessageType.CHAT_MESSAGE);
             broadCast.setChannel(Channel.SYSTEM.getCode());
             broadCast.setContent(client.getName() + " 成功登录");

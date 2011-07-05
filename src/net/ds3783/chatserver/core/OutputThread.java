@@ -1,8 +1,8 @@
 package net.ds3783.chatserver.core;
 
-import net.ds3783.chatserver.Client;
 import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;
+import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
 import net.ds3783.chatserver.protocol.OutputProtocal;
 import net.ds3783.chatserver.tools.Utils;
@@ -125,7 +125,7 @@ public class OutputThread extends SlaveThread implements Runnable {
             int destSize = message.getDestUserUids().size();
             int mySize = userKeys.size();
             if (destSize < mySize) {
-                for (String destuid : message.getDestUserUids().keySet()) {
+                for (String destuid : message.getDestUserUids()) {
                     if (userKeys.containsKey(destuid)) {
                         doSend(destuid, data, now);
                         counter++;
@@ -134,7 +134,7 @@ public class OutputThread extends SlaveThread implements Runnable {
             } else {
                 Collection<String> uuids = new ArrayList<String>(userKeys.keySet());
                 for (String uuid : uuids) {
-                    if (message.getDestUserUids().containsKey(uuid)) {
+                    if (message.getDestUserUids().contains(uuid)) {
                         doSend(uuid, data, now);
                         counter++;
                     }

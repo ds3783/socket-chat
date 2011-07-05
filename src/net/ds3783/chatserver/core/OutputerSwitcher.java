@@ -1,7 +1,7 @@
 package net.ds3783.chatserver.core;
 
-import net.ds3783.chatserver.Client;
 import net.ds3783.chatserver.Message;
+import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
 
 import java.util.List;
@@ -36,7 +36,7 @@ public class OutputerSwitcher {
                 ot.send(message);
             }
         } else {
-            for (String uid : message.getDestUserUids().keySet()) {
+            for (String uid : message.getDestUserUids()) {
                 Client c = clientDao.getClient(uid);
                 OutputThread ot = (OutputThread) threadResource.getThread(c.getWriteThread());
                 if (ot != null) {

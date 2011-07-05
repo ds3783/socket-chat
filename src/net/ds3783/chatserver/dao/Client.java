@@ -1,6 +1,8 @@
-package net.ds3783.chatserver;
+package net.ds3783.chatserver.dao;
 
 import net.ds3783.chatserver.delivery.Channel;
+
+import javax.persistence.Column;
 
 /**
  * Created by IntelliJ IDEA.
@@ -12,7 +14,7 @@ public class Client {
     private String uid;
     private String token;
     private String name;
-    private ClientType type;
+    private String type;
     private String ip;
     private Integer port;
     private String readThread;
@@ -22,13 +24,9 @@ public class Client {
     private long connectTime;
     private long lastMessageTime;
 
-    private String party;
-    private Channel channel;
-    private String team;
-    private String nation;
+    private String channel;
 
     public Client() {
-        uid = "";
         token = "";
         name = "";
         type = ClientType.USER;
@@ -41,10 +39,7 @@ public class Client {
         connectTime = 0;
         lastMessageTime = 0;
 
-        party = "";
-        channel = Channel.PUBLIC;
-        team = "";
-        nation = "";
+        channel = Channel.PUBLIC.getCode();
     }
 
     public String getUid() {
@@ -63,11 +58,11 @@ public class Client {
         this.name = name;
     }
 
-    public ClientType getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(ClientType type) {
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -103,6 +98,7 @@ public class Client {
         this.writeThread = writeThread;
     }
 
+    @Column(name = "AUTHED")
     public boolean isAuthed() {
         return authed;
     }
@@ -135,36 +131,13 @@ public class Client {
         this.lastMessageTime = lastMessageTime;
     }
 
-    public String getParty() {
-        return party;
-    }
 
-    public void setParty(String party) {
-        this.party = party;
-    }
-
-    public Channel getChannel() {
+    public String getChannel() {
         return channel;
     }
 
-    public void setChannel(Channel channel) {
+    public void setChannel(String channel) {
         this.channel = channel;
-    }
-
-    public String getTeam() {
-        return team;
-    }
-
-    public void setTeam(String team) {
-        this.team = team;
-    }
-
-    public String getNation() {
-        return nation;
-    }
-
-    public void setNation(String nation) {
-        this.nation = nation;
     }
 
     public String getToken() {

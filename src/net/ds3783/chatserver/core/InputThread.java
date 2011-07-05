@@ -1,7 +1,7 @@
 package net.ds3783.chatserver.core;
 
-import net.ds3783.chatserver.Client;
 import net.ds3783.chatserver.Message;
+import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
 import net.ds3783.chatserver.pool.BytePool;
 import net.ds3783.chatserver.protocol.InputProtocal;
@@ -106,7 +106,7 @@ public class InputThread extends SlaveThread implements Runnable {
                         }
                     } catch (IOException e) {
                         if (client != null) {
-                            logger.warn(client.getName() + ":" + e.getMessage(),e);
+                            logger.warn(client.getName() + ":" + e.getMessage(), e);
 
                             //用户已断线，清除该用户
                             this.remove(client.getUid());

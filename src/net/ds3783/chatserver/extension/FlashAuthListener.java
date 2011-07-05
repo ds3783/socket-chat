@@ -1,14 +1,14 @@
 package net.ds3783.chatserver.extension;
 
-import net.ds3783.chatserver.Client;
 import net.ds3783.chatserver.Configuration;
 import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;
+import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
 import net.ds3783.chatserver.delivery.Event;
 import net.ds3783.chatserver.delivery.EventListener;
 
-import java.util.HashMap;
+import java.util.HashSet;
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,8 +28,8 @@ public class FlashAuthListener extends AbstractDefaultListener implements EventL
 
         Client client = clientDao.getClient(msg.getUserUuid());
         client.setAuthed(true);
-        HashMap<String, String> destUsers = new HashMap<String, String>();
-        destUsers.put(client.getUid(), client.getUid());
+        HashSet<String> destUsers = new HashSet<String>();
+        destUsers.add(client.getUid());
         reply.setDestUserUids(destUsers);
         reply.setUserUuid(msg.getUserUuid());
         reply.setChannel(msg.getChannel());

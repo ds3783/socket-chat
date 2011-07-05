@@ -123,6 +123,5 @@ public class Main {
 
     private void initialize() {
         context = new ClassPathXmlApplicationContext("core-beans.xml");
-
     }
 }

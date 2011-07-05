@@ -2,10 +2,10 @@ package net.ds3783.chatserver.filters.gproject;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
-import net.ds3783.chatserver.Client;
 import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;
 import net.ds3783.chatserver.core.InputFilter;
+import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

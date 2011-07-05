@@ -1,6 +1,6 @@
 package net.ds3783.chatserver.core;
 
-import net.ds3783.chatserver.Client;
+import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

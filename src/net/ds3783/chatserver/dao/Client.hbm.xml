@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+        package="net.ds3783.chatserver.dao">
+
+    <class name="Client" table="client" lazy="false">
+        <id name="uid" column="UID">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="NAME" not-null="true" unique="true" length="200"/>
+        <property name="type" column="CLIENTTYPE" not-null="true" length="80"/>
+        <property name="ip" column="IP" not-null="false" length="80"/>
+        <property name="port" column="PORT" not-null="false"/>
+        <property name="readThread" column="READTHREAD" not-null="false" length="80"/>
+        <property name="writeThread" column="WRITETHREAD" not-null="false" length="80"/>
+        <property name="authed" column="AUTHED" not-null="true"/>
+        <property name="logined" column="LOGINED" not-null="true"/>
+        <property name="connectTime" column="CONNECTTIME" not-null="true"/>
+        <property name="lastMessageTime" column="LASTMESSAGETIME" not-null="true"/>
+        <property name="channel" column="CHANNEL" not-null="false" length="80"/>
+        <property name="token" column="TOKEN" not-null="false" length="80"/>
+    </class>
+
+
+</hibernate-mapping>

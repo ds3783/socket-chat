@@ -1,10 +1,10 @@
 package net.ds3783.chatserver.filters.gproject;
 
 import com.google.gson.Gson;
-import net.ds3783.chatserver.Client;
 import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;
 import net.ds3783.chatserver.core.OutputFilter;
+import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
 import net.ds3783.chatserver.tools.Utils;
 
