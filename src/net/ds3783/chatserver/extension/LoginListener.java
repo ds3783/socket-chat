@@ -28,19 +28,22 @@ public class LoginListener extends AbstractDefaultListener implements EventListe
         //登录
         reply.getDestUserUids().add(reply.getUserUuid());
         //登录成功
-        if (clientDao.getClientByName(reply.getChannel()) != null) {
+        if (clientDao.getClientByName(reply.getContent()) != null) {
             //通知此人有重名，并踢下线
             reply.setDropClientAfterReply(true);
             reply.setType(MessageType.CHAT_MESSAGE);
-            reply.setChannel("SYSTEM");
+            reply.setChannel(Channel.SYSTEM.getCode());
             reply.setContent("当前有重名用户");
+            reply.setAuthCode("false");
+            logger.info("当前有重名用户:"+reply.getContent());
             outputerSwitcher.switchTo(reply);
             return false;
         } else {
-            Client client = clientDao.getClient(reply.getUserUuid());
             clientDao.updateClientName(reply.getUserUuid(), reply.getContent());
             clientDao.updateClientToken(reply.getUserUuid(), reply.getAuthCode());
             clientDao.updateClientLogined(reply.getUserUuid(), true);
+            reply.setAuthCode("true");
+            Client client = clientDao.getClient(reply.getUserUuid());
             logger.info(client.getIp() + ":" + client.getPort() + "(" + client.getName() + ") 成功登录。");
             outputerSwitcher.switchTo(reply);
 

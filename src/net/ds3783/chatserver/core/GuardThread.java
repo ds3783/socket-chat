@@ -19,13 +19,18 @@ public class GuardThread extends CommonRunnable {
     private long unLoginExpireTime = 60000;
     private long loginExpireTime = 15 * 60000;
     private long gcTimeCycle = 30 * 60000;
+    private long cleanNotLoginClientCycle = 60000;
+    private long cleanExpireClientCycle = 10 * 60000;
     private long lastGcTime = 0;
+    private long lastCleanExpireClientTime = 0;
+    private long lastCleanUnloginClientTime = 0;
     private ClientDao clientDao;
     private ProcessThread processThread;
 
 
     public void doRun() throws Exception {
         try {
+            //在系统最初启动的10秒内守护线程不工作
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             logger.error(e.getMessage(), e);
@@ -66,20 +71,32 @@ public class GuardThread extends CommonRunnable {
             }
 
             //处理过期用户
-            Collection<Client> allClients = clientDao.getAllClients();
+
             long now = System.currentTimeMillis();
-            for (Client client : allClients) {
-                if (client == null) continue;
-                long minus = now - client.getLastMessageTime();
-                if (!client.isLogined()) {
-                    if (minus > unLoginExpireTime && unLoginExpireTime > 0) {
-                        processThread.addOfflineUser(client);
+            if (now - lastCleanUnloginClientTime > cleanNotLoginClientCycle) {
+                Collection<Client> notLoginedClients = clientDao.getNotLoginedClients();
+                for (Client client : notLoginedClients) {
+                    if (client == null) continue;
+                    long minus = now - client.getConnectTime();
+                    if (!client.isLogined()) {
+                        if (minus > unLoginExpireTime) {
+                            processThread.addOfflineUser(client);
+                        }
                     }
-                } else {
+                }
+                lastCleanUnloginClientTime = now;
+            }
+            if (now - lastCleanExpireClientTime > cleanExpireClientCycle) {
+                Collection<Client> allClients = clientDao.getAllClients();
+                for (Client client : allClients) {
+                    if (client == null) continue;
+                    //查询该客户端最后一次向服务器放送数据的时间与当前时间之差
+                    long minus = now - client.getLastMessageTime();
                     if (minus > loginExpireTime && loginExpireTime > 0) {
                         processThread.sendEchoMessage(client);
                     }
                 }
+                lastCleanExpireClientTime = now;
             }
 
             //GC处理
@@ -90,18 +107,15 @@ public class GuardThread extends CommonRunnable {
                 if (gcTimeCycle > 0 && now - lastGcTime > gcTimeCycle) {
                     lastGcTime = now;
                     try {
-                        /*
-                        System.out.println("before gc: total:" + Runtime.getRuntime().totalMemory() / 1024 / 1024
-                                + "free:" + Runtime.getRuntime().freeMemory() / 1024 / 1024
-                                + "max:" + Runtime.getRuntime().maxMemory() / 1024 / 1024
-                                + "used:" + (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1024 / 1024);
-                        */
+                        logger.info("before gc: total:" + Runtime.getRuntime().totalMemory() / 1024 / 1024 + "M "
+                                + "free:" + Runtime.getRuntime().freeMemory() / 1024 / 1024 + "M "
+                                + "max:" + Runtime.getRuntime().maxMemory() / 1024 / 1024 + "M "
+                                + "used:" + (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1024 / 1024 + "M ");
                         System.gc();
-                        /*
-                        System.out.println("after gc: total:" + Runtime.getRuntime().totalMemory() / 1024 / 1024
-                                + "free:" + Runtime.getRuntime().freeMemory() / 1024 / 1024 + "max:" + Runtime.getRuntime().maxMemory() / 1024 / 1024
-                                + "used:" + (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1024 / 1024);
-                        */
+                        logger.info("after gc: total:" + Runtime.getRuntime().totalMemory() / 1024 / 1024 + "M "
+                                + "free:" + Runtime.getRuntime().freeMemory() / 1024 / 1024 + "M "
+                                + "max:" + Runtime.getRuntime().maxMemory() / 1024 / 1024 + "M "
+                                + "used:" + (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1024 / 1024 + "M ");
 
                     } catch (Throwable e) {
                         logger.warn(e.getMessage(), e);
@@ -171,5 +185,13 @@ public class GuardThread extends CommonRunnable {
 
     public void setGcTimeCycle(long gcTimeCycle) {
         this.gcTimeCycle = gcTimeCycle;
+    }
+
+    public void setCleanExpireClientCycle(long cleanExpireClientCycle) {
+        this.cleanExpireClientCycle = cleanExpireClientCycle;
+    }
+
+    public void setCleanNotLoginClientCycle(long cleanNotLoginClientCycle) {
+        this.cleanNotLoginClientCycle = cleanNotLoginClientCycle;
     }
 }

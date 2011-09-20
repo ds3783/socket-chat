@@ -7,6 +7,8 @@ import org.apache.commons.lang.builder.ToStringStyle;
 import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -182,28 +184,42 @@ public class Utils {
         return false;
     }
 
-    public static Object mutliCast(Object o, Class clazz) {
+    public static <T> T mutliCast(Object o, Class<T> clazz) {
         if (o == null) {
             return null;
         }
+        if (clazz.isInstance(o)) {
+            return (T) o;
+        }
         if (isSuperClass(o.getClass(), clazz)) {
-            return o;
+            return (T) o;
         }
         if (isSuperClass(clazz, Integer.class)) {
-            return Integer.parseInt(o.toString());
+            return (T) new Integer(o.toString());
         }
         if (isSuperClass(clazz, Double.class)) {
-            return Double.parseDouble(o.toString());
+            return (T) new Double(o.toString());
         }
         if (isSuperClass(clazz, Long.class)) {
-            return Long.parseLong(o.toString());
+            return (T) new Long(o.toString());
         }
         if (isSuperClass(clazz, Boolean.class)) {
-            return Boolean.parseBoolean(o.toString());
+            return (T) new Boolean(o.toString());
         }
         if (isSuperClass(clazz, String.class)) {
-            return (o.toString());
+            return (T) o.toString();
         }
         return null;
+    }
+
+    public static <T> List<T> castList(List list, Class<T> tClass) {
+        if (list == null) return null;
+        List<T> result = new ArrayList<T>();
+        for (Object o : list) {
+            if (tClass.isInstance(o)) {
+                result.add((T) o);
+            }
+        }
+        return result;
     }
 }

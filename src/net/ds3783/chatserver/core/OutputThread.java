@@ -168,7 +168,6 @@ public class OutputThread extends SlaveThread implements Runnable {
         try {
             logger.debug("say to: " + client.getName() + ":" + new String(data) + "HEX VAL:" + Utils.toHexString(data));
             channel.write(writeBuffer);
-            client.setLastMessageTime(now);
         } catch (IOException e) {
             logger.warn(client.getName() + ":" + e.getMessage());
             //用户已断线，清除该用户

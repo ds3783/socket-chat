@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" >
     <!--
          G-Chat Actionscript 3.0 example application:
 
@@ -9,34 +9,46 @@
 
     <mx:Script>
         import net.ds3783.chatserver.ChatEvent;
-        import net.ds3783.chatserver.ChatServerClient;
+        import net.ds3783.chatserver.SocketClient;
 
-        private var gClient:ChatServerClient;
+        private var gClient:SocketClient = null;
         private var username:String;
         private var password:String;
 
         public function initApp():void {
+            gClient = new SocketClient();
+            gClient.addEventListener(SocketClient.EVENT_CONNECTED, connected);
+            gClient.addEventListener(SocketClient.EVENT_LOGIN, logined);
         }
 
         public function doConnect():void {
-            gClient = new ChatServerClient();
-            gClient.addEventListener(ChatServerClient.EVENT_CONNECTED, connected);
+            if (gClient == null) {
+                initApp();
+            }
             bt_enter.setStyle("disabled", "true");
 
             gClient.connect(tf_host.text, parseInt(tf_port.text));
             trace("connecting to :" + tf_host.text + ":" + parseInt(tf_port.text));
             username = tf_username.text;
             password = tf_password.text
-
-
+            viewstack.selectedChild = view_connecting;
         }
 
         public function connected(ect:ChatEvent):void {
             gClient.login(username, password);
+
         }
+
+        public function logined(evt:ChatEvent):void {
+            viewstack.selectedChild = view_chat;
+
+
+        }
+
+
     </mx:Script>
     <mx:ViewStack id="viewstack" left="10" right="10" top="10" bottom="10" selectedIndex="1">
-        <mx:Canvas width="100%" height="100%" id="view_connecting">
+        <mx:Canvas width="100%" height="100%" id="view_connecting" name="view_connecting" >
             <mx:Panel width="362" height="260" layout="absolute" horizontalCenter="0.5" verticalCenter="-7"
                       title="::.. Connection ..::" color="#ffffff">
                 <mx:Label y="115" text="Connecting to server ..." horizontalCenter="0.5" width="321" textAlign="center"
@@ -50,16 +62,16 @@
             <mx:Panel width="440" height="310" layout="absolute" horizontalCenter="0" verticalCenter="1" title="Login"
                       color="#ffffff">
                 <mx:TextInput x="134.75" y="100" width="125.75" color="#000000" id="tf_host" textAlign="left"
-                              themeColor="#ffcc00" height="24" text="255.255.255.255" editable="true" enabled="true"
+                              themeColor="#ffcc00" height="24" text="127.0.0.1" editable="true" enabled="true"
                               fontSize="12" maxChars="128"/>
                 <mx:TextInput x="313" y="100" maxChars="5" width="53.25" color="#000000" id="tf_port" textAlign="left"
-                              themeColor="#ffcc00" height="24" text="12345" editable="true" enabled="true"
+                              themeColor="#ffcc00" height="24" text="6001" editable="true" enabled="true"
                               fontSize="12"/>
                 <mx:TextInput x="135" y="132" width="231.25" color="#000000" id="tf_username" textAlign="center"
-                              themeColor="#ffcc00" height="24" text="255.255.255.255" editable="true" enabled="true"
+                              themeColor="#ffcc00" height="24" text="guest" editable="true" enabled="true"
                               fontSize="12" maxChars="128"/>
                 <mx:TextInput x="135" y="164" width="231.25" color="#000000" id="tf_password" textAlign="center"
-                              themeColor="#ffcc00" height="24" text="255.255.255.255" editable="true" enabled="true"
+                              themeColor="#ffcc00" height="24" text="guest" editable="true" enabled="true"
                               fontSize="12"/>
                 <mx:Label y="102" text="ServerIp:" textAlign="right" color="#800000" fontWeight="bold"
                           horizontalCenter="-120" width="73" height="24" fontSize="12"/>

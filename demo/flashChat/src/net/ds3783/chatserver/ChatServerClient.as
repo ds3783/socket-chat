@@ -1,155 +1,86 @@
+/**
+ * Created by IntelliJ IDEA.
+ * User: Ds3783
+ * Date: 11-9-19
+ * Time: ÏÂÎç11:07
+ * To change this template use File | Settings | File Templates.
+ */
 package net.ds3783.chatserver {
-import flash.events.Event;
 import flash.events.EventDispatcher;
-import flash.events.IOErrorEvent;
-import flash.events.ProgressEvent;
-import flash.events.SecurityErrorEvent;
-import flash.net.ObjectEncoding;
-import flash.net.Socket;
-import flash.utils.ByteArray;
 
 public class ChatServerClient extends EventDispatcher {
+
+    public static const LOGINED:String = "LOGINED";
+    public static const CONNECTED:String = "CONNECTED";
+    public static const CONNECTED_ERROR:String = "CONNECTED_ERROR";
+    public static const LOGIN_ERROR:String = "LOGIN_ERROR";
+    public static const CHANNEL_LIST_UPDATE:String = "CHANNEL_LIST_UPDATE";
+    public static const CHANNEL_JOINED:String = "CHANNEL_JOINED";
+    public static const MESSAGE:String = "MESSAGE";
+    public static const BEFORE_DISCONNECT:String = "BEFORE_DISCONNECT";
+
     public function ChatServerClient() {
-    }
-
-    private var socket:Socket = null;
-    private var logined:Boolean = false;
-    private var dataCache:ByteArray = new ByteArray();
-    private var messageBuffer:Array = new Array();
-
-    public static const EVENT_CONNECTED:String = "ON_CONNECTED";
-    public static const EVENT_LOGIN:String = "ON_LOGIN";
-    public static const EVENT_CLIENTMESSAGE:String = "ON_CLIENT";
-    public static const EVENT_SERVERMESSAGE:String = "ON_SERVER";
-    public static const EVENT_NETERROR:String = "ON_NETERROR";
-    public static const EVENT_AUTHERROR:String = "ON_AUTHERROR";
-
-    public function connect(host:String, port:int):void {
-        socket = new Socket();
-        socket.addEventListener(Event.CONNECT, onStocketConnected);
-        socket.addEventListener(ProgressEvent.SOCKET_DATA, onSocketData);
-        socket.addEventListener(IOErrorEvent.IO_ERROR, onSocketIOError);
-        socket.addEventListener(IOErrorEvent.NETWORK_ERROR, onSocketIOError);
-        socket.addEventListener(SecurityErrorEvent.SECURITY_ERROR, onSecurityError);
-        socket.objectEncoding = ObjectEncoding.AMF3;
-
-
-        socket.connect(host, port);
-
+        connType = CONN_TYPE_SOCKET;
+        socket = new SocketClient();
+        socket.addEventListener(SocketClient.EVENT_CONNECTED, onConnected);
+        socket.addEventListener(SocketClient.EVENT_LOGIN, onLogined);
     }
 
 
-    public function isConnected():Boolean {
-        return socket.connected;
+    private static const CONN_TYPE_SOCKET:String = "SOCKET";
+    private var connType:String;
+    private var _connHost:String;
+    private var _connPort:int;
+    private var _username:String;
+    private var _password:String;
+    private var connected:Boolean;
+    private var logined:Boolean;
+
+    private var socket:SocketClient;
+
+    public function connect(host:String, port:int, username:String, password:String) {
+        _connHost = host;
+        _connPort = port;
+        this._username = username;
+        this._password = password;
+        socket.connect(_connHost, _connPort);
+    }
+
+    public function updateChannelList() {
+
     }
 
 
-    public function isLogin():Boolean {
-        return this.logined;
-    }
-
-    public function login(username:String, password:String):void {
-        var message:Message = new Message();
-        message.type = MessageType.LOGIN;
-        message.userUuid = username;
-        message.content = password;
-        this.send(message);
-    }
-
-    private function send(data:Message):void {
-        if (!socket.connected) {
-            throw new ChatServerError("Not Connected!");
-        }
-        var binaryData:ByteArray = new ByteArray();
-        var serialized:ByteArray = new ByteArray();
-        serialized.writeObject(data);
-        var length:int = serialized.length;
-        binaryData.writeInt(length);
-        binaryData.writeBytes(serialized);
-        socket.writeBytes(binaryData);
-    }
-
-    private function onStocketConnected(evt:Event):void {
-        var evt2:ChatEvent = new ChatEvent(EVENT_CONNECTED);
-        this.dispatchEvent(evt2);
-    }
-
-    private function onSocketData(evt:Event):void {
-        //TODO::
-        try {
-            while (socket.bytesAvailable > 0) {
-                socket.readBytes(dataCache, 0, socket.bytesAvailable);
-            }
-            while (dataCache.length > 0) {
-                var bytes:ByteArray = new ByteArray();
-                var newbytes:ByteArray = new ByteArray();
-                var pos:uint = dataCache.position;
-                dataCache.position = 0;
-                var bint:int = dataCache.readInt();
-                if (dataCache.bytesAvailable >= bint) {
-                    dataCache.readBytes(newbytes, 0, bint);
-                    newbytes.uncompress();
-                    messageBuffer.push(newbytes.readObject());
-                    if (dataCache.bytesAvailable > 0) {
-                        dataCache.readBytes(bytes);
-                    }
-                    dataCache = new ByteArray();
-                    bytes.position = 0;
-                    if (bytes.bytesAvailable > 0) {
-                        bytes.readBytes(dataCache, 0, bytes.bytesAvailable);
-                    }
-
-                } else {
-                    dataCache.position = pos;
-                    break;
-                }
-            }
-            this.onData();
-        } catch (err:Error) {
-            trace(err.getStackTrace())
+    private function onConnected(e:ChatEvent):void {
+        connected = true;
+        dispatchEvent(new ChatEvent(CONNECTED));
+        switch (connType) {
+            case CONN_TYPE_SOCKET:
+                socket.login(_username, _password);
+                break;
         }
     }
 
-
-    private function onData():void {
-        while (messageBuffer.length > 0) {
-            var message:Message = messageBuffer.shift();
-            switch (message.type) {
-                case MessageType.AUTH:
-                    break;
-                case MessageType.LOGIN:
-                    var evt1:ChatEvent = new ChatEvent(EVENT_LOGIN);
-                    evt1.message = message;
-                    this.dispatchEvent(evt1);
-                    break;
-                case MessageType.CLIENT:
-                    var evt2:ChatEvent = new ChatEvent(EVENT_CLIENTMESSAGE);
-                    evt2.message = message;
-                    this.dispatchEvent(evt2);
-                    break;
-            }
-        }
+    private function onLogined(e:ChatEvent):void {
+        logined = true;
+        dispatchEvent(new ChatEvent(LOGINED));
     }
 
-    public function sendMessage(msg:Message):void {
-        if (!logined) {
-            throw new ChatServerError("Not Logined!");
-        }
-        msg.type = MessageType.CLIENT;
-        send(msg);
+
+    public function get connHost():String {
+        return _connHost;
     }
 
-    private function onSocketIOError(evt:IOErrorEvent):void {
-        trace('Stocket Error::' + evt.text);
-        var evt1:ChatEvent = new ChatEvent(EVENT_NETERROR);
-        this.dispatchEvent(evt1);
+    public function get connPort():int {
+        return _connPort;
     }
 
-    private function onSecurityError(evt:SecurityErrorEvent):void {
-        trace('Security Error::' + evt.text);
-        var evt1:ChatEvent = new ChatEvent(EVENT_AUTHERROR);
-        this.dispatchEvent(evt1);
+    public function get username():String {
+        return _username;
     }
 
+    public function get password():String {
+        return _password;
+    }
 }
 }

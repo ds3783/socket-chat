@@ -29,9 +29,12 @@ public class UnZippedAmf3OutputProtocal extends OutputProtocal {
     @Override
     public byte[] marshal() throws MarshalException {
         byte[] result = new byte[0];
-        for (Iterator<Message> messageIterator = messages.iterator(); messageIterator.hasNext();) {
+        for (Iterator<Message> messageIterator = messages.iterator(); messageIterator.hasNext(); ) {
             Message message = messageIterator.next();
+            message=message.simpleClone();
+
             try {
+                message.setDestUserUids(null);
                 ByteArrayOutputStream out = new ByteArrayOutputStream();
                 SerializationContext sc = new SerializationContext();
                 SerializationContext.setSerializationContext(sc);
@@ -44,6 +47,9 @@ public class UnZippedAmf3OutputProtocal extends OutputProtocal {
                 byte[] length = Utils.intToByte(data.length);
                 byte[] buffer = result;
                 result = new byte[buffer.length + length.length + data.length];
+                logger.debug("buffer.len:" + buffer.length);
+                logger.debug("length.len:" + length.length);
+                logger.debug("data.len:" + data.length);
                 System.arraycopy(buffer, 0, result, 0, buffer.length);
                 System.arraycopy(length, 0, result, buffer.length, length.length);
                 System.arraycopy(data, 0, result, buffer.length + length.length, data.length);
@@ -53,6 +59,8 @@ public class UnZippedAmf3OutputProtocal extends OutputProtocal {
                 throw new MarshalException(e.getMessage(), e);
             }
         }
+
+        logger.debug("result.len:" + result.length);
         return result;
     }
 }

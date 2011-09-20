@@ -131,7 +131,9 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
 
     public void addOfflineUser(Client client) {
         try {
-            toKickClient.put(client);
+            if (client!=null){
+                toKickClient.put(client);
+            }
         } catch (InterruptedException e) {
             logger.fatal(e.getMessage(), e);
         }

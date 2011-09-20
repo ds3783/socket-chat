@@ -2,7 +2,6 @@ package net.ds3783.chatserver.core;
 
 import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
-import net.ds3783.chatserver.tools.Utils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -77,7 +76,7 @@ public class ServerThread extends CommonRunnable implements Runnable {
                         socketChannel.configureBlocking(false);
 
 
-                        String uuid = Utils.newUuid();
+
                         //取得线程资源
                         //读取线程
                         List<CommonRunnable> inputThreads = threadResource.getThreads(ThreadResourceType.INPUT_THREAD);
@@ -112,13 +111,7 @@ public class ServerThread extends CommonRunnable implements Runnable {
                             }
                         }
 
-                        //必须先分配写入线程后分配读取线程
-                        writeSlave.assign(socketChannel, uuid);
-
-                        readSlave.assign(socketChannel, uuid);
-
                         Client client = new Client();
-                        client.setUid(uuid);
                         client.setIp(socketChannel.socket().getInetAddress().getHostAddress());
                         client.setPort(socketChannel.socket().getPort());
                         client.setLastMessageTime(System.currentTimeMillis());
@@ -131,6 +124,12 @@ public class ServerThread extends CommonRunnable implements Runnable {
                         logger.debug(client.getName() + " connected");
                         //纳入客户端管理中
                         clientDao.addClient(client);
+                        //必须先分配写入线程后分配读取线程
+                        writeSlave.assign(socketChannel, client.getUid());
+
+                        readSlave.assign(socketChannel, client.getUid());
+
+
                     }
                 }
             } catch (IOException e) {

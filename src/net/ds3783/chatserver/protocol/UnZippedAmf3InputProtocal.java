@@ -68,6 +68,8 @@ public class UnZippedAmf3InputProtocal extends InputProtocal {
                 ASObject cMsg = (ASObject) obj;
                 Message message = readMessage(cMsg);
                 this.messages.add(message);
+            }else if (obj instanceof Message){
+                this.messages.add((Message) obj);
             }
             byte[] remains = new byte[this.data.length - length - 4];
             System.arraycopy(this.data, 4 + length, remains, 0, this.data.length - length - 4);
@@ -89,7 +91,7 @@ public class UnZippedAmf3InputProtocal extends InputProtocal {
         result.setContent((String) Utils.mutliCast(cMsg.get("content"), String.class));
         result.setAuthCode((String) Utils.mutliCast(cMsg.get("authCode"), String.class));
         result.setChannel((String) Utils.mutliCast(cMsg.get("subType"), String.class));
-        if ("LOGIN".equals(cMsg.get("type"))) {
+        if (MessageType.LOGIN_MESSAGE.equals(cMsg.get("type"))) {
             result.setType(MessageType.LOGIN_MESSAGE);
         } else {
             result.setType(MessageType.CHAT_MESSAGE);

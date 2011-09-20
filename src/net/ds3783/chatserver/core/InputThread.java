@@ -77,6 +77,8 @@ public class InputThread extends SlaveThread implements Runnable {
                                 readBuffer.rewind();
                                 readBuffer.get(bytes, 0, bytecount);
                                 pool.offerBytes(client.getUid(), bytes);
+                            } else if (bytecount < 0) {
+                                throw new IOException("用户已断线");
                             }
                         } while (bytecount > 0);
                         if (pool.getCachedSize(client.getUid()) > 0) {
@@ -91,15 +93,16 @@ public class InputThread extends SlaveThread implements Runnable {
                                 //调用过滤器
                                 for (Message message : messages) {
                                     message.setUserUuid(client.getUid());
+                                    logger.debug("Revceived Message:" + Utils.describeBean(message));
                                     if (filters != null) {
                                         for (InputFilter filter : filters) {
                                             filter.filte(client, message);
-                                            logger.debug("Revceived Message:" + Utils.describeBean(message));
                                         }
                                     }
                                 }
                                 processThreadSwitcher.switchData(messages);
                                 client.setLastMessageTime(now);
+                                clientDao.updateClient(client);
                             } catch (UnmarshalException e) {
                                 logger.error(e.getMessage(), e);
                             }
@@ -110,7 +113,7 @@ public class InputThread extends SlaveThread implements Runnable {
 
                             //用户已断线，清除该用户
                             this.remove(client.getUid());
-                            //TODO::processThread.addOfflineUser(client);
+                            //TODO::processThreadSwitcher.addOfflineUser(client);
                         }
                     }
                 }

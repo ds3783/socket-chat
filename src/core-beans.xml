@@ -65,13 +65,18 @@
 
 
     <bean id="guardThread" class="net.ds3783.chatserver.core.GuardThread" scope="singleton">
-        <property name="sleeptime" value="300"/>
+        <!--守护线程每1秒检查一次系统状态-->
+        <property name="sleeptime" value="1000"/>
         <!--每半小时回收内存一次-->
         <property name="gcTimeCycle" value="1800000"/>
         <!--登录且超过15分钟没有消息记录的发送空消息-->
         <property name="loginExpireTime" value="900000"/>
-        <!--未登录且超过1分钟没有消息记录的直接踢下线-->
-        <property name="unLoginExpireTime" value="60000"/>
+        <!--未登录且超过2分钟未能登录的用户直接踢下线-->
+        <property name="unLoginExpireTime" value="120000"/>
+        <!--清理已掉线，因没有Socket活动导致系统继续维护其登录状态的连接的间隔时间，建议设置在10分钟或者更长时间-->
+        <property name="cleanExpireClientCycle" value="600000"/>
+        <!--每隔多长时间清理一次未登录用户-->
+        <property name="cleanNotLoginClientCycle" value="60000"/>
     </bean>
 
     <bean id="processThreadSwitcher" class="net.ds3783.chatserver.core.LoadBalanceSwitcher" scope="singleton">
@@ -89,7 +94,7 @@
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="org.h2.Driver"/>
-        <property name="url" value="jdbc:h2:~/g_chat"/>
+        <property name="url" value="jdbc:h2:mem:~/g_chat"/>
         <property name="username" value="sa"/>
         <property name="password" value=""/>
         <property name="initialSize" value="1"/>

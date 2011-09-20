@@ -1,9 +1,11 @@
 package net.ds3783.chatserver.dao;
 
+import net.ds3783.chatserver.tools.Utils;
 import org.hibernate.SessionFactory;
 import org.hibernate.metadata.ClassMetadata;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -19,11 +21,8 @@ public class ClientDao extends HibernateDaoSupport {
 
     public void addClient(Client client) {
         SessionFactory sf = getSessionFactory();
-        System.out.println(sf.getAllClassMetadata().size());
-        System.out.println(sf.getClassMetadata(Client.class));
         for (Object s : sf.getAllClassMetadata().keySet()) {
             ClassMetadata m = (ClassMetadata) sf.getAllClassMetadata().get(s);
-            System.out.println(m.getEntityName());
         }
 
         getHibernateTemplate().save(client);
@@ -38,7 +37,7 @@ public class ClientDao extends HibernateDaoSupport {
     }
 
     public Client getClient(String uuid) {
-        return (Client) getHibernateTemplate().load(Client.class, uuid);
+        return (Client) getHibernateTemplate().get(Client.class, uuid);
     }
 
     public Client getClientByName(String name) {
@@ -50,7 +49,7 @@ public class ClientDao extends HibernateDaoSupport {
     }
 
     public List<Client> getAllClients() {
-        return getHibernateTemplate().loadAll(Client.class);
+        return Utils.castList(getHibernateTemplate().loadAll(Client.class), Client.class);
     }
 
 
@@ -140,5 +139,14 @@ public class ClientDao extends HibernateDaoSupport {
             result.add((String) r);
         }
         return result;
+    }
+
+    public void updateClient(Client client) {
+        getHibernateTemplate().update(client);
+        getHibernateTemplate().flush();
+    }
+
+    public Collection<Client> getNotLoginedClients() {
+        return Utils.castList(getHibernateTemplate().find("from Client where logined=?", false), Client.class);
     }
 }
