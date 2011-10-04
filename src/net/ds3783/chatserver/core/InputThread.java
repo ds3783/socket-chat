@@ -31,6 +31,7 @@ public class InputThread extends SlaveThread implements Runnable {
     private Log logger = LogFactory.getLog(InputThread.class);
     protected List<InputFilter> filters = new ArrayList<InputFilter>();
     private ClientDao clientDao;
+    private ClientService clientService;
     private BytePool pool;
     private InputProtocal protocal;
     private Switcher<Message> processThreadSwitcher;
@@ -101,8 +102,7 @@ public class InputThread extends SlaveThread implements Runnable {
                                     }
                                 }
                                 processThreadSwitcher.switchData(messages);
-                                client.setLastMessageTime(now);
-                                clientDao.updateClient(client);
+                                clientService.setLastMessageTime(client, now);
                             } catch (UnmarshalException e) {
                                 logger.error(e.getMessage(), e);
                             }
@@ -113,7 +113,7 @@ public class InputThread extends SlaveThread implements Runnable {
 
                             //用户已断线，清除该用户
                             this.remove(client.getUid());
-                            //TODO::processThreadSwitcher.addOfflineUser(client);
+                            clientService.clientOffline(client);
                         }
                     }
                 }
@@ -172,5 +172,9 @@ public class InputThread extends SlaveThread implements Runnable {
 
     public void setProcessThreadSwitcher(Switcher<Message> processThreadSwitcher) {
         this.processThreadSwitcher = processThreadSwitcher;
+    }
+
+    public void setClientService(ClientService clientService) {
+        this.clientService = clientService;
     }
 }

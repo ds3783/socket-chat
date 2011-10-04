@@ -2,6 +2,7 @@ package net.ds3783.chatserver.extension;
 
 import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;
+import net.ds3783.chatserver.core.ClientService;
 import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
 import net.ds3783.chatserver.delivery.Channel;
@@ -17,11 +18,11 @@ import java.util.HashSet;
  * User: Ds3783
  * Date: 11-6-19
  * Time: 上午11:07
- * To change this template use File | Settings | File Templates.
  */
 public class LoginListener extends AbstractDefaultListener implements EventListener {
     private static Log logger = LogFactory.getLog(LoginListener.class);
     private ClientDao clientDao;
+    private ClientService clientService;
 
     public boolean onEvent(Event event) {
         Message reply = event.getMessage().simpleClone();
@@ -35,15 +36,12 @@ public class LoginListener extends AbstractDefaultListener implements EventListe
             reply.setChannel(Channel.SYSTEM.getCode());
             reply.setContent("当前有重名用户");
             reply.setAuthCode("false");
-            logger.info("当前有重名用户:"+reply.getContent());
+            logger.info("当前有重名用户:" + reply.getContent());
             outputerSwitcher.switchTo(reply);
             return false;
         } else {
-            clientDao.updateClientName(reply.getUserUuid(), reply.getContent());
-            clientDao.updateClientToken(reply.getUserUuid(), reply.getAuthCode());
-            clientDao.updateClientLogined(reply.getUserUuid(), true);
+            Client client = clientService.clientLogin(reply.getUserUuid(), reply.getContent(), reply.getAuthCode());
             reply.setAuthCode("true");
-            Client client = clientDao.getClient(reply.getUserUuid());
             logger.info(client.getIp() + ":" + client.getPort() + "(" + client.getName() + ") 成功登录。");
             outputerSwitcher.switchTo(reply);
 
@@ -58,6 +56,10 @@ public class LoginListener extends AbstractDefaultListener implements EventListe
             return true;
         }
 
+    }
+
+    public void setClientService(ClientService clientService) {
+        this.clientService = clientService;
     }
 
     public void setClientDao(ClientDao clientDao) {

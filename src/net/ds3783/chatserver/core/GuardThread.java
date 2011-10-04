@@ -25,7 +25,7 @@ public class GuardThread extends CommonRunnable {
     private long lastCleanExpireClientTime = 0;
     private long lastCleanUnloginClientTime = 0;
     private ClientDao clientDao;
-    private ProcessThread processThread;
+    private ClientService clientService;
 
 
     public void doRun() throws Exception {
@@ -80,7 +80,7 @@ public class GuardThread extends CommonRunnable {
                     long minus = now - client.getConnectTime();
                     if (!client.isLogined()) {
                         if (minus > unLoginExpireTime) {
-                            processThread.addOfflineUser(client);
+                            clientService.clientOffline(client);
                         }
                     }
                 }
@@ -93,7 +93,7 @@ public class GuardThread extends CommonRunnable {
                     //查询该客户端最后一次向服务器放送数据的时间与当前时间之差
                     long minus = now - client.getLastMessageTime();
                     if (minus > loginExpireTime && loginExpireTime > 0) {
-                        processThread.sendEchoMessage(client);
+                        clientService.clientOffline(client);
                     }
                 }
                 lastCleanExpireClientTime = now;
@@ -171,9 +171,6 @@ public class GuardThread extends CommonRunnable {
         this.clientDao = clientDao;
     }
 
-    public void setProcessThread(ProcessThread processThread) {
-        this.processThread = processThread;
-    }
 
     public void setUnLoginExpireTime(long unLoginExpireTime) {
         this.unLoginExpireTime = unLoginExpireTime;
@@ -193,5 +190,9 @@ public class GuardThread extends CommonRunnable {
 
     public void setCleanNotLoginClientCycle(long cleanNotLoginClientCycle) {
         this.cleanNotLoginClientCycle = cleanNotLoginClientCycle;
+    }
+
+    public void setClientService(ClientService clientService) {
+        this.clientService = clientService;
     }
 }

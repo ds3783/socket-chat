@@ -1,7 +1,6 @@
 package net.ds3783.chatserver.core;
 
 import net.ds3783.chatserver.dao.Client;
-import net.ds3783.chatserver.dao.ClientDao;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -32,7 +31,7 @@ public class ServerThread extends CommonRunnable implements Runnable {
     private Selector clientAcceptSelector;
     private ServerSocketChannel serverChannel;
     private SelectionKey serverSocketSelectKey;
-    private ClientDao clientDao;
+    private ClientService clientService;
 
     public void doRun() throws Exception {
         InetAddress addr = null;
@@ -76,7 +75,6 @@ public class ServerThread extends CommonRunnable implements Runnable {
                         socketChannel.configureBlocking(false);
 
 
-
                         //取得线程资源
                         //读取线程
                         List<CommonRunnable> inputThreads = threadResource.getThreads(ThreadResourceType.INPUT_THREAD);
@@ -118,12 +116,11 @@ public class ServerThread extends CommonRunnable implements Runnable {
                         client.setConnectTime(System.currentTimeMillis());
                         client.setReadThread(readSlave.getUuid());
                         client.setWriteThread(writeSlave.getUuid());
-                        client.setAuthed(false);
-                        client.setLogined(false);
+
                         client.setName(client.getIp() + ":" + client.getPort());
                         logger.debug(client.getName() + " connected");
                         //纳入客户端管理中
-                        clientDao.addClient(client);
+                        clientService.addTempClient(client);
                         //必须先分配写入线程后分配读取线程
                         writeSlave.assign(socketChannel, client.getUid());
 
@@ -179,7 +176,7 @@ public class ServerThread extends CommonRunnable implements Runnable {
         this.threadResource = threadResource;
     }
 
-    public void setClientDao(ClientDao clientDao) {
-        this.clientDao = clientDao;
+    public void setClientService(ClientService clientService) {
+        this.clientService = clientService;
     }
 }

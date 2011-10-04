@@ -14,20 +14,10 @@
     <option name="historyRevisionsNumber" value="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" name="Default" comment="Failed commit: Default">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demo/flashChat/src/net/ds3783/chatserver/SocketClient.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/flashChat/.actionScriptProperties" afterPath="$PROJECT_DIR$/demo/flashChat/.actionScriptProperties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/flashChat/.flexProperties" afterPath="$PROJECT_DIR$/demo/flashChat/.flexProperties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/flashChat/flashChat.iml" afterPath="$PROJECT_DIR$/demo/flashChat/flashChat.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/flashChat/src/FlashChat.mxml" afterPath="$PROJECT_DIR$/demo/flashChat/src/FlashChat.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/flashChat/src/net/ds3783/chatserver/ChatServerClient.as" afterPath="$PROJECT_DIR$/demo/flashChat/src/net/ds3783/chatserver/ChatServerClient.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/flashChat/src/net/ds3783/chatserver/Message.as" afterPath="$PROJECT_DIR$/demo/flashChat/src/net/ds3783/chatserver/Message.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/flashChat/src/net/ds3783/chatserver/MessageType.as" afterPath="$PROJECT_DIR$/demo/flashChat/src/net/ds3783/chatserver/MessageType.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/g-chat-server.iml" afterPath="$PROJECT_DIR$/g-chat-server.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/g-chat-server.ipr" afterPath="$PROJECT_DIR$/g-chat-server.ipr" />
+    <list default="true" readonly="true" id="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/ClientService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/g-chat-server.iws" afterPath="$PROJECT_DIR$/g-chat-server.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core-beans.xml" afterPath="$PROJECT_DIR$/src/core-beans.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/log4j.properties" afterPath="$PROJECT_DIR$/src/log4j.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/GuardThread.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/GuardThread.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/InputThread.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/InputThread.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/OutputThread.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/OutputThread.java" />
@@ -35,9 +25,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/ServerThread.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/core/ServerThread.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/ClientDao.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/ClientDao.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/LoginListener.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/LoginListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/protocol/UnZippedAmf3InputProtocal.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/protocol/UnZippedAmf3InputProtocal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/protocol/UnZippedAmf3OutputProtocal.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/protocol/UnZippedAmf3OutputProtocal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/tools/Utils.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/tools/Utils.java" />
     </list>
     <list id="3759f12a-f0b0-4abd-9481-389d055ff4a3" name="unCommit" comment="" />
     <list id="19a4f830-c4f7-443b-9485-74fc0b9b63b5" name="NotCommit" comment="" />
@@ -122,11 +109,49 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LoginListener.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/extension/LoginListener.java">
+      <file leaf-file-name="core-beans.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core-beans.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="29" selection-start="1308" selection-end="1319" vertical-scroll-proportion="0.0">
+            <state line="49" column="24" selection-start="5661" selection-end="5661" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MessageProcessorStupidImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/delivery/MessageProcessorStupidImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="85" column="22" selection-start="3767" selection-end="3767" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProcessThread.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/ProcessThread.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="62" column="30" selection-start="2379" selection-end="2379" vertical-scroll-proportion="-20.52">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GuardThread.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/GuardThread.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="90" column="44" selection-start="3555" selection-end="3555" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClientService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/ClientService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="26" selection-start="373" selection-end="386" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -134,49 +159,16 @@
       <file leaf-file-name="ClientDao.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/dao/ClientDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="30" selection-start="661" selection-end="661" vertical-scroll-proportion="0.0">
+            <state line="32" column="45" selection-start="859" selection-end="859" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="extend-beans.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/extend-beans.xml">
+      <file leaf-file-name="OutputThread.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/OutputThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="hibernate-mapping.cfg.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/hibernate-mapping.cfg.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="core-beans.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core-beans.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="47" selection-start="7754" selection-end="7754" vertical-scroll-proportion="-9.238095">
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InputThread.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/InputThread.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="115" column="36" selection-start="5038" selection-end="5038" vertical-scroll-proportion="0.33631286">
+            <state line="152" column="56" selection-start="5701" selection-end="5701" vertical-scroll-proportion="0.6053963">
               <folding />
             </state>
           </provider>
@@ -185,35 +177,28 @@
       <file leaf-file-name="SlaveThread.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/SlaveThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="16" selection-start="1133" selection-end="1133" vertical-scroll-proportion="0.0">
+            <state line="35" column="20" selection-start="1228" selection-end="1236" vertical-scroll-proportion="-23.08">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MarshalException.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/protocol/MarshalException.java">
+      <file leaf-file-name="ThreadResource.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/ThreadResource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="13" selection-start="209" selection-end="209" vertical-scroll-proportion="0.0">
+            <state line="26" column="26" selection-start="850" selection-end="850" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Message.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/Message.java">
+      <file leaf-file-name="InputThread.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/InputThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="101" column="19" selection-start="2194" selection-end="2194" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoadBalanceSwitcher.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/LoadBalanceSwitcher.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="0" selection-start="876" selection-end="876" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="115" column="64" selection-start="5058" selection-end="5058" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -232,22 +217,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/delivery/MessageProcessorStupidImpl.java" />
         <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/BlackListListener.java" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/core/ServerThread.java" />
         <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/core/CommonRunnable.java" />
         <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/tools/Utils.java" />
         <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/Client.hbm.xml" />
         <option value="$PROJECT_DIR$/src/log4j.properties" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/core/GuardThread.java" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/ClientDao.java" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/core/ProcessThread.java" />
         <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/protocol/UnZippedAmf3InputProtocal.java" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/LoginListener.java" />
         <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/protocol/UnZippedAmf3OutputProtocal.java" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/core/OutputThread.java" />
         <option value="$PROJECT_DIR$/src/core-beans.xml" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/core/ServerThread.java" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/LoginListener.java" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/core/ProcessThread.java" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/ClientDao.java" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/core/ClientService.java" />
         <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/core/InputThread.java" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/core/GuardThread.java" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/core/OutputThread.java" />
       </list>
     </option>
   </component>
@@ -509,20 +494,6 @@
     <panes>
       <pane id="Scope" />
       <pane id="Favorites" />
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="g-chat-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="g-chat-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -637,7 +608,101 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="pool" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g-chat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g-Chat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ds3783" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chatserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="filters" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gproject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g-chat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g-Chat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ds3783" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chatserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="extension" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g-chat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g-Chat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ds3783" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chatserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="delivery" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -669,6 +734,50 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="dao" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g-chat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g-Chat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ds3783" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chatserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g-chat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g-chat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -1157,6 +1266,7 @@
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32719395" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.52578616" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7345612" sideWeight="0.0" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1168,7 +1278,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32994652" sideWeight="0.2654388" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32994652" sideWeight="0.6728061" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3261105" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1176,7 +1286,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Properties" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32719395" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Web Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32955974" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1278,102 +1387,124 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/protocol/UnZippedAmf3InputProtocal.java">
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/delivery/ChannelListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="0" selection-start="788" selection-end="875" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/protocol/UnZippedAmf3OutputProtocal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="44" selection-start="1121" selection-end="1121" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/OutputThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="169" column="39" selection-start="6338" selection-end="6338" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/GuardThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="47" selection-start="3853" selection-end="3853" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/ProcessThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="16" selection-start="4553" selection-end="4553" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/extension/BlackListListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="13" selection-start="613" selection-end="613" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/dao/ClientDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="30" selection-start="661" selection-end="661" vertical-scroll-proportion="0.0">
+        <state line="11" column="13" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/protocol/MarshalException.java">
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/dao/ClientType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="209" selection-end="209" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="19" selection-start="2194" selection-end="2194" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/LoadBalanceSwitcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="876" selection-end="876" vertical-scroll-proportion="0.0" />
+        <state line="16" column="34" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/extend-beans.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
       <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/hibernate-mapping.cfg.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="4" column="108" selection-start="289" selection-end="289" vertical-scroll-proportion="-2.347826">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/extension/FlashAuthListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="16" selection-start="1615" selection-end="1615" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/ServerThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="122" column="52" selection-start="5354" selection-end="5354" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/extension/LoginListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="3" selection-start="600" selection-end="600" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core-beans.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="47" selection-start="7754" selection-end="7754" vertical-scroll-proportion="-9.238095">
-          <folding />
-        </state>
-      </provider>
       <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/extension/LoginListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="29" selection-start="1308" selection-end="1319" vertical-scroll-proportion="0.0">
+        <state line="49" column="24" selection-start="5661" selection-end="5661" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/ThreadResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="26" selection-start="850" selection-end="850" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/SlaveThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="16" selection-start="1133" selection-end="1133" vertical-scroll-proportion="0.0">
+        <state line="35" column="20" selection-start="1228" selection-end="1236" vertical-scroll-proportion="-23.08">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/dao/ClientDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="45" selection-start="859" selection-end="859" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/InputThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="115" column="36" selection-start="5038" selection-end="5038" vertical-scroll-proportion="0.33631286">
+        <state line="115" column="64" selection-start="5058" selection-end="5058" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/ClientService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="26" selection-start="373" selection-end="386" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/ProcessThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="30" selection-start="2379" selection-end="2379" vertical-scroll-proportion="-20.52">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/delivery/MessageProcessorStupidImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="85" column="22" selection-start="3767" selection-end="3767" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/GuardThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="90" column="44" selection-start="3555" selection-end="3555" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/core/OutputThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="152" column="56" selection-start="5701" selection-end="5701" vertical-scroll-proportion="0.6053963">
           <folding />
         </state>
       </provider>

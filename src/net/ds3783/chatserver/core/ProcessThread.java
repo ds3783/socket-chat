@@ -3,14 +3,11 @@ package net.ds3783.chatserver.core;
 import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;
 import net.ds3783.chatserver.dao.Client;
-import net.ds3783.chatserver.dao.ClientDao;
 import net.ds3783.chatserver.delivery.MessageProcessor;
 import net.ds3783.chatserver.tools.Utils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
@@ -23,12 +20,8 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
     private Log logger = LogFactory.getLog(ProcessThread.class);
     private LinkedBlockingQueue<Message> receivedMessages = new LinkedBlockingQueue<Message>();
     private LinkedBlockingQueue<Message> enmergencyMessages = new LinkedBlockingQueue<Message>();
-    private LinkedBlockingQueue<Client> toKickClient = new LinkedBlockingQueue<Client>();
-    private OutputerSwitcher outputerSwitcher;
 
     private MessageProcessor messageProcessor;
-    private ClientDao clientDao;
-    private ThreadResource threadResource;
     private long maxMessageInQueue = 100;
     private int maxMessagePerTime = 100;
 
@@ -49,43 +42,14 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
     }
 
     public void doRun() throws Exception {
-        HashMap<String, Client> kickedClent = new HashMap<String, Client>();
         while (true) {
             boolean nothingtodo = true;
-            kickedClent.clear();
-
-            if (!toKickClient.isEmpty()) nothingtodo = false;
-            while (!toKickClient.isEmpty()) {
-                Client client = toKickClient.poll();
-                kickedClent.put(client.getName(), client);
-
-                //清除服务线程资源
-                clientDao.removeClient(client.getUid());
-                SlaveThread writeThread = (SlaveThread) threadResource.getThread(client.getWriteThread());
-                SlaveThread readThread = (SlaveThread) threadResource.getThread(client.getReadThread());
-                try {
-                    if (readThread != null)
-                        readThread.remove(client.getUid());
-                } catch (Exception e) {
-                    logger.error(e.getMessage(), e);
-                }
-                try {
-                    if (writeThread != null)
-                        writeThread.remove(client.getUid());
-                } catch (Exception e) {
-                    logger.error(e.getMessage(), e);
-                }
-
-                if (client.isLogined()) {
-                    logger.info(client.getIp() + ":" + client.getPort() + "(" + client.getName() + ") 断开连接。");
-                }
-            }
 
             if (!enmergencyMessages.isEmpty()) nothingtodo = false;
             long now = System.currentTimeMillis();
             while (!enmergencyMessages.isEmpty()) {
                 Message msg = enmergencyMessages.poll();
-                deliverMessage(msg, now, kickedClent);
+                deliverMessage(msg, now);
             }
 
 
@@ -94,7 +58,7 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
             int counter = 0;
             while (!receivedMessages.isEmpty()) {
                 Message msg = receivedMessages.poll();
-                deliverMessage(msg, now, kickedClent);
+                deliverMessage(msg, now);
                 counter++;
                 if (counter > maxMessagePerTime) {
                     break;
@@ -113,7 +77,7 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
 
     }
 
-    public void deliverMessage(Message msg, long now, Map<String, Client> kickedClent) {
+    public void deliverMessage(Message msg, long now) {
         if (msg == null) return;
         messageProcessor.processMsg(msg, now);
     }
@@ -129,15 +93,6 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
         this.addMessage(msg);
     }
 
-    public void addOfflineUser(Client client) {
-        try {
-            if (client!=null){
-                toKickClient.put(client);
-            }
-        } catch (InterruptedException e) {
-            logger.fatal(e.getMessage(), e);
-        }
-    }
 
     public void destroy() throws Exception {
 
@@ -151,20 +106,13 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
         this.messageProcessor = messageProcessor;
     }
 
-    public void setClientDao(ClientDao clientDao) {
-        this.clientDao = clientDao;
-    }
-
-    public void setThreadResource(ThreadResource threadResource) {
-        this.threadResource = threadResource;
-    }
 
     public void setMaxMessageInQueue(long maxMessageInQueue) {
         this.maxMessageInQueue = maxMessageInQueue;
     }
 
-    public void setOutputerSwitcher(OutputerSwitcher outputerSwitcher) {
-        this.outputerSwitcher = outputerSwitcher;
+    public void setMaxMessagePerTime(int maxMessagePerTime) {
+        this.maxMessagePerTime = maxMessagePerTime;
     }
 
     /**

@@ -30,8 +30,7 @@ public class ClientDao extends HibernateDaoSupport {
     }
 
 
-    public void removeClient(String uuid) {
-        Client client = (Client) getHibernateTemplate().load(Client.class, uuid);
+    public void removeClient(Client client) {
         getHibernateTemplate().delete(client);
         getHibernateTemplate().flush();
     }
@@ -61,6 +60,7 @@ public class ClientDao extends HibernateDaoSupport {
         return null;
     }
 
+    @Deprecated
     public void updateClientName(String uuid, String newName) {
         Client client = (Client) getHibernateTemplate().load(Client.class, uuid);
         client.setName(newName);
@@ -68,6 +68,7 @@ public class ClientDao extends HibernateDaoSupport {
         getHibernateTemplate().flush();
     }
 
+    @Deprecated
     public void updateClientToken(String uuid, String token) {
         Client client = (Client) getHibernateTemplate().load(Client.class, uuid);
         client.setToken(token);
@@ -124,6 +125,7 @@ public class ClientDao extends HibernateDaoSupport {
         return false;
     }
 
+    @Deprecated
     public void updateClientLogined(String uuid, boolean b) {
         Client client = getClient(uuid);
         client.setLogined(b);

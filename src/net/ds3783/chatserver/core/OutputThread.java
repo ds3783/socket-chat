@@ -34,6 +34,7 @@ public class OutputThread extends SlaveThread implements Runnable {
     private LinkedBlockingQueue<Message> enmergencyMessages = new LinkedBlockingQueue<Message>();
     protected List<OutputFilter> filters = new ArrayList<OutputFilter>();
     private ClientDao clientDao;
+    private ClientService clientService;
     private OutputProtocal protocal;
     private int maxQueueLength = 500;
     private int maxMessagePerTime = 100;
@@ -149,7 +150,7 @@ public class OutputThread extends SlaveThread implements Runnable {
             Client sender = clientDao.getClient(message.getUserUuid());
             if (sender != null && StringUtils.isNotEmpty(sender.getUid())) {
                 if (!sender.isLogined()) {
-                    //TODO::processThread.addOfflineUser(sender);
+                    clientService.clientOffline(sender);
                 }
             }
         }
@@ -168,11 +169,12 @@ public class OutputThread extends SlaveThread implements Runnable {
         try {
             logger.debug("say to: " + client.getName() + ":" + new String(data) + "HEX VAL:" + Utils.toHexString(data));
             channel.write(writeBuffer);
+            clientService.setLastMessageTime(client, now);
         } catch (IOException e) {
             logger.warn(client.getName() + ":" + e.getMessage());
             //用户已断线，清除该用户
             this.remove(client.getUid());
-            //TODO::processThread.addOfflineUser(client);
+            clientService.clientOffline(client);
         }
     }
 
@@ -210,5 +212,9 @@ public class OutputThread extends SlaveThread implements Runnable {
 
     public void setProtocal(OutputProtocal protocal) {
         this.protocal = protocal;
+    }
+
+    public void setClientService(ClientService clientService) {
+        this.clientService = clientService;
     }
 }
