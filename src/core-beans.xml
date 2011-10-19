@@ -58,10 +58,10 @@
     <bean id="messageEventProcessor" class="net.ds3783.chatserver.delivery.MessageProcessorEventImpl"
           scope="singleton"/>
 
-    <bean id="messageStupidProcessor" class="net.ds3783.chatserver.delivery.MessageProcessorStupidImpl"
+    <!-- <bean id="messageStupidProcessor" class="net.ds3783.chatserver.delivery.MessageProcessorStupidImpl"
           scope="singleton">
         <property name="publicKey" value="ttss"/>
-    </bean>
+    </bean>-->
 
 
     <bean id="guardThread" class="net.ds3783.chatserver.core.GuardThread" scope="singleton">

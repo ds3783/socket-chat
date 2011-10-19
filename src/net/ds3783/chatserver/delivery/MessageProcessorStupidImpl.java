@@ -19,6 +19,7 @@ import java.util.List;
  * Date: 2009-9-17
  * Time: 17:48:52
  */
+@Deprecated
 public class MessageProcessorStupidImpl implements MessageProcessor {
     private ClientDao clientDao;
     private Configuration config;

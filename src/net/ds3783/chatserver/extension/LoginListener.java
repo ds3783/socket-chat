@@ -32,7 +32,7 @@ public class LoginListener extends AbstractDefaultListener implements EventListe
         if (clientDao.getClientByName(reply.getContent()) != null) {
             //通知此人有重名，并踢下线
             reply.setDropClientAfterReply(true);
-            reply.setType(MessageType.CHAT_MESSAGE);
+            reply.setType(MessageType.LOGIN_MESSAGE);
             reply.setChannel(Channel.SYSTEM.getCode());
             reply.setContent("当前有重名用户");
             reply.setAuthCode("false");
@@ -48,7 +48,7 @@ public class LoginListener extends AbstractDefaultListener implements EventListe
             //全局广播某人上线
             Message broadCast = reply.simpleClone();
             broadCast.setDestUserUids(new HashSet<String>(clientDao.getLoginClientUids()));
-            broadCast.setType(MessageType.CHAT_MESSAGE);
+            broadCast.setType(MessageType.LOGIN_MESSAGE);
             broadCast.setChannel(Channel.SYSTEM.getCode());
             broadCast.setContent(client.getName() + " 成功登录");
             outputerSwitcher.switchTo(broadCast);

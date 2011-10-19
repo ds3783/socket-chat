@@ -3,6 +3,7 @@ package net.ds3783.chatserver.protocol;
 import flex.messaging.io.SerializationContext;
 import flex.messaging.io.amf.Amf3Output;
 import net.ds3783.chatserver.Message;
+import net.ds3783.chatserver.MessageType;
 import net.ds3783.chatserver.tools.Utils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -31,28 +32,37 @@ public class UnZippedAmf3OutputProtocal extends OutputProtocal {
         byte[] result = new byte[0];
         for (Iterator<Message> messageIterator = messages.iterator(); messageIterator.hasNext(); ) {
             Message message = messageIterator.next();
-            message=message.simpleClone();
+
 
             try {
-                message.setDestUserUids(null);
-                ByteArrayOutputStream out = new ByteArrayOutputStream();
-                SerializationContext sc = new SerializationContext();
-                SerializationContext.setSerializationContext(sc);
-                Amf3Output amf3Output = new Amf3Output(sc);
-                amf3Output.setOutputStream(out);
-                amf3Output.writeObject(message);
-                amf3Output.flush();
+                if (MessageType.AUTH_MESSAGE.equals(message.getType())) {
+                    byte[] data = message.getContent().getBytes();
+                    byte[] buffer = result;
+                    result = new byte[buffer.length + data.length];
+                    System.arraycopy(buffer, 0, result, 0, buffer.length);
+                    System.arraycopy(data, 0, result, buffer.length, data.length);
+                } else {
+                    message = message.simpleClone();
+                    message.setDestUserUids(null);
+                    ByteArrayOutputStream out = new ByteArrayOutputStream();
+                    SerializationContext sc = new SerializationContext();
+                    SerializationContext.setSerializationContext(sc);
+                    Amf3Output amf3Output = new Amf3Output(sc);
+                    amf3Output.setOutputStream(out);
+                    amf3Output.writeObject(message);
+                    amf3Output.flush();
 
-                byte[] data = out.toByteArray();
-                byte[] length = Utils.intToByte(data.length);
-                byte[] buffer = result;
-                result = new byte[buffer.length + length.length + data.length];
-                logger.debug("buffer.len:" + buffer.length);
-                logger.debug("length.len:" + length.length);
-                logger.debug("data.len:" + data.length);
-                System.arraycopy(buffer, 0, result, 0, buffer.length);
-                System.arraycopy(length, 0, result, buffer.length, length.length);
-                System.arraycopy(data, 0, result, buffer.length + length.length, data.length);
+                    byte[] data = out.toByteArray();
+                    byte[] length = Utils.intToByte(data.length);
+                    byte[] buffer = result;
+                    result = new byte[buffer.length + length.length + data.length];
+                    logger.debug("buffer.len:" + buffer.length);
+                    logger.debug("length.len:" + length.length);
+                    logger.debug("data.len:" + data.length);
+                    System.arraycopy(buffer, 0, result, 0, buffer.length);
+                    System.arraycopy(length, 0, result, buffer.length, length.length);
+                    System.arraycopy(data, 0, result, buffer.length + length.length, data.length);
+                }
                 messageIterator.remove();
             } catch (IOException e) {
                 logger.error(e.getMessage(), e);

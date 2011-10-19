@@ -24,7 +24,7 @@ public class FlashAuthListener extends AbstractDefaultListener implements EventL
     public boolean onEvent(Event event) {
         Message msg = event.getMessage();
         Message reply = new Message();
-        reply.setContent("<cross-domain-policy><allow-access-from domain=\"" + config.getAddress() + "\" to-ports=\"" + config.getPort() + "\" /></cross-domain-policy>");
+        reply.setContent("<?xml version=\"1.0\"?><cross-domain-policy><allow-access-from domain=\"" + config.getAddress() + "\" to-ports=\"" + config.getPort() + "\"/></cross-domain-policy>\r\n");
 
         Client client = clientDao.getClient(msg.getUserUuid());
         client.setAuthed(true);
@@ -34,6 +34,7 @@ public class FlashAuthListener extends AbstractDefaultListener implements EventL
         reply.setUserUuid(msg.getUserUuid());
         reply.setChannel(msg.getChannel());
         reply.setType(msg.getType());
+        reply.setDropClientAfterReply(true);
         outputerSwitcher.switchTo(reply);
         return true;
     }
