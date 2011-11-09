@@ -1,4 +1,4 @@
-package net.ds3783.chatserver.filters.gproject;
+package net.ds3783.chatserver.communicate.filters.gproject;
 
 import com.google.gson.Gson;
 import net.ds3783.chatserver.Message;
