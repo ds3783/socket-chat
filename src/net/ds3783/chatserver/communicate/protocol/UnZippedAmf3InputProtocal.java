@@ -1,4 +1,4 @@
-package net.ds3783.chatserver.protocol;
+package net.ds3783.chatserver.communicate.protocol;
 
 import flex.messaging.io.SerializationContext;
 import flex.messaging.io.amf.ASObject;
@@ -68,7 +68,7 @@ public class UnZippedAmf3InputProtocal extends InputProtocal {
                 ASObject cMsg = (ASObject) obj;
                 Message message = readMessage(cMsg);
                 this.messages.add(message);
-            }else if (obj instanceof Message){
+            } else if (obj instanceof Message) {
                 this.messages.add((Message) obj);
             }
             byte[] remains = new byte[this.data.length - length - 4];

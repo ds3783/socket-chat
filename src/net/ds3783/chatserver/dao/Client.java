@@ -1,8 +1,6 @@
 package net.ds3783.chatserver.dao;
 
-import net.ds3783.chatserver.delivery.Channel;
-
-import javax.persistence.Column;
+import net.ds3783.chatserver.communicate.delivery.Channel;
 
 /**
  * Created by IntelliJ IDEA.
@@ -98,7 +96,6 @@ public class Client {
         this.writeThread = writeThread;
     }
 
-    @Column(name = "AUTHED")
     public boolean isAuthed() {
         return authed;
     }

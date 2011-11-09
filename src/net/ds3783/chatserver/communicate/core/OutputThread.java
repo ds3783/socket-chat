@@ -2,9 +2,9 @@ package net.ds3783.chatserver.communicate.core;
 
 import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;
+import net.ds3783.chatserver.communicate.protocol.OutputProtocal;
 import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
-import net.ds3783.chatserver.protocol.OutputProtocal;
 import net.ds3783.chatserver.tools.Utils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;

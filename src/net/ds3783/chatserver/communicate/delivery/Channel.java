@@ -1,4 +1,4 @@
-package net.ds3783.chatserver.delivery;
+package net.ds3783.chatserver.communicate.delivery;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package net.ds3783.chatserver.pool;
+package net.ds3783.chatserver.communicate.pool;
 
 /**
  * Created by IntelliJ IDEA.

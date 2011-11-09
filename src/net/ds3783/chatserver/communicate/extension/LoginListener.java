@@ -1,13 +1,13 @@
-package net.ds3783.chatserver.extension;
+package net.ds3783.chatserver.communicate.extension;
 
 import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;
 import net.ds3783.chatserver.communicate.core.ClientService;
+import net.ds3783.chatserver.communicate.delivery.Channel;
+import net.ds3783.chatserver.communicate.delivery.Event;
+import net.ds3783.chatserver.communicate.delivery.EventListener;
 import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
-import net.ds3783.chatserver.delivery.Channel;
-import net.ds3783.chatserver.delivery.Event;
-import net.ds3783.chatserver.delivery.EventListener;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

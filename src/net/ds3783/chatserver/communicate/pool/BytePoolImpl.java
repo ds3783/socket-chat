@@ -1,4 +1,4 @@
-package net.ds3783.chatserver.pool;
+package net.ds3783.chatserver.communicate.pool;
 
 import java.util.*;
 
@@ -181,7 +181,7 @@ public class BytePoolImpl implements BytePool {
             int bytesLeft = Math.min(size, length);
             int offset = 0;
             byte[] newData = new byte[0];
-            for (Iterator<byte[]> iterator = data.iterator(); iterator.hasNext();) {
+            for (Iterator<byte[]> iterator = data.iterator(); iterator.hasNext(); ) {
                 byte[] bytes = iterator.next();
                 if (bytes.length <= bytesLeft) {
                     iterator.remove();

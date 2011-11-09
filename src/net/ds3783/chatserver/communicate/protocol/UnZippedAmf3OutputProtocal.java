@@ -1,4 +1,4 @@
-package net.ds3783.chatserver.protocol;
+package net.ds3783.chatserver.communicate.protocol;
 
 import flex.messaging.io.SerializationContext;
 import flex.messaging.io.amf.Amf3Output;
