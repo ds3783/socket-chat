@@ -1,4 +1,4 @@
-package net.ds3783.chatserver.core;
+package net.ds3783.chatserver.communicate.core;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;

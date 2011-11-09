@@ -1,4 +1,4 @@
-package net.ds3783.chatserver.core;
+package net.ds3783.chatserver.communicate.core;
 
 import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;
@@ -119,7 +119,7 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
      * 取得权重
      * 权重关系到选择器的选择结果
      *
-     * @return
+     * @return 权重
      */
     public int getWeight() {
         return this.receivedMessages.size();
@@ -128,7 +128,7 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
     /**
      * 接收数据
      *
-     * @param data
+     * @param data 传给控制器的消息
      */
     public void receive(Message data) {
         this.addMessage(data);

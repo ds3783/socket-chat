@@ -3,7 +3,7 @@ package net.ds3783.chatserver.delivery;
 import net.ds3783.chatserver.Configuration;
 import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;
-import net.ds3783.chatserver.core.OutputerSwitcher;
+import net.ds3783.chatserver.communicate.core.OutputerSwitcher;
 import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
 import org.apache.commons.logging.Log;
@@ -127,10 +127,8 @@ public class MessageProcessorStupidImpl implements MessageProcessor {
             }
         }
 
-        if (result != null) {
-            for (Message message : result) {
-                outputerSwitcher.switchTo(message);
-            }
+        for (Message message : result) {
+            outputerSwitcher.switchTo(message);
         }
     }
 

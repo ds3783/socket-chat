@@ -1,13 +1,15 @@
-package net.ds3783.chatserver.pool;
+package net.ds3783.chatserver.pooltest;
 
 import junit.framework.TestCase;
+import net.ds3783.chatserver.pool.BytePool;
+import net.ds3783.chatserver.pool.BytePoolImpl;
 
 /**
  * Created by IntelliJ IDEA.
  * User: Ds.3783
  * Date: 2010-4-5
  * Time: 22:37:18
- * To change this template use File | Settings | File Templates.
+ * BytePool≤‚ ‘¿‡
  */
 public class BytePoolTest extends TestCase {
     BytePool subject;
@@ -36,7 +38,7 @@ public class BytePoolTest extends TestCase {
 
 
     public void testPoolBytes() throws Exception {
-        byte[] b = "asdf".getBytes();
+//        byte[] b = "asdf".getBytes();
     }
 
     public void testSetBytes() throws Exception {

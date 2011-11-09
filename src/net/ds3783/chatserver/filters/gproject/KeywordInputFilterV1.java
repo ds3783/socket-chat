@@ -2,7 +2,7 @@ package net.ds3783.chatserver.filters.gproject;
 
 import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;
-import net.ds3783.chatserver.core.InputFilter;
+import net.ds3783.chatserver.communicate.core.InputFilter;
 import net.ds3783.chatserver.dao.Client;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -16,7 +16,11 @@ import java.util.List;
  * User: Administrator
  * Date: 2009-11-12
  * Time: 17:14:51
- * To change this template use File | Settings | File Templates.
+ * 关键词过滤
+ * 可过滤夹杂英文的中文关键词（夹杂中文的关键词无法处理）
+ * 使用了树查找算法
+ *
+ * @version 1.0
  */
 public class KeywordInputFilterV1 extends InputFilter {
 
@@ -46,13 +50,16 @@ public class KeywordInputFilterV1 extends InputFilter {
     }
 
     public void filte(Client client, Message message) {
+        if (message == null) {
+            return;
+        }
         if (MessageType.COMMAND_MESSAGE.equals(message.getType())) {
             return;
         }
         if (MessageType.CHAT_MESSAGE.equals(message.getType()) && "SYSTEM".equals(message.getChannel())) {
             return;
         }
-        if (message != null && message.getContent() != null && message.getContent().length() > 0) {
+        if (message.getContent() != null && message.getContent().length() > 0) {
 
             String content = message.getContent();
             //查找
@@ -66,7 +73,6 @@ public class KeywordInputFilterV1 extends InputFilter {
             }
             message.setContent(new String(chars));
         }
-        return;
     }
 
     private char randomChar() {

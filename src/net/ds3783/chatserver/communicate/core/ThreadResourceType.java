@@ -1,4 +1,4 @@
-package net.ds3783.chatserver.core;
+package net.ds3783.chatserver.communicate.core;
 
 public class ThreadResourceType {
     public static ThreadResourceType SERVER_THREAD = new ThreadResourceType("SERVER_THREAD", "服务器监听线程");

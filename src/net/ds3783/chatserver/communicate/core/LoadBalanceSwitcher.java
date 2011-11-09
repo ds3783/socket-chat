@@ -1,4 +1,4 @@
-package net.ds3783.chatserver.core;
+package net.ds3783.chatserver.communicate.core;
 
 import java.util.*;
 import java.util.concurrent.PriorityBlockingQueue;
@@ -89,7 +89,7 @@ public class LoadBalanceSwitcher<T> implements Switcher<T> {
     /**
      * 设置可选择的目标，目标必须在选择过程前设置
      *
-     * @param targets
+     * @param targets 可选择目标
      */
     public void setTargets(Collection<? extends Switchable> targets) {
         int idcounter = 0;

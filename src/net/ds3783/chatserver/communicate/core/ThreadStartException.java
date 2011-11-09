@@ -1,4 +1,4 @@
-package net.ds3783.chatserver.core;
+package net.ds3783.chatserver.communicate.core;
 
 /**
  * Created by IntelliJ IDEA.

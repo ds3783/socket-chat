@@ -1,4 +1,4 @@
-package net.ds3783.chatserver.core;
+package net.ds3783.chatserver.communicate.core;
 
 import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.dao.Client;

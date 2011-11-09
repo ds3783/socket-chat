@@ -1,4 +1,4 @@
-package net.ds3783.chatserver.core;
+package net.ds3783.chatserver.communicate.core;
 
 import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
@@ -10,7 +10,7 @@ import org.apache.commons.logging.LogFactory;
  * User: Ds3783
  * Date: 11-10-4
  * Time: 下午10:22
- * To change this template use File | Settings | File Templates.
+ * ClientService
  */
 public class ClientService {
     private static Log logger = LogFactory.getLog(ClientService.class);
@@ -22,7 +22,7 @@ public class ClientService {
     /**
      * 添加临时用户
      *
-     * @param client
+     * @param client 客户端
      */
     public void addTempClient(Client client) {
         client.setAuthed(false);

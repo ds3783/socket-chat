@@ -1,6 +1,6 @@
 package net.ds3783.chatserver.extension;
 
-import net.ds3783.chatserver.core.OutputerSwitcher;
+import net.ds3783.chatserver.communicate.core.OutputerSwitcher;
 import net.ds3783.chatserver.delivery.MessageDispatcher;
 
 /**
@@ -8,7 +8,7 @@ import net.ds3783.chatserver.delivery.MessageDispatcher;
  * User: Ds3783
  * Date: 11-6-19
  * Time: 上午11:17
- * To change this template use File | Settings | File Templates.
+ * 默认的监听器类，其不执行任何操作，仅用于spring注入
  */
 public class AbstractDefaultListener {
     protected MessageDispatcher messageDispatcher;

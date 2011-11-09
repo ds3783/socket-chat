@@ -1,6 +1,6 @@
 package net.ds3783.chatserver;
 
-import net.ds3783.chatserver.core.*;
+import net.ds3783.chatserver.communicate.core.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.context.ApplicationContext;

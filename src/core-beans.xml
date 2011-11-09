@@ -9,13 +9,14 @@
         <property name="port" value="6001"/>
     </bean>
 
-    <bean id="serverThread" class="net.ds3783.chatserver.core.ServerThread" scope="singleton">
+    <bean id="serverThread" class="net.ds3783.chatserver.communicate.core.ServerThread" scope="singleton">
         <property name="backlog" value="50"/>
     </bean>
 
-    <bean id="threadResource" class="net.ds3783.chatserver.core.ThreadResource" scope="singleton"/>
+    <bean id="threadResource" class="net.ds3783.chatserver.communicate.core.ThreadResource" scope="singleton"/>
 
-    <bean id="inputThread" class="net.ds3783.chatserver.core.InputThread" scope="prototype" init-method="initialize">
+    <bean id="inputThread" class="net.ds3783.chatserver.communicate.core.InputThread" scope="prototype"
+          init-method="initialize">
         <property name="sleeptime" value="50"/>
         <!--<property name="filters">
             <list>
@@ -33,7 +34,8 @@
         </property>
     </bean>
 
-    <bean id="outputThread" class="net.ds3783.chatserver.core.OutputThread" scope="prototype" init-method="initialize">
+    <bean id="outputThread" class="net.ds3783.chatserver.communicate.core.OutputThread" scope="prototype"
+          init-method="initialize">
         <property name="sleeptime" value="100"/>
         <!--<property name="filters">
             <list>
@@ -46,7 +48,7 @@
         </property>
     </bean>
 
-    <bean id="processThread" class="net.ds3783.chatserver.core.ProcessThread" scope="singleton">
+    <bean id="processThread" class="net.ds3783.chatserver.communicate.core.ProcessThread" scope="singleton">
         <property name="maxMessageInQueue" value="300"/>
         <property name="sleeptime" value="50"/>
         <property name="messageProcessor" ref="messageEventProcessor"/>
@@ -64,7 +66,7 @@
     </bean>-->
 
 
-    <bean id="guardThread" class="net.ds3783.chatserver.core.GuardThread" scope="singleton">
+    <bean id="guardThread" class="net.ds3783.chatserver.communicate.core.GuardThread" scope="singleton">
         <!--守护线程每1秒检查一次系统状态-->
         <property name="sleeptime" value="1000"/>
         <!--每半小时回收内存一次-->
@@ -79,17 +81,18 @@
         <property name="cleanNotLoginClientCycle" value="60000"/>
     </bean>
 
-    <bean id="processThreadSwitcher" class="net.ds3783.chatserver.core.LoadBalanceSwitcher" scope="singleton">
+    <bean id="processThreadSwitcher" class="net.ds3783.chatserver.communicate.core.LoadBalanceSwitcher"
+          scope="singleton">
         <property name="weightCritical" value="10"/>
     </bean>
 
 
-    <bean id="outputerSwitcher" class="net.ds3783.chatserver.core.OutputerSwitcher"/>
+    <bean id="outputerSwitcher" class="net.ds3783.chatserver.communicate.core.OutputerSwitcher"/>
 
     <bean id="messageDispatcher" class="net.ds3783.chatserver.delivery.MessageDispatcher"/>
     <bean id="channelDispatcher" class="net.ds3783.chatserver.delivery.MessageDispatcher"/>
     <bean id="channelListener" class="net.ds3783.chatserver.delivery.ChannelListener" init-method="init"/>
-    <bean id="clientService" class="net.ds3783.chatserver.core.ClientService"/>
+    <bean id="clientService" class="net.ds3783.chatserver.communicate.core.ClientService"/>
 
     <bean id="gson" class="com.google.gson.Gson" scope="prototype"/>
 

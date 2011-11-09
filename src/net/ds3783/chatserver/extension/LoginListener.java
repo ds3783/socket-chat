@@ -2,7 +2,7 @@ package net.ds3783.chatserver.extension;
 
 import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;
-import net.ds3783.chatserver.core.ClientService;
+import net.ds3783.chatserver.communicate.core.ClientService;
 import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
 import net.ds3783.chatserver.delivery.Channel;
