@@ -1,8 +1,8 @@
 package net.ds3783.chatserver.pooltest;
 
 import junit.framework.TestCase;
-import net.ds3783.chatserver.pool.BytePool;
-import net.ds3783.chatserver.pool.BytePoolImpl;
+import net.ds3783.chatserver.communicate.pool.BytePool;
+import net.ds3783.chatserver.communicate.pool.BytePoolImpl;
 
 /**
  * Created by IntelliJ IDEA.

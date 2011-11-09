@@ -27,10 +27,10 @@
             </list>
         </property>-->
         <property name="protocal">
-            <bean class="net.ds3783.chatserver.protocol.UnZippedAmf3InputProtocal"/>
+            <bean class="net.ds3783.chatserver.communicate.protocol.UnZippedAmf3InputProtocal"/>
         </property>
         <property name="pool">
-            <bean class="net.ds3783.chatserver.pool.BytePoolImpl" scope="prototype"/>
+            <bean class="net.ds3783.chatserver.communicate.pool.BytePoolImpl" scope="prototype"/>
         </property>
     </bean>
 
@@ -44,7 +44,7 @@
         </property>-->
 
         <property name="protocal">
-            <bean class="net.ds3783.chatserver.protocol.UnZippedAmf3OutputProtocal"/>
+            <bean class="net.ds3783.chatserver.communicate.protocol.UnZippedAmf3OutputProtocal"/>
         </property>
     </bean>
 
@@ -57,10 +57,10 @@
     <bean id="clientDao" class="net.ds3783.chatserver.dao.ClientDao" scope="singleton"/>
 
 
-    <bean id="messageEventProcessor" class="net.ds3783.chatserver.delivery.MessageProcessorEventImpl"
+    <bean id="messageEventProcessor" class="net.ds3783.chatserver.communicate.delivery.MessageProcessorEventImpl"
           scope="singleton"/>
 
-    <!-- <bean id="messageStupidProcessor" class="net.ds3783.chatserver.delivery.MessageProcessorStupidImpl"
+    <!-- <bean id="messageStupidProcessor" class="net.ds3783.chatserver.communicate.delivery.MessageProcessorStupidImpl"
           scope="singleton">
         <property name="publicKey" value="ttss"/>
     </bean>-->
@@ -89,9 +89,9 @@
 
     <bean id="outputerSwitcher" class="net.ds3783.chatserver.communicate.core.OutputerSwitcher"/>
 
-    <bean id="messageDispatcher" class="net.ds3783.chatserver.delivery.MessageDispatcher"/>
-    <bean id="channelDispatcher" class="net.ds3783.chatserver.delivery.MessageDispatcher"/>
-    <bean id="channelListener" class="net.ds3783.chatserver.delivery.ChannelListener" init-method="init"/>
+    <bean id="messageDispatcher" class="net.ds3783.chatserver.communicate.delivery.MessageDispatcher"/>
+    <bean id="channelDispatcher" class="net.ds3783.chatserver.communicate.delivery.MessageDispatcher"/>
+    <bean id="channelListener" class="net.ds3783.chatserver.communicate.delivery.ChannelListener" init-method="init"/>
     <bean id="clientService" class="net.ds3783.chatserver.communicate.core.ClientService"/>
 
     <bean id="gson" class="com.google.gson.Gson" scope="prototype"/>
