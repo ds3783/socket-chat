@@ -1,4 +1,4 @@
-package net.ds3783.chatserver.communicate.filters.gproject;
+package net.ds3783.chatserver.communicate.filters;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;

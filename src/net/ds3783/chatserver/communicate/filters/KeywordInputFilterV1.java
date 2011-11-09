@@ -1,4 +1,4 @@
-package net.ds3783.chatserver.communicate.filters.gproject;
+package net.ds3783.chatserver.communicate.filters;
 
 import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;

@@ -1,4 +1,4 @@
-package net.ds3783.chatserver.communicate.filters.gproject;
+package net.ds3783.chatserver.communicate.filters;
 
 import java.io.Serializable;
 
