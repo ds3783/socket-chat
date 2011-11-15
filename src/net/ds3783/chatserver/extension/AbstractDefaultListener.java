@@ -1,4 +1,4 @@
-package net.ds3783.chatserver.communicate.extension;
+package net.ds3783.chatserver.extension;
 
 import net.ds3783.chatserver.communicate.core.OutputerSwitcher;
 import net.ds3783.chatserver.communicate.delivery.MessageDispatcher;

@@ -2,9 +2,9 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 <beans default-autowire="byName">
 
-    <bean id="flashAuthListener" class="net.ds3783.chatserver.communicate.extension.FlashAuthListener"
+    <bean id="flashAuthListener" class="net.ds3783.chatserver.extension.FlashAuthListener"
           init-method="init"/>
-    <bean id="loginListener" class="net.ds3783.chatserver.communicate.extension.LoginListener" init-method="init"/>
-    <bean id="blackListListener" class="net.ds3783.chatserver.communicate.extension.BlackListListener"
+    <bean id="loginListener" class="net.ds3783.chatserver.extension.LoginListener" init-method="init"/>
+    <bean id="blackListListener" class="net.ds3783.chatserver.extension.BlackListListener"
           init-method="init"/>
 </beans>
