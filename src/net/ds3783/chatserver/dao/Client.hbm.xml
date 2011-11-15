@@ -1,12 +1,11 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="GBK"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-
 <hibernate-mapping
         package="net.ds3783.chatserver.dao">
-
+    <!--中文-->
     <class name="Client" table="client" lazy="false">
         <id name="uid" column="UID">
             <generator class="native"/>
