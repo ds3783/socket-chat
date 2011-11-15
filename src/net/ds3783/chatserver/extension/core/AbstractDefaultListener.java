@@ -1,4 +1,4 @@
-package net.ds3783.chatserver.extension;
+package net.ds3783.chatserver.extension.core;
 
 import net.ds3783.chatserver.communicate.core.OutputerSwitcher;
 import net.ds3783.chatserver.communicate.delivery.MessageDispatcher;
@@ -12,15 +12,10 @@ import net.ds3783.chatserver.communicate.delivery.MessageDispatcher;
  */
 public class AbstractDefaultListener {
     protected MessageDispatcher messageDispatcher;
-    protected MessageDispatcher channelDispatcher;
     protected OutputerSwitcher outputerSwitcher;
 
     public void setMessageDispatcher(MessageDispatcher messageDispatcher) {
         this.messageDispatcher = messageDispatcher;
-    }
-
-    public void setChannelDispatcher(MessageDispatcher channelDispatcher) {
-        this.channelDispatcher = channelDispatcher;
     }
 
     public void setOutputerSwitcher(OutputerSwitcher outputerSwitcher) {

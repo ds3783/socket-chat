@@ -1,4 +1,4 @@
-package net.ds3783.chatserver.extension;
+package net.ds3783.chatserver.extension.core;
 
 import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;
