@@ -1,12 +1,12 @@
 package net.ds3783.chatserver.extension.core;
 
 import net.ds3783.chatserver.Configuration;
-import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;
 import net.ds3783.chatserver.communicate.delivery.Event;
 import net.ds3783.chatserver.communicate.delivery.EventListener;
 import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
+import net.ds3783.chatserver.messages.FlashAuthMessage;
 
 import java.util.HashSet;
 
@@ -22,21 +22,24 @@ public class FlashAuthListener extends AbstractDefaultListener implements EventL
     private ClientDao clientDao;
 
     public boolean onEvent(Event event) {
-        Message msg = event.getMessage();
-        Message reply = new Message();
-        reply.setContent("<?xml version=\"1.0\"?><cross-domain-policy><allow-access-from domain=\"" + config.getAddress() + "\" to-ports=\"" + config.getPort() + "\"/></cross-domain-policy>\r\n");
+        net.ds3783.chatserver.messages.Message msg = event.getMessage();
+        if (MessageType.AUTH_MESSAGE.equals(msg.getType())) {
+            FlashAuthMessage reply = new FlashAuthMessage();
+            reply.setContent("<?xml version=\"1.0\"?><cross-domain-policy><allow-access-from domain=\"" + config.getAddress() + "\" to-ports=\"" + config.getPort() + "\"/></cross-domain-policy>\r\n");
 
-        Client client = clientDao.getClient(msg.getUserUuid());
-        client.setAuthed(true);
-        HashSet<String> destUsers = new HashSet<String>();
-        destUsers.add(client.getUid());
-        reply.setDestUserUids(destUsers);
-        reply.setUserUuid(msg.getUserUuid());
-        reply.setChannel(msg.getChannel());
-        reply.setType(msg.getType());
-        reply.setDropClientAfterReply(true);
-        outputerSwitcher.switchTo(reply);
-        return true;
+            Client client = clientDao.getClient(msg.getUserUuid());
+            client.setAuthed(true);
+            HashSet<String> destUsers = new HashSet<String>();
+            destUsers.add(client.getUid());
+            reply.setDestUserUids(destUsers);
+            reply.setUserUuid(msg.getUserUuid());
+            reply.setChannel(msg.getChannel());
+            reply.setType(msg.getType());
+            reply.setDropClientAfterReply(true);
+            outputerSwitcher.switchTo(reply);
+            return true;
+        }
+
     }
 
 

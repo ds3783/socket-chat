@@ -1,6 +1,7 @@
 package net.ds3783.chatserver.communicate.delivery;
 
-import net.ds3783.chatserver.Message;
+import net.ds3783.chatserver.messages.Message;
+import net.ds3783.chatserver.messages.MessageContext;
 
 /**
  * Created by IntelliJ IDEA.
@@ -11,6 +12,7 @@ import net.ds3783.chatserver.Message;
  */
 public class Event {
     private String name;
+    private MessageContext context;
     private Message message;
 
     public String getName() {
@@ -19,6 +21,14 @@ public class Event {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public MessageContext getContext() {
+        return context;
+    }
+
+    public void setContext(MessageContext context) {
+        this.context = context;
     }
 
     public Message getMessage() {
