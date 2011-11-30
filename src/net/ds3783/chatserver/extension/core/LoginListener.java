@@ -1,17 +1,18 @@
 package net.ds3783.chatserver.extension.core;
 
-import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;
+import net.ds3783.chatserver.communicate.ContextHelper;
 import net.ds3783.chatserver.communicate.core.ClientService;
-import net.ds3783.chatserver.communicate.delivery.Channel;
 import net.ds3783.chatserver.communicate.delivery.Event;
 import net.ds3783.chatserver.communicate.delivery.EventListener;
 import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
+import net.ds3783.chatserver.messages.LoginMessage;
+import net.ds3783.chatserver.messages.MessageContext;
+import net.ds3783.chatserver.messages.SystemReplyMessage;
+import net.ds3783.chatserver.tools.Utils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
-import java.util.HashSet;
 
 /**
  * Created by IntelliJ IDEA.
@@ -23,35 +24,44 @@ public class LoginListener extends AbstractDefaultListener implements EventListe
     private static Log logger = LogFactory.getLog(LoginListener.class);
     private ClientDao clientDao;
     private ClientService clientService;
+    private ContextHelper contextHelper;
 
     public boolean onEvent(Event event) {
-        Message reply = event.getMessage().simpleClone();
+        if (!MessageType.LOGIN_MESSAGE.equals(event.getMessage().getType())) {
+            return true;
+        }
+        LoginMessage login = (LoginMessage) event.getMessage();
         //登录
-        reply.getDestUserUids().add(reply.getUserUuid());
+        MessageContext context = contextHelper.getContext(login);
+        SystemReplyMessage reply = new SystemReplyMessage();
+        MessageContext replyContext = contextHelper.registerMessage(reply, context.getSender());
         //登录成功
         if (clientDao.getClientByName(reply.getContent()) != null) {
             //通知此人有重名，并踢下线
-            reply.setDropClientAfterReply(true);
-            reply.setType(MessageType.LOGIN_MESSAGE);
-            reply.setChannel(Channel.SYSTEM.getCode());
+            replyContext.setDropClientAfterReply(true);
             reply.setContent("当前有重名用户");
-            reply.setAuthCode("false");
+            reply.setCode(SystemReplyMessage.CODE_ERROR_WRONG_PASSWORD);
+            replyContext.getReceivers().add(context.getSender());
             logger.info("当前有重名用户:" + reply.getContent());
             outputerSwitcher.switchTo(reply);
+            contextHelper.forget(context);
             return false;
         } else {
-            Client client = clientService.clientLogin(reply.getUserUuid(), reply.getContent(), reply.getAuthCode());
-            reply.setAuthCode("true");
+
+            context.getSender().setName(login.getUsername());
+            SystemReplyMessage reply2 = new SystemReplyMessage();
+            MessageContext replyContext2 = contextHelper.registerMessage(reply2, context.getSender());
+            //全局广播某人上线
+            replyContext2.setReceivers(clientDao.getAllClients());
+            reply2.setContent(context.getSender().getName() + " 成功登录");
+            reply2.setCode(SystemReplyMessage.CODE_USER_ONLINE);
+            outputerSwitcher.switchTo(reply2);
+
+            Client client = clientService.clientLogin(context.getSender().getUid(), reply.getContent(), Utils.newUuid());
+            reply.setCode(SystemReplyMessage.CODE_LOGIN_SUCCESS);
             logger.info(client.getIp() + ":" + client.getPort() + "(" + client.getName() + ") 成功登录。");
             outputerSwitcher.switchTo(reply);
 
-            //全局广播某人上线
-            Message broadCast = reply.simpleClone();
-            broadCast.setDestUserUids(new HashSet<String>(clientDao.getLoginClientUids()));
-            broadCast.setType(MessageType.LOGIN_MESSAGE);
-            broadCast.setChannel(Channel.SYSTEM.getCode());
-            broadCast.setContent(client.getName() + " 成功登录");
-            outputerSwitcher.switchTo(broadCast);
             logger.debug(reply.getContent() + " online");
             return true;
         }
@@ -64,6 +74,10 @@ public class LoginListener extends AbstractDefaultListener implements EventListe
 
     public void setClientDao(ClientDao clientDao) {
         this.clientDao = clientDao;
+    }
+
+    public void setContextHelper(ContextHelper contextHelper) {
+        this.contextHelper = contextHelper;
     }
 
     public void init() {

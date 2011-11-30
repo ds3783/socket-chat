@@ -67,7 +67,6 @@ public class InputFilterV1 extends InputFilter {
         return message;
     }
 
-    @Override
     public void filte(Client client, Message message) {
         return;
     }

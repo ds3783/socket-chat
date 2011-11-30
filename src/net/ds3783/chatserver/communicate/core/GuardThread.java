@@ -1,5 +1,6 @@
 package net.ds3783.chatserver.communicate.core;
 
+import net.ds3783.chatserver.communicate.ContextHelper;
 import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
 import org.apache.commons.logging.Log;
@@ -25,6 +26,8 @@ public class GuardThread extends CommonRunnable {
     private long lastCleanExpireClientTime = 0;
     private long lastCleanUnloginClientTime = 0;
     private ClientDao clientDao;
+
+    private ContextHelper contextHelper;
     private ClientService clientService;
 
 
@@ -122,7 +125,7 @@ public class GuardThread extends CommonRunnable {
                     }
                 }
             }
-
+            contextHelper.lightWeightClean();
             try {
                 Thread.sleep(sleeptime);
             } catch (InterruptedException e) {

@@ -1,6 +1,8 @@
 package net.ds3783.chatserver.communicate.delivery;
 
 import net.ds3783.chatserver.MessageType;
+import net.ds3783.chatserver.communicate.ContextHelper;
+import net.ds3783.chatserver.messages.MessageContext;
 
 /**
  * Created by IntelliJ IDEA.
@@ -10,13 +12,17 @@ import net.ds3783.chatserver.MessageType;
  * To change this template use File | Settings | File Templates.
  */
 public class ChannelListener implements EventListener {
+
+    private ContextHelper contextHelper;
     private MessageDispatcher messageDispatcher;
     private MessageDispatcher channelDispatcher;
 
     public boolean onEvent(Event event) {
         if (MessageType.CHAT_MESSAGE.equals(event.getMessage().getType())) {
+
+            MessageContext context = contextHelper.getContext(event.getMessage());
             Event evt = new Event();
-            evt.setName(event.getMessage().getChannel());
+            evt.setName(context.getSender().getChannel());
             evt.setMessage(event.getMessage());
             channelDispatcher.dispatchEvent(evt);
         }
@@ -29,6 +35,10 @@ public class ChannelListener implements EventListener {
 
     public void setChannelDispatcher(MessageDispatcher channelDispatcher) {
         this.channelDispatcher = channelDispatcher;
+    }
+
+    public void setContextHelper(ContextHelper contextHelper) {
+        this.contextHelper = contextHelper;
     }
 
     public void init() {

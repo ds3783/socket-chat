@@ -1,8 +1,10 @@
 package net.ds3783.chatserver.communicate.core;
 
-import net.ds3783.chatserver.Message;
+import net.ds3783.chatserver.communicate.ContextHelper;
 import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
+import net.ds3783.chatserver.messages.Message;
+import net.ds3783.chatserver.messages.MessageContext;
 
 import java.util.List;
 
@@ -19,6 +21,7 @@ import java.util.List;
 public class OutputerSwitcher {
     private ThreadResource threadResource;
     private ClientDao clientDao;
+    private ContextHelper contextHelper;
 
     /**
      * 发送消息
@@ -26,8 +29,10 @@ public class OutputerSwitcher {
      * @param message 发送消息
      */
     public void switchTo(Message message) {
-        if (message == null || message.getDestUserUids() == null) return;
-        int messgeDestCount = message.getDestUserUids().size();
+
+        MessageContext context = contextHelper.getContext(message);
+        if (message == null || context.getReceivers() == null || context.getReceivers().size() == 0) return;
+        int messgeDestCount = context.getReceivers().size();
         List<CommonRunnable> outputer = threadResource.getThreads(ThreadResourceType.OUTPUT_THREAD);
         int outputerCount = outputer.size();
         if (messgeDestCount > outputerCount) {
@@ -36,9 +41,8 @@ public class OutputerSwitcher {
                 ot.send(message);
             }
         } else {
-            for (String uid : message.getDestUserUids()) {
-                Client c = clientDao.getClient(uid);
-                OutputThread ot = (OutputThread) threadResource.getThread(c.getWriteThread());
+            for (Client dest : context.getReceivers()) {
+                OutputThread ot = (OutputThread) threadResource.getThread(dest.getWriteThread());
                 if (ot != null) {
                     ot.send(message);
                 }

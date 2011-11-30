@@ -1,7 +1,7 @@
 package net.ds3783.chatserver.communicate.core;
 
-import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.dao.Client;
+import net.ds3783.chatserver.messages.Message;
 
 /**
  * Created by IntelliJ IDEA.

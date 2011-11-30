@@ -1,9 +1,8 @@
 package net.ds3783.chatserver.communicate.core;
 
-import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;
 import net.ds3783.chatserver.communicate.delivery.MessageProcessor;
-import net.ds3783.chatserver.dao.Client;
+import net.ds3783.chatserver.messages.Message;
 import net.ds3783.chatserver.tools.Utils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -81,18 +80,6 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
         if (msg == null) return;
         messageProcessor.processMsg(msg, now);
     }
-
-
-    public void sendEchoMessage(Client client) {
-        Message msg = new Message();
-        msg.setUserUuid(client.getUid());
-        msg.setType(MessageType.COMMAND_MESSAGE);
-        msg.setContent("echo");
-        msg.setChannel("ECHO");
-        msg.setDestUid(client.getUid());
-        this.addMessage(msg);
-    }
-
 
     public void destroy() throws Exception {
 

@@ -1,11 +1,12 @@
 package net.ds3783.chatserver.communicate.core;
 
-import net.ds3783.chatserver.Message;
+import net.ds3783.chatserver.communicate.ContextHelper;
 import net.ds3783.chatserver.communicate.pool.BytePool;
 import net.ds3783.chatserver.communicate.protocol.InputProtocal;
 import net.ds3783.chatserver.communicate.protocol.UnmarshalException;
 import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
+import net.ds3783.chatserver.messages.Message;
 import net.ds3783.chatserver.tools.Utils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -31,6 +32,7 @@ public class InputThread extends SlaveThread implements Runnable {
     private Log logger = LogFactory.getLog(InputThread.class);
     protected List<InputFilter> filters = new ArrayList<InputFilter>();
     private ClientDao clientDao;
+    private ContextHelper contextHelper;
     private ClientService clientService;
     private BytePool pool;
     private InputProtocal protocal;
@@ -93,7 +95,7 @@ public class InputThread extends SlaveThread implements Runnable {
                                 pool.offerBytes(client.getUid(), protocal.getRemains());
                                 //µ÷ÓÃ¹ýÂËÆ÷
                                 for (Message message : messages) {
-                                    message.setUserUuid(client.getUid());
+                                    contextHelper.registerMessage(message, client);
                                     logger.debug("Revceived Message:" + Utils.describeBean(message));
                                     if (filters != null) {
                                         for (InputFilter filter : filters) {
@@ -176,5 +178,9 @@ public class InputThread extends SlaveThread implements Runnable {
 
     public void setClientService(ClientService clientService) {
         this.clientService = clientService;
+    }
+
+    public void setContextHelper(ContextHelper contextHelper) {
+        this.contextHelper = contextHelper;
     }
 }

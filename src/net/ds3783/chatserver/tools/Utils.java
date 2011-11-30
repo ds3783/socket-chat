@@ -27,7 +27,7 @@ public class Utils {
         return uuid.toString();
     }
 
-    public static String describeBean(Serializable bean) {
+    public static String describeBean(Object bean) {
 //        ToStringBuilder builder=new ToStringBuilder(bean,ToStringBuilder.getDefaultStyle());
         return ToStringBuilder.reflectionToString(bean, ToStringStyle.MULTI_LINE_STYLE);
     }

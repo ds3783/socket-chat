@@ -2,8 +2,7 @@ package net.ds3783.chatserver.communicate.protocol;
 
 import flex.messaging.io.SerializationContext;
 import flex.messaging.io.amf.Amf3Output;
-import net.ds3783.chatserver.Message;
-import net.ds3783.chatserver.MessageType;
+import net.ds3783.chatserver.messages.Message;
 import net.ds3783.chatserver.tools.Utils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -35,15 +34,13 @@ public class UnZippedAmf3OutputProtocal extends OutputProtocal {
 
 
             try {
-                if (MessageType.AUTH_MESSAGE.equals(message.getType())) {
+                if (!message.isSerializable()) {
                     byte[] data = message.getContent().getBytes();
                     byte[] buffer = result;
                     result = new byte[buffer.length + data.length];
                     System.arraycopy(buffer, 0, result, 0, buffer.length);
                     System.arraycopy(data, 0, result, buffer.length, data.length);
                 } else {
-                    message = message.simpleClone();
-                    message.setDestUserUids(null);
                     ByteArrayOutputStream out = new ByteArrayOutputStream();
                     SerializationContext sc = new SerializationContext();
                     SerializationContext.setSerializationContext(sc);

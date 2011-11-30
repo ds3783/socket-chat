@@ -87,6 +87,7 @@
     </bean>
 
 
+    <bean id="contextHelper" class="net.ds3783.chatserver.communicate.ContextHelper"/>
     <bean id="outputerSwitcher" class="net.ds3783.chatserver.communicate.core.OutputerSwitcher"/>
 
     <bean id="messageDispatcher" class="net.ds3783.chatserver.communicate.delivery.MessageDispatcher"/>

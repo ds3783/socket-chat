@@ -1,6 +1,6 @@
 package net.ds3783.chatserver.communicate.protocol;
 
-import net.ds3783.chatserver.Message;
+import net.ds3783.chatserver.messages.Message;
 
 import java.util.ArrayList;
 import java.util.List;

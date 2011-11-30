@@ -1,10 +1,12 @@
 package net.ds3783.chatserver.communicate.core;
 
-import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;
+import net.ds3783.chatserver.communicate.ContextHelper;
 import net.ds3783.chatserver.communicate.protocol.OutputProtocal;
 import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
+import net.ds3783.chatserver.messages.Message;
+import net.ds3783.chatserver.messages.MessageContext;
 import net.ds3783.chatserver.tools.Utils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
@@ -18,7 +20,6 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;
 import java.nio.channels.spi.SelectorProvider;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -34,6 +35,7 @@ public class OutputThread extends SlaveThread implements Runnable {
     private LinkedBlockingQueue<Message> enmergencyMessages = new LinkedBlockingQueue<Message>();
     protected List<OutputFilter> filters = new ArrayList<OutputFilter>();
     private ClientDao clientDao;
+    private ContextHelper contextHelper;
     private ClientService clientService;
     private OutputProtocal protocal;
     private int maxQueueLength = 500;
@@ -122,59 +124,47 @@ public class OutputThread extends SlaveThread implements Runnable {
                 logger.error(e.getMessage(), e);
             }
         }
-        if (message.getDestUserUids() != null && message.getDestUserUids().size() > 0) {
-            int destSize = message.getDestUserUids().size();
+        MessageContext context = contextHelper.getContext(message);
+        if (context.getReceivers() != null && context.getReceivers().size() > 0) {
+            int destSize = context.getReceivers().size();
             int mySize = userKeys.size();
-            if (destSize < mySize) {
-                for (String destuid : message.getDestUserUids()) {
-                    if (userKeys.containsKey(destuid)) {
-                        doSend(destuid, data, now);
-                        counter++;
-                    }
-                }
-            } else {
-                Collection<String> uuids = new ArrayList<String>(userKeys.keySet());
-                for (String uuid : uuids) {
-                    if (message.getDestUserUids().contains(uuid)) {
-                        doSend(uuid, data, now);
-                        counter++;
-                    }
+            for (Client dest : context.getReceivers()) {
+                if (userKeys.containsKey(dest.getUid())) {
+                    doSend(dest, data, now);
+                    context.getReceivers().remove(dest);
+                    counter++;
                 }
             }
-        } else {
-            String destuid = message.getDestUid();
-            doSend(destuid, data, now);
-            counter++;
         }
-        if (message.isDropClientAfterReply()) {
-            Client sender = clientDao.getClient(message.getUserUuid());
+        if (context.isDropClientAfterReply()) {
+            Client sender = context.getSender();
             if (sender != null && StringUtils.isNotEmpty(sender.getUid())) {
                 if (!sender.isLogined()) {
                     clientService.clientOffline(sender);
                 }
             }
         }
+
         return counter;
     }
 
-    private void doSend(String destuid, byte[] data, long now) throws UnsupportedEncodingException {
+    private void doSend(Client dest, byte[] data, long now) throws UnsupportedEncodingException {
 
-        Client client = clientDao.getClient(destuid);
-        if (client == null) return;
-        SelectionKey key = userKeys.get(client.getUid());
+        if (dest == null) return;
+        SelectionKey key = userKeys.get(dest.getUid());
         if (key == null || !key.isValid()) return;
 
         SocketChannel channel = (SocketChannel) key.channel();
         ByteBuffer writeBuffer = ByteBuffer.wrap(data);
         try {
-            logger.debug("say to: " + client.getName() + ":" + new String(data) + "HEX VAL:" + Utils.toHexString(data));
+            logger.debug("say to: " + dest.getName() + ":" + new String(data) + "HEX VAL:" + Utils.toHexString(data));
             channel.write(writeBuffer);
-            clientService.setLastMessageTime(client, now);
+            clientService.setLastMessageTime(dest, now);
         } catch (IOException e) {
-            logger.warn(client.getName() + ":" + e.getMessage());
+            logger.warn(dest.getName() + ":" + e.getMessage());
             //用户已断线，清除该用户
-            this.remove(client.getUid());
-            clientService.clientOffline(client);
+            this.remove(dest.getUid());
+            clientService.clientOffline(dest);
         }
     }
 
@@ -216,5 +206,9 @@ public class OutputThread extends SlaveThread implements Runnable {
 
     public void setClientService(ClientService clientService) {
         this.clientService = clientService;
+    }
+
+    public void setContextHelper(ContextHelper contextHelper) {
+        this.contextHelper = contextHelper;
     }
 }

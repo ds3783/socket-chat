@@ -1,11 +1,9 @@
 package net.ds3783.chatserver.communicate.delivery;
 
 import net.ds3783.chatserver.Configuration;
-import net.ds3783.chatserver.Message;
-import net.ds3783.chatserver.MessageType;
 import net.ds3783.chatserver.communicate.core.OutputerSwitcher;
-import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
+import net.ds3783.chatserver.messages.Message;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -30,10 +28,10 @@ public class MessageProcessorStupidImpl implements MessageProcessor {
     public void processMsg(Message msg, long now) {
         HashSet<String> destUsers = new HashSet<String>();
         List<Message> result = new ArrayList<Message>();
-        Client client = clientDao.getClient(msg.getUserUuid());
+//        Client client = clientDao.getClient(msg.getUserUuid());
 
         //ÊÚÈ¨
-        if (MessageType.AUTH_MESSAGE.equals(msg.getType())) {
+        /*if (MessageType.AUTH_MESSAGE.equals(msg.getType())) {
             msg.setContent("<cross-domain-policy><allow-access-from domain=\"" + config.getAddress() + "\" to-ports=\"" + config.getPort() + "\" /></cross-domain-policy>");
             client.setAuthed(true);
             destUsers.add(client.getUid());
@@ -129,7 +127,7 @@ public class MessageProcessorStupidImpl implements MessageProcessor {
 
         for (Message message : result) {
             outputerSwitcher.switchTo(message);
-        }
+        }*/
     }
 
     public void setClientDao(ClientDao clientDao) {

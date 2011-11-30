@@ -1,9 +1,9 @@
 package net.ds3783.chatserver.communicate.filters;
 
-import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;
 import net.ds3783.chatserver.communicate.core.InputFilter;
 import net.ds3783.chatserver.dao.Client;
+import net.ds3783.chatserver.messages.Message;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -54,9 +54,6 @@ public class KeywordInputFilterV1 extends InputFilter {
             return;
         }
         if (MessageType.COMMAND_MESSAGE.equals(message.getType())) {
-            return;
-        }
-        if (MessageType.CHAT_MESSAGE.equals(message.getType()) && "SYSTEM".equals(message.getChannel())) {
             return;
         }
         if (message.getContent() != null && message.getContent().length() > 0) {

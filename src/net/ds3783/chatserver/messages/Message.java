@@ -24,4 +24,5 @@ public interface Message {
     public String getContent();
 
 
+    void setContent(String s);
 }

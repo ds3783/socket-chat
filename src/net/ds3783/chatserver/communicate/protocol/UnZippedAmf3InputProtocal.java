@@ -1,10 +1,9 @@
 package net.ds3783.chatserver.communicate.protocol;
 
 import flex.messaging.io.SerializationContext;
-import flex.messaging.io.amf.ASObject;
 import flex.messaging.io.amf.Amf3Input;
-import net.ds3783.chatserver.Message;
-import net.ds3783.chatserver.MessageType;
+import net.ds3783.chatserver.messages.FlashAuthMessage;
+import net.ds3783.chatserver.messages.Message;
 import net.ds3783.chatserver.tools.Utils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -32,9 +31,8 @@ public class UnZippedAmf3InputProtocal extends InputProtocal {
         }
         String strTester = new String(data, 0, "<policy-file-request/>".length());
         if ("<policy-file-request/>".equals(strTester)) {
-            Message authMessage = new Message();
+            FlashAuthMessage authMessage = new FlashAuthMessage();
             authMessage.setContent("<policy-file-request/>");
-            authMessage.setType(MessageType.AUTH_MESSAGE);
             this.messages.add(authMessage);
             int len = "<policy-file-request/>".length();
             data = new byte[0];
@@ -64,13 +62,8 @@ public class UnZippedAmf3InputProtocal extends InputProtocal {
                 logger.error(e.getMessage(), e);
                 throw new UnmarshalException(e.getMessage(), e);
             }
-            if (obj instanceof ASObject) {
-                ASObject cMsg = (ASObject) obj;
-                Message message = readMessage(cMsg);
-                this.messages.add(message);
-            } else if (obj instanceof Message) {
-                this.messages.add((Message) obj);
-            }
+
+            this.messages.add((Message) obj);
             byte[] remains = new byte[this.data.length - length - 4];
             System.arraycopy(this.data, 4 + length, remains, 0, this.data.length - length - 4);
             this.data = remains;
@@ -83,21 +76,6 @@ public class UnZippedAmf3InputProtocal extends InputProtocal {
         }
         this.remains = this.data;
         this.data = new byte[0];
-    }
-
-    private Message readMessage(ASObject cMsg) {
-        Message result = new Message();
-        result.setDestUid((String) Utils.mutliCast(cMsg.get("destUid"), String.class));
-        result.setContent((String) Utils.mutliCast(cMsg.get("content"), String.class));
-        result.setAuthCode((String) Utils.mutliCast(cMsg.get("authCode"), String.class));
-        result.setChannel((String) Utils.mutliCast(cMsg.get("subType"), String.class));
-        if (MessageType.LOGIN_MESSAGE.equals(cMsg.get("type"))) {
-            result.setType(MessageType.LOGIN_MESSAGE);
-        } else {
-            result.setType(MessageType.CHAT_MESSAGE);
-        }
-        logger.debug("message received " + Utils.describeBean(result));
-        return result;
     }
 
 

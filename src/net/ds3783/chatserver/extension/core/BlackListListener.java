@@ -1,12 +1,15 @@
 package net.ds3783.chatserver.extension.core;
 
-import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;
+import net.ds3783.chatserver.communicate.ContextHelper;
 import net.ds3783.chatserver.communicate.delivery.Event;
 import net.ds3783.chatserver.communicate.delivery.EventListener;
 import net.ds3783.chatserver.communicate.delivery.MessageDispatcher;
 import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
+import net.ds3783.chatserver.messages.Message;
+import net.ds3783.chatserver.messages.MessageContext;
+import net.ds3783.chatserver.messages.SystemReplyMessage;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -20,21 +23,21 @@ import org.apache.commons.logging.LogFactory;
 public class BlackListListener extends AbstractDefaultListener implements EventListener {
     private static Log logger = LogFactory.getLog(BlackListListener.class);
     private ClientDao clientDao;
+    private ContextHelper contextHelper;
 
     public boolean onEvent(Event event) {
         Message msg = event.getMessage();
-        Client client = clientDao.getClient(msg.getUserUuid());
-        if (client == null) {
-            logger.warn("用户掉线？？:" + msg.getUserUuid());
-            return false;
-        }
+        MessageContext context = contextHelper.getContext(msg);
+        Client client = context.getSender();
         if (clientDao.isInBlackList(client.getName(), System.currentTimeMillis())) {
             //黑名单处理
-            Message reply = msg.simpleClone();
-            reply.setType(MessageType.CHAT_MESSAGE);
-            reply.setChannel("SYSTEM");
+            SystemReplyMessage reply = new SystemReplyMessage();
+            reply.setCode(SystemReplyMessage.CODE_ERROR_BLACKLIST);
             reply.setContent("用户已被禁言");
-            reply.getDestUserUids().add(client.getUid());
+            contextHelper.registerMessage(reply, client);
+            MessageContext context2 = contextHelper.getContext(reply);
+            contextHelper.forget(context);
+            context2.getReceivers().add(client);
             outputerSwitcher.switchTo(reply);
             return false;
         }
@@ -43,6 +46,10 @@ public class BlackListListener extends AbstractDefaultListener implements EventL
 
     public void setClientDao(ClientDao clientDao) {
         this.clientDao = clientDao;
+    }
+
+    public void setContextHelper(ContextHelper contextHelper) {
+        this.contextHelper = contextHelper;
     }
 
     public void init() {
