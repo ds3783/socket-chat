@@ -114,6 +114,7 @@ public class GuardThread extends CommonRunnable {
                                 + "free:" + Runtime.getRuntime().freeMemory() / 1024 / 1024 + "M "
                                 + "max:" + Runtime.getRuntime().maxMemory() / 1024 / 1024 + "M "
                                 + "used:" + (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1024 / 1024 + "M ");
+                        contextHelper.clean();
                         System.gc();
                         logger.info("after gc: total:" + Runtime.getRuntime().totalMemory() / 1024 / 1024 + "M "
                                 + "free:" + Runtime.getRuntime().freeMemory() / 1024 / 1024 + "M "
@@ -125,7 +126,6 @@ public class GuardThread extends CommonRunnable {
                     }
                 }
             }
-            contextHelper.lightWeightClean();
             try {
                 Thread.sleep(sleeptime);
             } catch (InterruptedException e) {

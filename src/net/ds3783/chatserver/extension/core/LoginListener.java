@@ -62,8 +62,9 @@ public class LoginListener extends AbstractDefaultListener implements EventListe
             logger.info(client.getIp() + ":" + client.getPort() + "(" + client.getName() + ") ³É¹¦µÇÂ¼¡£");
             outputerSwitcher.switchTo(reply);
 
+            contextHelper.forget(context);
             logger.debug(reply.getContent() + " online");
-            return true;
+            return false;
         }
 
     }

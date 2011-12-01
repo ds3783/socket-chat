@@ -4,10 +4,7 @@ import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.messages.Message;
 import net.ds3783.chatserver.messages.MessageContext;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -18,19 +15,21 @@ import java.util.Map;
  */
 public class ContextHelper {
     private Map<Message, MessageContext> contextMap;
-    private List<MessageContext> allContext;
+    private final List<MessageContext> allContext;
 
     public ContextHelper() {
         contextMap = new HashMap<Message, MessageContext>();
-        allContext = new ArrayList<MessageContext>();
+        allContext = Collections.synchronizedList(new ArrayList<MessageContext>());
     }
 
     public MessageContext registerMessage(Message message, Client sender) {
         MessageContext context = new MessageContext();
         context.setSender(sender);
         context.setMessage(message);
-        contextMap.put(message, context);
-        allContext.add(context);
+        synchronized (allContext) {
+            contextMap.put(message, context);
+            allContext.add(context);
+        }
         return context;
     }
 
@@ -39,16 +38,36 @@ public class ContextHelper {
     }
 
     public void forget(MessageContext context) {
-        contextMap.remove(context.getMessage());
-        allContext.remove(context);
-
+        synchronized (allContext) {
+            contextMap.remove(context.getMessage());
+            allContext.remove(context);
+        }
     }
 
-    public void lightWeightClean() {
-        for (MessageContext context : allContext) {
-            if (context.getReceivers().size() == 0) {
-                this.forget(context);
+    public void clean() {
+        synchronized (allContext) {
+            long now = System.currentTimeMillis();
+            List<MessageContext> toForget = new ArrayList<MessageContext>();
+            for (MessageContext context : allContext) {
+                if (context.getReceivers().size() == 0) {
+                    toForget.add(context);
+                }
+                if (now - context.getCreateTime() > 30000) {
+                    toForget.add(context);
+                }
             }
+            for (MessageContext context : toForget) {
+                contextMap.remove(context.getMessage());
+                allContext.remove(context);
+            }
+
+        }
+    }
+
+    public void removeReceiver(MessageContext context, Client dest) {
+        context.getReceivers().remove(dest);
+        if (context.getReceivers().size() == 0) {
+            forget(context);
         }
     }
 }

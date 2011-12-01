@@ -21,9 +21,12 @@ public class MessageContext {
 
     private boolean dropClientAfterReply;
 
+    private long createTime;
+
 
     public MessageContext() {
         receivers = new ArrayList<Client>();
+        createTime = System.currentTimeMillis();
     }
 
     public Client getSender() {
@@ -60,6 +63,10 @@ public class MessageContext {
 
     public boolean isDropClientAfterReply() {
         return dropClientAfterReply;
+    }
+
+    public long getCreateTime() {
+        return createTime;
     }
 
     public void setDropClientAfterReply(boolean dropClientAfterReply) {

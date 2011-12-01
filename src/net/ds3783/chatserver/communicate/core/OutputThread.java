@@ -131,7 +131,7 @@ public class OutputThread extends SlaveThread implements Runnable {
             for (Client dest : context.getReceivers()) {
                 if (userKeys.containsKey(dest.getUid())) {
                     doSend(dest, data, now);
-                    context.getReceivers().remove(dest);
+                    contextHelper.removeReceiver(context, dest);
                     counter++;
                 }
             }
