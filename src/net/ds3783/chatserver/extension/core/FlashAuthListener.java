@@ -29,7 +29,6 @@ public class FlashAuthListener extends AbstractDefaultListener implements EventL
             context.getSender().setAuthed(true);
             contextHelper.registerMessage(reply, context.getSender());
             outputerSwitcher.switchTo(reply);
-            contextHelper.forget(context);
             return false;
         }
         return true;

@@ -44,7 +44,6 @@ public class LoginListener extends AbstractDefaultListener implements EventListe
             replyContext.getReceivers().add(context.getSender());
             logger.info("当前有重名用户:" + reply.getContent());
             outputerSwitcher.switchTo(reply);
-            contextHelper.forget(context);
             return false;
         } else {
 
@@ -62,7 +61,6 @@ public class LoginListener extends AbstractDefaultListener implements EventListe
             logger.info(client.getIp() + ":" + client.getPort() + "(" + client.getName() + ") 成功登录。");
             outputerSwitcher.switchTo(reply);
 
-            contextHelper.forget(context);
             logger.debug(reply.getContent() + " online");
             return false;
         }

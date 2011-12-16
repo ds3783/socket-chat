@@ -25,6 +25,8 @@ public class GuardThread extends CommonRunnable {
     private long lastGcTime = 0;
     private long lastCleanExpireClientTime = 0;
     private long lastCleanUnloginClientTime = 0;
+    private long contextHelperCleanCycle = 30000;
+    private long lastContextHelperCleanTime = 0;
     private ClientDao clientDao;
 
     private ContextHelper contextHelper;
@@ -101,6 +103,10 @@ public class GuardThread extends CommonRunnable {
                 }
                 lastCleanExpireClientTime = now;
             }
+            if (now - lastContextHelperCleanTime > contextHelperCleanCycle) {
+                contextHelper.clean();
+                lastContextHelperCleanTime = now;
+            }
 
             //GC¥¶¿Ì
             now = System.currentTimeMillis();
@@ -114,7 +120,6 @@ public class GuardThread extends CommonRunnable {
                                 + "free:" + Runtime.getRuntime().freeMemory() / 1024 / 1024 + "M "
                                 + "max:" + Runtime.getRuntime().maxMemory() / 1024 / 1024 + "M "
                                 + "used:" + (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1024 / 1024 + "M ");
-                        contextHelper.clean();
                         System.gc();
                         logger.info("after gc: total:" + Runtime.getRuntime().totalMemory() / 1024 / 1024 + "M "
                                 + "free:" + Runtime.getRuntime().freeMemory() / 1024 / 1024 + "M "
@@ -197,5 +202,13 @@ public class GuardThread extends CommonRunnable {
 
     public void setClientService(ClientService clientService) {
         this.clientService = clientService;
+    }
+
+    public void setContextHelperCleanCycle(long contextHelperCleanCycle) {
+        this.contextHelperCleanCycle = contextHelperCleanCycle;
+    }
+
+    public void setLastContextHelperCleanTime(long lastContextHelperCleanTime) {
+        this.lastContextHelperCleanTime = lastContextHelperCleanTime;
     }
 }

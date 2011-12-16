@@ -44,6 +44,15 @@ public class ContextHelper {
         }
     }
 
+    public void forget(Message msg) {
+        synchronized (allContext) {
+            if (contextMap.containsKey(msg)) {
+                MessageContext context = contextMap.remove(msg);
+                allContext.remove(context);
+            }
+        }
+    }
+
     public void clean() {
         synchronized (allContext) {
             long now = System.currentTimeMillis();

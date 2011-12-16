@@ -36,7 +36,6 @@ public class BlackListListener extends AbstractDefaultListener implements EventL
             reply.setContent("用户已被禁言");
             contextHelper.registerMessage(reply, client);
             MessageContext context2 = contextHelper.getContext(reply);
-            contextHelper.forget(context);
             context2.getReceivers().add(client);
             outputerSwitcher.switchTo(reply);
             return false;

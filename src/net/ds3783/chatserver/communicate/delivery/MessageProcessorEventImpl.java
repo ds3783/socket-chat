@@ -1,6 +1,7 @@
 package net.ds3783.chatserver.communicate.delivery;
 
 
+import net.ds3783.chatserver.communicate.ContextHelper;
 import net.ds3783.chatserver.messages.Message;
 
 /**
@@ -12,6 +13,7 @@ import net.ds3783.chatserver.messages.Message;
  */
 public class MessageProcessorEventImpl implements MessageProcessor {
     private MessageDispatcher messageDispatcher;
+    private ContextHelper contextHelper;
 
 
     public void processMsg(Message msg, long now) {
@@ -19,9 +21,15 @@ public class MessageProcessorEventImpl implements MessageProcessor {
         evt.setName(msg.getType());
         evt.setMessage(msg);
         messageDispatcher.dispatchEvent(evt);
+        contextHelper.forget(msg);
+
     }
 
     public void setMessageDispatcher(MessageDispatcher messageDispatcher) {
         this.messageDispatcher = messageDispatcher;
+    }
+
+    public void setContextHelper(ContextHelper contextHelper) {
+        this.contextHelper = contextHelper;
     }
 }
