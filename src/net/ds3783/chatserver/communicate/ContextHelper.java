@@ -11,7 +11,7 @@ import java.util.*;
  * User: Ds3783
  * Date: 11-11-30
  * Time: 下午11:53
- * To change this template use File | Settings | File Templates.
+ * 上下文管理类
  */
 public class ContextHelper {
     private Map<Message, MessageContext> contextMap;

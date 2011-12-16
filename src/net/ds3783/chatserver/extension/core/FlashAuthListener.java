@@ -13,7 +13,7 @@ import net.ds3783.chatserver.messages.MessageContext;
  * User: Ds3783
  * Date: 11-6-19
  * Time: 上午1:38
- * To change this template use File | Settings | File Templates.
+ * 处理Flash 访问授权验证
  */
 public class FlashAuthListener extends AbstractDefaultListener implements EventListener {
     private Configuration config;

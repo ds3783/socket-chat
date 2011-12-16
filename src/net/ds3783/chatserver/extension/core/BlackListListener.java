@@ -10,18 +10,15 @@ import net.ds3783.chatserver.dao.ClientDao;
 import net.ds3783.chatserver.messages.Message;
 import net.ds3783.chatserver.messages.MessageContext;
 import net.ds3783.chatserver.messages.SystemReplyMessage;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  * Created by IntelliJ IDEA.
  * User: Ds3783
  * Date: 11-6-19
  * Time: ÉÏÎç11:45
- * To change this template use File | Settings | File Templates.
+ * ºÚÃûµ¥¼àÌýÆ÷
  */
 public class BlackListListener extends AbstractDefaultListener implements EventListener {
-    private static Log logger = LogFactory.getLog(BlackListListener.class);
     private ClientDao clientDao;
     private ContextHelper contextHelper;
 

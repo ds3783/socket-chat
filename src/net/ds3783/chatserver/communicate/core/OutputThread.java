@@ -4,7 +4,6 @@ import net.ds3783.chatserver.MessageType;
 import net.ds3783.chatserver.communicate.ContextHelper;
 import net.ds3783.chatserver.communicate.protocol.OutputProtocal;
 import net.ds3783.chatserver.dao.Client;
-import net.ds3783.chatserver.dao.ClientDao;
 import net.ds3783.chatserver.messages.Message;
 import net.ds3783.chatserver.messages.MessageContext;
 import net.ds3783.chatserver.tools.Utils;
@@ -34,7 +33,6 @@ public class OutputThread extends SlaveThread implements Runnable {
     private LinkedBlockingQueue<Message> toSendMessages = new LinkedBlockingQueue<Message>();
     private LinkedBlockingQueue<Message> enmergencyMessages = new LinkedBlockingQueue<Message>();
     protected List<OutputFilter> filters = new ArrayList<OutputFilter>();
-    private ClientDao clientDao;
     private ContextHelper contextHelper;
     private ClientService clientService;
     private OutputProtocal protocal;
@@ -126,8 +124,6 @@ public class OutputThread extends SlaveThread implements Runnable {
         }
         MessageContext context = contextHelper.getContext(message);
         if (context.getReceivers() != null && context.getReceivers().size() > 0) {
-            int destSize = context.getReceivers().size();
-            int mySize = userKeys.size();
             for (Client dest : context.getReceivers()) {
                 if (userKeys.containsKey(dest.getUid())) {
                     doSend(dest, data, now);
@@ -182,10 +178,6 @@ public class OutputThread extends SlaveThread implements Runnable {
     public void initialize() throws IOException {
         SelectorProvider provider = SelectorProvider.provider();
         channelSelector = provider.openSelector();
-    }
-
-    public void setClientDao(ClientDao clientDao) {
-        this.clientDao = clientDao;
     }
 
     public void setFilters(List<OutputFilter> filters) {

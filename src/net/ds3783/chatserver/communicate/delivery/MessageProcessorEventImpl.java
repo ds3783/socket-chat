@@ -9,7 +9,7 @@ import net.ds3783.chatserver.messages.Message;
  * User: Ds3783
  * Date: 11-6-19
  * Time: 上午12:11
- * To change this template use File | Settings | File Templates.
+ * 通过Event模式实现消息的处理
  */
 public class MessageProcessorEventImpl implements MessageProcessor {
     private MessageDispatcher messageDispatcher;
