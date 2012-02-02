@@ -124,7 +124,7 @@ public class OutputThread extends SlaveThread implements Runnable {
         }
         MessageContext context = contextHelper.getContext(message);
         if (context.getReceivers() != null && context.getReceivers().size() > 0) {
-            for (Client dest : context.getReceivers()) {
+            for (Client dest : context.getReceiversClone()) {
                 if (userKeys.containsKey(dest.getUid())) {
                     doSend(dest, data, now);
                     contextHelper.removeReceiver(context, dest);

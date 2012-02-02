@@ -211,4 +211,8 @@ public class GuardThread extends CommonRunnable {
     public void setLastContextHelperCleanTime(long lastContextHelperCleanTime) {
         this.lastContextHelperCleanTime = lastContextHelperCleanTime;
     }
+
+    public void setContextHelper(ContextHelper contextHelper) {
+        this.contextHelper = contextHelper;
+    }
 }

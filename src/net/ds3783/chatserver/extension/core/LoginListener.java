@@ -46,7 +46,6 @@ public class LoginListener extends AbstractDefaultListener implements EventListe
             outputerSwitcher.switchTo(reply);
             return false;
         } else {
-
             context.getSender().setName(login.getUsername());
             SystemReplyMessage reply2 = new SystemReplyMessage();
             MessageContext replyContext2 = contextHelper.registerMessage(reply2, context.getSender());

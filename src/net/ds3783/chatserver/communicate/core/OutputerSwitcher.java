@@ -57,4 +57,8 @@ public class OutputerSwitcher {
     public void setClientDao(ClientDao clientDao) {
         this.clientDao = clientDao;
     }
+
+    public void setContextHelper(ContextHelper contextHelper) {
+        this.contextHelper = contextHelper;
+    }
 }

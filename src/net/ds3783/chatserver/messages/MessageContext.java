@@ -41,6 +41,10 @@ public class MessageContext {
         return receivers;
     }
 
+    public List<Client> getReceiversClone() {
+        return new ArrayList<Client>(receivers);
+    }
+
     public void setReceivers(List<Client> receivers) {
         this.receivers = receivers;
     }
