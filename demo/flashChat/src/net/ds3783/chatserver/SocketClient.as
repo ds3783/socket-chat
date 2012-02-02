@@ -36,7 +36,7 @@ public class SocketClient extends EventDispatcher {
         socket.addEventListener(SecurityErrorEvent.SECURITY_ERROR, onSecurityError);
         socket.objectEncoding = ObjectEncoding.AMF3;
 
-        registerClassAlias("net.ds3783.chatserver.Message",Message);
+        registerClassAlias("net.ds3783.chatserver.MessageOld",MessageOld);
 		this.host=host;
 		this.port=port;
         socket.connect(host, port);
@@ -54,14 +54,14 @@ public class SocketClient extends EventDispatcher {
     }
 
     public function login(username:String, password:String):void {
-        var message:Message = new Message();
+        var message:MessageOld = new MessageOld();
         message.type = MessageType.LOGIN;
         message.authCode = password;
         message.content = username;
         this.send(message);
     }
 
-    private function send(data:Message):void {
+    private function send(data:MessageOld):void {
         if (!socket.connected) {
             throw new ChatServerError("Not Connected!");
         }
@@ -124,7 +124,7 @@ public class SocketClient extends EventDispatcher {
 
     private function onData():void {
         while (messageBuffer.length > 0) {
-            var message:Message = messageBuffer.shift();
+            var message:MessageOld = messageBuffer.shift();
             switch (message.type) {
                 case MessageType.AUTH:
                     break;
@@ -145,7 +145,7 @@ public class SocketClient extends EventDispatcher {
         }
     }
 
-    public function sendMessage(msg:Message):void {
+    public function sendMessage(msg:MessageOld):void {
         if (!logined) {
             throw new ChatServerError("Not Logined!");
         }

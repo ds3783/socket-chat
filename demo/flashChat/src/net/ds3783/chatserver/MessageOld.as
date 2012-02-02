@@ -1,7 +1,7 @@
 package net.ds3783.chatserver
 {
 
-	public class Message
+	public class MessageOld
 	{
 		public var userUuid:String;
 		public var id:String;
@@ -20,7 +20,7 @@ package net.ds3783.chatserver
 		
 		
 		
-		public function Message()
+		public function MessageOld()
 		{
 			
 		}
