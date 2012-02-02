@@ -36,7 +36,7 @@ public class LoginListener extends AbstractDefaultListener implements EventListe
         SystemReplyMessage reply = new SystemReplyMessage();
         MessageContext replyContext = contextHelper.registerMessage(reply, context.getSender());
         //登录成功
-        if (clientDao.getClientByName(reply.getContent()) != null) {
+        if (clientDao.getClientByName(login.getUsername()) != null) {
             //通知此人有重名，并踢下线
             replyContext.setDropClientAfterReply(true);
             reply.setContent("当前有重名用户");
@@ -55,8 +55,9 @@ public class LoginListener extends AbstractDefaultListener implements EventListe
             reply2.setCode(SystemReplyMessage.CODE_USER_ONLINE);
             outputerSwitcher.switchTo(reply2);
 
-            Client client = clientService.clientLogin(context.getSender().getUid(), reply.getContent(), Utils.newUuid());
+            Client client = clientService.clientLogin(context.getSender().getUid(), login.getUsername(), Utils.newUuid());
             reply.setCode(SystemReplyMessage.CODE_LOGIN_SUCCESS);
+            replyContext.getReceivers().add(client);
             logger.info(client.getIp() + ":" + client.getPort() + "(" + client.getName() + ") 成功登录。");
             outputerSwitcher.switchTo(reply);
 

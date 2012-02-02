@@ -14,7 +14,7 @@ public class LoginMessage implements Message {
     private String password;
 
     public String getType() {
-        return MessageType.COMMAND_MESSAGE;
+        return MessageType.LOGIN_MESSAGE;
     }
 
     public boolean isSerializable() {
