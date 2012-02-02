@@ -1,7 +1,10 @@
-package net.ds3783.chatserver.communicate.delivery;
+package net.ds3783.chatserver.extension.core;
 
 import net.ds3783.chatserver.MessageType;
 import net.ds3783.chatserver.communicate.ContextHelper;
+import net.ds3783.chatserver.communicate.delivery.Event;
+import net.ds3783.chatserver.communicate.delivery.EventListener;
+import net.ds3783.chatserver.communicate.delivery.MessageDispatcher;
 import net.ds3783.chatserver.messages.MessageContext;
 
 /**

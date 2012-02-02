@@ -92,7 +92,7 @@
 
     <bean id="messageDispatcher" class="net.ds3783.chatserver.communicate.delivery.MessageDispatcher"/>
     <bean id="channelDispatcher" class="net.ds3783.chatserver.communicate.delivery.MessageDispatcher"/>
-    <bean id="channelListener" class="net.ds3783.chatserver.communicate.delivery.ChannelListener" init-method="init"/>
+    <bean id="channelListener" class="net.ds3783.chatserver.extension.core.ChannelListener" init-method="init"/>
     <bean id="clientService" class="net.ds3783.chatserver.communicate.core.ClientService"/>
 
     <bean id="gson" class="com.google.gson.Gson" scope="prototype"/>
