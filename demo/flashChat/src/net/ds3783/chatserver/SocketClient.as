@@ -9,19 +9,28 @@ import flash.net.Socket;
 import flash.net.registerClassAlias;
 import flash.utils.ByteArray;
 
+import net.ds3783.chatserver.messages.LoginMessage;
+import net.ds3783.chatserver.messages.SystemReplyMessage;
+
 public class SocketClient extends EventDispatcher {
     public function SocketClient() {
+        registerClassAlias("net.ds3783.chatserver.MessageOld", MessageOld);
+
+        registerClassAlias("net.ds3783.chatserver.Message", Message);
+        registerClassAlias("net.ds3783.chatserver.messages.LoginMessage", LoginMessage);
+        registerClassAlias("net.ds3783.chatserver.messages.SystemReplyMessage", SystemReplyMessage);
     }
 
     private var socket:Socket = null;
-	private var host:String;
-	private var port:int;
+    private var host:String;
+    private var port:int;
     private var logined:Boolean = false;
     private var dataCache:ByteArray = new ByteArray();
     private var messageBuffer:Array = new Array();
 
     public static const EVENT_CONNECTED:String = "ON_CONNECTED";
     public static const EVENT_LOGIN:String = "ON_LOGIN";
+    public static const EVENT_LOGIN_FAIL:String = "ON_LOGIN_FAIL";
     public static const EVENT_CLIENTMESSAGE:String = "ON_CLIENT";
     public static const EVENT_SERVERMESSAGE:String = "ON_SERVER";
     public static const EVENT_NETERROR:String = "ON_NETERROR";
@@ -36,9 +45,8 @@ public class SocketClient extends EventDispatcher {
         socket.addEventListener(SecurityErrorEvent.SECURITY_ERROR, onSecurityError);
         socket.objectEncoding = ObjectEncoding.AMF3;
 
-        registerClassAlias("net.ds3783.chatserver.MessageOld",MessageOld);
-		this.host=host;
-		this.port=port;
+        this.host = host;
+        this.port = port;
         socket.connect(host, port);
 
     }
@@ -54,14 +62,13 @@ public class SocketClient extends EventDispatcher {
     }
 
     public function login(username:String, password:String):void {
-        var message:MessageOld = new MessageOld();
-        message.type = MessageType.LOGIN;
-        message.authCode = password;
-        message.content = username;
+        var message:LoginMessage = new LoginMessage();
+        message.username = username;
+        message.password = password;
         this.send(message);
     }
 
-    private function send(data:MessageOld):void {
+    private function send(data:Message):void {
         if (!socket.connected) {
             throw new ChatServerError("Not Connected!");
         }
@@ -69,15 +76,15 @@ public class SocketClient extends EventDispatcher {
         var serialized:ByteArray = new ByteArray();
         serialized.writeObject(data);
         var length:int = serialized.length;
-        trace("send message length:"+serialized.length);
+        trace("send message length:" + serialized.length);
         binaryData.writeInt(length);
         binaryData.writeBytes(serialized);
-        binaryData.position=0;
+        binaryData.position = 0;
         socket.writeBytes(binaryData);
     }
 
     private function onStocketConnected(evt:Event):void {
-		trace("Socket Connected to "+host+":"+port);
+        trace("Socket Connected to " + host + ":" + port);
         var evt2:ChatEvent = new ChatEvent(EVENT_CONNECTED);
         this.dispatchEvent(evt2);
     }
@@ -94,12 +101,12 @@ public class SocketClient extends EventDispatcher {
                 var pos:uint = dataCache.position;
                 dataCache.position = 0;
                 var bint:int = dataCache.readInt();
-                trace("message length:"+bint);
+                trace("message length:" + bint);
                 if (dataCache.bytesAvailable >= bint) {
                     dataCache.readBytes(newbytes, 0, bint);
-                    trace("message content:"+newbytes.toString());
-                    trace("message len2:"+newbytes.length);
-                    newbytes.position=0;
+                    trace("message content:" + newbytes.toString());
+                    trace("message len2:" + newbytes.length);
+                    newbytes.position = 0;
                     messageBuffer.push(newbytes.readObject());
                     if (dataCache.bytesAvailable > 0) {
                         dataCache.readBytes(bytes);
@@ -124,19 +131,17 @@ public class SocketClient extends EventDispatcher {
 
     private function onData():void {
         while (messageBuffer.length > 0) {
-            var message:MessageOld = messageBuffer.shift();
-            switch (message.type) {
-                case MessageType.AUTH:
+            var message:Message = messageBuffer.shift();
+            switch (message.getType()) {
+                case MessageType.AUTH_MESSAGE:
                     break;
-                case MessageType.LOGIN:
-                    var evt1:ChatEvent = new ChatEvent(EVENT_LOGIN);
-                    evt1.message = message;
-                    if (message.authCode=="true"){
-                        trace("Login Successful!");
-                    }
-                    this.dispatchEvent(evt1);
+                case MessageType.LOGIN_MESSAGE:
                     break;
-                case MessageType.CLIENT:
+                case MessageType.COMMAND_MESSAGE:
+                    var sysMsg:SystemReplyMessage = message as SystemReplyMessage;
+                    onCommand(sysMsg);
+                    break;
+                case MessageType.CHAT_MESSAGE:
                     var evt2:ChatEvent = new ChatEvent(EVENT_CLIENTMESSAGE);
                     evt2.message = message;
                     this.dispatchEvent(evt2);
@@ -145,11 +150,11 @@ public class SocketClient extends EventDispatcher {
         }
     }
 
-    public function sendMessage(msg:MessageOld):void {
+
+    public function sendMessage(msg:Message):void {
         if (!logined) {
             throw new ChatServerError("Not Logined!");
         }
-        msg.type = MessageType.CLIENT;
         send(msg);
     }
 
@@ -165,5 +170,15 @@ public class SocketClient extends EventDispatcher {
         this.dispatchEvent(evt1);
     }
 
+    private function onCommand(sysMsg:SystemReplyMessage):void {
+        switch (sysMsg.code) {
+            case SystemReplyMessage.CODE_LOGIN_SUCCESS:
+                dispatchEvent(new ChatEvent(EVENT_LOGIN));
+                break;
+            case SystemReplyMessage.CODE_ERROR_WRONG_PASSWORD:
+                dispatchEvent(new ChatEvent(EVENT_LOGIN_FAIL));
+                break;
+        }
+    }
 }
 }
