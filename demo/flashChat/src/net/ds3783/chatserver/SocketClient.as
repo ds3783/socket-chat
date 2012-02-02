@@ -68,6 +68,11 @@ public class SocketClient extends EventDispatcher {
         this.send(message);
     }
 
+
+    public function listChannels():void {
+        //TODO:
+    }
+
     private function send(data:Message):void {
         if (!socket.connected) {
             throw new ChatServerError("Not Connected!");
@@ -180,5 +185,6 @@ public class SocketClient extends EventDispatcher {
                 break;
         }
     }
+
 }
 }

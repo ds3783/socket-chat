@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" >
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
     <!--
          G-Chat Actionscript 3.0 example application:
 
@@ -8,6 +8,8 @@
      -->
 
     <mx:Script>
+        import mx.controls.Alert;
+
         import net.ds3783.chatserver.ChatEvent;
         import net.ds3783.chatserver.SocketClient;
 
@@ -18,7 +20,6 @@
         public function initApp():void {
             gClient = new SocketClient();
             gClient.addEventListener(SocketClient.EVENT_CONNECTED, connected);
-            gClient.addEventListener(SocketClient.EVENT_LOGIN, logined);
         }
 
         public function doConnect():void {
@@ -30,25 +31,33 @@
             gClient.connect(tf_host.text, parseInt(tf_port.text));
             trace("connecting to :" + tf_host.text + ":" + parseInt(tf_port.text));
             username = tf_username.text;
-            password = tf_password.text
+            password = tf_password.text;
             viewstack.selectedChild = view_connecting;
         }
 
         public function connected(ect:ChatEvent):void {
+            gClient.addEventListener(SocketClient.EVENT_LOGIN, logined);
+            gClient.addEventListener(SocketClient.EVENT_LOGIN_FAIL, loginedFail);
             gClient.login(username, password);
 
         }
 
         public function logined(evt:ChatEvent):void {
-            viewstack.selectedChild = view_chat;
+            gClient.listChannels();
+//            viewstack.selectedChild = view_chat;
+        }
 
-
+        public function loginedFail(evt:ChatEvent):void {
+            gClient.removeEventListener(SocketClient.EVENT_LOGIN, logined);
+            gClient.removeEventListener(SocketClient.EVENT_LOGIN_FAIL, loginedFail);
+            viewstack.selectedChild = view_login;
+            Alert.show("Login rquest denied,PASSWORD wrong?", "Login ERROR!");
         }
 
 
     </mx:Script>
     <mx:ViewStack id="viewstack" left="10" right="10" top="10" bottom="10" selectedIndex="1">
-        <mx:Canvas width="100%" height="100%" id="view_connecting" name="view_connecting" >
+        <mx:Canvas width="100%" height="100%" id="view_connecting" name="view_connecting">
             <mx:Panel width="362" height="260" layout="absolute" horizontalCenter="0.5" verticalCenter="-7"
                       title="::.. Connection ..::" color="#ffffff">
                 <mx:Label y="115" text="Connecting to server ..." horizontalCenter="0.5" width="321" textAlign="center"
