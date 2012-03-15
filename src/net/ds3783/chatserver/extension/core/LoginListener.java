@@ -20,7 +20,7 @@ import org.apache.commons.logging.LogFactory;
  * Date: 11-6-19
  * Time: ионГ11:07
  */
-public class LoginListener extends AbstractDefaultListener implements EventListener {
+public class LoginListener extends DefaultCoreListener implements EventListener {
     private static Log logger = LogFactory.getLog(LoginListener.class);
     private ClientDao clientDao;
     private ClientService clientService;

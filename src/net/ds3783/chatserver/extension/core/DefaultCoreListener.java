@@ -10,7 +10,7 @@ import net.ds3783.chatserver.communicate.delivery.MessageDispatcher;
  * Time: 上午11:17
  * 默认的监听器类，其不执行任何操作，仅用于spring注入
  */
-public class AbstractDefaultListener {
+public class DefaultCoreListener {
     protected MessageDispatcher messageDispatcher;
     protected OutputerSwitcher outputerSwitcher;
 

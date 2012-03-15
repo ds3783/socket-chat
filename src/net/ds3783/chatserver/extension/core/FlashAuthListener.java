@@ -15,7 +15,7 @@ import net.ds3783.chatserver.messages.MessageContext;
  * Time: 上午1:38
  * 处理Flash 访问授权验证
  */
-public class FlashAuthListener extends AbstractDefaultListener implements EventListener {
+public class FlashAuthListener extends DefaultCoreListener implements EventListener {
     private Configuration config;
     private ContextHelper contextHelper;
 

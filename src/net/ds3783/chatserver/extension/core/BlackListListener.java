@@ -18,7 +18,7 @@ import net.ds3783.chatserver.messages.SystemReplyMessage;
  * Time: ÉÏÎç11:45
  * ºÚÃûµ¥¼àÌıÆ÷
  */
-public class BlackListListener extends AbstractDefaultListener implements EventListener {
+public class BlackListListener extends DefaultCoreListener implements EventListener {
     private ClientDao clientDao;
     private ContextHelper contextHelper;
 

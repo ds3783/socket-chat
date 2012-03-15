@@ -55,6 +55,7 @@
     </bean>
 
     <bean id="clientDao" class="net.ds3783.chatserver.dao.ClientDao" scope="singleton"/>
+    <bean id="channelDao" class="net.ds3783.chatserver.dao.ChannelDao" scope="singleton"/>
 
 
     <bean id="messageEventProcessor" class="net.ds3783.chatserver.communicate.delivery.MessageProcessorEventImpl"
