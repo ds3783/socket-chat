@@ -1,4 +1,6 @@
 package net.ds3783.chatserver {
+import com.adobe.serialization.json.JSON;
+
 import flash.events.Event;
 import flash.events.EventDispatcher;
 import flash.events.IOErrorEvent;
@@ -90,10 +92,11 @@ public class SocketClient extends EventDispatcher {
         var serialized:ByteArray = new ByteArray();
         serialized.writeObject(data);
         var length:int = serialized.length;
-        trace("send message length:" + serialized.length);
         binaryData.writeInt(length);
         binaryData.writeBytes(serialized);
         binaryData.position = 0;
+
+        trace("send message:"+JSON.encode(data));
         socket.writeBytes(binaryData);
         socket.flush();
     }
@@ -194,7 +197,7 @@ public class SocketClient extends EventDispatcher {
                 dispatchEvent(new ChatEvent(EVENT_LOGIN_FAIL));
                 break;
         }
-        trace(JSON.stringify(sysMsg));
+        trace(JSON.encode(sysMsg));
     }
 
 }

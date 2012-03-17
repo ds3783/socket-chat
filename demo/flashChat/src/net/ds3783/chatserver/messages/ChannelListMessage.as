@@ -9,25 +9,25 @@ package net.ds3783.chatserver.messages {
 import net.ds3783.chatserver.Message;
 import net.ds3783.chatserver.MessageType;
 
-public class ChannelListMessage implements Message {
+public class ChannelListMessage extends SystemReplyMessage implements Message {
     public function ChannelListMessage() {
     }
 
     public var channels:Array;
 
-    public function getType():String {
+    override public function getType():String {
         return MessageType.COMMAND_MESSAGE;
     }
 
-    public function isSerializable():Boolean {
+    override public function isSerializable():Boolean {
         return true;
     }
 
-    public function get content():String {
+    override public function get content():String {
         return "";
     }
 
-    public function set content(value:String):void {
+    override public function set content(value:String):void {
     }
 }
 }
