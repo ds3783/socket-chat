@@ -9,8 +9,11 @@ import flash.net.Socket;
 import flash.net.registerClassAlias;
 import flash.utils.ByteArray;
 
+import net.ds3783.chatserver.messages.ChannelListMessage;
+import net.ds3783.chatserver.messages.CommandMessage;
 import net.ds3783.chatserver.messages.LoginMessage;
 import net.ds3783.chatserver.messages.SystemReplyMessage;
+import net.ds3783.chatserver.messages.model.ChannelModel;
 
 public class SocketClient extends EventDispatcher {
     public function SocketClient() {
@@ -19,6 +22,9 @@ public class SocketClient extends EventDispatcher {
         registerClassAlias("net.ds3783.chatserver.Message", Message);
         registerClassAlias("net.ds3783.chatserver.messages.LoginMessage", LoginMessage);
         registerClassAlias("net.ds3783.chatserver.messages.SystemReplyMessage", SystemReplyMessage);
+        registerClassAlias("net.ds3783.chatserver.messages.CommandMessage", CommandMessage);
+        registerClassAlias("net.ds3783.chatserver.messages.ChannelListMessage", ChannelListMessage);
+        registerClassAlias("net.ds3783.chatserver.messages.model.ChannelModel", ChannelModel);
     }
 
     private var socket:Socket = null;
@@ -70,7 +76,10 @@ public class SocketClient extends EventDispatcher {
 
 
     public function listChannels():void {
-        //TODO:
+        var message:CommandMessage = new CommandMessage();
+        message.command = CommandType.LIST_CHANNELS;
+        message.content = '';
+        this.send(message);
     }
 
     private function send(data:Message):void {
@@ -86,6 +95,7 @@ public class SocketClient extends EventDispatcher {
         binaryData.writeBytes(serialized);
         binaryData.position = 0;
         socket.writeBytes(binaryData);
+        socket.flush();
     }
 
     private function onStocketConnected(evt:Event):void {
@@ -184,6 +194,7 @@ public class SocketClient extends EventDispatcher {
                 dispatchEvent(new ChatEvent(EVENT_LOGIN_FAIL));
                 break;
         }
+        trace(JSON.stringify(sysMsg));
     }
 
 }
