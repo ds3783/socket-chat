@@ -1,7 +1,6 @@
 package net.ds3783.chatserver.extension.command;
 
 import net.ds3783.chatserver.CommandType;
-import net.ds3783.chatserver.MessageType;
 import net.ds3783.chatserver.communicate.ContextHelper;
 import net.ds3783.chatserver.communicate.delivery.Event;
 import net.ds3783.chatserver.communicate.delivery.EventListener;
@@ -13,7 +12,6 @@ import net.ds3783.chatserver.messages.MessageContext;
 import net.ds3783.chatserver.messages.SystemReplyMessage;
 import net.ds3783.chatserver.messages.model.ChannelModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,10 +40,12 @@ public class ListChannelListener extends DefaultCommandListener implements Event
 
         //获得所有Channel
         List<Channel> channels = channelDao.getChannels();
-        reply.setChannels(new ArrayList<ChannelModel>());
-        for (Channel channel : channels) {
-            reply.getChannels().add(new ChannelModel(channel));
+        ChannelModel[] chls = new ChannelModel[channels.size()];
+        for (int i = 0; i < channels.size(); i++) {
+            Channel channel = channels.get(i);
+            chls[i] = new ChannelModel(channel);
         }
+        reply.setChannels(chls);
         outputerSwitcher.switchTo(reply);
         //阻止其他Listener
         return false;
@@ -53,7 +53,7 @@ public class ListChannelListener extends DefaultCommandListener implements Event
 
 
     public void init() {
-        commandDispatcher.addListener(MessageType.CHAT_MESSAGE, this);
+        commandDispatcher.addListener(CommandType.LIST_CHANNELS, this);
     }
 
     public void setContextHelper(ContextHelper contextHelper) {

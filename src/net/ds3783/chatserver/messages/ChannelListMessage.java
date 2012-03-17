@@ -3,8 +3,6 @@ package net.ds3783.chatserver.messages;
 import net.ds3783.chatserver.MessageType;
 import net.ds3783.chatserver.messages.model.ChannelModel;
 
-import java.util.List;
-
 /**
  * Created by IntelliJ IDEA.
  * User: hongyu.pi
@@ -13,13 +11,13 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class ChannelListMessage extends SystemReplyMessage implements Message {
-    private List<ChannelModel> channels;
+    private ChannelModel[] channels;
 
-    public List<ChannelModel> getChannels() {
+    public ChannelModel[] getChannels() {
         return channels;
     }
 
-    public void setChannels(List<ChannelModel> channels) {
+    public void setChannels(ChannelModel[] channels) {
         this.channels = channels;
     }
 

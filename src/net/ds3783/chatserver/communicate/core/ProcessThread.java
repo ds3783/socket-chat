@@ -1,5 +1,6 @@
 package net.ds3783.chatserver.communicate.core;
 
+import com.google.gson.Gson;
 import net.ds3783.chatserver.MessageType;
 import net.ds3783.chatserver.communicate.delivery.MessageProcessor;
 import net.ds3783.chatserver.messages.Message;
@@ -26,6 +27,7 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
 
     public void addMessage(Message message) {
         try {
+            logger.debug("收到消息:" + new Gson().toJson(message));
             if ((MessageType.AUTH_MESSAGE.equals(message.getType()) || MessageType.LOGIN_MESSAGE.equals(message.getType()))) {
                 enmergencyMessages.put(message);
             } else if (receivedMessages.size() > maxMessageInQueue) {
