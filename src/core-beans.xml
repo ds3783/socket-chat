@@ -130,6 +130,17 @@
             </props>
         </property>
     </bean>
+    <bean class="net.ds3783.chatserver.logic.ChannelLogic" id="channelLogic" init-method="setupDefaultChannels">
+        <property name="configedChannels">
+            <list>
+                <bean class="net.ds3783.chatserver.dao.Channel">
+                    <property name="internal" value="true"/>
+                    <property name="maxMember" value="50000"/>
+                    <property name="name" value="¹«¹²ÆµµÀ"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
 
     <import resource="extend-beans.xml"/>
 </beans>

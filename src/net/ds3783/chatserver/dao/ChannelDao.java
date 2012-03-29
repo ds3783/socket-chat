@@ -16,4 +16,9 @@ public class ChannelDao extends HibernateDaoSupport {
     public List<Channel> getChannels() {
         return Utils.castList(getHibernateTemplate().find("from Channel"), Channel.class);
     }
+
+    public void registerChannel(Channel newChannel) {
+        getHibernateTemplate().saveOrUpdate(newChannel);
+        getHibernateTemplate().flush();
+    }
 }
