@@ -56,7 +56,7 @@
                 var channel:CheckBox = new CheckBox();
                 channel.label = channelModel.name;
                 channel.name = channelModel.id.toString();
-                channel.styleDeclaration.setStyle("paddingLeft", "10");
+                channel.setStyle("paddingLeft", "10");
                 if (msg.listeningChannels) {
                     for each (var number:Number in msg.listeningChannels) {
                         if (number == channelModel.id) {
