@@ -8,6 +8,10 @@
 package net.ds3783.chatserver {
 import flash.events.EventDispatcher;
 
+import net.ds3783.chatserver.messages.ChannelListMessage;
+import net.ds3783.chatserver.messages.CommandMessage;
+import net.ds3783.chatserver.messages.LoginMessage;
+
 public class ChatServerClient extends EventDispatcher {
 
     public static const LOGINED:String = "LOGINED";
@@ -19,11 +23,12 @@ public class ChatServerClient extends EventDispatcher {
     public static const MESSAGE:String = "MESSAGE";
     public static const BEFORE_DISCONNECT:String = "BEFORE_DISCONNECT";
 
-    public function ChatServerClient() {
+    public function ChatServerClient(autoJoin:Boolean = true) {
         connType = CONN_TYPE_SOCKET;
         socket = new SocketClient();
         socket.addEventListener(SocketClient.EVENT_CONNECTED, onConnected);
         socket.addEventListener(SocketClient.EVENT_LOGIN, onLogined);
+        autoJoinDefaultChannel = autoJoin;
     }
 
 
@@ -35,6 +40,7 @@ public class ChatServerClient extends EventDispatcher {
     private var _password:String;
     private var connected:Boolean;
     private var logined:Boolean;
+    private var autoJoinDefaultChannel:Boolean;
 
     private var socket:SocketClient;
 
@@ -43,6 +49,7 @@ public class ChatServerClient extends EventDispatcher {
         _connPort = port;
         this._username = username;
         this._password = password;
+        socket.addEventListener(SocketClient.EVENT_CHANNEL_LIST_UPDATE, onChannelListUpdate);
         socket.connect(_connHost, _connPort);
     }
 
@@ -51,19 +58,47 @@ public class ChatServerClient extends EventDispatcher {
     }
 
 
-    private function onConnected(e:ChatEvent):void {
+    private function onConnected(e:SocketEvent):void {
         connected = true;
-        dispatchEvent(new ChatEvent(CONNECTED));
+        dispatchEvent(new SocketEvent(CONNECTED));
         switch (connType) {
             case CONN_TYPE_SOCKET:
-                socket.login(_username, _password);
+                login(_username, _password);
                 break;
         }
     }
 
-    private function onLogined(e:ChatEvent):void {
+    public function login(username:String, password:String):void {
+        var message:LoginMessage = new LoginMessage();
+        message.username = username;
+        message.password = password;
+        socket.sendMessage(message);
+    }
+
+    private function onLogined(e:SocketEvent):void {
         logined = true;
         dispatchEvent(new ChatEvent(LOGINED));
+        listChannels();
+    }
+
+    public function listChannels():void {
+        var message:CommandMessage = new CommandMessage();
+        message.command = CommandType.LIST_CHANNELS;
+        message.content = '';
+        socket.sendMessage(message);
+    }
+
+    private function onChannelListUpdate(e:SocketEvent):void {
+        var list:ChannelListMessage = e.message as ChannelListMessage;
+        if (list) {
+            if (!(list.listeningChannels && list.listeningChannels.length > 0) && autoJoinDefaultChannel) {
+                //TODO:joinChannel
+            }
+            var event:ChatEvent = new ChatEvent(CHANNEL_LIST_UPDATE);
+            event.message = list;
+            dispatchEvent(event);
+        }
+
     }
 
 

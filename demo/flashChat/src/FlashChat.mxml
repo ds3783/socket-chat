@@ -11,15 +11,18 @@
         import mx.controls.Alert;
 
         import net.ds3783.chatserver.ChatEvent;
-        import net.ds3783.chatserver.SocketClient;
+        import net.ds3783.chatserver.ChatServerClient;
+        import net.ds3783.chatserver.messages.ChannelListMessage;
+        import net.ds3783.chatserver.messages.model.ChannelModel;
 
-        private var gClient:SocketClient = null;
+        private var gClient:ChatServerClient = null;
         private var username:String;
         private var password:String;
 
         public function initApp():void {
-            gClient = new SocketClient();
-            gClient.addEventListener(SocketClient.EVENT_CONNECTED, connected);
+            gClient = new ChatServerClient(true);
+            gClient.addEventListener(ChatServerClient.LOGINED, logined);
+            gClient.addEventListener(ChatServerClient.LOGIN_ERROR, loginedFail);
         }
 
         public function doConnect():void {
@@ -28,32 +31,42 @@
             }
             bt_enter.setStyle("disabled", "true");
 
-            gClient.connect(tf_host.text, parseInt(tf_port.text));
             trace("connecting to :" + tf_host.text + ":" + parseInt(tf_port.text));
             username = tf_username.text;
             password = tf_password.text;
+
+            gClient.connect(tf_host.text, parseInt(tf_port.text), username, password);
             viewstack.selectedChild = view_connecting;
         }
 
-        public function connected(ect:ChatEvent):void {
-            gClient.addEventListener(SocketClient.EVENT_LOGIN, logined);
-            gClient.addEventListener(SocketClient.EVENT_LOGIN_FAIL, loginedFail);
-            gClient.login(username, password);
-
-        }
-
         public function logined(evt:ChatEvent):void {
-            gClient.listChannels();
-//            viewstack.selectedChild = view_chat;
+            viewstack.selectedChild = view_chat;
+            gClient.addEventListener(ChatServerClient.CHANNEL_LIST_UPDATE, onChannelListUpdate);
         }
 
         public function loginedFail(evt:ChatEvent):void {
-            gClient.removeEventListener(SocketClient.EVENT_LOGIN, logined);
-            gClient.removeEventListener(SocketClient.EVENT_LOGIN_FAIL, loginedFail);
             viewstack.selectedChild = view_login;
             Alert.show("Login rquest denied,PASSWORD wrong?", "Login ERROR!");
         }
 
+        private function onChannelListUpdate(e:ChatEvent):void {
+            var msg:ChannelListMessage = e.message as ChannelListMessage;
+            roomList.removeAllChildren();
+            for each (var channelModel:ChannelModel in msg.channels) {
+                var channel:CheckBox = new CheckBox();
+                channel.label = channelModel.name;
+                channel.name = channelModel.id.toString();
+                channel.styleDeclaration.setStyle("paddingLeft", "10");
+                if (msg.listeningChannels) {
+                    for each (var number:Number in msg.listeningChannels) {
+                        if (number == channelModel.id) {
+                            channel.toggle = true;
+                        }
+                    }
+                }
+                roomList.addChild(channel);
+            }
+        }
 
     </mx:Script>
     <mx:ViewStack id="viewstack" left="10" right="10" top="10" bottom="10" selectedIndex="1">

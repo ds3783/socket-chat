@@ -43,6 +43,7 @@ public class SocketClient extends EventDispatcher {
     public static const EVENT_SERVERMESSAGE:String = "ON_SERVER";
     public static const EVENT_NETERROR:String = "ON_NETERROR";
     public static const EVENT_AUTHERROR:String = "ON_AUTHERROR";
+    public static const EVENT_CHANNEL_LIST_UPDATE:String = "ON_CHANNEL_LIST_UPDATE";
 
     public function connect(host:String, port:int):void {
         socket = new Socket();
@@ -69,21 +70,6 @@ public class SocketClient extends EventDispatcher {
         return this.logined;
     }
 
-    public function login(username:String, password:String):void {
-        var message:LoginMessage = new LoginMessage();
-        message.username = username;
-        message.password = password;
-        this.send(message);
-    }
-
-
-    public function listChannels():void {
-        var message:CommandMessage = new CommandMessage();
-        message.command = CommandType.LIST_CHANNELS;
-        message.content = '';
-        this.send(message);
-    }
-
     private function send(data:Message):void {
         if (!socket.connected) {
             throw new ChatServerError("Not Connected!");
@@ -96,14 +82,14 @@ public class SocketClient extends EventDispatcher {
         binaryData.writeBytes(serialized);
         binaryData.position = 0;
 
-        trace("send message:"+JSON.encode(data));
+        trace("send message:" + JSON.encode(data));
         socket.writeBytes(binaryData);
         socket.flush();
     }
 
     private function onStocketConnected(evt:Event):void {
         trace("Socket Connected to " + host + ":" + port);
-        var evt2:ChatEvent = new ChatEvent(EVENT_CONNECTED);
+        var evt2:SocketEvent = new SocketEvent(EVENT_CONNECTED);
         this.dispatchEvent(evt2);
     }
 
@@ -160,7 +146,7 @@ public class SocketClient extends EventDispatcher {
                     onCommand(sysMsg);
                     break;
                 case MessageType.CHAT_MESSAGE:
-                    var evt2:ChatEvent = new ChatEvent(EVENT_CLIENTMESSAGE);
+                    var evt2:SocketEvent = new SocketEvent(EVENT_CLIENTMESSAGE);
                     evt2.message = message;
                     this.dispatchEvent(evt2);
                     break;
@@ -170,7 +156,10 @@ public class SocketClient extends EventDispatcher {
 
 
     public function sendMessage(msg:Message):void {
-        if (!logined) {
+        if (msg == null) {
+            return;
+        }
+        if ((!logined && (msg as LoginMessage) == null)) {
             throw new ChatServerError("Not Logined!");
         }
         send(msg);
@@ -178,23 +167,29 @@ public class SocketClient extends EventDispatcher {
 
     private function onSocketIOError(evt:IOErrorEvent):void {
         trace('Stocket Error::' + evt.text);
-        var evt1:ChatEvent = new ChatEvent(EVENT_NETERROR);
+        var evt1:SocketEvent = new SocketEvent(EVENT_NETERROR);
         this.dispatchEvent(evt1);
     }
 
     private function onSecurityError(evt:SecurityErrorEvent):void {
         trace('Security Error::' + evt.text);
-        var evt1:ChatEvent = new ChatEvent(EVENT_AUTHERROR);
+        var evt1:SocketEvent = new SocketEvent(EVENT_AUTHERROR);
         this.dispatchEvent(evt1);
     }
 
     private function onCommand(sysMsg:SystemReplyMessage):void {
         switch (sysMsg.code) {
             case SystemReplyMessage.CODE_LOGIN_SUCCESS:
-                dispatchEvent(new ChatEvent(EVENT_LOGIN));
+                logined = true;
+                dispatchEvent(new SocketEvent(EVENT_LOGIN));
                 break;
             case SystemReplyMessage.CODE_ERROR_WRONG_PASSWORD:
-                dispatchEvent(new ChatEvent(EVENT_LOGIN_FAIL));
+                dispatchEvent(new SocketEvent(EVENT_LOGIN_FAIL));
+                break;
+            case SystemReplyMessage.CODE_CHANNEL_LIST:
+                var event:SocketEvent = new SocketEvent(EVENT_CHANNEL_LIST_UPDATE);
+                event.message = sysMsg;
+                dispatchEvent(event);
                 break;
         }
         trace(JSON.encode(sysMsg));

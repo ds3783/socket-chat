@@ -14,6 +14,7 @@ public class ChannelListMessage extends SystemReplyMessage implements Message {
     }
 
     public var channels:Array;
+    public var listeningChannels:Array;
 
     override public function getType():String {
         return MessageType.COMMAND_MESSAGE;

@@ -14,5 +14,6 @@ public class ChannelModel {
     public var name:String;
     public var internal:Boolean;
     public var maxMember:int;
+    public var defaultChannel:Boolean;
 }
 }

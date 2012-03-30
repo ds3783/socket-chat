@@ -8,8 +8,8 @@
 package net.ds3783.chatserver {
 import flash.events.EventDispatcher;
 
-public class ChatServerSocket extends EventDispatcher{
-     public static const LOGINED:String = "LOGINED";
+public class ChatServerSocket extends EventDispatcher {
+    public static const LOGINED:String = "LOGINED";
     public static const CONNECTED:String = "CONNECTED";
     public static const CONNECTED_ERROR:String = "CONNECTED_ERROR";
     public static const LOGIN_ERROR:String = "LOGIN_ERROR";
@@ -21,7 +21,6 @@ public class ChatServerSocket extends EventDispatcher{
     public function ChatServerSocket() {
         connType = CONN_TYPE_SOCKET;
         socket = new SocketClient();
-        socket.addEventListener(SocketClient.EVENT_CONNECTED, onConnected);
         socket.addEventListener(SocketClient.EVENT_LOGIN, onLogined);
     }
 
@@ -49,20 +48,9 @@ public class ChatServerSocket extends EventDispatcher{
 
     }
 
-
-    private function onConnected(e:ChatEvent):void {
-        connected = true;
-        dispatchEvent(new ChatEvent(CONNECTED));
-        switch (connType) {
-            case CONN_TYPE_SOCKET:
-                socket.login(_username, _password);
-                break;
-        }
-    }
-
-    private function onLogined(e:ChatEvent):void {
+    private function onLogined(e:SocketEvent):void {
         logined = true;
-        dispatchEvent(new ChatEvent(LOGINED));
+        dispatchEvent(new SocketEvent(LOGINED));
     }
 
 
