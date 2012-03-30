@@ -9,7 +9,6 @@ import net.ds3783.chatserver.dao.ChannelDao;
 import net.ds3783.chatserver.messages.ChannelListMessage;
 import net.ds3783.chatserver.messages.CommandMessage;
 import net.ds3783.chatserver.messages.MessageContext;
-import net.ds3783.chatserver.messages.SystemReplyMessage;
 import net.ds3783.chatserver.messages.model.ChannelModel;
 
 import java.util.List;
@@ -31,7 +30,7 @@ public class ListChannelListener extends DefaultCommandListener implements Event
             return true;
         }
         ChannelListMessage reply = new ChannelListMessage();
-        reply.setCode(SystemReplyMessage.CODE_200);
+        reply.setListeningChannels(new Long[0]);//TODO::
         CommandMessage command = (CommandMessage) event.getMessage();
         MessageContext context = contextHelper.getContext(command);
         //receivers

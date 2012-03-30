@@ -13,6 +13,9 @@
         <property name="name" column="NAME" not-null="true" unique="true" length="200"/>
         <property name="internal" column="ISINTERNAL" not-null="true"/>
         <property name="maxMember" column="MAXMEMBER" not-null="false" length="10"/>
+        <property name="defaultChannel" not-null="false">
+            <column name="DEFAULTCHANNEL" sql-type="int(1)"/>
+        </property>
     </class>
 
 

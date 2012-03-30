@@ -14,6 +14,7 @@ public class SystemReplyMessage implements Message {
 
     public static final int CODE_200 = 200;
     public static final int CODE_LOGIN_SUCCESS = 201;//登录成功
+    public static final int CODE_CHANNEL_LIST = 202;//频道列表
 
     public static final int CODE_USER_ONLINE = 301;//其他用户登录
 

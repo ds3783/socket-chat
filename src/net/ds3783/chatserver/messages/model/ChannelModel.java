@@ -16,6 +16,7 @@ public class ChannelModel implements Serializable {
     private String name;
     private boolean internal;
     private int maxMember;
+    private boolean defaultChannel;
 
 
     public ChannelModel(Channel channel) {
@@ -23,6 +24,7 @@ public class ChannelModel implements Serializable {
         name = channel.getName();
         internal = channel.isInternal();
         maxMember = channel.getMaxMember();
+        defaultChannel = channel.isDefaultChannel();
     }
 
     public Long getId() {
@@ -55,5 +57,13 @@ public class ChannelModel implements Serializable {
 
     public void setMaxMember(int maxMember) {
         this.maxMember = maxMember;
+    }
+
+    public boolean isDefaultChannel() {
+        return defaultChannel;
+    }
+
+    public void setDefaultChannel(boolean defaultChannel) {
+        this.defaultChannel = defaultChannel;
     }
 }

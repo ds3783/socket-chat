@@ -137,6 +137,7 @@
                     <property name="internal" value="true"/>
                     <property name="maxMember" value="50000"/>
                     <property name="name" value="¹«¹²ÆµµÀ"/>
+                    <property name="defaultChannel" value="true"/>
                 </bean>
             </list>
         </property>

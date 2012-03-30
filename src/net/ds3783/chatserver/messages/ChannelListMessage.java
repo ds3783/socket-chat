@@ -12,6 +12,12 @@ import net.ds3783.chatserver.messages.model.ChannelModel;
  */
 public class ChannelListMessage extends SystemReplyMessage implements Message {
     private ChannelModel[] channels;
+    private Long[] listeningChannels;
+
+
+    public ChannelListMessage() {
+        this.setCode(SystemReplyMessage.CODE_CHANNEL_LIST);
+    }
 
     public ChannelModel[] getChannels() {
         return channels;
@@ -19,6 +25,14 @@ public class ChannelListMessage extends SystemReplyMessage implements Message {
 
     public void setChannels(ChannelModel[] channels) {
         this.channels = channels;
+    }
+
+    public Long[] getListeningChannels() {
+        return listeningChannels;
+    }
+
+    public void setListeningChannels(Long[] listeningChannels) {
+        this.listeningChannels = listeningChannels;
     }
 
     public String getType() {
