@@ -9,7 +9,7 @@ import java.util.List;
  * Created by IntelliJ IDEA.
  * User: hongyu.pi
  * Date: 12-3-15
- * Time: ÏÂÎç2:37
+ * Time: ï¿½ï¿½ï¿½ï¿½2:37
  * To change this template use File | Settings | File Templates.
  */
 public class ChannelDao extends HibernateDaoSupport {
@@ -19,6 +19,15 @@ public class ChannelDao extends HibernateDaoSupport {
 
     public void registerChannel(Channel newChannel) {
         getHibernateTemplate().saveOrUpdate(newChannel);
+        getHibernateTemplate().flush();
+    }
+
+    public List<ClientChannel> getMyChannels(String clientid) {
+        return Utils.castList(getHibernateTemplate().find("from ClientChannel where  clientId=?", clientid), ClientChannel.class);
+    }
+
+    public void removeClientChannel(ClientChannel clientChannel) {
+        getHibernateTemplate().delete(clientChannel);
         getHibernateTemplate().flush();
     }
 }

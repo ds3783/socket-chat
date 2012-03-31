@@ -7,7 +7,7 @@
         package="net.ds3783.chatserver.dao">
     <!--ÖÐÎÄ-->
     <class name="Client" table="client" lazy="false">
-        <id name="uid" column="UID">
+        <id name="uid" column="UID" length="40">
             <generator class="native"/>
         </id>
         <property name="name" column="NAME" not-null="true" unique="true" length="200"/>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="GBK"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping
+        package="net.ds3783.chatserver.dao">
+    <!--中文-->
+    <class name="ClientChannel" table="client_channel" lazy="false">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="clientId" column="CLIENTID" not-null="true" length="40"/>
+        <property name="channelId" column="CHANNELID" not-null="true"/>
+        <property name="current" column="ISCURRENT" not-null="true"/>
+    </class>
+
+
+</hibernate-mapping>

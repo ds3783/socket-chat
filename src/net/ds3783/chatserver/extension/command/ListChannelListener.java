@@ -6,11 +6,14 @@ import net.ds3783.chatserver.communicate.delivery.Event;
 import net.ds3783.chatserver.communicate.delivery.EventListener;
 import net.ds3783.chatserver.dao.Channel;
 import net.ds3783.chatserver.dao.ChannelDao;
+import net.ds3783.chatserver.dao.ClientChannel;
+import net.ds3783.chatserver.logic.ChannelLogic;
 import net.ds3783.chatserver.messages.ChannelListMessage;
 import net.ds3783.chatserver.messages.CommandMessage;
 import net.ds3783.chatserver.messages.MessageContext;
 import net.ds3783.chatserver.messages.model.ChannelModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,6 +26,7 @@ import java.util.List;
 public class ListChannelListener extends DefaultCommandListener implements EventListener {
     private ContextHelper contextHelper;
     private ChannelDao channelDao;
+    private ChannelLogic channelLogic;
 
     public boolean onEvent(Event event) {
         if (!CommandType.LIST_CHANNELS.equals(event.getName())) {
@@ -30,7 +34,6 @@ public class ListChannelListener extends DefaultCommandListener implements Event
             return true;
         }
         ChannelListMessage reply = new ChannelListMessage();
-        reply.setListeningChannels(new Long[0]);//TODO::
         CommandMessage command = (CommandMessage) event.getMessage();
         MessageContext context = contextHelper.getContext(command);
         //receivers
@@ -45,6 +48,16 @@ public class ListChannelListener extends DefaultCommandListener implements Event
             chls[i] = new ChannelModel(channel);
         }
         reply.setChannels(chls);
+
+        //获得当前已经加入的channels
+        List<ClientChannel> myChannels = channelLogic.getMyChannels(event.getContext().getSender().getUid());
+        List<Long> myChanList = new ArrayList<Long>();
+        for (ClientChannel myChannel : myChannels) {
+            myChanList.add(myChannel.getChannelId());
+        }
+        reply.setListeningChannels(myChanList.toArray(new Long[myChanList.size()]));
+
+
         outputerSwitcher.switchTo(reply);
         //阻止其他Listener
         return false;
@@ -61,5 +74,9 @@ public class ListChannelListener extends DefaultCommandListener implements Event
 
     public void setChannelDao(ChannelDao channelDao) {
         this.channelDao = channelDao;
+    }
+
+    public void setChannelLogic(ChannelLogic channelLogic) {
+        this.channelLogic = channelLogic;
     }
 }

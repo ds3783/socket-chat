@@ -5,6 +5,7 @@
     <session-factory>
         <mapping resource="net/ds3783/chatserver/dao/Channel.hbm.xml"/>
         <mapping resource="net/ds3783/chatserver/dao/Client.hbm.xml"/>
+        <mapping resource="net/ds3783/chatserver/dao/ClientChannel.hbm.xml"/>
         <mapping resource="net/ds3783/chatserver/dao/BlackList.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
