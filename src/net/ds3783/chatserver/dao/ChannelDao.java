@@ -30,4 +30,13 @@ public class ChannelDao extends HibernateDaoSupport {
         getHibernateTemplate().delete(clientChannel);
         getHibernateTemplate().flush();
     }
+
+    public void addClientChannel(ClientChannel cc) {
+        getHibernateTemplate().save(cc);
+        getHibernateTemplate().flush();
+    }
+
+    public Channel getChannel(Long channelid) {
+        return (Channel) getHibernateTemplate().get(Channel.class, channelid);
+    }
 }

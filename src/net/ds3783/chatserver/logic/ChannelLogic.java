@@ -39,6 +39,12 @@ public class ChannelLogic {
         }
     }
 
+    /**
+     * 查询当前所在channel
+     *
+     * @param uid
+     * @return
+     */
     public List<ClientChannel> getMyChannels(String uid) {
         List<ClientChannel> result = channelDao.getMyChannels(uid);
         List<Channel> channels = channelDao.getChannels();
@@ -61,6 +67,21 @@ public class ChannelLogic {
             }
         }
         return result;
+    }
+
+    /**
+     * 加入频道
+     *
+     * @param sender
+     * @param channel
+     * @return
+     */
+    public ClientChannel joinChannel(Client sender, Channel channel) {
+        ClientChannel cc = new ClientChannel();
+        cc.setChannelId(channel.getId());
+        cc.setClientId(sender.getUid());
+        channelDao.addClientChannel(cc);
+        return cc;
     }
 
     public void setChannelDao(ChannelDao channelDao) {
