@@ -78,7 +78,7 @@ public class JoinChannelListener extends DefaultCommandListener implements Event
 
 
     public void init() {
-        commandDispatcher.addListener(CommandType.LIST_CHANNELS, this);
+        commandDispatcher.addListener(CommandType.JOIN_CHANNEL, this);
     }
 
     public void setContextHelper(ContextHelper contextHelper) {

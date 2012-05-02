@@ -50,7 +50,7 @@ public class ListChannelListener extends DefaultCommandListener implements Event
         reply.setChannels(chls);
 
         //获得当前已经加入的channels
-        List<ClientChannel> myChannels = channelLogic.getMyChannels(event.getContext().getSender().getUid());
+        List<ClientChannel> myChannels = channelLogic.getMyChannels(context.getSender().getUid());
         List<Long> myChanList = new ArrayList<Long>();
         for (ClientChannel myChannel : myChannels) {
             myChanList.add(myChannel.getChannelId());
