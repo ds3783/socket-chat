@@ -11,6 +11,7 @@ import flash.events.EventDispatcher;
 import net.ds3783.chatserver.messages.ChannelListMessage;
 import net.ds3783.chatserver.messages.CommandMessage;
 import net.ds3783.chatserver.messages.LoginMessage;
+import net.ds3783.chatserver.messages.model.ChannelModel;
 
 public class ChatServerClient extends EventDispatcher {
 
@@ -53,10 +54,6 @@ public class ChatServerClient extends EventDispatcher {
         socket.connect(_connHost, _connPort);
     }
 
-    public function updateChannelList() {
-
-    }
-
 
     private function onConnected(e:SocketEvent):void {
         connected = true;
@@ -92,7 +89,16 @@ public class ChatServerClient extends EventDispatcher {
         var list:ChannelListMessage = e.message as ChannelListMessage;
         if (list) {
             if (!(list.listeningChannels && list.listeningChannels.length > 0) && autoJoinDefaultChannel) {
-                //TODO:joinChannel
+                //joinChannel
+                for each (var channelModel:ChannelModel in list.channels) {
+                    if (channelModel.defaultChannel) {
+                        var message:CommandMessage = new CommandMessage();
+                        message.command = CommandType.JOIN_CHANNEL;
+                        message.content = channelModel.id.toString(10);
+                        socket.sendMessage(message);
+                        break;
+                    }
+                }
             }
             var event:ChatEvent = new ChatEvent(CHANNEL_LIST_UPDATE);
             event.message = list;

@@ -2,6 +2,10 @@
     <target-player>10.0</target-player>
     <compiler>
         <debug>true</debug>
+        <theme>
+            <!-- The Flex 4 default theme is Spark. -->
+            <filename>${flexlib}/themes/Halo/halo.swc</filename>
+        </theme>
         <source-path>
             <path-element>src</path-element>
         </source-path>

@@ -60,7 +60,7 @@
                 if (msg.listeningChannels) {
                     for each (var number:Number in msg.listeningChannels) {
                         if (number == channelModel.id) {
-                            channel.toggle = true;
+                            channel.selected = true;
                         }
                     }
                 }
