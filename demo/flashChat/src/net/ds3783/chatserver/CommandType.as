@@ -10,8 +10,9 @@ public class CommandType {
     public function CommandType() {
     }
 
-    public static const  LIST_CHANNELS:String = "LIST_CHANNELS";
-    public static const  CREATE_CHANNEL:String = "CREATE_CHANNEL";
-    public static const  JOIN_CHANNEL:String = "JOIN_CHANNEL";
+    public static const LIST_CHANNELS:String = "LIST_CHANNELS";
+    public static const CREATE_CHANNEL:String = "CREATE_CHANNEL";
+    public static const JOIN_CHANNEL:String = "JOIN_CHANNEL";
+    public static const EXIT_CHANNEL:String = "EXIT_CHANNEL";
 }
 }

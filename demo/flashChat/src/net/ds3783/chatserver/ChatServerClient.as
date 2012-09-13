@@ -85,6 +85,21 @@ public class ChatServerClient extends EventDispatcher {
         socket.sendMessage(message);
     }
 
+    public function joinChannel(channelId:String):void {
+        var message:CommandMessage = new CommandMessage();
+        message.command = CommandType.JOIN_CHANNEL;
+        message.content = channelId;
+        socket.sendMessage(message);
+    }
+
+    public function exitChannel(channelId:String):void {
+        //todo::  …–Œ¥≤‚ ‘
+        var message:CommandMessage = new CommandMessage();
+        message.command = CommandType.EXIT_CHANNEL;
+        message.content = channelId;
+        socket.sendMessage(message);
+    }
+
     private function onChannelListUpdate(e:SocketEvent):void {
         var list:ChannelListMessage = e.message as ChannelListMessage;
         if (list) {
