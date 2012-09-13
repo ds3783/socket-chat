@@ -11,6 +11,7 @@ public class CommandType {
     public static String LIST_CHANNELS = "LIST_CHANNELS";
     public static String CREATE_CHANNEL = "CREATE_CHANNEL";
     public static String JOIN_CHANNEL = "JOIN_CHANNEL";
+    public static String EXIT_CHANNEL = "EXIT_CHANNEL";
 
     public static String LOGOUT = "LOGOUT";
 }

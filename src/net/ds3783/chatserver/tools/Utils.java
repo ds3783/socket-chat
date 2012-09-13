@@ -68,7 +68,7 @@ public class Utils {
         if (bytes == null || bytes.length == 0) {
             return null;
         }
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder buffer = new StringBuilder();
         for (byte b : bytes) {
             String bStr = Integer.toHexString(b < 0 ? b + 256 : b);
             if (bStr.length() == 1) {
