@@ -18,19 +18,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by IntelliJ IDEA.
- * User: Ds3783
- * Date: 12-5-1
- * Time: 下午10:45
+ * Created with IntelliJ IDEA.
+ * User: hongyu.pi
+ * Date: 12-9-18
+ * Time: 下午3:18
  * To change this template use File | Settings | File Templates.
  */
-public class JoinChannelListener extends DefaultCommandListener implements EventListener {
+public class ExitChannelListener extends DefaultCommandListener implements EventListener {
     private ContextHelper contextHelper;
     private ChannelDao channelDao;
     private ChannelLogic channelLogic;
 
     public boolean onEvent(Event event) {
-        if (!CommandType.JOIN_CHANNEL.equals(event.getName())) {
+        if (!CommandType.EXIT_CHANNEL.equals(event.getName())) {
             //非ListChannel命令交由其他Listener处理
             return true;
         }
@@ -44,16 +44,24 @@ public class JoinChannelListener extends DefaultCommandListener implements Event
         //获得所有Channel
         Long channelid = new Long(command.getContent());
         List<ClientChannel> myChannel = channelLogic.getMyChannels(context.getSender().getUid());
+        ClientChannel inChannel = null;
         for (ClientChannel clientChannel : myChannel) {
             if (clientChannel.getChannelId().equals(channelid)) {
-                throw new ExtensionException("加入频道失败，您已在此频道！");
+                inChannel = clientChannel;
+                break;
             }
         }
-        Channel joinChannel = channelDao.getChannel(channelid);
-        if (joinChannel == null) {
-            throw new ExtensionException("加入频道失败，无效的频道！");
+        if (inChannel == null) {
+            throw new ExtensionException("退出频道失败，您(已)不在此频道！");
         }
-        ClientChannel newChannel = channelLogic.joinChannel(context.getSender(), joinChannel);
+        Channel exitChannel = channelDao.getChannel(channelid);
+        if (exitChannel == null) {
+            throw new ExtensionException("退出频道失败，无效的频道！");
+        }
+        if (myChannel.size()<=1){
+            throw new ExtensionException("退出频道失败，您心中有存在感么？！");
+        }
+        channelLogic.exitChannel(inChannel);
 
         List<Channel> channels = channelDao.getChannels();
         ChannelModel[] chls = new ChannelModel[channels.size()];
@@ -62,7 +70,6 @@ public class JoinChannelListener extends DefaultCommandListener implements Event
             chls[i] = new ChannelModel(channel);
         }
         reply.setChannels(chls);
-       // myChannel.add(newChannel);
         //获得当前已经加入的channels
         List<Long> myChanList = new ArrayList<Long>();
         for (ClientChannel channel : myChannel) {
@@ -78,7 +85,7 @@ public class JoinChannelListener extends DefaultCommandListener implements Event
 
 
     public void init() {
-        commandDispatcher.addListener(CommandType.JOIN_CHANNEL, this);
+        commandDispatcher.addListener(CommandType.EXIT_CHANNEL, this);
     }
 
     public void setContextHelper(ContextHelper contextHelper) {

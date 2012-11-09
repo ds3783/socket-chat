@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" initialize="init();">
     <!--
          G-Chat Actionscript 3.0 example application:
 
@@ -9,6 +9,8 @@
 
     <mx:Script>
         import mx.controls.Alert;
+        import mx.core.SpriteAsset;
+        import mx.managers.PopUpManager;
 
         import net.ds3783.chatserver.ChatEvent;
         import net.ds3783.chatserver.ChatServerClient;
@@ -19,10 +21,20 @@
         private var username:String;
         private var password:String;
 
+
+        private function init():void {
+            view_chat.addEventListener(Event.ACTIVATE, function ():void {
+                var btn_crtroom:Button=view_chat_panel.getChildByName("btn_crtroom") as Button;
+                btn_crtroom.addEventListener(MouseEvent.CLICK, createRoom);
+            });
+
+        }
+
         public function initApp():void {
             gClient = new ChatServerClient(true);
             gClient.addEventListener(ChatServerClient.LOGINED, logined);
             gClient.addEventListener(ChatServerClient.LOGIN_ERROR, loginedFail);
+
         }
 
         public function doConnect():void {
@@ -42,8 +54,6 @@
         public function logined(evt:ChatEvent):void {
             viewstack.selectedChild = view_chat;
             gClient.addEventListener(ChatServerClient.CHANNEL_LIST_UPDATE, onChannelListUpdate);
-
-            createRoomButton.addEventListener(MouseEvent.CLICK, createRoom);
         }
 
         public function loginedFail(evt:ChatEvent):void {
@@ -95,8 +105,18 @@
         }
 
         private function createRoom():void {
+            //先整一个window
+            var sprite:SpriteAsset = new SpriteAsset();
+            var input:TextArea = new TextArea();
+            input.maxChars = 30;
+            sprite.addChild(input);
 
+            var button:Button = new Button();
+            button.label = "确定";
+            sprite.addChild(button);
+            PopUpManager.addPopUp(sprite, this);
         }
+
 
     </mx:Script>
     <mx:ViewStack id="viewstack" left="10" right="10" top="10" bottom="10" selectedIndex="1">
@@ -150,7 +170,7 @@
             </mx:Panel>
         </mx:Canvas>
         <mx:Canvas width="100%" height="100%" id="view_chat">
-            <mx:Panel width="695" height="537" layout="absolute" horizontalCenter="0" verticalCenter="0.5"
+            <mx:Panel width="695" height="537" layout="absolute" id="view_chat_panel" horizontalCenter="0" verticalCenter="0.5"
                       title="::.. G-Chat-Demo ..:: ( 0.0.1 )" backgroundColor="#f0f0f0">
                 <mx:TextArea x="10" y="37" height="382" width="458" id="ta_chat" fontSize="11" themeColor="#ffcc00"/>
 
@@ -164,7 +184,7 @@
                 <mx:TextInput x="10" y="428" width="289" id="tf_pubmsg" themeColor="#ffcc00"/>
                 <mx:Button x="307" y="427" label="Send &gt;&gt;" width="75" themeColor="#ffcc00"/>
                 <mx:Button x="390" y="427" label="LOG OUT" width="78" color="#ff0000" themeColor="#ffcc00"/>
-                <mx:Button x="476" y="217" label="Create room" width="104" id="createRoomButton"/>
+                <mx:Button x="476" y="217" label="Create room" width="104" name="btn_crtroom"/>
                 <mx:HRule y="457" width="655" left="10" height="14"/>
                 <mx:Label text="www.gproject.com" width="655" textAlign="center" color="#333333" y="472"/>
                 <mx:VBox x="476" y="37" width="189" height="172" id="roomList" themeColor="#ffcc00"

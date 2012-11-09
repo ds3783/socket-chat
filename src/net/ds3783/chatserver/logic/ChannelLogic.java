@@ -84,6 +84,10 @@ public class ChannelLogic {
         return cc;
     }
 
+    public void exitChannel(ClientChannel inChannel) {
+        channelDao.deleteClientChannel(inChannel);
+    }
+
     public void setChannelDao(ChannelDao channelDao) {
         this.channelDao = channelDao;
     }
