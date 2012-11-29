@@ -8,8 +8,8 @@
      -->
 
     <mx:Script>
+        import mx.containers.TitleWindow;
         import mx.controls.Alert;
-        import mx.core.SpriteAsset;
         import mx.managers.PopUpManager;
 
         import net.ds3783.chatserver.ChatEvent;
@@ -23,11 +23,14 @@
 
 
         private function init():void {
-            view_chat.addEventListener(Event.ACTIVATE, function ():void {
-                var btn_crtroom:Button=view_chat_panel.getChildByName("btn_crtroom") as Button;
-                btn_crtroom.addEventListener(MouseEvent.CLICK, createRoom);
+            view_chat.addEventListener(Event.ACTIVATE, function (e:Event):void {
+                if (view_chat_panel) {
+                    var btn_crtroom:Button = view_chat_panel.getChildByName("btn_crtroom") as Button;
+                    if (btn_crtroom) {
+                        btn_crtroom.addEventListener(MouseEvent.CLICK, createRoom);
+                    }
+                }
             });
-
         }
 
         public function initApp():void {
@@ -104,17 +107,18 @@
             }
         }
 
-        private function createRoom():void {
+        private function createRoom(e:Event):void {
             //先整一个window
-            var sprite:SpriteAsset = new SpriteAsset();
+            var sprite:TitleWindow = new TitleWindow();
+            sprite.title = "::.. RoomName ..::";
             var input:TextArea = new TextArea();
             input.maxChars = 30;
             sprite.addChild(input);
 
             var button:Button = new Button();
-            button.label = "确定";
+            button.label = "DOIT!";
             sprite.addChild(button);
-            PopUpManager.addPopUp(sprite, this);
+            PopUpManager.addPopUp(sprite, this, true);
         }
 
 
@@ -170,7 +174,8 @@
             </mx:Panel>
         </mx:Canvas>
         <mx:Canvas width="100%" height="100%" id="view_chat">
-            <mx:Panel width="695" height="537" layout="absolute" id="view_chat_panel" horizontalCenter="0" verticalCenter="0.5"
+            <mx:Panel width="695" height="537" layout="absolute" id="view_chat_panel" horizontalCenter="0"
+                      verticalCenter="0.5"
                       title="::.. G-Chat-Demo ..:: ( 0.0.1 )" backgroundColor="#f0f0f0">
                 <mx:TextArea x="10" y="37" height="382" width="458" id="ta_chat" fontSize="11" themeColor="#ffcc00"/>
 

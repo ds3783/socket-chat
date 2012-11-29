@@ -16,6 +16,7 @@
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="e70535b8-47f5-4186-b18b-63b674d02f49" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flashChat.iml" afterPath="$PROJECT_DIR$/flashChat.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FlashChat.mxml" afterPath="$PROJECT_DIR$/src/FlashChat.mxml" />
     </list>
     <ignored path="$USER_HOME$/.griffon/" />
@@ -91,15 +92,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ChatServerClient.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/ChatServerClient.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="119" column="14" selection-start="4397" selection-end="4397" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ChatServerSocket.as" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/ChatServerSocket.as">
           <provider selected="true" editor-type-id="text-editor">
@@ -118,40 +110,69 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FlashChat.mxml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="FlashChat.mxml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FlashChat.mxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="62" selection-start="1097" selection-end="1097" vertical-scroll-proportion="0.7512953">
+            <state line="112" column="45" selection-start="4288" selection-end="4288" vertical-scroll-proportion="-0.7096774">
               <folding>
-                <marker date="1352464126827" expanded="false" signature="282:613" placeholder="..." />
-                <marker date="1352464126827" expanded="true" signature="781:1055" placeholder="{...}" />
-                <marker date="1352464126827" expanded="true" signature="855:1042" placeholder="{...}" />
-                <marker date="1352464126827" expanded="true" signature="1096:1312" placeholder="{...}" />
-                <marker date="1352464126827" expanded="true" signature="1355:1803" placeholder="{...}" />
-                <marker date="1352464126827" expanded="true" signature="1390:1432" placeholder="{...}" />
-                <marker date="1352464126827" expanded="true" signature="1857:2014" placeholder="{...}" />
-                <marker date="1352464126827" expanded="true" signature="2072:2212" placeholder="{...}" />
-                <marker date="1352464126827" expanded="true" signature="2277:3123" placeholder="{...}" />
-                <marker date="1352464126827" expanded="true" signature="2464:3113" placeholder="{...}" />
-                <marker date="1352464126827" expanded="true" signature="2729:2982" placeholder="{...}" />
-                <marker date="1352464126827" expanded="true" signature="2805:2964" placeholder="{...}" />
-                <marker date="1352464126827" expanded="true" signature="2862:2942" placeholder="{...}" />
-                <marker date="1352464126827" expanded="true" signature="3182:3984" placeholder="{...}" />
-                <marker date="1352464126827" expanded="true" signature="3366:3506" placeholder="{...}" />
-                <marker date="1352464126827" expanded="true" signature="3407:3492" placeholder="{...}" />
-                <marker date="1352464126827" expanded="true" signature="3536:3683" placeholder="{...}" />
-                <marker date="1352464126827" expanded="true" signature="3726:3864" placeholder="{...}" />
-                <marker date="1352464126827" expanded="true" signature="3870:3974" placeholder="{...}" />
-                <marker date="1352464126827" expanded="true" signature="4029:4405" placeholder="{...}" />
+                <marker date="1354164493330" expanded="true" signature="282:655" placeholder="..." />
+                <marker date="1354164493330" expanded="true" signature="823:1235" placeholder="{...}" />
+                <marker date="1354164493330" expanded="true" signature="904:1223" placeholder="{...}" />
+                <marker date="1354164493330" expanded="true" signature="943:1209" placeholder="{...}" />
+                <marker date="1354164493330" expanded="true" signature="1084:1191" placeholder="{...}" />
+                <marker date="1354164493330" expanded="true" signature="1276:1492" placeholder="{...}" />
+                <marker date="1354164493330" expanded="true" signature="1535:1983" placeholder="{...}" />
+                <marker date="1354164493330" expanded="true" signature="1570:1612" placeholder="{...}" />
+                <marker date="1354164493330" expanded="true" signature="2037:2194" placeholder="{...}" />
+                <marker date="1354164493330" expanded="true" signature="2252:2392" placeholder="{...}" />
+                <marker date="1354164493330" expanded="true" signature="2457:3303" placeholder="{...}" />
+                <marker date="1354164493330" expanded="true" signature="2644:3293" placeholder="{...}" />
+                <marker date="1354164493330" expanded="true" signature="2909:3162" placeholder="{...}" />
+                <marker date="1354164493330" expanded="true" signature="2985:3144" placeholder="{...}" />
+                <marker date="1354164493330" expanded="true" signature="3042:3122" placeholder="{...}" />
+                <marker date="1354164493330" expanded="true" signature="3362:4164" placeholder="{...}" />
+                <marker date="1354164493330" expanded="true" signature="3546:3686" placeholder="{...}" />
+                <marker date="1354164493330" expanded="true" signature="3587:3672" placeholder="{...}" />
+                <marker date="1354164493330" expanded="true" signature="3716:3863" placeholder="{...}" />
+                <marker date="1354164493330" expanded="true" signature="3906:4044" placeholder="{...}" />
+                <marker date="1354164493330" expanded="true" signature="4050:4154" placeholder="{...}" />
+                <marker date="1354164493330" expanded="true" signature="4216:4647" placeholder="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PopUpManager.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://C:/Tools/FDK/4.1/frameworks/projects/framework/src/mx/managers/PopUpManager.as">
+      <file leaf-file-name="TitleWindow.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://D:/Tools/FDK/4.1/frameworks/projects/framework/src/mx/containers/TitleWindow.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="186" column="27" selection-start="7149" selection-end="7149" vertical-scroll-proportion="0.0">
+            <state line="197" column="36" selection-start="5861" selection-end="5861" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Panel.as" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://D:/Tools/FDK/4.1/frameworks/projects/framework/src/mx/containers/Panel.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="483" column="13" selection-start="13849" selection-end="13849" vertical-scroll-proportion="0.33247423">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PopUpManager.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://D:/Tools/FDK/4.1/frameworks/projects/framework/src/mx/managers/PopUpManager.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="151" column="49" selection-start="5634" selection-end="5645" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -160,25 +181,7 @@
       <file leaf-file-name="flashChat_Flex_temp_flex_config.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flashChat_Flex_temp_flex_config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="42" selection-start="361" selection-end="361" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="flex-config.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://C:/Tools/FDK/4.6/frameworks/flex-config.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="51" selection-start="2241" selection-end="2241" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CSSStyleDeclaration.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://C:/Tools/FDK/4.6/frameworks/projects/framework/src/mx/styles/CSSStyleDeclaration.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="656" column="20" selection-start="20937" selection-end="20937" vertical-scroll-proportion="0.0">
+            <state line="13" column="35" selection-start="446" selection-end="455" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -262,7 +265,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -274,6 +277,78 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flashChat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flashChat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flashChat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flashChat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flashChat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flashChat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flashChat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flashChat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flashChat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="projectFilesBackup" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Favorites" />
     </panes>
   </component>
@@ -285,7 +360,7 @@
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="options.lastSelected" value="preferences.pluginManager" />
-    <property name="last_opened_file_path" value="C:\Projects\TGBUS\emprise_new\_dev" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../.." />
     <property name="project.structure.side.proportion" value="0.11655012" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -497,11 +572,6 @@
       <ConfigurationWrapper RunnerId="FlexRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Unnamed" type="FlexRunConfigurationType" factoryName="Flex" browser_family="FIREFOX" debugger_sdk="Module SDK" html_or_swf_file_path="" launcher_type="OSDefault" main_class_name="" module_name="flashChat" player_path="FlashPlayer.exe" run_mode="ConnectToRunningFlashPlayer" run_trusted="true" url_to_launch="http://">
-      <RunnerSettings RunnerId="FlexDebugRunner" />
-      <ConfigurationWrapper RunnerId="FlexDebugRunner" />
-      <method />
-    </configuration>
     <list size="1">
       <item index="0" class="java.lang.String" itemvalue="Flash App.Flex Application" />
     </list>
@@ -564,16 +634,16 @@
     <option name="myMappingRoots">
       <list>
         <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="D:\Projects\MY\g-chat-server\demo\flashChat" />
-          <option name="myCopyRoot" value="D:\Projects\MY\g-chat-server\demo\flashChat" />
+          <option name="myVcsRoot" value="C:\Projects\MY\g-chat-server\demo\flashChat" />
+          <option name="myCopyRoot" value="C:\Projects\MY\g-chat-server\demo\flashChat" />
         </SvnCopyRootSimple>
       </list>
     </option>
     <option name="myMoreRealMappingRoots">
       <list>
         <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="D:\Projects\MY\g-chat-server\demo\flashChat" />
-          <option name="myCopyRoot" value="D:\Projects\MY\g-chat-server\demo\flashChat" />
+          <option name="myVcsRoot" value="C:\Projects\MY\g-chat-server\demo\flashChat" />
+          <option name="myCopyRoot" value="C:\Projects\MY\g-chat-server\demo\flashChat" />
         </SvnCopyRootSimple>
       </list>
     </option>
@@ -620,18 +690,18 @@
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4681604" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46508875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20636792" sideWeight="0.49839228" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5070755" sideWeight="0.49785638" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5065089" sideWeight="0.49785638" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900944" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23204716" sideWeight="0.6049528" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1656868" sideWeight="0.4934911" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -733,7 +803,11 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="flex">
           <url>file://$PROJECT_DIR$/src/FlashChat.mxml</url>
-          <line>27</line>
+          <line>112</line>
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="flex">
+          <url>file://$PROJECT_DIR$/src/FlashChat.mxml</url>
+          <line>121</line>
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -753,19 +827,9 @@
         <state line="19" column="31" selection-start="434" selection-end="434" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="jar://C:/Tools/FDK/4.6/frameworks/libs/player/11.1/playerglobal.swc!/library.swf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1625" column="13" selection-start="72418" selection-end="72418" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/ChatEvent.as">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="94" selection-start="348" selection-end="348" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="jar://C:/Tools/FDK/4.1/frameworks/libs/player/10.0/playerglobal.swc!/library.swf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2794" column="13" selection-start="116504" selection-end="116504" vertical-scroll-proportion="0.03101737" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/CommandType.as">
@@ -788,24 +852,14 @@
         <state line="34" column="0" selection-start="811" selection-end="811" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://C:/Tools/FDK/4.1/frameworks/projects/framework/src/mx/managers/PopUpManager.as">
+    <entry file="file://$PROJECT_DIR$/src/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="186" column="27" selection-start="7149" selection-end="7149" vertical-scroll-proportion="0.0" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/flashChat_Flex_temp_flex_config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="42" selection-start="361" selection-end="361" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://C:/Tools/FDK/4.6/frameworks/flex-config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="51" selection-start="2241" selection-end="2241" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://C:/Tools/FDK/4.6/frameworks/projects/framework/src/mx/styles/CSSStyleDeclaration.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="656" column="20" selection-start="20937" selection-end="20937" vertical-scroll-proportion="0.0" />
+        <state line="13" column="35" selection-start="446" selection-end="455" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/SocketClient.as">
@@ -818,31 +872,54 @@
         <state line="7" column="20" selection-start="157" selection-end="157" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://D:/Tools/FDK/4.1/frameworks/projects/framework/src/mx/managers/PopUpManager.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="151" column="49" selection-start="5634" selection-end="5645" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/FlashChat.mxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="62" selection-start="1097" selection-end="1097" vertical-scroll-proportion="0.7512953">
+        <state line="112" column="45" selection-start="4288" selection-end="4288" vertical-scroll-proportion="-0.7096774">
           <folding>
-            <marker date="1352464126827" expanded="false" signature="282:613" placeholder="..." />
-            <marker date="1352464126827" expanded="true" signature="781:1055" placeholder="{...}" />
-            <marker date="1352464126827" expanded="true" signature="855:1042" placeholder="{...}" />
-            <marker date="1352464126827" expanded="true" signature="1096:1312" placeholder="{...}" />
-            <marker date="1352464126827" expanded="true" signature="1355:1803" placeholder="{...}" />
-            <marker date="1352464126827" expanded="true" signature="1390:1432" placeholder="{...}" />
-            <marker date="1352464126827" expanded="true" signature="1857:2014" placeholder="{...}" />
-            <marker date="1352464126827" expanded="true" signature="2072:2212" placeholder="{...}" />
-            <marker date="1352464126827" expanded="true" signature="2277:3123" placeholder="{...}" />
-            <marker date="1352464126827" expanded="true" signature="2464:3113" placeholder="{...}" />
-            <marker date="1352464126827" expanded="true" signature="2729:2982" placeholder="{...}" />
-            <marker date="1352464126827" expanded="true" signature="2805:2964" placeholder="{...}" />
-            <marker date="1352464126827" expanded="true" signature="2862:2942" placeholder="{...}" />
-            <marker date="1352464126827" expanded="true" signature="3182:3984" placeholder="{...}" />
-            <marker date="1352464126827" expanded="true" signature="3366:3506" placeholder="{...}" />
-            <marker date="1352464126827" expanded="true" signature="3407:3492" placeholder="{...}" />
-            <marker date="1352464126827" expanded="true" signature="3536:3683" placeholder="{...}" />
-            <marker date="1352464126827" expanded="true" signature="3726:3864" placeholder="{...}" />
-            <marker date="1352464126827" expanded="true" signature="3870:3974" placeholder="{...}" />
-            <marker date="1352464126827" expanded="true" signature="4029:4405" placeholder="{...}" />
+            <marker date="1354164493330" expanded="true" signature="282:655" placeholder="..." />
+            <marker date="1354164493330" expanded="true" signature="823:1235" placeholder="{...}" />
+            <marker date="1354164493330" expanded="true" signature="904:1223" placeholder="{...}" />
+            <marker date="1354164493330" expanded="true" signature="943:1209" placeholder="{...}" />
+            <marker date="1354164493330" expanded="true" signature="1084:1191" placeholder="{...}" />
+            <marker date="1354164493330" expanded="true" signature="1276:1492" placeholder="{...}" />
+            <marker date="1354164493330" expanded="true" signature="1535:1983" placeholder="{...}" />
+            <marker date="1354164493330" expanded="true" signature="1570:1612" placeholder="{...}" />
+            <marker date="1354164493330" expanded="true" signature="2037:2194" placeholder="{...}" />
+            <marker date="1354164493330" expanded="true" signature="2252:2392" placeholder="{...}" />
+            <marker date="1354164493330" expanded="true" signature="2457:3303" placeholder="{...}" />
+            <marker date="1354164493330" expanded="true" signature="2644:3293" placeholder="{...}" />
+            <marker date="1354164493330" expanded="true" signature="2909:3162" placeholder="{...}" />
+            <marker date="1354164493330" expanded="true" signature="2985:3144" placeholder="{...}" />
+            <marker date="1354164493330" expanded="true" signature="3042:3122" placeholder="{...}" />
+            <marker date="1354164493330" expanded="true" signature="3362:4164" placeholder="{...}" />
+            <marker date="1354164493330" expanded="true" signature="3546:3686" placeholder="{...}" />
+            <marker date="1354164493330" expanded="true" signature="3587:3672" placeholder="{...}" />
+            <marker date="1354164493330" expanded="true" signature="3716:3863" placeholder="{...}" />
+            <marker date="1354164493330" expanded="true" signature="3906:4044" placeholder="{...}" />
+            <marker date="1354164493330" expanded="true" signature="4050:4154" placeholder="{...}" />
+            <marker date="1354164493330" expanded="true" signature="4216:4647" placeholder="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Tools/FDK/4.1/frameworks/projects/framework/src/mx/containers/TitleWindow.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="197" column="36" selection-start="5861" selection-end="5861" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Tools/FDK/4.1/frameworks/projects/framework/src/mx/containers/Panel.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="483" column="13" selection-start="13849" selection-end="13849" vertical-scroll-proportion="0.33247423">
+          <folding />
         </state>
       </provider>
     </entry>

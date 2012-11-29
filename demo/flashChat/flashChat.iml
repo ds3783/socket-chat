@@ -2,7 +2,7 @@
 <module type="Flex" version="4">
   <component name="FlexBuildConfigurationManager" active="Flex Application">
     <configurations>
-      <configuration name="Flex Application" main-class="FlashChat" output-file="FlashChat.swf" output-folder="$MODULE_DIR$/out/production/flashChat">
+      <configuration name="Flex Application" main-class="FlashChat" output-file="FlashChat.swf" output-folder="$MODULE_DIR$/../../../../work/flashChat">
         <dependencies target-player="10.0">
           <entries>
             <entry library-id="a06b9514-35d2-4a61-bcdf-49a3dfb5de2f">
