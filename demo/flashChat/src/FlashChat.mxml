@@ -10,6 +10,7 @@
     <mx:Script>
         import mx.containers.TitleWindow;
         import mx.controls.Alert;
+        import mx.events.CloseEvent;
         import mx.managers.PopUpManager;
 
         import net.ds3783.chatserver.ChatEvent;
@@ -23,7 +24,7 @@
 
 
         private function init():void {
-            view_chat.addEventListener(Event.ACTIVATE, function (e:Event):void {
+            view_chat.addEventListener(Event.ADDED, function (e:Event):void {
                 if (view_chat_panel) {
                     var btn_crtroom:Button = view_chat_panel.getChildByName("btn_crtroom") as Button;
                     if (btn_crtroom) {
@@ -110,15 +111,31 @@
         private function createRoom(e:Event):void {
             //先整一个window
             var sprite:TitleWindow = new TitleWindow();
+            sprite.showCloseButton = true;
+            sprite.layout = "absolute";
+            sprite.height = 100;
+            sprite.setStyle("backgroundColor", 0xCCCCCC);
+
             sprite.title = "::.. RoomName ..::";
             var input:TextArea = new TextArea();
             input.maxChars = 30;
+            input.width = 180;
+            input.height = 32;
+
             sprite.addChild(input);
 
             var button:Button = new Button();
-            button.label = "DOIT!";
+            button.label = "Create";
+            button.width = 80;
             sprite.addChild(button);
+            button.move((input.width - button.width) * 0.5, 35);
             PopUpManager.addPopUp(sprite, this, true);
+            sprite.move((this.width - sprite.width) * 0.5, (this.height - sprite.height) * 0.5);
+            input.setFocus();
+
+            sprite.addEventListener(CloseEvent.CLOSE, function (e:Event):void {
+                PopUpManager.removePopUp(sprite);
+            });
         }
 
 
