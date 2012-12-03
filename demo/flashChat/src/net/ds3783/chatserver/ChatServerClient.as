@@ -11,6 +11,7 @@ import flash.events.EventDispatcher;
 import net.ds3783.chatserver.messages.ChannelListMessage;
 import net.ds3783.chatserver.messages.CommandMessage;
 import net.ds3783.chatserver.messages.LoginMessage;
+import net.ds3783.chatserver.messages.SystemReplyMessage;
 import net.ds3783.chatserver.messages.model.ChannelModel;
 
 public class ChatServerClient extends EventDispatcher {
@@ -22,6 +23,7 @@ public class ChatServerClient extends EventDispatcher {
     public static const CHANNEL_LIST_UPDATE:String = "CHANNEL_LIST_UPDATE";
     public static const CHANNEL_JOINED:String = "CHANNEL_JOINED";
     public static const MESSAGE:String = "MESSAGE";
+    public static const ERROR:String = "ERROR";
     public static const BEFORE_DISCONNECT:String = "BEFORE_DISCONNECT";
 
     public function ChatServerClient(autoJoin:Boolean = true) {
@@ -51,6 +53,7 @@ public class ChatServerClient extends EventDispatcher {
         this._username = username;
         this._password = password;
         socket.addEventListener(SocketClient.EVENT_CHANNEL_LIST_UPDATE, onChannelListUpdate);
+        socket.addEventListener(SocketClient.EVENT_USERERROR, onError);
         socket.connect(_connHost, _connPort);
     }
 
@@ -101,7 +104,7 @@ public class ChatServerClient extends EventDispatcher {
     }
 
     public function createRoom(text:String):void {
-        if (!text){
+        if (!text) {
             throw new ChatServerError("Empty room name!");
         }
         var message:CommandMessage = new CommandMessage();
@@ -130,6 +133,13 @@ public class ChatServerClient extends EventDispatcher {
             dispatchEvent(event);
         }
 
+    }
+
+    private function onError(e:SocketEvent):void {
+        var msg:SystemReplyMessage = e.message as SystemReplyMessage;
+        var event:ChatEvent = new ChatEvent(ERROR);
+        event.message = msg;
+        dispatchEvent(event);
     }
 
 

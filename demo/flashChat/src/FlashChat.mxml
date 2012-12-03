@@ -18,6 +18,7 @@
         import net.ds3783.chatserver.ChatEvent;
         import net.ds3783.chatserver.ChatServerClient;
         import net.ds3783.chatserver.messages.ChannelListMessage;
+        import net.ds3783.chatserver.messages.SystemReplyMessage;
         import net.ds3783.chatserver.messages.model.ChannelModel;
 
         private var gClient:ChatServerClient = null;
@@ -40,7 +41,13 @@
             gClient = new ChatServerClient(true);
             gClient.addEventListener(ChatServerClient.LOGINED, logined);
             gClient.addEventListener(ChatServerClient.LOGIN_ERROR, loginedFail);
+            gClient.addEventListener(ChatServerClient.ERROR, onError);
 
+        }
+
+        private function onError(e:ChatEvent):void {
+            var sysmsg:SystemReplyMessage = e.message as SystemReplyMessage;
+            Alert.show("[ERROR:" + sysmsg.code + "]" + sysmsg.content, "::..Error..::");
         }
 
         public function doConnect():void {
@@ -160,11 +167,10 @@
             }
 
             if (errMsg) {
-                Alert.show(errMsg,'::..Error');
+                Alert.show(errMsg, '::..Error');
             } else {
                 PopUpManager.removePopUp(button.parent as IFlexDisplayObject);
                 button.removeEventListener(MouseEvent.CLICK, onCreateRoomButtonClick);
-                Alert.show('Channel created!','::..Success..::');
             }
 
 

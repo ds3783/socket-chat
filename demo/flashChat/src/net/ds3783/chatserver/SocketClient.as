@@ -43,6 +43,7 @@ public class SocketClient extends EventDispatcher {
     public static const EVENT_SERVERMESSAGE:String = "ON_SERVER";
     public static const EVENT_NETERROR:String = "ON_NETERROR";
     public static const EVENT_AUTHERROR:String = "ON_AUTHERROR";
+    public static const EVENT_USERERROR:String = "ON_USERERROR";
     public static const EVENT_CHANNEL_LIST_UPDATE:String = "ON_CHANNEL_LIST_UPDATE";
 
     public function connect(host:String, port:int):void {
@@ -178,6 +179,7 @@ public class SocketClient extends EventDispatcher {
     }
 
     private function onCommand(sysMsg:SystemReplyMessage):void {
+        var event:SocketEvent;
         switch (sysMsg.code) {
             case SystemReplyMessage.CODE_LOGIN_SUCCESS:
                 logined = true;
@@ -186,8 +188,13 @@ public class SocketClient extends EventDispatcher {
             case SystemReplyMessage.CODE_ERROR_WRONG_PASSWORD:
                 dispatchEvent(new SocketEvent(EVENT_LOGIN_FAIL));
                 break;
+            case SystemReplyMessage.CODE_ERROR_USER_CUSTOM:
+                event = new SocketEvent(EVENT_USERERROR);
+                event.message = sysMsg;
+                dispatchEvent(event);
+                break;
             case SystemReplyMessage.CODE_CHANNEL_LIST:
-                var event:SocketEvent = new SocketEvent(EVENT_CHANNEL_LIST_UPDATE);
+                event = new SocketEvent(EVENT_CHANNEL_LIST_UPDATE);
                 event.message = sysMsg;
                 dispatchEvent(event);
                 break;
