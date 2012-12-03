@@ -27,7 +27,7 @@ public class MessageDispatcher {
                 for (EventListener listener : list) {
                     boolean result = listener.onEvent(evt);
                     if (!result) {
-                        break;
+                        return;
                     }
                 }
             }

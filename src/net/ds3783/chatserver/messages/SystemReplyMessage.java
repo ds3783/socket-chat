@@ -21,6 +21,7 @@ public class SystemReplyMessage implements Message {
     public static final int CODE_ERROR_NOT_LOGIN = 401;//尚未登录
     public static final int CODE_ERROR_WRONG_PASSWORD = 402;//登录用户名或密码错误
     public static final int CODE_ERROR_BLACKLIST = 403;//用户被禁言
+    public static final int CODE_ERROR_USER_CUSTOM = 499;//用户被禁言
 
     private int code;
     private String content;

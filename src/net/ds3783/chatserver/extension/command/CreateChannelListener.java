@@ -8,7 +8,7 @@ import net.ds3783.chatserver.communicate.delivery.EventListener;
 import net.ds3783.chatserver.dao.Channel;
 import net.ds3783.chatserver.dao.ChannelDao;
 import net.ds3783.chatserver.dao.ClientChannel;
-import net.ds3783.chatserver.extension.ExtensionException;
+import net.ds3783.chatserver.extension.ClientException;
 import net.ds3783.chatserver.logic.ChannelLogic;
 import net.ds3783.chatserver.messages.ChannelListMessage;
 import net.ds3783.chatserver.messages.CommandMessage;
@@ -45,11 +45,11 @@ public class CreateChannelListener extends DefaultCommandListener implements Eve
             channelName = channelName.trim();
         }
         if (StringUtils.isEmpty(channelName)) {
-            throw new ExtensionException("Channel name cannot be null when creating!");
+            throw new ClientException("Channel name cannot be null when creating!");
         }
         Channel newChannel = channelDao.getChannelByName(channelName);
         if (newChannel != null) {
-            throw new ExtensionException("[CREATE CHANNEL]channel:" + channelName + " already exists!");
+            throw new ClientException("[CREATE CHANNEL]channel:" + channelName + " already exists!");
         }
         channelLogic.createChannel(channelName, true, context.getSender());
 

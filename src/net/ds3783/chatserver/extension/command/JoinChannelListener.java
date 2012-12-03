@@ -7,7 +7,7 @@ import net.ds3783.chatserver.communicate.delivery.EventListener;
 import net.ds3783.chatserver.dao.Channel;
 import net.ds3783.chatserver.dao.ChannelDao;
 import net.ds3783.chatserver.dao.ClientChannel;
-import net.ds3783.chatserver.extension.ExtensionException;
+import net.ds3783.chatserver.extension.ClientException;
 import net.ds3783.chatserver.logic.ChannelLogic;
 import net.ds3783.chatserver.messages.ChannelListMessage;
 import net.ds3783.chatserver.messages.CommandMessage;
@@ -44,14 +44,16 @@ public class JoinChannelListener extends DefaultCommandListener implements Event
         //获得所有Channel
         Long channelid = new Long(command.getContent());
         List<ClientChannel> myChannel = channelLogic.getMyChannels(context.getSender().getUid());
+
         for (ClientChannel clientChannel : myChannel) {
             if (clientChannel.getChannelId().equals(channelid)) {
-                throw new ExtensionException("加入频道失败，您已在此频道！");
+                throw new ClientException("Cannot join channel, U R already in it!");
             }
         }
         Channel joinChannel = channelDao.getChannel(channelid);
+
         if (joinChannel == null) {
-            throw new ExtensionException("加入频道失败，无效的频道！");
+            throw new ClientException("Unable to locate the channel!");
         }
         ClientChannel newChannel = channelLogic.joinChannel(context.getSender(), joinChannel);
 
