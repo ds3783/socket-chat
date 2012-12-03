@@ -100,6 +100,16 @@ public class ChatServerClient extends EventDispatcher {
         socket.sendMessage(message);
     }
 
+    public function createRoom(text:String):void {
+        if (!text){
+            throw new ChatServerError("Empty room name!");
+        }
+        var message:CommandMessage = new CommandMessage();
+        message.command = CommandType.CREATE_CHANNEL;
+        message.content = text;
+        socket.sendMessage(message);
+    }
+
     private function onChannelListUpdate(e:SocketEvent):void {
         var list:ChannelListMessage = e.message as ChannelListMessage;
         if (list) {

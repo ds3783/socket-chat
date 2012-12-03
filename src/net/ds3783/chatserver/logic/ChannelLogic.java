@@ -20,6 +20,7 @@ public class ChannelLogic {
     private List<Channel> configedChannels;
     private ChannelDao channelDao;
     private ClientDao clientDao;
+    private static final int DEFAULT_CHANNNEL_MAXMEMBER = 50;
 
     public void setupDefaultChannels() {
         if (configedChannels != null) {
@@ -82,6 +83,24 @@ public class ChannelLogic {
         cc.setClientId(sender.getUid());
         channelDao.addClientChannel(cc);
         return cc;
+    }
+
+
+    public Channel createChannel(String channelName, boolean joinIt, Client sender) {
+        Channel channel = new Channel();
+        channel.setDefaultChannel(false);
+        channel.setInternal(false);
+        channel.setMaxMember(DEFAULT_CHANNNEL_MAXMEMBER);
+        channel.setName(channelName);
+        channelDao.registerChannel(channel);
+
+        if (joinIt) {
+            ClientChannel cc = new ClientChannel();
+            cc.setChannelId(channel.getId());
+            cc.setClientId(sender.getUid());
+            channelDao.addClientChannel(cc);
+        }
+        return channel;
     }
 
     public void exitChannel(ClientChannel inChannel) {

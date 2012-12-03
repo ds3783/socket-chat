@@ -10,8 +10,10 @@
     <mx:Script>
         import mx.containers.TitleWindow;
         import mx.controls.Alert;
+        import mx.core.IFlexDisplayObject;
         import mx.events.CloseEvent;
         import mx.managers.PopUpManager;
+        import mx.utils.StringUtil;
 
         import net.ds3783.chatserver.ChatEvent;
         import net.ds3783.chatserver.ChatServerClient;
@@ -120,6 +122,7 @@
             var input:TextArea = new TextArea();
             input.maxChars = 30;
             input.width = 180;
+            input.name = "roomName";
             input.height = 32;
 
             sprite.addChild(input);
@@ -133,9 +136,38 @@
             sprite.move((this.width - sprite.width) * 0.5, (this.height - sprite.height) * 0.5);
             input.setFocus();
 
+
+            button.addEventListener(MouseEvent.CLICK, onCreateRoomButtonClick);
             sprite.addEventListener(CloseEvent.CLOSE, function (e:Event):void {
                 PopUpManager.removePopUp(sprite);
+                button.removeEventListener(MouseEvent.CLICK, onCreateRoomButtonClick);
             });
+        }
+
+        private function onCreateRoomButtonClick(e:MouseEvent):void {
+            var button:Button = e.target as Button;
+            var input:TextArea = button.parent.getChildByName("roomName") as TextArea;
+            var errMsg = null;
+            input.text = StringUtil.trim(input.text);
+            if (input.text) {
+                try {
+                    gClient.createRoom(input.text);
+                } catch (e:Error) {
+                    errMsg = e.message;
+                }
+            } else {
+                errMsg = 'Connot create a room WITHOUT a name~!';
+            }
+
+            if (errMsg) {
+                Alert.show(errMsg,'::..Error');
+            } else {
+                PopUpManager.removePopUp(button.parent as IFlexDisplayObject);
+                button.removeEventListener(MouseEvent.CLICK, onCreateRoomButtonClick);
+                Alert.show('Channel created!','::..Success..::');
+            }
+
+
         }
 
 

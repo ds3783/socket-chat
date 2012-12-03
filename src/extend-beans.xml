@@ -15,4 +15,6 @@
           init-method="init"/>
     <bean id="exitChannelListener" class="net.ds3783.chatserver.extension.command.ExitChannelListener"
           init-method="init"/>
+    <bean id="createChannelListener" class="net.ds3783.chatserver.extension.command.CreateChannelListener"
+          init-method="init"/>
 </beans>
