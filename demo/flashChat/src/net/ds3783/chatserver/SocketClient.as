@@ -33,10 +33,12 @@ public class SocketClient extends EventDispatcher {
     private var host:String;
     private var port:int;
     private var logined:Boolean = false;
+    private var connected:Boolean = false;
     private var dataCache:ByteArray = new ByteArray();
     private var messageBuffer:Array = new Array();
 
     public static const EVENT_CONNECTED:String = "ON_CONNECTED";
+    public static const EVENT_DISCONNECTED:String = "ON_DISCONNECTED";
     public static const EVENT_LOGIN:String = "ON_LOGIN";
     public static const EVENT_LOGIN_FAIL:String = "ON_LOGIN_FAIL";
     public static const EVENT_CLIENTMESSAGE:String = "ON_CLIENT";
@@ -61,6 +63,21 @@ public class SocketClient extends EventDispatcher {
 
     }
 
+    public function close():void {
+        this.connected = false;
+        this.logined = false;
+        if (socket.connected) {
+            socket.close();
+        }
+
+        socket.removeEventListener(Event.CONNECT, onStocketConnected);
+        socket.removeEventListener(ProgressEvent.SOCKET_DATA, onSocketData);
+        socket.removeEventListener(IOErrorEvent.IO_ERROR, onSocketIOError);
+        socket.removeEventListener(IOErrorEvent.NETWORK_ERROR, onSocketIOError);
+        socket.removeEventListener(SecurityErrorEvent.SECURITY_ERROR, onSecurityError);
+        socket = null;
+    }
+
 
     public function isConnected():Boolean {
         return socket.connected;
@@ -73,7 +90,12 @@ public class SocketClient extends EventDispatcher {
 
     private function send(data:Message):void {
         if (!socket.connected) {
-            throw new ChatServerError("Not Connected!");
+            if (this.connected) {
+                this.connected = false;
+                dispatchEvent(new SocketEvent(EVENT_DISCONNECTED));
+            } else {
+                throw new ChatServerError("Not Connected!");
+            }
         }
         var binaryData:ByteArray = new ByteArray();
         var serialized:ByteArray = new ByteArray();
@@ -90,6 +112,7 @@ public class SocketClient extends EventDispatcher {
 
     private function onStocketConnected(evt:Event):void {
         trace("Socket Connected to " + host + ":" + port);
+        this.connected = true;
         var evt2:SocketEvent = new SocketEvent(EVENT_CONNECTED);
         this.dispatchEvent(evt2);
     }

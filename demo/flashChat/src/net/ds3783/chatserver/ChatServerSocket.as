@@ -4,6 +4,7 @@
  * Date: 11-10-23
  * Time: обнГ7:44
  * To change this template use File | Settings | File Templates.
+ * @deprecated
  */
 package net.ds3783.chatserver {
 import flash.events.EventDispatcher;

@@ -24,7 +24,27 @@
         private var gClient:ChatServerClient = null;
         private var username:String;
         private var password:String;
+        private var popups = [];
 
+        private function addPop(window:IFlexDisplayObject):IFlexDisplayObject {
+            if (window) {
+                PopUpManager.addPopUp(window, this, true);
+                window.move((this.width - window.width) * 0.5, (this.height - window.height) * 0.5);
+                popups.push(window);
+            }
+            return window;
+        }
+
+        private function removePop(window:IFlexDisplayObject):IFlexDisplayObject {
+            if (window) {
+                PopUpManager.removePopUp(window);
+                var idx:Number = popups.indexOf(window);
+                if (idx >= 0) {
+                    popups.splice(idx, 1);
+                }
+            }
+            return window;
+        }
 
         private function init():void {
             view_chat.addEventListener(Event.ADDED, function (e:Event):void {
@@ -42,7 +62,20 @@
             gClient.addEventListener(ChatServerClient.LOGINED, logined);
             gClient.addEventListener(ChatServerClient.LOGIN_ERROR, loginedFail);
             gClient.addEventListener(ChatServerClient.ERROR, onError);
+            gClient.addEventListener(ChatServerClient.DISCONNECTED, onDisconnected);
 
+        }
+
+        private function onDisconnected(e:Event):void {
+            //reset all cavens
+            tf_username.text = "";
+            tf_password.text = "";
+            while (popups.length > 0) {
+                removePop(popups[0]);
+            }
+
+            viewstack.selectedChild = view_login;
+            Alert.show("Connection lost!");
         }
 
         private function onError(e:ChatEvent):void {
@@ -139,14 +172,13 @@
             button.width = 80;
             sprite.addChild(button);
             button.move((input.width - button.width) * 0.5, 35);
-            PopUpManager.addPopUp(sprite, this, true);
-            sprite.move((this.width - sprite.width) * 0.5, (this.height - sprite.height) * 0.5);
+            addPop(sprite);
             input.setFocus();
 
 
             button.addEventListener(MouseEvent.CLICK, onCreateRoomButtonClick);
             sprite.addEventListener(CloseEvent.CLOSE, function (e:Event):void {
-                PopUpManager.removePopUp(sprite);
+                removePop(sprite);
                 button.removeEventListener(MouseEvent.CLICK, onCreateRoomButtonClick);
             });
         }
@@ -169,7 +201,7 @@
             if (errMsg) {
                 Alert.show(errMsg, '::..Error');
             } else {
-                PopUpManager.removePopUp(button.parent as IFlexDisplayObject);
+                removePop(button.parent as IFlexDisplayObject);
                 button.removeEventListener(MouseEvent.CLICK, onCreateRoomButtonClick);
             }
 

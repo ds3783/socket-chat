@@ -18,6 +18,7 @@ public class ChatServerClient extends EventDispatcher {
 
     public static const LOGINED:String = "LOGINED";
     public static const CONNECTED:String = "CONNECTED";
+    public static const DISCONNECTED:String = "DISCONNECTED";
     public static const CONNECTED_ERROR:String = "CONNECTED_ERROR";
     public static const LOGIN_ERROR:String = "LOGIN_ERROR";
     public static const CHANNEL_LIST_UPDATE:String = "CHANNEL_LIST_UPDATE";
@@ -31,6 +32,7 @@ public class ChatServerClient extends EventDispatcher {
         socket = new SocketClient();
         socket.addEventListener(SocketClient.EVENT_CONNECTED, onConnected);
         socket.addEventListener(SocketClient.EVENT_LOGIN, onLogined);
+        socket.addEventListener(SocketClient.EVENT_DISCONNECTED, onDisconnected);
         autoJoinDefaultChannel = autoJoin;
     }
 
@@ -140,6 +142,10 @@ public class ChatServerClient extends EventDispatcher {
         var event:ChatEvent = new ChatEvent(ERROR);
         event.message = msg;
         dispatchEvent(event);
+    }
+
+    private function onDisconnected(e:SocketEvent):void {
+        dispatchEvent(new ChatEvent(DISCONNECTED));
     }
 
 
