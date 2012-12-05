@@ -58,11 +58,11 @@ public class ExitChannelListener extends DefaultCommandListener implements Event
         if (exitChannel == null) {
             throw new ExtensionException("退出频道失败，无效的频道！");
         }
-        if (myChannel.size()<=1){
+        if (myChannel.size() <= 1) {
             throw new ExtensionException("退出频道失败，您心中有存在感么？！");
         }
         channelLogic.exitChannel(inChannel);
-
+        myChannel.remove(inChannel);
         List<Channel> channels = channelDao.getChannels();
         ChannelModel[] chls = new ChannelModel[channels.size()];
         for (int i = 0; i < channels.size(); i++) {

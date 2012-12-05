@@ -3,6 +3,7 @@ package net.ds3783.chatserver.dao;
 import net.ds3783.chatserver.tools.Utils;
 import org.hibernate.SessionFactory;
 import org.hibernate.metadata.ClassMetadata;
+import org.springframework.dao.DataAccessException;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import java.util.Collection;
@@ -144,7 +145,11 @@ public class ClientDao extends HibernateDaoSupport {
     }
 
     public void updateClient(Client client) {
-        getHibernateTemplate().update(client);
+        try {
+            getHibernateTemplate().update(client);
+        } catch (DataAccessException e) {
+            logger.debug(e.getMessage(), e);
+        }
         getHibernateTemplate().flush();
     }
 

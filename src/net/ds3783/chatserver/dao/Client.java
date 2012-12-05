@@ -152,8 +152,9 @@ public class Client {
 
         Client client = (Client) o;
 
-        return !(name != null ? !name.equals(client.name) : client.name != null) && !(type != null ? !type.equals(client.type) : client.type != null) && !(uid != null ? !uid.equals(client.uid) : client.uid != null);
+        if (uid != null ? !uid.equals(client.uid) : client.uid != null) return false;
 
+        return true;
     }
 
     @Override

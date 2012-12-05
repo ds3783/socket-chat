@@ -3,6 +3,7 @@ package net.ds3783.chatserver.messages;
 import net.ds3783.chatserver.dao.Client;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -25,7 +26,7 @@ public class MessageContext {
 
 
     public MessageContext() {
-        receivers = new ArrayList<Client>();
+        receivers = Collections.synchronizedList(new ArrayList<Client>());
         createTime = System.currentTimeMillis();
     }
 
@@ -45,9 +46,6 @@ public class MessageContext {
         return new ArrayList<Client>(receivers);
     }
 
-    public void setReceivers(List<Client> receivers) {
-        this.receivers = receivers;
-    }
 
     public boolean isEmergency() {
         return emergency;

@@ -36,6 +36,7 @@ public class OutputThread extends SlaveThread implements Runnable {
     private ContextHelper contextHelper;
     private ClientService clientService;
     private OutputProtocal protocal;
+
     private int maxQueueLength = 500;
     private int maxMessagePerTime = 100;
 

@@ -48,10 +48,10 @@ public class LoginListener extends DefaultCoreListener implements EventListener 
         } else {
             context.getSender().setName(login.getUsername());
             SystemReplyMessage reply2 = new SystemReplyMessage();
-            MessageContext replyContext2 = contextHelper.registerMessage(reply2, context.getSender());
             //全局广播某人上线
-            replyContext2.setReceivers(clientDao.getAllClients());
             reply2.setContent(context.getSender().getName() + " 成功登录");
+            MessageContext replyContext2 = contextHelper.registerMessage(reply2, context.getSender());
+            replyContext2.getReceivers().addAll(clientDao.getAllClients());
             reply2.setCode(SystemReplyMessage.CODE_USER_ONLINE);
             outputerSwitcher.switchTo(reply2);
 
@@ -61,7 +61,7 @@ public class LoginListener extends DefaultCoreListener implements EventListener 
             logger.info(client.getIp() + ":" + client.getPort() + "(" + client.getName() + ") 成功登录。");
             outputerSwitcher.switchTo(reply);
 
-            logger.debug(reply.getContent() + " online");
+            logger.debug(login.getUsername() + " online");
             return false;
         }
 

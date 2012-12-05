@@ -6,6 +6,7 @@ import net.ds3783.chatserver.dao.ClientDao;
 import net.ds3783.chatserver.messages.Message;
 import net.ds3783.chatserver.messages.MessageContext;
 
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -35,13 +36,20 @@ public class OutputerSwitcher {
         int messgeDestCount = context.getReceivers().size();
         List<CommonRunnable> outputer = threadResource.getThreads(ThreadResourceType.OUTPUT_THREAD);
         int outputerCount = outputer.size();
+        //tricks: 因为每个OutputThread都只对应一个用户所以可以这么玩
         if (messgeDestCount > outputerCount) {
             for (CommonRunnable runnable : outputer) {
                 OutputThread ot = (OutputThread) runnable;
                 ot.send(message);
             }
         } else {
+            //此处排重必须做
+            HashSet<String> ots = new HashSet<String>();
             for (Client dest : context.getReceivers()) {
+                if (ots.contains(dest.getWriteThread())) {
+                    continue;
+                }
+                ots.add(dest.getWriteThread());
                 OutputThread ot = (OutputThread) threadResource.getThread(dest.getWriteThread());
                 if (ot != null) {
                     ot.send(message);

@@ -74,9 +74,11 @@ public class ContextHelper {
     }
 
     public void removeReceiver(MessageContext context, Client dest) {
-        context.getReceivers().remove(dest);
-        if (context.getReceivers().size() == 0) {
-            forget(context);
+        synchronized (context.getReceivers()) {
+            context.getReceivers().remove(dest);
+            if (context.getReceivers().size() == 0) {
+                forget(context);
+            }
         }
     }
 }
