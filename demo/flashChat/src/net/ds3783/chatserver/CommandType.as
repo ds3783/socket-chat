@@ -14,5 +14,7 @@ public class CommandType {
     public static const CREATE_CHANNEL:String = "CREATE_CHANNEL";
     public static const JOIN_CHANNEL:String = "JOIN_CHANNEL";
     public static const EXIT_CHANNEL:String = "EXIT_CHANNEL";
+    //更新客户列表
+    public static const UPDATE_CLIENT_LIST:String = "UPDATE_CLIENT_LIST";
 }
 }

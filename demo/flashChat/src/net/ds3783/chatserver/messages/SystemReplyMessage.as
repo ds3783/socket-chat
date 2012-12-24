@@ -15,8 +15,9 @@ public class SystemReplyMessage implements Message {
     public static const CODE_200:int = 200;
     public static const CODE_LOGIN_SUCCESS:int = 201;//登录成功
     public static const CODE_CHANNEL_LIST:int = 202;//频道列表
+    public static const CODE_CLIENT_LIST:int = 203;//用户列表
 
-    public static const CODE_USER_ONLINE:int = 301;//其他用户登录
+    public static const CODE_OTHER_USER_ONLINE:int = 301;//其他用户登录
 
     public static const CODE_ERROR_NOT_LOGIN:int = 401;//尚未登录
     public static const CODE_ERROR_WRONG_PASSWORD:int = 402;//登录用户名或密码错误

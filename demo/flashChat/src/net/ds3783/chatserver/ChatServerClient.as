@@ -45,6 +45,8 @@ public class ChatServerClient extends EventDispatcher {
     private var _password:String;
     private var connected:Boolean;
     private var logined:Boolean;
+    private var listeningChannels:Array;
+
     private var autoJoinDefaultChannel:Boolean;
 
     private var socket:SocketClient;
@@ -54,6 +56,7 @@ public class ChatServerClient extends EventDispatcher {
         _connPort = port;
         this._username = username;
         this._password = password;
+        this.listeningChannels = new Array();
         socket.addEventListener(SocketClient.EVENT_CHANNEL_LIST_UPDATE, onChannelListUpdate);
         socket.addEventListener(SocketClient.EVENT_USERERROR, onError);
         socket.connect(_connHost, _connPort);
@@ -118,8 +121,34 @@ public class ChatServerClient extends EventDispatcher {
     private function onChannelListUpdate(e:SocketEvent):void {
         var list:ChannelListMessage = e.message as ChannelListMessage;
         if (list) {
-            if (!(list.listeningChannels && list.listeningChannels.length > 0) && autoJoinDefaultChannel) {
-                //joinChannel
+            if (list.listeningChannels) {
+                //与缓存内容找出差异
+                var misMach:Boolean = false;
+                if (this.listeningChannels.length != list.listeningChannels.length) {
+                    misMach = true;
+                }
+                if (!misMach) {
+                    var copy = list.listeningChannels.slice(0, list.listeningChannels.length);
+                    for each(var channel:Number in this.listeningChannels) {
+                        if (copy.indexOf(channel) >= 0) {
+                            copy.splice(copy.indexOf(channel), 1);
+                        } else {
+                            misMach = true;
+                            break;
+                        }
+                    }
+                }
+                //如果存在差异
+                if (misMach) {
+                    this.listeningChannels = list.listeningChannels;
+                    //发送update client list指令
+                    var message:CommandMessage = new CommandMessage();
+                    message.command = CommandType.UPDATE_CLIENT_LIST;
+                    socket.sendMessage(message);
+                }
+            }
+            if (autoJoinDefaultChannel && !(list.listeningChannels && list.listeningChannels.length > 0)) {
+                //auto join default Channel
                 for each (var channelModel:ChannelModel in list.channels) {
                     if (channelModel.defaultChannel) {
                         var message:CommandMessage = new CommandMessage();
