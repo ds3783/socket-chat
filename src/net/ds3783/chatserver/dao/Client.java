@@ -8,7 +8,7 @@ import net.ds3783.chatserver.communicate.delivery.Channel;
  * Date: 2009-9-16
  * Time: 15:21:29
  */
-public class Client {
+public class Client implements Comparable<Client> {
     private String uid;
     private String token;
     private String name;
@@ -163,5 +163,15 @@ public class Client {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (type != null ? type.hashCode() : 0);
         return result;
+    }
+
+    public int compareTo(Client o) {
+        if (o == null || o.getName() == null) {
+            return 1;
+        }
+        if (this.getName() == null) {
+            return -1;
+        }
+        return this.getName().compareTo(o.getName());
     }
 }

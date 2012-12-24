@@ -17,4 +17,8 @@
           init-method="init"/>
     <bean id="createChannelListener" class="net.ds3783.chatserver.extension.command.CreateChannelListener"
           init-method="init"/>
+
+
+    <bean id="updateClientListListener" class="net.ds3783.chatserver.extension.command.UpdateClientListListener"
+          init-method="init"/>
 </beans>

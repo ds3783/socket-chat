@@ -26,6 +26,11 @@ public class ChannelDao extends HibernateDaoSupport {
         return Utils.castList(getHibernateTemplate().find("from ClientChannel where  clientId=?", clientid), ClientChannel.class);
     }
 
+
+    public List<ClientChannel> getClientsByChannel(Long channelId) {
+        return Utils.castList(getHibernateTemplate().find("from ClientChannel where channelId =?", channelId), ClientChannel.class);
+    }
+
     public void removeClientChannel(ClientChannel clientChannel) {
         getHibernateTemplate().delete(clientChannel);
         getHibernateTemplate().flush();
@@ -46,8 +51,8 @@ public class ChannelDao extends HibernateDaoSupport {
     }
 
     public Channel getChannelByName(String channelName) {
-        List channels=getHibernateTemplate().find("from Channel c where c.name = ?" ,channelName);
-        if (channels!=null&&channels.size()>0){
+        List channels = getHibernateTemplate().find("from Channel c where c.name = ?", channelName);
+        if (channels != null && channels.size() > 0) {
             return (Channel) channels.get(0);
         }
         return null;

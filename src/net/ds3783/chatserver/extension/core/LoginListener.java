@@ -52,7 +52,7 @@ public class LoginListener extends DefaultCoreListener implements EventListener 
             reply2.setContent(context.getSender().getName() + " ³É¹¦µÇÂ¼");
             MessageContext replyContext2 = contextHelper.registerMessage(reply2, context.getSender());
             replyContext2.getReceivers().addAll(clientDao.getAllClients());
-            reply2.setCode(SystemReplyMessage.CODE_USER_ONLINE);
+            reply2.setCode(SystemReplyMessage.CODE_OTHER_USER_ONLINE);
             outputerSwitcher.switchTo(reply2);
 
             Client client = clientService.clientLogin(context.getSender().getUid(), login.getUsername(), Utils.newUuid());
