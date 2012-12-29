@@ -1,5 +1,6 @@
 package net.ds3783.chatserver.communicate.core;
 
+import com.google.gson.Gson;
 import net.ds3783.chatserver.MessageType;
 import net.ds3783.chatserver.communicate.ContextHelper;
 import net.ds3783.chatserver.communicate.protocol.OutputProtocal;
@@ -36,6 +37,7 @@ public class OutputThread extends SlaveThread implements Runnable {
     private ContextHelper contextHelper;
     private ClientService clientService;
     private OutputProtocal protocal;
+    private Gson gson;
 
     private int maxQueueLength = 500;
     private int maxMessagePerTime = 100;
@@ -116,6 +118,7 @@ public class OutputThread extends SlaveThread implements Runnable {
                     filter.filte(message);
                 }
                 // ‰≥ˆ–≠“È
+                logger.debug("marshal:[" + message.getClass().getName() + "]" + gson.toJson(message));
                 protocal.addMessage(message);
                 data = protocal.marshal();
 
@@ -154,7 +157,7 @@ public class OutputThread extends SlaveThread implements Runnable {
         SocketChannel channel = (SocketChannel) key.channel();
         ByteBuffer writeBuffer = ByteBuffer.wrap(data);
         try {
-            logger.debug("say to: " + dest.getName() + ":" + new String(data) + "HEX VAL:" + Utils.toHexString(data));
+            logger.debug("send to: " + dest.getName() + ":" + new String(data) + "HEX VAL:" + Utils.toHexString(data));
             channel.write(writeBuffer);
             clientService.setLastMessageTime(dest, now);
         } catch (IOException e) {
@@ -203,5 +206,9 @@ public class OutputThread extends SlaveThread implements Runnable {
 
     public void setContextHelper(ContextHelper contextHelper) {
         this.contextHelper = contextHelper;
+    }
+
+    public void setGson(Gson gson) {
+        this.gson = gson;
     }
 }

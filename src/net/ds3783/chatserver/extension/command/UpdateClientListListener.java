@@ -51,7 +51,10 @@ public class UpdateClientListListener extends DefaultCommandListener implements 
         clients.remove(context.getSender().getUid());
         ArrayList<Client> realClients = new ArrayList<Client>(clients.size());
         for (String clientid : clients) {
-            realClients.add(clientDao.getClient(clientid));
+            Client client = clientDao.getClient(clientid);
+            if (client != null) {
+                realClients.add(client);
+            }
         }
         Collections.sort(realClients);
 
@@ -86,5 +89,9 @@ public class UpdateClientListListener extends DefaultCommandListener implements 
 
     public void setChannelLogic(ChannelLogic channelLogic) {
         this.channelLogic = channelLogic;
+    }
+
+    public void setClientDao(ClientDao clientDao) {
+        this.clientDao = clientDao;
     }
 }
