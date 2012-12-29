@@ -12,10 +12,12 @@ import flash.net.registerClassAlias;
 import flash.utils.ByteArray;
 
 import net.ds3783.chatserver.messages.ChannelListMessage;
+import net.ds3783.chatserver.messages.ClientListMessage;
 import net.ds3783.chatserver.messages.CommandMessage;
 import net.ds3783.chatserver.messages.LoginMessage;
 import net.ds3783.chatserver.messages.SystemReplyMessage;
 import net.ds3783.chatserver.messages.model.ChannelModel;
+import net.ds3783.chatserver.messages.model.ClientModel;
 
 public class SocketClient extends EventDispatcher {
     public function SocketClient() {
@@ -26,7 +28,9 @@ public class SocketClient extends EventDispatcher {
         registerClassAlias("net.ds3783.chatserver.messages.SystemReplyMessage", SystemReplyMessage);
         registerClassAlias("net.ds3783.chatserver.messages.CommandMessage", CommandMessage);
         registerClassAlias("net.ds3783.chatserver.messages.ChannelListMessage", ChannelListMessage);
+        registerClassAlias("net.ds3783.chatserver.messages.ClientListMessage", ClientListMessage);
         registerClassAlias("net.ds3783.chatserver.messages.model.ChannelModel", ChannelModel);
+        registerClassAlias("net.ds3783.chatserver.messages.model.ClientModel", ClientModel);
     }
 
     private var socket:Socket = null;
@@ -47,6 +51,7 @@ public class SocketClient extends EventDispatcher {
     public static const EVENT_AUTHERROR:String = "ON_AUTHERROR";
     public static const EVENT_USERERROR:String = "ON_USERERROR";
     public static const EVENT_CHANNEL_LIST_UPDATE:String = "ON_CHANNEL_LIST_UPDATE";
+    public static const EVENT_CLIENT_LIST_UPDATE:String = "ON_CLIENT_LIST_UPDATE";
 
     public function connect(host:String, port:int):void {
         socket = new Socket();
@@ -159,7 +164,12 @@ public class SocketClient extends EventDispatcher {
 
     private function onData():void {
         while (messageBuffer.length > 0) {
-            var message:Message = messageBuffer.shift();
+            var obj:Object = messageBuffer.shift();
+            var message:Message = obj as Message;
+            if (message == null) {
+                trace("Unrecognize Message:[" + obj.toString() + "]" + JSON.encode(obj));
+                return;
+            }
             switch (message.getType()) {
                 case MessageType.AUTH_MESSAGE:
                     break;
@@ -203,6 +213,7 @@ public class SocketClient extends EventDispatcher {
 
     private function onCommand(sysMsg:SystemReplyMessage):void {
         var event:SocketEvent;
+        trace("get message[" + (sysMsg as Object).toString() + "]:" + JSON.encode(sysMsg));
         switch (sysMsg.code) {
             case SystemReplyMessage.CODE_LOGIN_SUCCESS:
                 logined = true;
@@ -221,8 +232,12 @@ public class SocketClient extends EventDispatcher {
                 event.message = sysMsg;
                 dispatchEvent(event);
                 break;
+            case SystemReplyMessage.CODE_CLIENT_LIST:
+                event = new SocketEvent(EVENT_CLIENT_LIST_UPDATE);
+                event.message = sysMsg;
+                dispatchEvent(event);
+                break;
         }
-        trace(JSON.encode(sysMsg));
     }
 
 }

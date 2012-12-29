@@ -9,6 +9,7 @@ package net.ds3783.chatserver {
 import flash.events.EventDispatcher;
 
 import net.ds3783.chatserver.messages.ChannelListMessage;
+import net.ds3783.chatserver.messages.ClientListMessage;
 import net.ds3783.chatserver.messages.CommandMessage;
 import net.ds3783.chatserver.messages.LoginMessage;
 import net.ds3783.chatserver.messages.SystemReplyMessage;
@@ -22,6 +23,7 @@ public class ChatServerClient extends EventDispatcher {
     public static const CONNECTED_ERROR:String = "CONNECTED_ERROR";
     public static const LOGIN_ERROR:String = "LOGIN_ERROR";
     public static const CHANNEL_LIST_UPDATE:String = "CHANNEL_LIST_UPDATE";
+    public static const CLIENT_LIST_UPDATE:String = "CLIENT_LIST_UPDATE";
     public static const CHANNEL_JOINED:String = "CHANNEL_JOINED";
     public static const MESSAGE:String = "MESSAGE";
     public static const ERROR:String = "ERROR";
@@ -58,6 +60,7 @@ public class ChatServerClient extends EventDispatcher {
         this._password = password;
         this.listeningChannels = new Array();
         socket.addEventListener(SocketClient.EVENT_CHANNEL_LIST_UPDATE, onChannelListUpdate);
+        socket.addEventListener(SocketClient.EVENT_CLIENT_LIST_UPDATE, onClientListUpdate);
         socket.addEventListener(SocketClient.EVENT_USERERROR, onError);
         socket.connect(_connHost, _connPort);
     }
@@ -164,6 +167,13 @@ public class ChatServerClient extends EventDispatcher {
             dispatchEvent(event);
         }
 
+    }
+
+    private function onClientListUpdate(e:SocketEvent):void {
+        var msg:ClientListMessage = e.message as ClientListMessage;
+        var event:ChatEvent = new ChatEvent(CLIENT_LIST_UPDATE);
+        event.message = msg;
+        dispatchEvent(event);
     }
 
     private function onError(e:SocketEvent):void {

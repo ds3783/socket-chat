@@ -10,6 +10,7 @@
     <mx:Script>
         import mx.containers.TitleWindow;
         import mx.controls.Alert;
+        import mx.controls.CheckBox;
         import mx.core.IFlexDisplayObject;
         import mx.events.CloseEvent;
         import mx.managers.PopUpManager;
@@ -18,8 +19,10 @@
         import net.ds3783.chatserver.ChatEvent;
         import net.ds3783.chatserver.ChatServerClient;
         import net.ds3783.chatserver.messages.ChannelListMessage;
+        import net.ds3783.chatserver.messages.ClientListMessage;
         import net.ds3783.chatserver.messages.SystemReplyMessage;
         import net.ds3783.chatserver.messages.model.ChannelModel;
+        import net.ds3783.chatserver.messages.model.ClientModel;
 
         private var gClient:ChatServerClient = null;
         private var username:String;
@@ -100,6 +103,7 @@
         public function logined(evt:ChatEvent):void {
             viewstack.selectedChild = view_chat;
             gClient.addEventListener(ChatServerClient.CHANNEL_LIST_UPDATE, onChannelListUpdate);
+            gClient.addEventListener(ChatServerClient.CLIENT_LIST_UPDATE, onClientListUpdate);
         }
 
         public function loginedFail(evt:ChatEvent):void {
@@ -124,6 +128,19 @@
                 }
                 channel.addEventListener(Event.CHANGE, onChannelChange);
                 roomList.addChild(channel);
+            }
+        }
+
+        private function onClientListUpdate(e:ChatEvent):void {
+            var msg:ClientListMessage = e.message as ClientListMessage;
+            userList.removeAllChildren();
+            for each (var clientModel:ClientModel in msg.clients) {
+                var client:Label = new Label();
+                client.text = clientModel.name;
+                client.name = clientModel.id.toString();
+                client.setStyle("paddingLeft", "10");
+                trace('client:' + client.text);
+                userList.addChild(client);
             }
         }
 
@@ -266,10 +283,11 @@
                       title="::.. G-Chat-Demo ..:: ( 0.0.1 )" backgroundColor="#f0f0f0">
                 <mx:TextArea x="10" y="37" height="382" width="458" id="ta_chat" fontSize="11" themeColor="#ffcc00"/>
 
-                <mx:List x="476" y="273" width="189" height="146" rollOverColor="#ffff66" selectionColor="#FFCC00"
-                         id="userList" themeColor="#ffcc00">
+                <mx:VBox x="476" y="273" width="189" height="146" themeColor="#ffff66" borderStyle="solid"
+                         id="userList" verticalScrollPolicy="auto" horizontalScrollPolicy="off"
+                         backgroundColor="#FFFFFF">
 
-                </mx:List>
+                </mx:VBox>
                 <mx:Label x="476" y="18" text=":: ROOM LIST"/>
                 <mx:Label x="10" y="18" text=":: CHAT HISTORY"/>
                 <mx:Label x="476" y="247" text=":: USER LIST"/>
@@ -280,9 +298,8 @@
                 <mx:HRule y="457" width="655" left="10" height="14"/>
                 <mx:Label text="www.gproject.com" width="655" textAlign="center" color="#333333" y="472"/>
                 <mx:VBox x="476" y="37" width="189" height="172" id="roomList" themeColor="#ffcc00"
-                         horizontalAlign="left" borderStyle="solid" verticalGap="0">
-                    <mx:CheckBox label="Checkbox" paddingLeft="10"/>
-                    <mx:CheckBox label="Checkbox" paddingLeft="10"/>
+                         horizontalAlign="left" borderStyle="solid" verticalGap="0" verticalScrollPolicy="auto"
+                         horizontalScrollPolicy="off">
                 </mx:VBox>
 
             </mx:Panel>
