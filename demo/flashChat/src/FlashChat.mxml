@@ -8,9 +8,11 @@
      -->
 
     <mx:Script>
+        import mx.collections.ArrayCollection;
         import mx.containers.TitleWindow;
         import mx.controls.Alert;
         import mx.controls.CheckBox;
+        import mx.controls.TextArea;
         import mx.core.IFlexDisplayObject;
         import mx.events.CloseEvent;
         import mx.managers.PopUpManager;
@@ -113,6 +115,7 @@
 
         private function onChannelListUpdate(e:ChatEvent):void {
             var msg:ChannelListMessage = e.message as ChannelListMessage;
+            //更新roomList
             roomList.removeAllChildren();
             for each (var channelModel:ChannelModel in msg.channels) {
                 var channel:CheckBox = new CheckBox();
@@ -128,6 +131,65 @@
                 }
                 channel.addEventListener(Event.CHANGE, onChannelChange);
                 roomList.addChild(channel);
+            }
+            //更新channelSelect
+            if (channelSelect) {
+                var selectedItem:Object = channelSelect.selectedItem;
+                var secertItem:Object = null;
+                var newIdx = 0;
+                if (!channelSelect.data) {
+                    channelSelect.data = [];
+                }
+                if (selectedItem) {
+                    if (!selectedItem.isSecert) {
+                        var found:Boolean = false;
+                        for each (channelModel in msg.channels) {
+                            if (channelModel.id == selectedItem.id) {
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (!found) {
+                            newIdx = -1;
+                        }
+                    } else {
+                        secertItem = selectedItem;
+                    }
+                }
+                if (!secertItem) {
+//                    var datas:ArrayCollection = channelSelect.data as ArrayCollection;
+//                    if (datas) {
+                    var arr:Array = channelSelect.data as Array;
+                    for each (var item:Object in arr) {
+                        if (item) {
+                            if (item.isSecert) {
+                                secertItem = item;
+                                break;
+                            }
+                        }
+//                        }
+                    }
+                }
+
+                var newData = new Array();
+                if (secertItem) {
+                    newData.push(secertItem);
+                    newIdx = 0;
+                }
+                if ((selectedItem) &amp;&amp; !(selectedItem.isSecert) &amp;&amp; newIdx >= 0) {
+                    newData.push(selectedItem);
+                    newIdx = newData.length - 1;
+                }
+
+                for each (channelModel in msg.channels) {
+                    if (selectedItem &amp;&amp; channelModel.id == selectedItem.id) {
+                        continue;
+                    } else {
+                        newData.push({id: channelModel.id, label: channelModel.name, isSecert: false});
+                    }
+                }
+                channelSelect.dataProvider = new ArrayCollection(newData);
+                channelSelect.selectedIndex = newIdx;
             }
         }
 
@@ -286,7 +348,11 @@
             <mx:Panel width="695" height="537" layout="absolute" id="view_chat_panel" horizontalCenter="0"
                       verticalCenter="0.5"
                       title="::.. G-Chat-Demo ..:: ( 0.0.1 )" backgroundColor="#f0f0f0">
-                <mx:TextArea x="10" y="37" height="382" width="458" id="ta_chat" fontSize="11" themeColor="#ffcc00"/>
+                <mx:VBox x="10" y="37" height="382" width="458" id="ta_chat" fontSize="11" themeColor="#ffcc00"
+                         verticalScrollPolicy="auto" horizontalScrollPolicy="off" borderStyle="solid"
+                         backgroundColor="#FFFFFF">
+
+                </mx:VBox>
 
                 <mx:VBox x="476" y="273" width="189" height="146" themeColor="#ffff66" borderStyle="solid"
                          id="userList" verticalScrollPolicy="auto" horizontalScrollPolicy="off"
@@ -296,9 +362,10 @@
                 <mx:Label x="476" y="18" text=":: ROOM LIST"/>
                 <mx:Label x="10" y="18" text=":: CHAT HISTORY"/>
                 <mx:Label x="476" y="247" text=":: USER LIST"/>
-                <mx:TextInput x="10" y="428" width="289" id="tf_pubmsg" themeColor="#ffcc00"/>
-                <mx:Button x="307" y="427" label="Send &gt;&gt;" width="75" themeColor="#ffcc00"/>
-                <mx:Button x="390" y="427" label="LOG OUT" width="78" color="#ff0000" themeColor="#ffcc00"/>
+                <mx:ComboBox x="10" y="428" width="135" themeColor="#ffcc00" id="channelSelect" editable="false"/>
+                <mx:TextInput x="150" y="428" width="330" id="tf_pubmsg" themeColor="#ffcc00"/>
+                <mx:Button x="497" y="428" label="Send &gt;&gt;" width="75" themeColor="#ffcc00"/>
+                <mx:Button x="590" y="428" label="LOG OUT" width="78" color="#ff0000" themeColor="#ffcc00"/>
                 <mx:Button x="476" y="217" label="Create room" width="104" name="btn_crtroom"/>
                 <mx:HRule y="457" width="655" left="10" height="14"/>
                 <mx:Label text="www.gproject.com" width="655" textAlign="center" color="#333333" y="472"/>
