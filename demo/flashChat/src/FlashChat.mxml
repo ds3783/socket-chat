@@ -137,7 +137,12 @@
             for each (var clientModel:ClientModel in msg.clients) {
                 var client:Label = new Label();
                 client.text = clientModel.name;
-                client.name = clientModel.id.toString();
+                client.name = clientModel.id;
+                if (clientModel.mySelf) {
+                    client.setStyle('color', 'blue');
+                } else if (clientModel.admin) {
+                    client.setStyle('color', 'red');
+                }
                 client.setStyle("paddingLeft", "10");
                 trace('client:' + client.text);
                 userList.addChild(client);
