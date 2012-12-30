@@ -154,10 +154,10 @@ public class ChatServerClient extends EventDispatcher {
                 //auto join default Channel
                 for each (var channelModel:ChannelModel in list.channels) {
                     if (channelModel.defaultChannel) {
-                        var message:CommandMessage = new CommandMessage();
-                        message.command = CommandType.JOIN_CHANNEL;
-                        message.content = channelModel.id.toString(10);
-                        socket.sendMessage(message);
+                        var msg:CommandMessage = new CommandMessage();
+                        msg.command = CommandType.JOIN_CHANNEL;
+                        msg.content = channelModel.id.toString(10);
+                        socket.sendMessage(msg);
                         break;
                     }
                 }
