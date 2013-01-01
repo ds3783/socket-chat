@@ -57,4 +57,13 @@ public class ChannelDao extends HibernateDaoSupport {
         }
         return null;
     }
+
+    public boolean isInChannel(String uid, Long channelId) {
+        Long count = 0L;
+        List rs = getHibernateTemplate().find("select count(*) as CONT from ClientChannel c where c.clientId=? and c.channelId=? ", new Object[]{uid, channelId});
+        for (Object r : rs) {
+            count = (Long) r;
+        }
+        return count > 0;
+    }
 }

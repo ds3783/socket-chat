@@ -1,11 +1,9 @@
 package net.ds3783.chatserver.extension.core;
 
-import net.ds3783.chatserver.MessageType;
 import net.ds3783.chatserver.communicate.ContextHelper;
 import net.ds3783.chatserver.communicate.delivery.Event;
 import net.ds3783.chatserver.communicate.delivery.EventListener;
 import net.ds3783.chatserver.communicate.delivery.MessageDispatcher;
-import net.ds3783.chatserver.messages.MessageContext;
 
 /**
  * Created by IntelliJ IDEA.
@@ -21,14 +19,14 @@ public class ChannelListener implements EventListener {
     private MessageDispatcher channelDispatcher;
 
     public boolean onEvent(Event event) {
-        if (MessageType.CHAT_MESSAGE.equals(event.getMessage().getType())) {
+        /*if (MessageType.CHAT_MESSAGE.equals(event.getMessage().getType())) {
 
             MessageContext context = contextHelper.getContext(event.getMessage());
             Event evt = new Event();
             evt.setName(context.getSender().getChannel());
             evt.setMessage(event.getMessage());
             channelDispatcher.dispatchEvent(evt);
-        }
+        }*/
         return true;
     }
 
@@ -45,6 +43,6 @@ public class ChannelListener implements EventListener {
     }
 
     public void init() {
-        messageDispatcher.addListener(MessageType.CHAT_MESSAGE, this);
+        //messageDispatcher.addListener(MessageType.CHAT_MESSAGE, this);
     }
 }
