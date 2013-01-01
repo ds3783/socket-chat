@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" initialize="init();">
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:local="*" layout="absolute" initialize="init();">
     <!--
          G-Chat Actionscript 3.0 example application:
 
@@ -8,13 +8,13 @@
      -->
 
     <mx:Script>
-        import mx.collections.ArrayCollection;
         import mx.containers.TitleWindow;
         import mx.controls.Alert;
         import mx.controls.CheckBox;
         import mx.controls.TextArea;
         import mx.core.IFlexDisplayObject;
         import mx.events.CloseEvent;
+        import mx.events.FlexEvent;
         import mx.managers.PopUpManager;
         import mx.utils.StringUtil;
 
@@ -52,13 +52,22 @@
         }
 
         private function init():void {
-            view_chat.addEventListener(Event.ADDED, function (e:Event):void {
-                if (view_chat_panel) {
-                    var btn_crtroom:Button = view_chat_panel.getChildByName("btn_crtroom") as Button;
-                    if (btn_crtroom) {
-                        btn_crtroom.addEventListener(MouseEvent.CLICK, createRoom);
-                    }
+            view_chat.addEventListener(FlexEvent.CREATION_COMPLETE, function (e:Event):void {
+                var btn_crtroom:Button = view_chat_panel.getChildByName("btn_crtroom") as Button;
+                if (btn_crtroom) {
+                    btn_crtroom.addEventListener(MouseEvent.CLICK, createRoom);
                 }
+            });
+
+            view_chat.addEventListener(FlexEvent.CREATION_COMPLETE, function (e:Event):void {
+                tf_pubmsg.addEventListener(KeyboardEvent.KEY_DOWN, function (e:KeyboardEvent):void {
+                    if (e.keyCode == Keyboard.ENTER) {
+                        sendMessage();
+                    }
+                });
+                btn_send.addEventListener(MouseEvent.CLICK, function (e:MouseEvent):void {
+                    sendMessage();
+                });
             });
         }
 
@@ -113,10 +122,26 @@
             Alert.show("Login rquest denied,PASSWORD wrong?", "Login ERROR!");
         }
 
+        public function sendMessage():void {
+            var channel:ChannelLabel = channelSelect.getCurrentChannel();
+            var text:String = tf_pubmsg.text || '';
+            if (text) {
+                if (channel.isSecert) {
+                    trace('say to [' + channel.label + ']:' + text);
+                    gClient.sendPrivateMessage(channel.id, text);
+                } else {
+                    trace('say in channel [' + channel.label + ']:' + text);
+                    gClient.sendMessage(channel.id, text);
+                }
+            }
+            tf_pubmsg.text = "";
+        }
+
         private function onChannelListUpdate(e:ChatEvent):void {
             var msg:ChannelListMessage = e.message as ChannelListMessage;
             //更新roomList
             roomList.removeAllChildren();
+            var listeningChannels:Array = [];
             for each (var channelModel:ChannelModel in msg.channels) {
                 var channel:CheckBox = new CheckBox();
                 channel.label = channelModel.name;
@@ -125,6 +150,7 @@
                 if (msg.listeningChannels) {
                     for each (var number:Number in msg.listeningChannels) {
                         if (number == channelModel.id) {
+                            listeningChannels.push(channelModel);
                             channel.selected = true;
                         }
                     }
@@ -134,62 +160,7 @@
             }
             //更新channelSelect
             if (channelSelect) {
-                var selectedItem:Object = channelSelect.selectedItem;
-                var secertItem:Object = null;
-                var newIdx = 0;
-                if (!channelSelect.data) {
-                    channelSelect.data = [];
-                }
-                if (selectedItem) {
-                    if (!selectedItem.isSecert) {
-                        var found:Boolean = false;
-                        for each (channelModel in msg.channels) {
-                            if (channelModel.id == selectedItem.id) {
-                                found = true;
-                                break;
-                            }
-                        }
-                        if (!found) {
-                            newIdx = -1;
-                        }
-                    } else {
-                        secertItem = selectedItem;
-                    }
-                }
-                if (!secertItem) {
-//                    var datas:ArrayCollection = channelSelect.data as ArrayCollection;
-//                    if (datas) {
-                    var arr:Array = channelSelect.data as Array;
-                    for each (var item:Object in arr) {
-                        if (item) {
-                            if (item.isSecert) {
-                                secertItem = item;
-                                break;
-                            }
-                        }
-//                        }
-                    }
-                }
-
-                var newData = new Array();
-                if (secertItem) {
-                    newData.push(secertItem);
-                    newIdx = 0;
-                }
-                if ((selectedItem) &amp;&amp; !(selectedItem.isSecert) &amp;&amp; newIdx >= 0) {
-                    newData.push(selectedItem);
-                    newIdx = newData.length - 1;
-                }
-
-                for each (channelModel in msg.channels) {
-                    if (selectedItem &amp;&amp; channelModel.id == selectedItem.id) {
-                        continue;
-                    } else {
-                        newData.push({id: channelModel.id, label: channelModel.name, isSecert: false});
-                    }
-                }
-                channelSelect.dataProvider = new ArrayCollection(newData);
-                channelSelect.selectedIndex = newIdx;
+                channelSelect.setChannelList(listeningChannels);
             }
         }
 
@@ -288,8 +259,6 @@
                 removePop(button.parent as IFlexDisplayObject);
                 button.removeEventListener(MouseEvent.CLICK, onCreateRoomButtonClick);
             }
-
-
         }
 
 
@@ -362,10 +331,12 @@
                 <mx:Label x="476" y="18" text=":: ROOM LIST"/>
                 <mx:Label x="10" y="18" text=":: CHAT HISTORY"/>
                 <mx:Label x="476" y="247" text=":: USER LIST"/>
-                <mx:ComboBox x="10" y="428" width="135" themeColor="#ffcc00" id="channelSelect" editable="false"/>
+                <local:ChannelSelect x="10" y="428" width="135" themeColor="#ffcc00" id="channelSelect"
+                                     editable="false"/>
                 <mx:TextInput x="150" y="428" width="330" id="tf_pubmsg" themeColor="#ffcc00"/>
-                <mx:Button x="497" y="428" label="Send &gt;&gt;" width="75" themeColor="#ffcc00"/>
-                <mx:Button x="590" y="428" label="LOG OUT" width="78" color="#ff0000" themeColor="#ffcc00"/>
+                <mx:Button x="497" y="428" label="Send &gt;&gt;" width="75" id="btn_send" themeColor="#ffcc00"/>
+                <mx:Button x="585" y="428" label="LOG OUT" width="78" color="#ff0000" id="btn_out"
+                           themeColor="#ffcc00"/>
                 <mx:Button x="476" y="217" label="Create room" width="104" name="btn_crtroom"/>
                 <mx:HRule y="457" width="655" left="10" height="14"/>
                 <mx:Label text="www.gproject.com" width="655" textAlign="center" color="#333333" y="472"/>

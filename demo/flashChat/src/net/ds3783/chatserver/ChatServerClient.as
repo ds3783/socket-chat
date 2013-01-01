@@ -12,6 +12,7 @@ import net.ds3783.chatserver.messages.ChannelListMessage;
 import net.ds3783.chatserver.messages.ClientListMessage;
 import net.ds3783.chatserver.messages.CommandMessage;
 import net.ds3783.chatserver.messages.LoginMessage;
+import net.ds3783.chatserver.messages.PublicMessage;
 import net.ds3783.chatserver.messages.SystemReplyMessage;
 import net.ds3783.chatserver.messages.model.ChannelModel;
 
@@ -121,6 +122,21 @@ public class ChatServerClient extends EventDispatcher {
         socket.sendMessage(message);
     }
 
+
+    public function sendPrivateMessage(id:String, text:String):void {
+
+    }
+
+    public function sendMessage(id:String, text:String):void {
+        if (!text || !id) {
+            return;
+        }
+        var message:PublicMessage = new PublicMessage();
+        message.channelId = Number(id);
+        message.content = text;
+        socket.sendMessage(message);
+    }
+
     private function onChannelListUpdate(e:SocketEvent):void {
         var list:ChannelListMessage = e.message as ChannelListMessage;
         if (list) {
@@ -203,5 +219,6 @@ public class ChatServerClient extends EventDispatcher {
     public function get password():String {
         return _password;
     }
+
 }
 }

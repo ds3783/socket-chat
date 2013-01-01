@@ -15,6 +15,7 @@ import net.ds3783.chatserver.messages.ChannelListMessage;
 import net.ds3783.chatserver.messages.ClientListMessage;
 import net.ds3783.chatserver.messages.CommandMessage;
 import net.ds3783.chatserver.messages.LoginMessage;
+import net.ds3783.chatserver.messages.PublicMessage;
 import net.ds3783.chatserver.messages.SystemReplyMessage;
 import net.ds3783.chatserver.messages.model.ChannelModel;
 import net.ds3783.chatserver.messages.model.ClientModel;
@@ -28,6 +29,7 @@ public class SocketClient extends EventDispatcher {
         registerClassAlias("net.ds3783.chatserver.messages.SystemReplyMessage", SystemReplyMessage);
         registerClassAlias("net.ds3783.chatserver.messages.CommandMessage", CommandMessage);
         registerClassAlias("net.ds3783.chatserver.messages.ChannelListMessage", ChannelListMessage);
+        registerClassAlias("net.ds3783.chatserver.messages.PublicMessage", PublicMessage);
         registerClassAlias("net.ds3783.chatserver.messages.ClientListMessage", ClientListMessage);
         registerClassAlias("net.ds3783.chatserver.messages.model.ChannelModel", ChannelModel);
         registerClassAlias("net.ds3783.chatserver.messages.model.ClientModel", ClientModel);
