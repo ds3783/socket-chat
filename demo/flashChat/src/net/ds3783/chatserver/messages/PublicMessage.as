@@ -14,8 +14,11 @@ public class PublicMessage implements Message {
     }
 
     private var _content:String;
+    public var senderId:String;
+    public var senderName:String;
     public var channelId:Number;
     public var channelName:String;
+    public var timestamp:Date;
 
     public function getType():String {
         return MessageType.CHAT_MESSAGE;

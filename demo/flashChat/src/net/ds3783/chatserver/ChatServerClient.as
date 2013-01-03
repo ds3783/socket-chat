@@ -36,6 +36,7 @@ public class ChatServerClient extends EventDispatcher {
         socket.addEventListener(SocketClient.EVENT_CONNECTED, onConnected);
         socket.addEventListener(SocketClient.EVENT_LOGIN, onLogined);
         socket.addEventListener(SocketClient.EVENT_DISCONNECTED, onDisconnected);
+        socket.addEventListener(SocketClient.EVENT_CLIENTMESSAGE, onChatMessage);
         autoJoinDefaultChannel = autoJoin;
     }
 
@@ -188,6 +189,13 @@ public class ChatServerClient extends EventDispatcher {
     private function onClientListUpdate(e:SocketEvent):void {
         var msg:ClientListMessage = e.message as ClientListMessage;
         var event:ChatEvent = new ChatEvent(CLIENT_LIST_UPDATE);
+        event.message = msg;
+        dispatchEvent(event);
+    }
+
+    private function onChatMessage(e:SocketEvent):void {
+        var msg:Message = e.message as Message;
+        var event:ChatEvent = new ChatEvent(MESSAGE);
         event.message = msg;
         dispatchEvent(event);
     }

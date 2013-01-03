@@ -136,11 +136,8 @@ public class SocketClient extends EventDispatcher {
                 var pos:uint = dataCache.position;
                 dataCache.position = 0;
                 var bint:int = dataCache.readInt();
-                trace("message length:" + bint);
                 if (dataCache.bytesAvailable >= bint) {
                     dataCache.readBytes(newbytes, 0, bint);
-                    trace("message content:" + newbytes.toString());
-                    trace("message len2:" + newbytes.length);
                     newbytes.position = 0;
                     messageBuffer.push(newbytes.readObject());
                     if (dataCache.bytesAvailable > 0) {
@@ -168,6 +165,7 @@ public class SocketClient extends EventDispatcher {
         while (messageBuffer.length > 0) {
             var obj:Object = messageBuffer.shift();
             var message:Message = obj as Message;
+            trace('getMessage:' + JSON.encode(message));
             if (message == null) {
                 trace("Unrecognize Message:[" + obj.toString() + "]" + JSON.encode(obj));
                 return;

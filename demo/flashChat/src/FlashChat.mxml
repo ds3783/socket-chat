@@ -20,8 +20,10 @@
 
         import net.ds3783.chatserver.ChatEvent;
         import net.ds3783.chatserver.ChatServerClient;
+        import net.ds3783.chatserver.Message;
         import net.ds3783.chatserver.messages.ChannelListMessage;
         import net.ds3783.chatserver.messages.ClientListMessage;
+        import net.ds3783.chatserver.messages.PublicMessage;
         import net.ds3783.chatserver.messages.SystemReplyMessage;
         import net.ds3783.chatserver.messages.model.ChannelModel;
         import net.ds3783.chatserver.messages.model.ClientModel;
@@ -89,6 +91,10 @@
             }
 
             viewstack.selectedChild = view_login;
+
+            gClient.removeEventListener(ChatServerClient.CHANNEL_LIST_UPDATE, onChannelListUpdate);
+            gClient.removeEventListener(ChatServerClient.CLIENT_LIST_UPDATE, onClientListUpdate);
+            gClient.removeEventListener(ChatServerClient.MESSAGE, onMessage);
             Alert.show("Connection lost!");
         }
 
@@ -115,6 +121,7 @@
             viewstack.selectedChild = view_chat;
             gClient.addEventListener(ChatServerClient.CHANNEL_LIST_UPDATE, onChannelListUpdate);
             gClient.addEventListener(ChatServerClient.CLIENT_LIST_UPDATE, onClientListUpdate);
+            gClient.addEventListener(ChatServerClient.MESSAGE, onMessage);
         }
 
         public function loginedFail(evt:ChatEvent):void {
@@ -180,6 +187,20 @@
                 trace('client:' + client.text);
                 userList.addChild(client);
             }
+        }
+
+
+        private function onMessage(event:ChatEvent):void {
+            if (ta_chat) {
+                var msg:Message = event.message;
+                if (msg instanceof PublicMessage) {
+                    var publicView:PublicMessageView = new PublicMessageView(msg as PublicMessage);
+                    ta_chat.addChild(publicView);
+                }
+
+                trace("ta_chat:::" + ta_chat.getChildren().length);
+            }
+
         }
 
         private function onChannelChange(evt:Event):void {
@@ -319,7 +340,7 @@
                       title="::.. G-Chat-Demo ..:: ( 0.0.1 )" backgroundColor="#f0f0f0">
                 <mx:VBox x="10" y="37" height="382" width="458" id="ta_chat" fontSize="11" themeColor="#ffcc00"
                          verticalScrollPolicy="auto" horizontalScrollPolicy="off" borderStyle="solid"
-                         backgroundColor="#FFFFFF">
+                         backgroundColor="#FFFFFF" verticalGap="0">
 
                 </mx:VBox>
 
