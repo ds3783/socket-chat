@@ -2,6 +2,8 @@ package net.ds3783.chatserver.messages;
 
 import net.ds3783.chatserver.MessageType;
 
+import java.util.Date;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Ds.3783
@@ -11,7 +13,10 @@ import net.ds3783.chatserver.MessageType;
  */
 public class PublicMessage implements Message {
     private Long channelId;
+    private Date timestamp;
     private String channelName;
+    private String senderName;
+    private String senderId;
     private String content;
 
     public String getType() {
@@ -44,5 +49,29 @@ public class PublicMessage implements Message {
 
     public void setChannelName(String channelName) {
         this.channelName = channelName;
+    }
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public String getSenderId() {
+        return senderId;
+    }
+
+    public void setSenderId(String senderId) {
+        this.senderId = senderId;
+    }
+
+    public String getSenderName() {
+        return senderName;
+    }
+
+    public void setSenderName(String senderName) {
+        this.senderName = senderName;
     }
 }

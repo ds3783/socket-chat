@@ -3,14 +3,12 @@ package net.ds3783.chatserver.extension.chat;
 import net.ds3783.chatserver.communicate.ContextHelper;
 import net.ds3783.chatserver.communicate.delivery.Event;
 import net.ds3783.chatserver.communicate.delivery.EventListener;
-import net.ds3783.chatserver.dao.Channel;
-import net.ds3783.chatserver.dao.ChannelDao;
-import net.ds3783.chatserver.dao.ClientChannel;
-import net.ds3783.chatserver.dao.ClientDao;
+import net.ds3783.chatserver.dao.*;
 import net.ds3783.chatserver.extension.ClientException;
 import net.ds3783.chatserver.messages.MessageContext;
 import net.ds3783.chatserver.messages.PublicMessage;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -43,11 +41,17 @@ public class PublicMessageListener extends DefaultChatListener implements EventL
             PublicMessage reply = new PublicMessage();
             reply.setChannelId(channel.getId());
             reply.setChannelName(channel.getName());
+            reply.setSenderId(context.getSender().getUid());
+            reply.setSenderName(context.getSender().getName());
+            reply.setTimestamp(new Date());
             reply.setContent(message.getContent());
             MessageContext replyContext = contextHelper.registerMessage(reply, context.getSender());
             List<ClientChannel> cList = channelDao.getClientsByChannel(channel.getId());
             for (ClientChannel clientChannel : cList) {
-                replyContext.getReceivers().add(clientDao.getClient(clientChannel.getClientId()));
+                Client client = clientDao.getClient(clientChannel.getClientId());
+                if (client != null) {
+                    replyContext.getReceivers().add(client);
+                }
             }
             outputerSwitcher.switchTo(reply);
             return false;
