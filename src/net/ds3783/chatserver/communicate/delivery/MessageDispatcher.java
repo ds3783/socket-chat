@@ -6,7 +6,7 @@ import java.util.*;
  * Created by IntelliJ IDEA.
  * User: Ds3783
  * Date: 11-6-19
- * Time: ÉÏÎç12:48
+ * Time: ä¸Šåˆ12:48
  * To change this template use File | Settings | File Templates.
  */
 public class MessageDispatcher {
@@ -62,7 +62,7 @@ public class MessageDispatcher {
                 for (Iterator<EventListener> iterator = inner.iterator(); iterator.hasNext(); ) {
                     EventListener eventListener = iterator.next();
                     if (eventListener == listener) {
-                        //ÕâÀïµÄÈ·ÊÇÓÃ==ÅĞ¶Ï£¬ÅĞ¶ÏÁ½¸ö¶ÔÏóÊÇ·ñÊÇÍ¬Ò»¸öÊµÀı
+                        //è¿™é‡Œçš„ç¡®æ˜¯ç”¨==åˆ¤æ–­ï¼Œåˆ¤æ–­ä¸¤ä¸ªå¯¹è±¡æ˜¯å¦æ˜¯åŒä¸€ä¸ªå®ä¾‹
                         iterator.remove();
                     }
                 }

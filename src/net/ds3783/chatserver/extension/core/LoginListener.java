@@ -18,7 +18,7 @@ import org.apache.commons.logging.LogFactory;
  * Created by IntelliJ IDEA.
  * User: Ds3783
  * Date: 11-6-19
- * Time: ÉÏÎç11:07
+ * Time: ä¸Šåˆ11:07
  */
 public class LoginListener extends DefaultCoreListener implements EventListener {
     private static Log logger = LogFactory.getLog(LoginListener.class);
@@ -31,25 +31,25 @@ public class LoginListener extends DefaultCoreListener implements EventListener 
             return true;
         }
         LoginMessage login = (LoginMessage) event.getMessage();
-        //µÇÂ¼
+        //ç™»å½•
         MessageContext context = contextHelper.getContext(login);
         SystemReplyMessage reply = new SystemReplyMessage();
         MessageContext replyContext = contextHelper.registerMessage(reply, context.getSender());
-        //µÇÂ¼³É¹¦
+        //ç™»å½•æˆåŠŸ
         if (clientDao.getClientByName(login.getUsername()) != null) {
-            //Í¨Öª´ËÈËÓĞÖØÃû£¬²¢ÌßÏÂÏß
+            //é€šçŸ¥æ­¤äººæœ‰é‡åï¼Œå¹¶è¸¢ä¸‹çº¿
             replyContext.setDropClientAfterReply(true);
-            reply.setContent("µ±Ç°ÓĞÖØÃûÓÃ»§");
+            reply.setContent("å½“å‰æœ‰é‡åç”¨æˆ·");
             reply.setCode(SystemReplyMessage.CODE_ERROR_WRONG_PASSWORD);
             replyContext.getReceivers().add(context.getSender());
-            logger.info("µ±Ç°ÓĞÖØÃûÓÃ»§:" + reply.getContent());
+            logger.info("å½“å‰æœ‰é‡åç”¨æˆ·:" + reply.getContent());
             outputerSwitcher.switchTo(reply);
             return false;
         } else {
             context.getSender().setName(login.getUsername());
             SystemReplyMessage reply2 = new SystemReplyMessage();
-            //È«¾Ö¹ã²¥Ä³ÈËÉÏÏß
-            reply2.setContent(context.getSender().getName() + " ³É¹¦µÇÂ¼");
+            //å…¨å±€å¹¿æ’­æŸäººä¸Šçº¿
+            reply2.setContent(context.getSender().getName() + " æˆåŠŸç™»å½•");
             MessageContext replyContext2 = contextHelper.registerMessage(reply2, context.getSender());
             replyContext2.getReceivers().addAll(clientDao.getAllClients());
             reply2.setCode(SystemReplyMessage.CODE_OTHER_USER_ONLINE);
@@ -58,7 +58,7 @@ public class LoginListener extends DefaultCoreListener implements EventListener 
             Client client = clientService.clientLogin(context.getSender().getUid(), login.getUsername(), Utils.newUuid());
             reply.setCode(SystemReplyMessage.CODE_LOGIN_SUCCESS);
             replyContext.getReceivers().add(client);
-            logger.info(client.getIp() + ":" + client.getPort() + "(" + client.getName() + ") ³É¹¦µÇÂ¼¡£");
+            logger.info(client.getIp() + ":" + client.getPort() + "(" + client.getName() + ") æˆåŠŸç™»å½•ã€‚");
             outputerSwitcher.switchTo(reply);
 
             logger.debug(login.getUsername() + " online");

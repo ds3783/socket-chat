@@ -68,7 +68,7 @@ public class OutputThread extends SlaveThread implements Runnable {
                 channelSelector.select(1000);
             } catch (IOException e) {
                 logger.error(e.getMessage(), e);
-                //Ñ¡ÔñÆ÷¹ÊÕÏ
+                //é€‰æ‹©å™¨æ•…éšœ
                 try {
                     channelSelector.keys().clear();
                 } catch (Exception e1) {
@@ -76,7 +76,7 @@ public class OutputThread extends SlaveThread implements Runnable {
                 }
                 break;
             }
-            //ÏòÍøÂçÁ÷ÖĞĞ´ÈëÊı¾İ
+            //å‘ç½‘ç»œæµä¸­å†™å…¥æ•°æ®
             if (toSendMessages.isEmpty() && enmergencyMessages.isEmpty()) {
                 try {
                     Thread.sleep(sleeptime);
@@ -165,7 +165,7 @@ public class OutputThread extends SlaveThread implements Runnable {
             client.setLastMessageTime(now);
         } catch (IOException e) {
             logger.warn(client.getName() + ":" + e.getMessage());
-            //ÓÃ»§ÒÑ¶ÏÏß£¬Çå³ı¸ÃÓÃ»§
+            //ç”¨æˆ·å·²æ–­çº¿ï¼Œæ¸…é™¤è¯¥ç”¨æˆ·
             this.remove(client.getUid());
             processThread.addOfflineUser(client);
         }

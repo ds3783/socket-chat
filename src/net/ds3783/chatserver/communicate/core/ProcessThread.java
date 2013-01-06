@@ -27,12 +27,12 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
 
     public void addMessage(Message message) {
         try {
-            logger.debug("ÊÕµ½ÏûÏ¢:" + new Gson().toJson(message));
+            logger.debug("æ”¶åˆ°æ¶ˆæ¯:" + new Gson().toJson(message));
             if ((MessageType.AUTH_MESSAGE.equals(message.getType()) || MessageType.LOGIN_MESSAGE.equals(message.getType()))) {
                 enmergencyMessages.put(message);
             } else if (receivedMessages.size() > maxMessageInQueue) {
-                //³¬³ö×î´óÏûÏ¢ÊıÁ¿ÏŞÖÆ
-                logger.fatal("ÏµÍ³¸ºÔØ´ó,´ı´¦ÀíÏûÏ¢ÊıÁ¿:" + receivedMessages.size());
+                //è¶…å‡ºæœ€å¤§æ¶ˆæ¯æ•°é‡é™åˆ¶
+                logger.fatal("ç³»ç»Ÿè´Ÿè½½å¤§,å¾…å¤„ç†æ¶ˆæ¯æ•°é‡:" + receivedMessages.size());
                 logger.warn("Dropped Message:" + Utils.describeBean(message));
             } else {
                 receivedMessages.put(message);
@@ -105,19 +105,19 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
     }
 
     /**
-     * È¡µÃÈ¨ÖØ
-     * È¨ÖØ¹ØÏµµ½Ñ¡ÔñÆ÷µÄÑ¡Ôñ½á¹û
+     * å–å¾—æƒé‡
+     * æƒé‡å…³ç³»åˆ°é€‰æ‹©å™¨çš„é€‰æ‹©ç»“æœ
      *
-     * @return È¨ÖØ
+     * @return æƒé‡
      */
     public int getWeight() {
         return this.receivedMessages.size();
     }
 
     /**
-     * ½ÓÊÕÊı¾İ
+     * æ¥æ”¶æ•°æ®
      *
-     * @param data ´«¸ø¿ØÖÆÆ÷µÄÏûÏ¢
+     * @param data ä¼ ç»™æ§åˆ¶å™¨çš„æ¶ˆæ¯
      */
     public void receive(Message data) {
         this.addMessage(data);

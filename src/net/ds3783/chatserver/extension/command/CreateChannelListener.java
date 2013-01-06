@@ -22,7 +22,7 @@ import java.util.List;
  * Created with IntelliJ IDEA.
  * User: hongyu.pi
  * Date: 12-12-3
- * Time: 下午2:25
+ * Time: 涓嬪崍2:25
  * To change this template use File | Settings | File Templates.
  */
 public class CreateChannelListener extends DefaultCommandListener implements EventListener {
@@ -32,14 +32,14 @@ public class CreateChannelListener extends DefaultCommandListener implements Eve
 
     public boolean onEvent(Event event) {
         if (!CommandType.CREATE_CHANNEL.equals(event.getName())) {
-            //非ListChannel命令交由其他Listener处理
+            //闈濴istChannel鍛戒护浜ょ敱鍏朵粬Listener澶勭悊
             return true;
         }
         ChannelListMessage reply = new ChannelListMessage();
         CommandMessage command = (CommandMessage) event.getMessage();
         MessageContext context = contextHelper.getContext(command);
 
-        //获得所有Channel
+        //鑾峰緱鎵�鏈塁hannel
         String channelName = command.getContent();
         if (channelName != null) {
             channelName = channelName.trim();
@@ -63,7 +63,7 @@ public class CreateChannelListener extends DefaultCommandListener implements Eve
             chls[i] = new ChannelModel(channel);
         }
         reply.setChannels(chls);
-        //获得当前已经加入的channels
+        //鑾峰緱褰撳墠宸茬粡鍔犲叆鐨刢hannels
         List<ClientChannel> myChannel = channelLogic.getMyChannels(context.getSender().getUid());
         List<Long> myChanList = new ArrayList<Long>();
         for (ClientChannel channel : myChannel) {
@@ -73,7 +73,7 @@ public class CreateChannelListener extends DefaultCommandListener implements Eve
 
 
         outputerSwitcher.switchTo(reply);
-        //阻止其他Listener
+        //闃绘鍏朵粬Listener
         return false;
     }
 

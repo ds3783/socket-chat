@@ -37,12 +37,12 @@ public class InputFilterV1 extends InputFilter {
         try {
             cMsg = gson.fromJson(content, ClientMessage.class);
         } catch (JsonParseException e) {
-            logger.warn("ÎŞĞ§µÄÏûÏ¢:" + content);
+            logger.warn("æ— æ•ˆçš„æ¶ˆæ¯:" + content);
             return message;
         }
         if ("login".equals(cMsg.getCommand())) {
             message.setType(MessageType.LOGIN_MESSAGE);
-            //½ÇÉ«Ãû×Ö
+            //è§’è‰²åå­—
             message.setSubType(cMsg.getData());
             message.setAuthCode(cMsg.getToken());
 

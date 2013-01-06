@@ -6,23 +6,23 @@ import net.ds3783.chatserver.MessageType;
  * Created by IntelliJ IDEA.
  * User: Ds3783
  * Date: 11-12-1
- * Time: 上午12:00
+ * Time: 涓婂崍12:00
  * To change this template use File | Settings | File Templates.
  */
 public class SystemReplyMessage implements Message {
     public static final int CODE_100 = 100;
 
     public static final int CODE_200 = 200;
-    public static final int CODE_LOGIN_SUCCESS = 201;//登录成功
-    public static final int CODE_CHANNEL_LIST = 202;//频道列表
-    public static final int CODE_CLIENT_LIST = 203;//用户列表
+    public static final int CODE_LOGIN_SUCCESS = 201;//鐧诲綍鎴愬姛
+    public static final int CODE_CHANNEL_LIST = 202;//棰戦亾鍒楄〃
+    public static final int CODE_CLIENT_LIST = 203;//鐢ㄦ埛鍒楄〃
 
-    public static final int CODE_OTHER_USER_ONLINE = 301;//其他用户登录
+    public static final int CODE_OTHER_USER_ONLINE = 301;//鍏朵粬鐢ㄦ埛鐧诲綍
 
-    public static final int CODE_ERROR_NOT_LOGIN = 401;//尚未登录
-    public static final int CODE_ERROR_WRONG_PASSWORD = 402;//登录用户名或密码错误
-    public static final int CODE_ERROR_BLACKLIST = 403;//用户被禁言
-    public static final int CODE_ERROR_USER_CUSTOM = 499;//用户被禁言
+    public static final int CODE_ERROR_NOT_LOGIN = 401;//灏氭湭鐧诲綍
+    public static final int CODE_ERROR_WRONG_PASSWORD = 402;//鐧诲綍鐢ㄦ埛鍚嶆垨瀵嗙爜閿欒
+    public static final int CODE_ERROR_BLACKLIST = 403;//鐢ㄦ埛琚瑷�
+    public static final int CODE_ERROR_USER_CUSTOM = 499;//鐢ㄦ埛琚瑷�
 
     private int code;
     private String content;

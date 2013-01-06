@@ -10,8 +10,8 @@ import java.util.*;
  * Created by IntelliJ IDEA.
  * User: Ds3783
  * Date: 11-11-30
- * Time: 下午11:53
- * 上下文管理类
+ * Time: 涓嬪崍11:53
+ * 涓婁笅鏂囩鐞嗙被
  */
 public class ContextHelper {
     private Map<Message, MessageContext> contextMap;

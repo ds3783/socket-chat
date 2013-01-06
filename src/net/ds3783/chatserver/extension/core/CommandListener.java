@@ -10,7 +10,7 @@ import net.ds3783.chatserver.messages.CommandMessage;
  * Created by IntelliJ IDEA.
  * User: hongyu.pi
  * Date: 12-2-2
- * Time: ÏÂÎç3:29
+ * Time: ä¸‹åˆ3:29
  * To change this template use File | Settings | File Templates.
  */
 public class CommandListener implements EventListener {
@@ -19,7 +19,7 @@ public class CommandListener implements EventListener {
 
     public boolean onEvent(Event event) {
         if (MessageType.COMMAND_MESSAGE.equals(event.getMessage().getType())) {
-            //À¹½ØËùÓĞCommandMessage
+            //æ‹¦æˆªæ‰€æœ‰CommandMessage
             Event evt = new Event();
             CommandMessage msg = (CommandMessage) event.getMessage();
             evt.setName(msg.getCommand());

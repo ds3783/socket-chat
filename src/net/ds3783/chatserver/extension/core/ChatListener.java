@@ -9,7 +9,7 @@ import net.ds3783.chatserver.communicate.delivery.MessageDispatcher;
  * Created with IntelliJ IDEA.
  * User: Ds.3783
  * Date: 13-1-1
- * Time: ÏÂÎç10:11
+ * Time: ä¸‹åˆ10:11
  * To change this template use File | Settings | File Templates.
  */
 public class ChatListener implements EventListener {
@@ -18,7 +18,7 @@ public class ChatListener implements EventListener {
 
     public boolean onEvent(Event event) {
         if (MessageType.CHAT_MESSAGE.equals(event.getMessage().getType())) {
-            //À¹½ØËùÓĞCommandMessage
+            //æ‹¦æˆªæ‰€æœ‰CommandMessage
             Event evt = new Event();
             evt.setName(event.getMessage().getClass().getSimpleName());
             evt.setMessage(event.getMessage());

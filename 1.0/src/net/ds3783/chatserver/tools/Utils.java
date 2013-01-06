@@ -18,7 +18,7 @@ import java.util.UUID;
 public class Utils {
 
     /**
-     * Éú³ÉĞÂµÄuuid×Ö·û´®
+     * ç”Ÿæˆæ–°çš„uuidå­—ç¬¦ä¸²
      */
     public static String newUuid() {
         UUID uuid = UUID.randomUUID();

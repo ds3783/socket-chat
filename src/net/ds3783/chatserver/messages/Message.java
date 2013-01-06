@@ -4,22 +4,22 @@ package net.ds3783.chatserver.messages;
  * Created by IntelliJ IDEA.
  * User: Ds3783
  * Date: 11-11-17
- * Time: ÏÂÎç10:16
- * ÏûÏ¢½Ó¿Ú£¬ËùÓĞÍ¨ĞÅµÄÏûÏ¢±ØĞëÊµÏÖ´Ë½Ó¿Ú
+ * Time: ä¸‹åˆ10:16
+ * æ¶ˆæ¯æ¥å£ï¼Œæ‰€æœ‰é€šä¿¡çš„æ¶ˆæ¯å¿…é¡»å®ç°æ­¤æ¥å£
  */
 public interface Message {
     /**
-     * @return ÏûÏ¢ÀàĞÍ£¬ÓÃÓÚ±êÊ¶¸ÃÏûÏ¢µÄ¾ßÌåÀàĞÍ
+     * @return æ¶ˆæ¯ç±»å‹ï¼Œç”¨äºæ ‡è¯†è¯¥æ¶ˆæ¯çš„å…·ä½“ç±»å‹
      */
     public String getType();
 
     /**
-     * @return ÊÇ·ñ¿ÉĞòÁĞ»¯
+     * @return æ˜¯å¦å¯åºåˆ—åŒ–
      */
     public boolean isSerializable();
 
     /**
-     * @return ÏûÏ¢µÄÄÚÈİ£¬Ä³Ğ©Ğ­Òé¶Ô²»¿ÉĞòÁĞ»¯µÄÏûÏ¢»áÊ¹ÓÃÆäÄÚÈİ×÷Îª´«ÊäÄÚÈİ
+     * @return æ¶ˆæ¯çš„å†…å®¹ï¼ŒæŸäº›åè®®å¯¹ä¸å¯åºåˆ—åŒ–çš„æ¶ˆæ¯ä¼šä½¿ç”¨å…¶å†…å®¹ä½œä¸ºä¼ è¾“å†…å®¹
      */
     public String getContent();
 

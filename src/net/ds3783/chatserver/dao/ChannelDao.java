@@ -9,7 +9,7 @@ import java.util.List;
  * Created by IntelliJ IDEA.
  * User: hongyu.pi
  * Date: 12-3-15
- * Time: ����2:37
+ * Time: 锟斤拷锟斤拷2:37
  * To change this template use File | Settings | File Templates.
  */
 public class ChannelDao extends HibernateDaoSupport {

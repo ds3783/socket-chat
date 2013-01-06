@@ -74,7 +74,7 @@ public class OutputThread extends SlaveThread implements Runnable {
                 channelSelector.select(1000);
             } catch (IOException e) {
                 logger.error(e.getMessage(), e);
-                //Ñ¡ÔñÆ÷¹ÊÕÏ
+                //é€‰æ‹©å™¨æ•…éšœ
                 try {
                     channelSelector.keys().clear();
                 } catch (Exception e1) {
@@ -82,7 +82,7 @@ public class OutputThread extends SlaveThread implements Runnable {
                 }
                 break;
             }
-            //ÏòÍøÂçÁ÷ÖĞĞ´ÈëÊı¾İ
+            //å‘ç½‘ç»œæµä¸­å†™å…¥æ•°æ®
             if (toSendMessages.isEmpty() && enmergencyMessages.isEmpty()) {
                 try {
                     Thread.sleep(sleeptime);
@@ -113,11 +113,11 @@ public class OutputThread extends SlaveThread implements Runnable {
         int counter = 0;
         if (filters != null) {
             try {
-                //Êä³ö¹ıÂËÆ÷
+                //è¾“å‡ºè¿‡æ»¤å™¨
                 for (OutputFilter filter : filters) {
                     filter.filte(message);
                 }
-                //Êä³öĞ­Òé
+                //è¾“å‡ºåè®®
                 logger.debug("marshal:[" + message.getClass().getName() + "]" + gson.toJson(message));
                 protocal.addMessage(message);
                 data = protocal.marshal();
@@ -162,7 +162,7 @@ public class OutputThread extends SlaveThread implements Runnable {
             clientService.setLastMessageTime(dest, now);
         } catch (IOException e) {
             logger.warn(dest.getName() + ":" + e.getMessage());
-            //ÓÃ»§ÒÑ¶ÏÏß£¬Çå³ı¸ÃÓÃ»§
+            //ç”¨æˆ·å·²æ–­çº¿ï¼Œæ¸…é™¤è¯¥ç”¨æˆ·
             this.remove(dest.getUid());
             clientService.clientOffline(dest);
         }

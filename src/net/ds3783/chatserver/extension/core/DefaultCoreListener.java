@@ -7,8 +7,8 @@ import net.ds3783.chatserver.communicate.delivery.MessageDispatcher;
  * Created by IntelliJ IDEA.
  * User: Ds3783
  * Date: 11-6-19
- * Time: 上午11:17
- * 默认的监听器类，其不执行任何操作，仅用于spring注入
+ * Time: 涓婂崍11:17
+ * 榛樿鐨勭洃鍚櫒绫伙紝鍏朵笉鎵ц浠讳綍鎿嶄綔锛屼粎鐢ㄤ簬spring娉ㄥ叆
  */
 public class DefaultCoreListener {
     protected MessageDispatcher messageDispatcher;

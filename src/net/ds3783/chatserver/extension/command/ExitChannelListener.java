@@ -21,7 +21,7 @@ import java.util.List;
  * Created with IntelliJ IDEA.
  * User: hongyu.pi
  * Date: 12-9-18
- * Time: ÏÂÎç3:18
+ * Time: ä¸‹åˆ3:18
  * To change this template use File | Settings | File Templates.
  */
 public class ExitChannelListener extends DefaultCommandListener implements EventListener {
@@ -31,7 +31,7 @@ public class ExitChannelListener extends DefaultCommandListener implements Event
 
     public boolean onEvent(Event event) {
         if (!CommandType.EXIT_CHANNEL.equals(event.getName())) {
-            //·ÇListChannelÃüÁî½»ÓÉÆäËûListener´¦Àí
+            //éListChannelå‘½ä»¤äº¤ç”±å…¶ä»–Listenerå¤„ç†
             return true;
         }
         ChannelListMessage reply = new ChannelListMessage();
@@ -41,7 +41,7 @@ public class ExitChannelListener extends DefaultCommandListener implements Event
         MessageContext replyContext = contextHelper.registerMessage(reply, context.getSender());
         replyContext.getReceivers().add(context.getSender());
 
-        //»ñµÃËùÓĞChannel
+        //è·å¾—æ‰€æœ‰Channel
         Long channelid = new Long(command.getContent());
         List<ClientChannel> myChannel = channelLogic.getMyChannels(context.getSender().getUid());
         ClientChannel inChannel = null;
@@ -52,14 +52,14 @@ public class ExitChannelListener extends DefaultCommandListener implements Event
             }
         }
         if (inChannel == null) {
-            throw new ExtensionException("ÍË³öÆµµÀÊ§°Ü£¬Äú(ÒÑ)²»ÔÚ´ËÆµµÀ£¡");
+            throw new ExtensionException("é€€å‡ºé¢‘é“å¤±è´¥ï¼Œæ‚¨(å·²)ä¸åœ¨æ­¤é¢‘é“ï¼");
         }
         Channel exitChannel = channelDao.getChannel(channelid);
         if (exitChannel == null) {
-            throw new ExtensionException("ÍË³öÆµµÀÊ§°Ü£¬ÎŞĞ§µÄÆµµÀ£¡");
+            throw new ExtensionException("é€€å‡ºé¢‘é“å¤±è´¥ï¼Œæ— æ•ˆçš„é¢‘é“ï¼");
         }
         if (myChannel.size() <= 1) {
-            throw new ExtensionException("ÍË³öÆµµÀÊ§°Ü£¬ÄúĞÄÖĞÓĞ´æÔÚ¸ĞÃ´£¿£¡");
+            throw new ExtensionException("é€€å‡ºé¢‘é“å¤±è´¥ï¼Œæ‚¨å¿ƒä¸­æœ‰å­˜åœ¨æ„Ÿä¹ˆï¼Ÿï¼");
         }
         channelLogic.exitChannel(inChannel);
         myChannel.remove(inChannel);
@@ -70,7 +70,7 @@ public class ExitChannelListener extends DefaultCommandListener implements Event
             chls[i] = new ChannelModel(channel);
         }
         reply.setChannels(chls);
-        //»ñµÃµ±Ç°ÒÑ¾­¼ÓÈëµÄchannels
+        //è·å¾—å½“å‰å·²ç»åŠ å…¥çš„channels
         List<Long> myChanList = new ArrayList<Long>();
         for (ClientChannel channel : myChannel) {
             myChanList.add(channel.getChannelId());
@@ -79,7 +79,7 @@ public class ExitChannelListener extends DefaultCommandListener implements Event
 
 
         outputerSwitcher.switchTo(reply);
-        //×èÖ¹ÆäËûListener
+        //é˜»æ­¢å…¶ä»–Listener
         return false;
     }
 

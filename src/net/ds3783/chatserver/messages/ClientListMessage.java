@@ -7,7 +7,7 @@ import net.ds3783.chatserver.messages.model.ClientModel;
  * Created with IntelliJ IDEA.
  * User: Ds.3783
  * Date: 12-12-24
- * Time: ÏÂÎç11:13
+ * Time: ä¸‹åˆ11:13
  * To change this template use File | Settings | File Templates.
  */
 public class ClientListMessage extends SystemReplyMessage implements Message {

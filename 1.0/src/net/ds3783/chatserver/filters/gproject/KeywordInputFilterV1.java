@@ -27,7 +27,7 @@ public class KeywordInputFilterV1 extends InputFilter {
     private TreeNode keywordTree = new TreeNode();
 
     /*
-   ³õÊ¼»¯
+   åˆå§‹åŒ–
     */
     public void init() {
         String[] arrKeywords = this.keywords.split(",");
@@ -55,9 +55,9 @@ public class KeywordInputFilterV1 extends InputFilter {
         if (message != null && message.getContent() != null && message.getContent().length() > 0) {
 
             String content = message.getContent();
-            //²éÕÒ
+            //æŸ¥æ‰¾
             List<Indexes> result = doFilte(content.toCharArray(), keywordTree);
-            //Ìæ»»
+            //æ›¿æ¢
             char[] chars = content.toCharArray();
             for (Indexes indexes : result) {
                 for (int i = indexes.getStart(); i < indexes.getEnd(); i++) {

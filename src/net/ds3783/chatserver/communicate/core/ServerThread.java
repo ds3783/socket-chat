@@ -43,7 +43,7 @@ public class ServerThread extends CommonRunnable implements Runnable {
                 try {
                     add = Integer.parseInt(StringUtils.trim(address));
                 } catch (NumberFormatException e) {
-                    //ºöÂÔÒì³£
+                    //å¿½ç•¥å¼‚å¸¸
                 }
                 if (add == 0) {
                     addr = null;
@@ -56,7 +56,7 @@ public class ServerThread extends CommonRunnable implements Runnable {
         if (backlog == 0) {
             backlog = 50;
         }
-        //Æô¶¯¼àÌı
+        //å¯åŠ¨ç›‘å¬
         SelectorProvider provider = SelectorProvider.provider();
         serverChannel = provider.openServerSocketChannel();
         clientAcceptSelector = provider.openSelector();
@@ -64,7 +64,7 @@ public class ServerThread extends CommonRunnable implements Runnable {
         serverChannel.configureBlocking(false);
         serverSocketSelectKey = serverChannel.register(clientAcceptSelector, SelectionKey.OP_ACCEPT);
 
-        //¼àÌı³ÌĞò
+        //ç›‘å¬ç¨‹åº
         while (true) {
             try {
                 clientAcceptSelector.select();
@@ -75,11 +75,11 @@ public class ServerThread extends CommonRunnable implements Runnable {
                         socketChannel.configureBlocking(false);
 
 
-                        //È¡µÃÏß³Ì×ÊÔ´
-                        //¶ÁÈ¡Ïß³Ì
+                        //å–å¾—çº¿ç¨‹èµ„æº
+                        //è¯»å–çº¿ç¨‹
                         List<CommonRunnable> inputThreads = threadResource.getThreads(ThreadResourceType.INPUT_THREAD);
                         SlaveThread readSlave = null;
-                        //ÅÅĞòÕÒµ½¿Í»§¶Ë×îÉÙµÄÏß³Ì£¨Ä¬ÈÏÔ­Ôò£º¿Í»§¶Ë×îÉÙ=Ñ¹Á¦×îĞ¡=·şÎñËÙ¶È×î¿ì£©
+                        //æ’åºæ‰¾åˆ°å®¢æˆ·ç«¯æœ€å°‘çš„çº¿ç¨‹ï¼ˆé»˜è®¤åŸåˆ™ï¼šå®¢æˆ·ç«¯æœ€å°‘=å‹åŠ›æœ€å°=æœåŠ¡é€Ÿåº¦æœ€å¿«ï¼‰
                         for (CommonRunnable inputThread : inputThreads) {
                             if (inputThread != null && inputThread instanceof SlaveThread) {
                                 SlaveThread slave = (SlaveThread) inputThread;
@@ -92,10 +92,10 @@ public class ServerThread extends CommonRunnable implements Runnable {
                                 }
                             }
                         }
-                        //Ğ´ÈëÏß³Ì
+                        //å†™å…¥çº¿ç¨‹
                         List<CommonRunnable> outputThreads = threadResource.getThreads(ThreadResourceType.OUTPUT_THREAD);
                         SlaveThread writeSlave = null;
-                        //ÅÅĞòÕÒµ½¿Í»§¶Ë×îÉÙµÄÏß³Ì£¨Ä¬ÈÏÔ­Ôò£º¿Í»§¶Ë×îÉÙ=Ñ¹Á¦×îĞ¡=·şÎñËÙ¶È×î¿ì£©
+                        //æ’åºæ‰¾åˆ°å®¢æˆ·ç«¯æœ€å°‘çš„çº¿ç¨‹ï¼ˆé»˜è®¤åŸåˆ™ï¼šå®¢æˆ·ç«¯æœ€å°‘=å‹åŠ›æœ€å°=æœåŠ¡é€Ÿåº¦æœ€å¿«ï¼‰
                         for (CommonRunnable outputThread : outputThreads) {
                             if (outputThread != null && outputThread instanceof SlaveThread) {
                                 SlaveThread slave = (SlaveThread) outputThread;
@@ -119,9 +119,9 @@ public class ServerThread extends CommonRunnable implements Runnable {
 
                         client.setName(client.getIp() + ":" + client.getPort());
                         logger.debug(client.getName() + " connected");
-                        //ÄÉÈë¿Í»§¶Ë¹ÜÀíÖĞ
+                        //çº³å…¥å®¢æˆ·ç«¯ç®¡ç†ä¸­
                         clientService.addTempClient(client);
-                        //±ØĞëÏÈ·ÖÅäĞ´ÈëÏß³Ìºó·ÖÅä¶ÁÈ¡Ïß³Ì
+                        //å¿…é¡»å…ˆåˆ†é…å†™å…¥çº¿ç¨‹ååˆ†é…è¯»å–çº¿ç¨‹
                         writeSlave.assign(socketChannel, client.getUid());
 
                         readSlave.assign(socketChannel, client.getUid());

@@ -1,11 +1,11 @@
 package net.ds3783.chatserver.core;
 
 public class ThreadResourceType {
-    public static ThreadResourceType SERVER_THREAD = new ThreadResourceType("SERVER_THREAD", "·şÎñÆ÷¼àÌıÏß³Ì");
-    public static ThreadResourceType INPUT_THREAD = new ThreadResourceType("INPUT_THREAD", "Êı¾İ¶ÁÈ¡Ïß³Ì");
-    public static ThreadResourceType OUTPUT_THREAD = new ThreadResourceType("OUTPUT_THREAD", "Êı¾İ·¢ËÍÏß³Ì");
-    public static ThreadResourceType PROCESS_THREAD = new ThreadResourceType("PROCESS_THREAD", "ÒµÎñ´¦ÀíÏß³Ì");
-    public static ThreadResourceType GUARD_THREAD = new ThreadResourceType("GUARD_THREAD", "ÒµÎñ´¦ÀíÏß³Ì");
+    public static ThreadResourceType SERVER_THREAD = new ThreadResourceType("SERVER_THREAD", "æœåŠ¡å™¨ç›‘å¬çº¿ç¨‹");
+    public static ThreadResourceType INPUT_THREAD = new ThreadResourceType("INPUT_THREAD", "æ•°æ®è¯»å–çº¿ç¨‹");
+    public static ThreadResourceType OUTPUT_THREAD = new ThreadResourceType("OUTPUT_THREAD", "æ•°æ®å‘é€çº¿ç¨‹");
+    public static ThreadResourceType PROCESS_THREAD = new ThreadResourceType("PROCESS_THREAD", "ä¸šåŠ¡å¤„ç†çº¿ç¨‹");
+    public static ThreadResourceType GUARD_THREAD = new ThreadResourceType("GUARD_THREAD", "ä¸šåŠ¡å¤„ç†çº¿ç¨‹");
 
     private String name;
     private String description;

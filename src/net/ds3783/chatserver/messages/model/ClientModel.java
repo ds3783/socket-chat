@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Created with IntelliJ IDEA.
  * User: Ds.3783
  * Date: 12-12-24
- * Time: ÏÂÎç11:18
+ * Time: ä¸‹åˆ11:18
  * To change this template use File | Settings | File Templates.
  */
 public class ClientModel implements Serializable {

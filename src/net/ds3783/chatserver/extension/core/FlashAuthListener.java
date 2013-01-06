@@ -12,8 +12,8 @@ import net.ds3783.chatserver.messages.MessageContext;
  * Created by IntelliJ IDEA.
  * User: Ds3783
  * Date: 11-6-19
- * Time: 上午1:38
- * 处理Flash 访问授权验证
+ * Time: 涓婂崍1:38
+ * 澶勭悊Flash 璁块棶鎺堟潈楠岃瘉
  */
 public class FlashAuthListener extends DefaultCoreListener implements EventListener {
     private Configuration config;

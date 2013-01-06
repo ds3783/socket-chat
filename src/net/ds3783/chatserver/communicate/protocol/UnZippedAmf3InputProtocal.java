@@ -16,13 +16,13 @@ import java.io.IOException;
  * User: Ds.3783
  * Date: 2010-5-30
  * Time: 0:30:56
- * Amf3Ğ­Òé½âÂëÆ÷
+ * Amf3åè®®è§£ç å™¨
  */
 public class UnZippedAmf3InputProtocal extends InputProtocal {
     private static Log logger = LogFactory.getLog(UnZippedAmf3InputProtocal.class);
 
     /**
-     * ½âÂë
+     * è§£ç 
      */
     @Override
     public void unmarshal() throws UnmarshalException {

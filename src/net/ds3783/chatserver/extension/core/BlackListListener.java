@@ -15,8 +15,8 @@ import net.ds3783.chatserver.messages.SystemReplyMessage;
  * Created by IntelliJ IDEA.
  * User: Ds3783
  * Date: 11-6-19
- * Time: ÉÏÎç11:45
- * ºÚÃûµ¥¼àÌıÆ÷
+ * Time: ä¸Šåˆ11:45
+ * é»‘åå•ç›‘å¬å™¨
  */
 public class BlackListListener extends DefaultCoreListener implements EventListener {
     private ClientDao clientDao;
@@ -27,10 +27,10 @@ public class BlackListListener extends DefaultCoreListener implements EventListe
         MessageContext context = contextHelper.getContext(msg);
         Client client = context.getSender();
         if (clientDao.isInBlackList(client.getName(), System.currentTimeMillis())) {
-            //ºÚÃûµ¥´¦Àí
+            //é»‘åå•å¤„ç†
             SystemReplyMessage reply = new SystemReplyMessage();
             reply.setCode(SystemReplyMessage.CODE_ERROR_BLACKLIST);
-            reply.setContent("ÓÃ»§ÒÑ±»½ûÑÔ");
+            reply.setContent("ç”¨æˆ·å·²è¢«ç¦è¨€");
             contextHelper.registerMessage(reply, client);
             MessageContext context2 = contextHelper.getContext(reply);
             context2.getReceivers().add(client);

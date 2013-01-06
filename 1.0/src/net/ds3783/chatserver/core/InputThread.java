@@ -45,7 +45,7 @@ public class InputThread extends SlaveThread implements Runnable {
                 channelSelector.select(1000);
             } catch (IOException e) {
                 logger.error(e.getMessage(), e);
-                //Ñ¡ÔñÆ÷¹ÊÕÏ
+                //é€‰æ‹©å™¨æ•…éšœ
                 try {
                     channelSelector.keys().clear();
                 } catch (Exception e1) {
@@ -53,7 +53,7 @@ public class InputThread extends SlaveThread implements Runnable {
                 }
                 break;
             }
-            //´ÓÍøÂçÁ÷ÖĞ¶ÁÈ¡Êı¾İ
+            //ä»ç½‘ç»œæµä¸­è¯»å–æ•°æ®
             ByteBuffer readBuffer = null;
             byte[] ignoreBytes = this.ignoreBytes.getBytes(charset);
             long now = System.currentTimeMillis();
@@ -98,7 +98,7 @@ public class InputThread extends SlaveThread implements Runnable {
                         } while (bytecount > 0);
                         if (messageBuffer.length > 0) {
                             String message = new String(messageBuffer, charset);
-                            //µ÷ÓÃ¹ıÂËÆ÷
+                            //è°ƒç”¨è¿‡æ»¤å™¨
                             Message msg = new Message();
                             if (filters != null) {
                                 try {
@@ -119,7 +119,7 @@ public class InputThread extends SlaveThread implements Runnable {
                         if (client != null) {
                             logger.warn(client.getName() + ":" + e.getMessage());
                         }
-                        //ÓÃ»§ÒÑ¶ÏÏß£¬Çå³ı¸ÃÓÃ»§
+                        //ç”¨æˆ·å·²æ–­çº¿ï¼Œæ¸…é™¤è¯¥ç”¨æˆ·
                         this.remove(client.getUid());
                         processThread.addOfflineUser(client);
                     }
@@ -148,7 +148,7 @@ public class InputThread extends SlaveThread implements Runnable {
                 if (keyUsers.get(key) != null) {
                     Client client = clientDao.getClient(keyUsers.get(key));
                     if (client != null) {
-                        logger.warn("ºöÂÔ" + client.getName() + "µÄÒ»ÌõÏûÏ¢£¬ÏûÏ¢ÄÚÈİÎ´Öª£¡");
+                        logger.warn("å¿½ç•¥" + client.getName() + "çš„ä¸€æ¡æ¶ˆæ¯ï¼Œæ¶ˆæ¯å†…å®¹æœªçŸ¥ï¼");
                     }
                 }
                 iterator.remove();

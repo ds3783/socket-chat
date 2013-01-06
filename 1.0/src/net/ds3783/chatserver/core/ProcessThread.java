@@ -38,8 +38,8 @@ public class ProcessThread extends CommonRunnable implements Runnable {
             if ((MessageType.AUTH_MESSAGE.equals(message.getType()) || MessageType.LOGIN_MESSAGE.equals(message.getType()))) {
                 enmergencyMessages.put(message);
             } else if (receivedMessages.size() > maxMessageInQueue) {
-                //³¬³ö×î´óÏûÏ¢ÊıÁ¿ÏŞÖÆ
-                logger.fatal("ÏµÍ³¸ºÔØ´ó,´ı´¦ÀíÏûÏ¢ÊıÁ¿:" + receivedMessages.size());
+                //è¶…å‡ºæœ€å¤§æ¶ˆæ¯æ•°é‡é™åˆ¶
+                logger.fatal("ç³»ç»Ÿè´Ÿè½½å¤§,å¾…å¤„ç†æ¶ˆæ¯æ•°é‡:" + receivedMessages.size());
                 logger.warn("Dropped Message:" + Utils.describeBean(message));
             } else {
                 receivedMessages.put(message);
@@ -60,7 +60,7 @@ public class ProcessThread extends CommonRunnable implements Runnable {
                 Client client = toKickClient.poll();
                 kickedClent.put(client.getName(), client);
 
-                //Çå³ı·şÎñÏß³Ì×ÊÔ´
+                //æ¸…é™¤æœåŠ¡çº¿ç¨‹èµ„æº
                 clientDao.removeClient(client.getUid());
                 SlaveThread writeThread = (SlaveThread) threadResource.getThread(client.getWriteThread());
                 SlaveThread readThread = (SlaveThread) threadResource.getThread(client.getReadThread());
@@ -78,7 +78,7 @@ public class ProcessThread extends CommonRunnable implements Runnable {
                 }
 
                 if (client.isLogined()) {
-                    logger.info(client.getIp() + ":" + client.getPort() + "(" + client.getName() + ") ¶Ï¿ªÁ¬½Ó¡£");
+                    logger.info(client.getIp() + ":" + client.getPort() + "(" + client.getName() + ") æ–­å¼€è¿æ¥ã€‚");
                 }
             }
 

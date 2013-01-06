@@ -52,7 +52,7 @@ public class InputThread extends SlaveThread implements Runnable {
                 channelSelector.select(1000);
             } catch (IOException e) {
                 logger.error(e.getMessage(), e);
-                //Ñ¡ÔñÆ÷¹ÊÕÏ
+                //é€‰æ‹©å™¨æ•…éšœ
                 try {
                     channelSelector.keys().clear();
                 } catch (Exception e1) {
@@ -60,7 +60,7 @@ public class InputThread extends SlaveThread implements Runnable {
                 }
                 break;
             }
-            //´ÓÍøÂçÁ÷ÖĞ¶ÁÈ¡Êı¾İ
+            //ä»ç½‘ç»œæµä¸­è¯»å–æ•°æ®
             long now = System.currentTimeMillis();
             for (Object o : channelSelector.selectedKeys()) {
                 SelectionKey key = (SelectionKey) o;
@@ -81,11 +81,11 @@ public class InputThread extends SlaveThread implements Runnable {
                                 readBuffer.get(bytes, 0, bytecount);
                                 pool.offerBytes(client.getUid(), bytes);
                             } else if (bytecount < 0) {
-                                throw new IOException("ÓÃ»§ÒÑ¶ÏÏß");
+                                throw new IOException("ç”¨æˆ·å·²æ–­çº¿");
                             }
                         } while (bytecount > 0);
                         if (pool.getCachedSize(client.getUid()) > 0) {
-                            //Ê¹ÓÃĞ­Òé½âÂë
+                            //ä½¿ç”¨åè®®è§£ç 
                             protocal.reset();
                             byte[] data = pool.poolBytes(client.getUid());
                             protocal.setData(data);
@@ -93,7 +93,7 @@ public class InputThread extends SlaveThread implements Runnable {
                                 protocal.unmarshal();
                                 List<Message> messages = protocal.getMessages();
                                 pool.offerBytes(client.getUid(), protocal.getRemains());
-                                //µ÷ÓÃ¹ıÂËÆ÷
+                                //è°ƒç”¨è¿‡æ»¤å™¨
                                 for (Message message : messages) {
                                     contextHelper.registerMessage(message, client);
                                     logger.debug("Revceived Message:" + Utils.describeBean(message));
@@ -113,7 +113,7 @@ public class InputThread extends SlaveThread implements Runnable {
                         if (client != null) {
                             logger.warn(client.getName() + ":" + e.getMessage(), e);
 
-                            //ÓÃ»§ÒÑ¶ÏÏß£¬Çå³ı¸ÃÓÃ»§
+                            //ç”¨æˆ·å·²æ–­çº¿ï¼Œæ¸…é™¤è¯¥ç”¨æˆ·
                             this.remove(client.getUid());
                             clientService.clientOffline(client);
                         }
@@ -142,7 +142,7 @@ public class InputThread extends SlaveThread implements Runnable {
                 if (keyUsers.get(key) != null) {
                     Client client = clientDao.getClient(keyUsers.get(key));
                     if (client != null) {
-                        logger.warn("ºöÂÔ" + client.getName() + "µÄÒ»ÌõÏûÏ¢£¬ÏûÏ¢ÄÚÈİÎ´Öª£¡");
+                        logger.warn("å¿½ç•¥" + client.getName() + "çš„ä¸€æ¡æ¶ˆæ¯ï¼Œæ¶ˆæ¯å†…å®¹æœªçŸ¥ï¼");
                     }
                 }
                 iterator.remove();

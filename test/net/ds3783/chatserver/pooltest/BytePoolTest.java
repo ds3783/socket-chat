@@ -9,7 +9,7 @@ import net.ds3783.chatserver.communicate.pool.BytePoolImpl;
  * User: Ds.3783
  * Date: 2010-4-5
  * Time: 22:37:18
- * BytePool²âÊÔÀà
+ * BytePoolæµ‹è¯•ç±»
  */
 public class BytePoolTest extends TestCase {
     BytePool subject;
@@ -28,11 +28,11 @@ public class BytePoolTest extends TestCase {
         b = "fdsa".getBytes();
         subject.offerBytes("test", b);
         String result = new String(subject.getBytes("test"));
-        assertTrue("Offered Bytes Ã»ÓÐ·µ»Ø,·µ»ØÖµ:" + result, "asdffdsa".equals(result));
+        assertTrue("Offered Bytes æ²¡æœ‰è¿”å›ž,è¿”å›žå€¼:" + result, "asdffdsa".equals(result));
         b = "poiu".getBytes();
         subject.offerBytes("test", b);
         result = new String(subject.getBytes("test"));
-        assertTrue("Offered Bytes Ã»ÓÐ·µ»Ø,·µ»ØÖµ:" + result, "asdffdsapoiu".equals(result));
+        assertTrue("Offered Bytes æ²¡æœ‰è¿”å›ž,è¿”å›žå€¼:" + result, "asdffdsapoiu".equals(result));
 
     }
 

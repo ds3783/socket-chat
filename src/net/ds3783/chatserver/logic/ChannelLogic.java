@@ -12,7 +12,7 @@ import java.util.List;
  * Created by IntelliJ IDEA.
  * User: hongyu.pi
  * Date: 12-3-29
- * Time: 下午2:32
+ * Time: 涓嬪崍2:32
  * To change this template use File | Settings | File Templates.
  */
 public class ChannelLogic {
@@ -41,7 +41,7 @@ public class ChannelLogic {
     }
 
     /**
-     * 查询当前所在channel
+     * 鏌ヨ褰撳墠鎵�鍦╟hannel
      *
      * @param uid
      * @return
@@ -64,14 +64,14 @@ public class ChannelLogic {
                 iterator.remove();
                 Gson gson = new Gson();
                 Client client = clientDao.getClient(clientChannel.getClientId());
-                logger.warn("数据中存在ClientChannel(" + gson.toJson(clientChannel) + ")但是却不存在对应的Channel，Client(" + gson.toJson(client) + ")");
+                logger.warn("鏁版嵁涓瓨鍦–lientChannel(" + gson.toJson(clientChannel) + ")浣嗘槸鍗翠笉瀛樺湪瀵瑰簲鐨凜hannel锛孋lient(" + gson.toJson(client) + ")");
             }
         }
         return result;
     }
 
     /**
-     * 加入频道
+     * 鍔犲叆棰戦亾
      *
      * @param sender
      * @param channel

@@ -6,7 +6,7 @@ import net.ds3783.chatserver.MessageType;
  * Created by IntelliJ IDEA.
  * User: hongyu.pi
  * Date: 12-2-27
- * Time: ÏÂÎç7:23
+ * Time: ä¸‹åˆ7:23
  * To change this template use File | Settings | File Templates.
  */
 public class CommandMessage implements Message {

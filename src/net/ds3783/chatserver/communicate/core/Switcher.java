@@ -8,27 +8,27 @@ import java.util.List;
  * User: Ds.3783
  * Date: 2010-4-2
  * Time: 23:27:11
- * Ïß³ÌÑ¡ÔñÆ÷
+ * çº¿ç¨‹é€‰æ‹©å™¨
  */
 public interface Switcher<T> {
     /**
-     * ½«Êı¾İ·¢ËÍµ½Ä¿±ê
+     * å°†æ•°æ®å‘é€åˆ°ç›®æ ‡
      *
-     * @param data Êı¾İ
+     * @param data æ•°æ®
      */
     public void switchData(T data);
 
     /**
-     * ½«Êı¾İ·¢ËÍµ½Ä¿±ê
+     * å°†æ•°æ®å‘é€åˆ°ç›®æ ‡
      *
-     * @param datas Êı¾İ
+     * @param datas æ•°æ®
      */
     public void switchData(List<T> datas);
 
     /**
-     * ÉèÖÃ¿ÉÑ¡ÔñµÄÄ¿±ê£¬Ä¿±ê±ØĞëÔÚÑ¡Ôñ¹ı³ÌÇ°ÉèÖÃ
+     * è®¾ç½®å¯é€‰æ‹©çš„ç›®æ ‡ï¼Œç›®æ ‡å¿…é¡»åœ¨é€‰æ‹©è¿‡ç¨‹å‰è®¾ç½®
      *
-     * @param targets ¿ÉÑ¡ÔñÄ¿±ê
+     * @param targets å¯é€‰æ‹©ç›®æ ‡
      */
     public void setTargets(Collection<? extends Switchable> targets);
 }

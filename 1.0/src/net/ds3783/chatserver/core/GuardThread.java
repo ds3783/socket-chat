@@ -31,7 +31,7 @@ public class GuardThread extends CommonRunnable {
             logger.error(e.getMessage(), e);
         }
         while (true) {
-            //线程守护
+            //绾跨▼瀹堟姢
             /*Collection<CommonRunnable> servers = threadResource.getThreads(ThreadResourceType.SERVER_THREAD);
             for (CommonRunnable server : servers) {
                 try {
@@ -65,7 +65,7 @@ public class GuardThread extends CommonRunnable {
                 }
             }
 
-            //处理过期用户
+            //澶勭悊杩囨湡鐢ㄦ埛
             Collection<Client> allClients = clientDao.getAllClients();
             long now = System.currentTimeMillis();
             for (Client client : allClients) {
@@ -82,7 +82,7 @@ public class GuardThread extends CommonRunnable {
                 }
             }
 
-            //GC处理
+            //GC澶勭悊
             now = System.currentTimeMillis();
             if (lastGcTime == 0) {
                 lastGcTime = now;

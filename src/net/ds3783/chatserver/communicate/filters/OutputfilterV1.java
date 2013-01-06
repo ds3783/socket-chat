@@ -14,7 +14,7 @@ import net.ds3783.chatserver.tools.Utils;
  * Date: 2009-9-19
  * Time: 9:54:57
  *
- * @deprecated ÒÑ¾­²»ÔÙ²ÉÓÃ¹ıÂËÆ÷ÊµÏÖĞ­Òé
+ * @deprecated å·²ç»ä¸å†é‡‡ç”¨è¿‡æ»¤å™¨å®ç°åè®®
  */
 @Deprecated
 public class OutputfilterV1 extends OutputFilter {

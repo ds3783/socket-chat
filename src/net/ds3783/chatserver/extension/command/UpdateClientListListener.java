@@ -23,7 +23,7 @@ import java.util.List;
  * Created with IntelliJ IDEA.
  * User: Ds.3783
  * Date: 12-12-24
- * Time: 下午11:00
+ * Time: 涓嬪崍11:00
  * To change this template use File | Settings | File Templates.
  */
 public class UpdateClientListListener extends DefaultCommandListener implements EventListener {
@@ -34,7 +34,7 @@ public class UpdateClientListListener extends DefaultCommandListener implements 
 
     public boolean onEvent(Event event) {
         if (!CommandType.UPDATE_CLIENT_LIST.equals(event.getName())) {
-            //非ListChannel命令交由其他Listener处理
+            //闈濴istChannel鍛戒护浜ょ敱鍏朵粬Listener澶勭悊
             return true;
         }
         CommandMessage command = (CommandMessage) event.getMessage();
@@ -70,7 +70,7 @@ public class UpdateClientListListener extends DefaultCommandListener implements 
 
 
         outputerSwitcher.switchTo(reply);
-        //阻止其他Listener
+        //闃绘鍏朵粬Listener
         return false;
     }
 

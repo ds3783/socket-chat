@@ -9,8 +9,8 @@ import java.io.Serializable;
  * Time: 17:41:51
  */
 public class Channel implements Serializable {
-    public static Channel PUBLIC = new Channel("PUBLIC_CHANNEL", "公共频道");
-    public static Channel TRANSACTION = new Channel("TRANSACTION_CHANNEL", "交易频道");
+    public static Channel PUBLIC = new Channel("PUBLIC_CHANNEL", "鍏叡棰戦亾");
+    public static Channel TRANSACTION = new Channel("TRANSACTION_CHANNEL", "浜ゆ槗棰戦亾");
 
     private Channel(String code, String name) {
         this.code = code;

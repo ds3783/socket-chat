@@ -21,7 +21,7 @@ import java.util.List;
  * Created by IntelliJ IDEA.
  * User: Ds3783
  * Date: 12-5-1
- * Time: 下午10:45
+ * Time: 涓嬪崍10:45
  * To change this template use File | Settings | File Templates.
  */
 public class JoinChannelListener extends DefaultCommandListener implements EventListener {
@@ -31,7 +31,7 @@ public class JoinChannelListener extends DefaultCommandListener implements Event
 
     public boolean onEvent(Event event) {
         if (!CommandType.JOIN_CHANNEL.equals(event.getName())) {
-            //非ListChannel命令交由其他Listener处理
+            //闈濴istChannel鍛戒护浜ょ敱鍏朵粬Listener澶勭悊
             return true;
         }
         ChannelListMessage reply = new ChannelListMessage();
@@ -41,7 +41,7 @@ public class JoinChannelListener extends DefaultCommandListener implements Event
         MessageContext replyContext = contextHelper.registerMessage(reply, context.getSender());
         replyContext.getReceivers().add(context.getSender());
 
-        //获得所有Channel
+        //鑾峰緱鎵�鏈塁hannel
         Long channelid = new Long(command.getContent());
         List<ClientChannel> myChannel = channelLogic.getMyChannels(context.getSender().getUid());
 
@@ -65,7 +65,7 @@ public class JoinChannelListener extends DefaultCommandListener implements Event
         }
         reply.setChannels(chls);
         myChannel.add(newChannel);
-        //获得当前已经加入的channels
+        //鑾峰緱褰撳墠宸茬粡鍔犲叆鐨刢hannels
         List<Long> myChanList = new ArrayList<Long>();
         for (ClientChannel channel : myChannel) {
             myChanList.add(channel.getChannelId());
@@ -74,7 +74,7 @@ public class JoinChannelListener extends DefaultCommandListener implements Event
 
 
         outputerSwitcher.switchTo(reply);
-        //阻止其他Listener
+        //闃绘鍏朵粬Listener
         return false;
     }
 

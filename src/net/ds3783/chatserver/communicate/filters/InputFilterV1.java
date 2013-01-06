@@ -16,7 +16,7 @@ import org.apache.commons.logging.LogFactory;
  * Date: 2009-9-19
  * Time: 0:39:36
  *
- * @deprecated ÒÑ¾­²»ÔÙ²ÉÓÃ¹ıÂËÆ÷ÊµÏÖĞ­Òé
+ * @deprecated å·²ç»ä¸å†é‡‡ç”¨è¿‡æ»¤å™¨å®ç°åè®®
  */
 @Deprecated
 public class InputFilterV1 extends InputFilter {
@@ -39,12 +39,12 @@ public class InputFilterV1 extends InputFilter {
         try {
             cMsg = gson.fromJson(content, ClientMessage.class);
         } catch (JsonParseException e) {
-            logger.warn("ÎŞĞ§µÄÏûÏ¢:" + content);
+            logger.warn("æ— æ•ˆçš„æ¶ˆæ¯:" + content);
             return message;
         }
         if ("login".equals(cMsg.getCommand())) {
             message.setType(MessageType.LOGIN_MESSAGE);
-            //½ÇÉ«Ãû×Ö
+            //è§’è‰²åå­—
             message.setChannel(cMsg.getData());
             message.setAuthCode(cMsg.getToken());
 

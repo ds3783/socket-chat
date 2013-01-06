@@ -26,14 +26,14 @@ public class Main {
         logger.info("Server Starting");
         mainThread = Thread.currentThread();
         Main instance = new Main();
-        //ËùÓĞ×ÊÔ´
+        //æ‰€æœ‰èµ„æº
         instance.initialize();
-        //¶ÁÈ¡ÅäÖÃ
+        //è¯»å–é…ç½®
         Configuration config = (Configuration) context.getBean("config");
-        //Ïß³Ì×ÊÔ´¹ÜÀí
+        //çº¿ç¨‹èµ„æºç®¡ç†
         ThreadResource threadResource = (ThreadResource) context.getBean("threadResource");
 
-        //³õÊ¼»¯´¦ÀíÏß³Ì
+        //åˆå§‹åŒ–å¤„ç†çº¿ç¨‹
         List<ProcessThread> processThreads = new ArrayList<ProcessThread>();
         for (int i = 0; i < config.getReadThread(); i++) {
             ProcessThread processThread = (ProcessThread) context.getBean("processThread");
@@ -44,10 +44,10 @@ public class Main {
             processThreads.add(processThread);
         }
 
-        //³õÊ¼»¯ÏûÏ¢´¦Àí¸ºÔØ¾ùºâ
+        //åˆå§‹åŒ–æ¶ˆæ¯å¤„ç†è´Ÿè½½å‡è¡¡
         LoadBalanceSwitcher processThreadSwitcher = (LoadBalanceSwitcher) context.getBean("processThreadSwitcher");
         processThreadSwitcher.setTargets(processThreads);
-        //³õÊ¼»¯¶ÁÈ¡Ïß³Ì
+        //åˆå§‹åŒ–è¯»å–çº¿ç¨‹
         for (int i = 0; i < config.getReadThread(); i++) {
             InputThread inputThread = (InputThread) context.getBean("inputThread");
             threadResource.register(inputThread.getUuid(), ThreadResourceType.INPUT_THREAD, inputThread);
@@ -55,7 +55,7 @@ public class Main {
             inputThread.setWrapThread(t);
             t.start();
         }
-        //³õÊ¼»¯Ğ´ÈëÏß³Ì
+        //åˆå§‹åŒ–å†™å…¥çº¿ç¨‹
         for (int i = 0; i < config.getWriteThread(); i++) {
             OutputThread outputThread = (OutputThread) context.getBean("outputThread");
             threadResource.register(outputThread.getUuid(), ThreadResourceType.OUTPUT_THREAD, outputThread);
@@ -65,7 +65,7 @@ public class Main {
         }
 
 
-        //Æô¶¯¼àÌı·şÎñ
+        //å¯åŠ¨ç›‘å¬æœåŠ¡
         ServerThread server = (ServerThread) context.getBean("serverThread");
         server.setAddress(config.getAddress());
         server.setPort(config.getPort());
@@ -74,7 +74,7 @@ public class Main {
         server.setWrapThread(t);
         t.start();
 
-        //Æô¶¯ÊØ»¤Ïß³Ì
+        //å¯åŠ¨å®ˆæŠ¤çº¿ç¨‹
         GuardThread guardThread = (GuardThread) context.getBean("guardThread");
         threadResource.register(guardThread.getUuid(), ThreadResourceType.GUARD_THREAD, guardThread);
         t = new Thread(guardThread);

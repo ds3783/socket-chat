@@ -4,7 +4,7 @@ package net.ds3783.chatserver.dao;
  * Created by IntelliJ IDEA.
  * User: Ds3783
  * Date: 11-7-5
- * Time: ÏÂÎç8:21
+ * Time: ä¸‹åˆ8:21
  * To change this template use File | Settings | File Templates.
  */
 public class BlackList {

@@ -16,7 +16,7 @@ import java.util.List;
  * Created with IntelliJ IDEA.
  * User: Ds.3783
  * Date: 13-1-1
- * Time: ÏÂÎç10:28
+ * Time: ä¸‹åˆ10:28
  * To change this template use File | Settings | File Templates.
  */
 public class PrivateMessageListener extends DefaultChatListener implements EventListener {
@@ -29,7 +29,7 @@ public class PrivateMessageListener extends DefaultChatListener implements Event
             MessageContext context = contextHelper.getContext(message);
             Client target = clientDao.getClient(message.getReveiverId());
             if (target == null) {
-                throw new ClientException(message.getReveiverName() + "»òÒÑÀëÏß£¡");
+                throw new ClientException(message.getReveiverName() + "æˆ–å·²ç¦»çº¿ï¼");
             }
             PrivateMessage reply = new PrivateMessage();
             reply.setSenderId(context.getSender().getUid());

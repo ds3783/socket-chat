@@ -17,18 +17,18 @@ public abstract class OutputProtocal {
     protected List<Message> messages = new ArrayList<Message>();
 
     /**
-     * Ìí¼ÓÒ»ÌõÏûÏ¢
+     * æ·»åŠ ä¸€æ¡æ¶ˆæ¯
      *
-     * @param msg ÏûÏ¢
+     * @param msg æ¶ˆæ¯
      */
     public void addMessage(Message msg) {
         messages.add(msg);
     }
 
     /**
-     * Ìí¼ÓÈô¸ÉÏûÏ¢
+     * æ·»åŠ è‹¥å¹²æ¶ˆæ¯
      *
-     * @param msgs ÏûÏ¢µÄ¼¯ºÏ
+     * @param msgs æ¶ˆæ¯çš„é›†åˆ
      */
     public void addMessages(Collection<Message> msgs) {
         if (msgs != null)
@@ -36,9 +36,9 @@ public abstract class OutputProtocal {
     }
 
     /**
-     * ±àÂë
+     * ç¼–ç 
      *
-     * @return ´ıÊä³öµ½ÍøÂçÉÏµÄ×Ö½ÚÊı×é
+     * @return å¾…è¾“å‡ºåˆ°ç½‘ç»œä¸Šçš„å­—èŠ‚æ•°ç»„
      */
     public abstract byte[] marshal() throws MarshalException;
 

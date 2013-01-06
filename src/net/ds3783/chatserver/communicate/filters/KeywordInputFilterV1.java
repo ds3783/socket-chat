@@ -16,9 +16,9 @@ import java.util.List;
  * User: Administrator
  * Date: 2009-11-12
  * Time: 17:14:51
- * ¹Ø¼ü´Ê¹ıÂË
- * ¿É¹ıÂË¼ĞÔÓÓ¢ÎÄµÄÖĞÎÄ¹Ø¼ü´Ê£¨¼ĞÔÓÖĞÎÄµÄ¹Ø¼ü´ÊÎŞ·¨´¦Àí£©
- * Ê¹ÓÃÁËÊ÷²éÕÒËã·¨
+ * å…³é”®è¯è¿‡æ»¤
+ * å¯è¿‡æ»¤å¤¹æ‚è‹±æ–‡çš„ä¸­æ–‡å…³é”®è¯ï¼ˆå¤¹æ‚ä¸­æ–‡çš„å…³é”®è¯æ— æ³•å¤„ç†ï¼‰
+ * ä½¿ç”¨äº†æ ‘æŸ¥æ‰¾ç®—æ³•
  *
  * @version 1.0
  */
@@ -31,7 +31,7 @@ public class KeywordInputFilterV1 extends InputFilter {
     private TreeNode keywordTree = new TreeNode();
 
     /*
-   ³õÊ¼»¯
+   åˆå§‹åŒ–
     */
 
     public void init() {
@@ -59,9 +59,9 @@ public class KeywordInputFilterV1 extends InputFilter {
         if (message.getContent() != null && message.getContent().length() > 0) {
 
             String content = message.getContent();
-            //²éÕÒ
+            //æŸ¥æ‰¾
             List<Indexes> result = doFilte(content.toCharArray(), keywordTree);
-            //Ìæ»»
+            //æ›¿æ¢
             char[] chars = content.toCharArray();
             for (Indexes indexes : result) {
                 for (int i = indexes.getStart(); i < indexes.getEnd(); i++) {

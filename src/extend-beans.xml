@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="GBK" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 <beans default-autowire="byName">
 
@@ -24,6 +24,8 @@
 
 
     <bean id="publicMessageListener" class="net.ds3783.chatserver.extension.chat.PublicMessageListener"
+          init-method="init"/>
+    <bean id="privateMessageListener" class="net.ds3783.chatserver.extension.chat.PrivateMessageListener"
           init-method="init"/>
 
 

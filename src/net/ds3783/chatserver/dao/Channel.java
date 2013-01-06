@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by IntelliJ IDEA.
  * User: hongyu.pi
  * Date: 12-3-15
- * Time: ÏÂÎç2:34
+ * Time: ä¸‹åˆ2:34
  * To change this template use File | Settings | File Templates.
  */
 public class Channel implements Serializable {

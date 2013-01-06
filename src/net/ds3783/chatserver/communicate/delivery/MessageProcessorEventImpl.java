@@ -16,8 +16,8 @@ import org.apache.commons.logging.LogFactory;
  * Created by IntelliJ IDEA.
  * User: Ds3783
  * Date: 11-6-19
- * Time: ÉÏÎç12:11
- * Í¨¹ıEventÄ£Ê½ÊµÏÖÏûÏ¢µÄ´¦Àí
+ * Time: ä¸Šåˆ12:11
+ * é€šè¿‡Eventæ¨¡å¼å®ç°æ¶ˆæ¯çš„å¤„ç†
  */
 public class MessageProcessorEventImpl implements MessageProcessor {
     private static Log logger = LogFactory.getLog(MessageProcessorEventImpl.class);

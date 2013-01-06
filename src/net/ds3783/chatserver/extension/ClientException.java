@@ -4,7 +4,7 @@ package net.ds3783.chatserver.extension;
  * Created with IntelliJ IDEA.
  * User: hongyu.pi
  * Date: 12-12-3
- * Time: ÏÂÎç3:45
+ * Time: ä¸‹åˆ3:45
  * To change this template use File | Settings | File Templates.
  */
 public class ClientException extends RuntimeException {

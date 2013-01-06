@@ -15,7 +15,7 @@ import java.util.List;
  * Created with IntelliJ IDEA.
  * User: Ds.3783
  * Date: 13-1-1
- * Time: ÏÂÎç10:28
+ * Time: ä¸‹åˆ10:28
  * To change this template use File | Settings | File Templates.
  */
 public class PublicMessageListener extends DefaultChatListener implements EventListener {
@@ -27,13 +27,13 @@ public class PublicMessageListener extends DefaultChatListener implements EventL
         if (event.getName().equals(PublicMessage.class.getSimpleName())) {
             PublicMessage message = (PublicMessage) event.getMessage();
             MessageContext context = contextHelper.getContext(message);
-            //ÑéÖ¤¸ÃchannelÊÇ·ñ´æÔÚ
+            //éªŒè¯è¯¥channelæ˜¯å¦å­˜åœ¨
             Channel channel = channelDao.getChannel(message.getChannelId());
             if (channel == null) {
                 throw new ClientException("Invalid Channel[id=" + message.getChannelId() + "]!");
             }
 
-            //ÑéÖ¤ÓÃ»§ÊÇ·ñÔÚ¸ÃChannelÄÚ
+            //éªŒè¯ç”¨æˆ·æ˜¯å¦åœ¨è¯¥Channelå†…
             boolean inChannel = channelDao.isInChannel(context.getSender().getUid(), channel.getId());
             if (!inChannel) {
                 throw new ClientException("U R not in channel[id=" + message.getChannelId() + "]!");

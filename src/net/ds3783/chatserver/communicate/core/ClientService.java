@@ -9,7 +9,7 @@ import org.apache.commons.logging.LogFactory;
  * Created by IntelliJ IDEA.
  * User: Ds3783
  * Date: 11-10-4
- * Time: ÏÂÎç10:22
+ * Time: ä¸‹åˆ10:22
  * ClientService
  */
 public class ClientService {
@@ -20,9 +20,9 @@ public class ClientService {
     private ClientDao clientDao;
 
     /**
-     * Ìí¼ÓÁÙÊ±ÓÃ»§
+     * æ·»åŠ ä¸´æ—¶ç”¨æˆ·
      *
-     * @param client ¿Í»§¶Ë
+     * @param client å®¢æˆ·ç«¯
      */
     public void addTempClient(Client client) {
         client.setAuthed(false);
@@ -60,7 +60,7 @@ public class ClientService {
             writeThread.remove(client.getUid());
         }
         clientDao.removeClient(client);
-        logger.info(client.getIp() + ":" + client.getPort() + "(" + client.getName() + ") ¶Ï¿ªÁ¬½Ó¡£");
+        logger.info(client.getIp() + ":" + client.getPort() + "(" + client.getName() + ") æ–­å¼€è¿æ¥ã€‚");
 
     }
 

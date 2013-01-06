@@ -8,14 +8,14 @@ import java.util.concurrent.PriorityBlockingQueue;
  * User: Ds.3783
  * Date: 2010-4-7
  * Time: 12:30:49
- * ¸ºÔØ¾ùºâÑ¡ÔñÆ÷
- * Ñ¡ÔñÆ÷»á¸ù¾İÃ¿¸ö½ø³ÌµÄÈ¨ÖØ×ö³öÏàÓ¦µÄÑ¡Ôñ£¬È¨ÖØÔ½µÍ£¬±»Ñ¡Ôñ¸ÅÂÊÔ½´ó
- * È¨ÖØÁÙ½çÖµ£ºµ±ÈÎÒâÒ»¸ö½ø³ÌÈ¨ÖØµÍÓÚÁÙ½çÖµÊ±£¬Ôò²»×ñÑ­È¨ÖØÑ¡ÔñËã·¨£¬Ö±½ÓÑ¡Ôñ¸Ã½ø³Ì´¦ÀíÊı¾İ
- * È¨ÖØÁÙ½çÖµÄ¬ÈÏÎª10
+ * è´Ÿè½½å‡è¡¡é€‰æ‹©å™¨
+ * é€‰æ‹©å™¨ä¼šæ ¹æ®æ¯ä¸ªè¿›ç¨‹çš„æƒé‡åšå‡ºç›¸åº”çš„é€‰æ‹©ï¼Œæƒé‡è¶Šä½ï¼Œè¢«é€‰æ‹©æ¦‚ç‡è¶Šå¤§
+ * æƒé‡ä¸´ç•Œå€¼ï¼šå½“ä»»æ„ä¸€ä¸ªè¿›ç¨‹æƒé‡ä½äºä¸´ç•Œå€¼æ—¶ï¼Œåˆ™ä¸éµå¾ªæƒé‡é€‰æ‹©ç®—æ³•ï¼Œç›´æ¥é€‰æ‹©è¯¥è¿›ç¨‹å¤„ç†æ•°æ®
+ * æƒé‡ä¸´ç•Œå€¼é»˜è®¤ä¸º10
  */
 public class LoadBalanceSwitcher<T> implements Switcher<T> {
     /**
-     * È¨ÖØÁÙ½çÖµ
+     * æƒé‡ä¸´ç•Œå€¼
      */
     private int weightCritical = 10;
 
@@ -30,9 +30,9 @@ public class LoadBalanceSwitcher<T> implements Switcher<T> {
     private PriorityBlockingQueue<SwitchableContainer<T>> potanceQueue = new PriorityBlockingQueue<SwitchableContainer<T>>();
 
     /**
-     * ½«Êı¾İ·¢ËÍµ½Ä¿±ê
+     * å°†æ•°æ®å‘é€åˆ°ç›®æ ‡
      *
-     * @param data Êı¾İ
+     * @param data æ•°æ®
      */
     public void switchData(T data) {
         if (--runTimeInterval < 0) {
@@ -74,9 +74,9 @@ public class LoadBalanceSwitcher<T> implements Switcher<T> {
     }
 
     /**
-     * ½«Êı¾İ·¢ËÍµ½Ä¿±ê
+     * å°†æ•°æ®å‘é€åˆ°ç›®æ ‡
      *
-     * @param datas Êı¾İ
+     * @param datas æ•°æ®
      */
     public void switchData(List<T> datas) {
         if (datas != null) {
@@ -87,9 +87,9 @@ public class LoadBalanceSwitcher<T> implements Switcher<T> {
     }
 
     /**
-     * ÉèÖÃ¿ÉÑ¡ÔñµÄÄ¿±ê£¬Ä¿±ê±ØĞëÔÚÑ¡Ôñ¹ı³ÌÇ°ÉèÖÃ
+     * è®¾ç½®å¯é€‰æ‹©çš„ç›®æ ‡ï¼Œç›®æ ‡å¿…é¡»åœ¨é€‰æ‹©è¿‡ç¨‹å‰è®¾ç½®
      *
-     * @param targets ¿ÉÑ¡ÔñÄ¿±ê
+     * @param targets å¯é€‰æ‹©ç›®æ ‡
      */
     public void setTargets(Collection<? extends Switchable> targets) {
         int idcounter = 0;

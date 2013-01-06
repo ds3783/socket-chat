@@ -30,7 +30,7 @@ public class MessageProcessorStupidImpl implements MessageProcessor {
         List<Message> result = new ArrayList<Message>();
 //        Client client = clientDao.getClient(msg.getUserUuid());
 
-        //ÊÚÈ¨
+        //æˆæƒ
         /*if (MessageType.AUTH_MESSAGE.equals(msg.getType())) {
             msg.setContent("<cross-domain-policy><allow-access-from domain=\"" + config.getAddress() + "\" to-ports=\"" + config.getPort() + "\" /></cross-domain-policy>");
             client.setAuthed(true);
@@ -38,15 +38,15 @@ public class MessageProcessorStupidImpl implements MessageProcessor {
             msg.setDestUserUids(destUsers);
             result.add(msg);
         } else if (MessageType.LOGIN_MESSAGE.equals(msg.getType())) {
-            //µÇÂ¼
+            //ç™»å½•
             destUsers.add(client.getUid());
-            //µÇÂ¼³É¹¦
+            //ç™»å½•æˆåŠŸ
             if (clientDao.getClientByName(msg.getChannel()) != null) {
-                //Í¨Öª´ËÈËÓĞÖØÃû£¬²¢ÌßÏÂÏß
+                //é€šçŸ¥æ­¤äººæœ‰é‡åï¼Œå¹¶è¸¢ä¸‹çº¿
                 msg.setDropClientAfterReply(true);
                 msg.setType(MessageType.CHAT_MESSAGE);
                 msg.setChannel("SYSTEM");
-                msg.setContent("µ±Ç°ÓĞÖØÃûÓÃ»§");
+                msg.setContent("å½“å‰æœ‰é‡åç”¨æˆ·");
                 destUsers.add(client.getUid());
                 msg.setDestUserUids(destUsers);
                 result.add(msg);
@@ -54,24 +54,24 @@ public class MessageProcessorStupidImpl implements MessageProcessor {
                 clientDao.updateClientName(msg.getUserUuid(), msg.getContent());
                 clientDao.updateClientToken(msg.getUserUuid(), msg.getAuthCode());
                 clientDao.updateClientLogined(msg.getUserUuid(), true);
-                logger.info(client.getIp() + ":" + client.getPort() + "(" + client.getName() + ") ³É¹¦µÇÂ¼¡£");
+                logger.info(client.getIp() + ":" + client.getPort() + "(" + client.getName() + ") æˆåŠŸç™»å½•ã€‚");
                 msg.setDestUserUids(destUsers);
                 result.add(msg);
-                //È«¾Ö¹ã²¥Ä³ÈËÉÏÏß
+                //å…¨å±€å¹¿æ’­æŸäººä¸Šçº¿
                 Message broadCast = msg.simpleClone();
                 broadCast.setDestUserUids(new HashSet<String>(clientDao.getLoginClientUids()));
                 broadCast.setType(MessageType.CHAT_MESSAGE);
                 broadCast.setChannel("SYSTEM");
-                broadCast.setContent(client.getName() + " ³É¹¦µÇÂ¼");
+                broadCast.setContent(client.getName() + " æˆåŠŸç™»å½•");
                 result.add(broadCast);
                 logger.debug(msg.getContent() + " online");
             }
         } else if (MessageType.CHAT_MESSAGE.equals(msg.getType())) {
             if (clientDao.isInBlackList(client.getName(), now)) {
-                //ºÚÃûµ¥´¦Àí
+                //é»‘åå•å¤„ç†
                 msg.setType(MessageType.CHAT_MESSAGE);
                 msg.setChannel("SYSTEM");
-                msg.setContent("ÓÃ»§ÒÑ±»½ûÑÔ");
+                msg.setContent("ç”¨æˆ·å·²è¢«ç¦è¨€");
                 destUsers.add(client.getUid());
                 msg.setDestUserUids(destUsers);
                 result.add(msg);
@@ -87,20 +87,20 @@ public class MessageProcessorStupidImpl implements MessageProcessor {
             }
         } else if (MessageType.COMMAND_MESSAGE.equals(msg.getType())) {
             if (clientDao.isInBlackList(client.getName(), now)) {
-                //ºÚÃûµ¥´¦Àí
+                //é»‘åå•å¤„ç†
                 msg.setType(MessageType.CHAT_MESSAGE);
                 msg.setChannel("SYSTEM");
-                msg.setContent("ÓÃ»§ÒÑ±»½ûÑÔ");
+                msg.setContent("ç”¨æˆ·å·²è¢«ç¦è¨€");
                 destUsers.add(client.getUid());
                 msg.setDestUserUids(destUsers);
                 result.add(msg);
             } else {
                 if ("CHANGENAME".equals(msg.getChannel())) {
                     if (clientDao.getClientByName(msg.getChannel()) != null) {
-                        //Í¨ÖªÖØÃû£¬²¢ÌáÊ¾¸üÃûÊ§°Ü
+                        //é€šçŸ¥é‡åï¼Œå¹¶æç¤ºæ›´åå¤±è´¥
                         msg.setType(MessageType.CHAT_MESSAGE);
                         msg.setChannel("SYSTEM");
-                        msg.setContent("ÒÑÓĞÖØÃûÓÃ»§¸üÃûÊ§°Ü");
+                        msg.setContent("å·²æœ‰é‡åç”¨æˆ·æ›´åå¤±è´¥");
                         destUsers.add(client.getUid());
                         msg.setDestUserUids(destUsers);
                         result.add(msg);
@@ -109,16 +109,16 @@ public class MessageProcessorStupidImpl implements MessageProcessor {
                         clientDao.updateClientName(msg.getUserUuid(), msg.getContent());
                         msg.setType(MessageType.CHAT_MESSAGE);
                         msg.setChannel("SYSTEM");
-                        msg.setContent("µÇÂ¼Ãû±ä¸ü³É¹¦");
+                        msg.setContent("ç™»å½•åå˜æ›´æˆåŠŸ");
                         destUsers.add(client.getUid());
                         msg.setDestUserUids(destUsers);
                         result.add(msg);
-                        //È«¾Ö¹ã²¥Ä³ÈË¸üÃû
+                        //å…¨å±€å¹¿æ’­æŸäººæ›´å
                         Message broadCast = msg.simpleClone();
                         broadCast.setDestUserUids(new HashSet<String>(clientDao.getLoginClientUids()));
                         broadCast.setType(MessageType.CHAT_MESSAGE);
                         broadCast.setChannel("SYSTEM");
-                        broadCast.setContent(oldName + " ÒÑ¾­Ê¹ÓÃĞÂÃû×Ö " + msg.getContent());
+                        broadCast.setContent(oldName + " å·²ç»ä½¿ç”¨æ–°åå­— " + msg.getContent());
                         result.add(broadCast);
                     }
                 }

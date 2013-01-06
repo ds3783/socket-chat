@@ -22,9 +22,9 @@ public class UnZippedAmf3OutputProtocal extends OutputProtocal {
     private static Log logger = LogFactory.getLog(UnZippedAmf3InputProtocal.class);
 
     /**
-     * 编码
+     * 缂栫爜
      *
-     * @return 待输出到网络上的字节数组
+     * @return 寰呰緭鍑哄埌缃戠粶涓婄殑瀛楄妭鏁扮粍
      */
     @Override
     public byte[] marshal() throws MarshalException {

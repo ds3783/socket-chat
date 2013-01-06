@@ -12,10 +12,10 @@ import java.io.Serializable;
  * Time: 11:44:25
  */
 public class MessageType implements Serializable {
-    public static MessageType AUTH_MESSAGE = new MessageType("AUTHMSG", "授权消息");
-    public static MessageType LOGIN_MESSAGE = new MessageType("LOGINMSG", "登录消息");
-    public static MessageType CHAT_MESSAGE = new MessageType("CHATMSG", "聊天消息");
-    public static MessageType COMMAND_MESSAGE = new MessageType("COMMANDMSG", "命令消息");
+    public static MessageType AUTH_MESSAGE = new MessageType("AUTHMSG", "鎺堟潈娑堟伅");
+    public static MessageType LOGIN_MESSAGE = new MessageType("LOGINMSG", "鐧诲綍娑堟伅");
+    public static MessageType CHAT_MESSAGE = new MessageType("CHATMSG", "鑱婂ぉ娑堟伅");
+    public static MessageType COMMAND_MESSAGE = new MessageType("COMMANDMSG", "鍛戒护娑堟伅");
 
     private MessageType(String code, String name) {
         this.code = code;

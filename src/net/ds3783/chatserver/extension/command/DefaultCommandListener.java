@@ -7,7 +7,7 @@ import net.ds3783.chatserver.communicate.delivery.MessageDispatcher;
  * Created by IntelliJ IDEA.
  * User: hongyu.pi
  * Date: 12-3-15
- * Time: ÏÂÎç1:51
+ * Time: ä¸‹åˆ1:51
  * To change this template use File | Settings | File Templates.
  */
 public abstract class DefaultCommandListener {

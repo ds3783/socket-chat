@@ -13,10 +13,10 @@ public class BytePoolImpl implements BytePool {
     private final Map<String, Buffer> buffers = new Hashtable<String, Buffer>();
 
     /**
-     * Ïò»º´æÄ©Î²Ìí¼ÓÊı¾İ
+     * å‘ç¼“å­˜æœ«å°¾æ·»åŠ æ•°æ®
      *
-     * @param clientId ¿Í»§¶ËID
-     * @param data     Êı¾İ
+     * @param clientId å®¢æˆ·ç«¯ID
+     * @param data     æ•°æ®
      */
     public void offerBytes(String clientId, byte[] data) {
         Buffer buffer;
@@ -32,10 +32,10 @@ public class BytePoolImpl implements BytePool {
     }
 
     /**
-     * ´Ó»º´æÖĞ»ñÈ¡Êı¾İ£¬Ò»µ©»ñÈ¡£¬»º´æÖĞµÄÊı¾İ½«±»Çå³ı
+     * ä»ç¼“å­˜ä¸­è·å–æ•°æ®ï¼Œä¸€æ—¦è·å–ï¼Œç¼“å­˜ä¸­çš„æ•°æ®å°†è¢«æ¸…é™¤
      *
-     * @param clientId ¿Í»§¶ËID
-     * @return »º´æÖĞµÄÊı¾İ
+     * @param clientId å®¢æˆ·ç«¯ID
+     * @return ç¼“å­˜ä¸­çš„æ•°æ®
      */
     public byte[] poolBytes(String clientId) {
         Buffer buffer = buffers.get(clientId);
@@ -48,13 +48,13 @@ public class BytePoolImpl implements BytePool {
     }
 
     /**
-     * ´Ó»º´æÖĞ»ñÈ¡¹Ì¶¨³¤¶ÈÊı¾İ£¬Ò»µ©»ñÈ¡£¬»º´æÖĞµÄÊı¾İ½«±»Çå³ı
-     * Èç¹û»º´æÖĞÊı¾İ³¤¶È²»×ãÒªÇó³¤¶È£¬Ôò·µ»Ø»º´æÖĞËùÓĞÊ£ÓàÊı¾İ¡£
-     * ×¢Òâ£º·µ»Ø½á¹ûµÄlengthÊôĞÔ²»Ò»¶¨ºÍ´«Èë²ÎÊıµÄlengthÒ»ÖÂ
+     * ä»ç¼“å­˜ä¸­è·å–å›ºå®šé•¿åº¦æ•°æ®ï¼Œä¸€æ—¦è·å–ï¼Œç¼“å­˜ä¸­çš„æ•°æ®å°†è¢«æ¸…é™¤
+     * å¦‚æœç¼“å­˜ä¸­æ•°æ®é•¿åº¦ä¸è¶³è¦æ±‚é•¿åº¦ï¼Œåˆ™è¿”å›ç¼“å­˜ä¸­æ‰€æœ‰å‰©ä½™æ•°æ®ã€‚
+     * æ³¨æ„ï¼šè¿”å›ç»“æœçš„lengthå±æ€§ä¸ä¸€å®šå’Œä¼ å…¥å‚æ•°çš„lengthä¸€è‡´
      *
-     * @param clientId ¿Í»§¶ËID
-     * @param length   ´ı»ñÈ¡Êı¾İ³¤¶È
-     * @return »º´æÖĞµÄÊı¾İ
+     * @param clientId å®¢æˆ·ç«¯ID
+     * @param length   å¾…è·å–æ•°æ®é•¿åº¦
+     * @return ç¼“å­˜ä¸­çš„æ•°æ®
      */
     public byte[] poolBytes(String clientId, int length) {
         Buffer buffer = buffers.get(clientId);
@@ -68,10 +68,10 @@ public class BytePoolImpl implements BytePool {
     }
 
     /**
-     * ĞŞ¸Ä»º´æÊı¾İ
+     * ä¿®æ”¹ç¼“å­˜æ•°æ®
      *
-     * @param clientId ¿Í»§¶ËID
-     * @param data     Êı¾İ
+     * @param clientId å®¢æˆ·ç«¯ID
+     * @param data     æ•°æ®
      */
     public void setBytes(String clientId, byte[] data) {
         synchronized (buffers) {
@@ -80,10 +80,10 @@ public class BytePoolImpl implements BytePool {
     }
 
     /**
-     * È¡µÃ»º´æÊı¾İ£¬µ«²¢²»Çå³ı»º´æ
+     * å–å¾—ç¼“å­˜æ•°æ®ï¼Œä½†å¹¶ä¸æ¸…é™¤ç¼“å­˜
      *
-     * @param clientId ¿Í»§¶ËID
-     * @return »º´æÊı¾İ
+     * @param clientId å®¢æˆ·ç«¯ID
+     * @return ç¼“å­˜æ•°æ®
      */
     public byte[] getBytes(String clientId) {
         Buffer buffer = buffers.get(clientId);
@@ -94,13 +94,13 @@ public class BytePoolImpl implements BytePool {
     }
 
     /**
-     * È¡µÃ¹Ì¶¨³¤¶ÈµÄ»º´æÊı¾İ£¬µ«²¢²»Çå³ı»º´æ
-     * Èç¹û»º´æÖĞÊı¾İ³¤¶È²»×ãÒªÇó³¤¶È£¬Ôò·µ»Ø»º´æÖĞËùÓĞÊ£ÓàÊı¾İ¡£
-     * ×¢Òâ£º·µ»Ø½á¹ûµÄlengthÊôĞÔ²»Ò»¶¨ºÍ´«Èë²ÎÊıµÄlengthÒ»ÖÂ
+     * å–å¾—å›ºå®šé•¿åº¦çš„ç¼“å­˜æ•°æ®ï¼Œä½†å¹¶ä¸æ¸…é™¤ç¼“å­˜
+     * å¦‚æœç¼“å­˜ä¸­æ•°æ®é•¿åº¦ä¸è¶³è¦æ±‚é•¿åº¦ï¼Œåˆ™è¿”å›ç¼“å­˜ä¸­æ‰€æœ‰å‰©ä½™æ•°æ®ã€‚
+     * æ³¨æ„ï¼šè¿”å›ç»“æœçš„lengthå±æ€§ä¸ä¸€å®šå’Œä¼ å…¥å‚æ•°çš„lengthä¸€è‡´
      *
-     * @param clientId ¿Í»§¶ËID
-     * @param length   ´ı»ñÈ¡Êı¾İ³¤¶È
-     * @return »º´æÊı¾İ
+     * @param clientId å®¢æˆ·ç«¯ID
+     * @param length   å¾…è·å–æ•°æ®é•¿åº¦
+     * @return ç¼“å­˜æ•°æ®
      */
     public byte[] getBytes(String clientId, int length) {
         Buffer buffer = buffers.get(clientId);
@@ -111,10 +111,10 @@ public class BytePoolImpl implements BytePool {
     }
 
     /**
-     * È¡µÃ»º´æÊı¾İµÄ³¤¶È
+     * å–å¾—ç¼“å­˜æ•°æ®çš„é•¿åº¦
      *
-     * @param clientId ¿Í»§¶ËID
-     * @return »º´æ³¤¶È
+     * @param clientId å®¢æˆ·ç«¯ID
+     * @return ç¼“å­˜é•¿åº¦
      */
     public int getCachedSize(String clientId) {
         Buffer buffer = buffers.get(clientId);

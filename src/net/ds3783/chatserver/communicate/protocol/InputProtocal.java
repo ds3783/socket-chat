@@ -21,18 +21,18 @@ public abstract class InputProtocal {
     }
 
     /**
-     * ÊäÈëÁ÷µÄÊı¾İ
+     * è¾“å…¥æµçš„æ•°æ®
      *
-     * @param data ÍøÂçÉÏ¶ÁÈ¡µÄ¶ş½øÖÆÊı×é
+     * @param data ç½‘ç»œä¸Šè¯»å–çš„äºŒè¿›åˆ¶æ•°ç»„
      */
     public void setData(byte[] data) {
         this.data = data;
     }
 
     /**
-     * È¡µÃ½âÂëºóÏûÏ¢µÄÊıÁ¿£¬±ØĞëÔÚunmarshalµ÷ÓÃºóÖ´ĞĞ
+     * å–å¾—è§£ç åæ¶ˆæ¯çš„æ•°é‡ï¼Œå¿…é¡»åœ¨unmarshalè°ƒç”¨åæ‰§è¡Œ
      *
-     * @return ½âÂëºóµÄÏûÏ¢ÊıÁ¿
+     * @return è§£ç åçš„æ¶ˆæ¯æ•°é‡
      */
     public int messageCount() {
         if (messages != null) {
@@ -43,9 +43,9 @@ public abstract class InputProtocal {
     }
 
     /**
-     * È¡µÃ½âÂëºóµÄÏûÏ¢
+     * å–å¾—è§£ç åçš„æ¶ˆæ¯
      *
-     * @return ½âÂëºóµÄÏûÏ¢
+     * @return è§£ç åçš„æ¶ˆæ¯
      */
     public List<Message> getMessages() {
         if (messages != null) {
@@ -56,7 +56,7 @@ public abstract class InputProtocal {
     }
 
     /**
-     * È¡µÃ½âÂëºóÊ£ÓàÎ´´¦ÀíµÄ×Ö½Ú
+     * å–å¾—è§£ç åå‰©ä½™æœªå¤„ç†çš„å­—èŠ‚
      *
      * @return
      */
@@ -75,7 +75,7 @@ public abstract class InputProtocal {
     }
 
     /**
-     * ½âÂë
+     * è§£ç 
      */
     public abstract void unmarshal() throws UnmarshalException;
 }

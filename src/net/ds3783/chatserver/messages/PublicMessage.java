@@ -8,7 +8,7 @@ import java.util.Date;
  * Created with IntelliJ IDEA.
  * User: Ds.3783
  * Date: 13-1-1
- * Time: ÏÂÎç6:16
+ * Time: ä¸‹åˆ6:16
  * To change this template use File | Settings | File Templates.
  */
 public class PublicMessage implements Message {

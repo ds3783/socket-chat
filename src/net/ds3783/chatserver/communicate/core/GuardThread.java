@@ -35,13 +35,13 @@ public class GuardThread extends CommonRunnable {
 
     public void doRun() throws Exception {
         try {
-            //ÔÚÏµÍ³×î³õÆô¶¯µÄ10ÃëÄÚÊØ»¤Ïß³Ì²»¹¤×÷
+            //åœ¨ç³»ç»Ÿæœ€åˆå¯åŠ¨çš„10ç§’å†…å®ˆæŠ¤çº¿ç¨‹ä¸å·¥ä½œ
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             logger.error(e.getMessage(), e);
         }
         while (true) {
-            //Ïß³ÌÊØ»¤
+            //çº¿ç¨‹å®ˆæŠ¤
             /*Collection<CommonRunnable> servers = threadResource.getThreads(ThreadResourceType.SERVER_THREAD);
             for (CommonRunnable server : servers) {
                 try {
@@ -75,7 +75,7 @@ public class GuardThread extends CommonRunnable {
                 }
             }
 
-            //´¦Àí¹ıÆÚÓÃ»§
+            //å¤„ç†è¿‡æœŸç”¨æˆ·
 
             long now = System.currentTimeMillis();
             if (now - lastCleanUnloginClientTime > cleanNotLoginClientCycle) {
@@ -95,7 +95,7 @@ public class GuardThread extends CommonRunnable {
                 Collection<Client> allClients = clientDao.getAllClients();
                 for (Client client : allClients) {
                     if (client == null) continue;
-                    //²éÑ¯¸Ã¿Í»§¶Ë×îºóÒ»´ÎÏò·şÎñÆ÷·ÅËÍÊı¾İµÄÊ±¼äÓëµ±Ç°Ê±¼äÖ®²î
+                    //æŸ¥è¯¢è¯¥å®¢æˆ·ç«¯æœ€åä¸€æ¬¡å‘æœåŠ¡å™¨æ”¾é€æ•°æ®çš„æ—¶é—´ä¸å½“å‰æ—¶é—´ä¹‹å·®
                     long minus = now - client.getLastMessageTime();
                     if (minus > loginExpireTime && loginExpireTime > 0) {
                         clientService.clientOffline(client);
@@ -108,7 +108,7 @@ public class GuardThread extends CommonRunnable {
                 lastContextHelperCleanTime = now;
             }
 
-            //GC´¦Àí
+            //GCå¤„ç†
             now = System.currentTimeMillis();
             if (lastGcTime == 0) {
                 lastGcTime = now;

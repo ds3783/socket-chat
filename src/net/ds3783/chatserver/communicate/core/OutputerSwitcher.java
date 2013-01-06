@@ -14,10 +14,10 @@ import java.util.List;
  * User: Ds.3783
  * Date: 2010-5-4
  * Time: 20:28:49
- * ÓÃÓÚ´¦ÀíÊä³öÏûÏ¢µÄ·Ö·¢
- * ¸ù¾İÏûÏ¢µÄÄ¿±êÊıÁ¿ºÍÊä³öÏß³ÌÊıÁ¿×öÅĞ¶Ï
- * Èç¹ûµã¶Ôµã·¢ÏûÏ¢ÔòÖ±½ÓËÑË÷Êä³öÏß³Ì
- * Èç¹û´óÁ¿Èº·¢Ôò½«ÏûÏ¢Èº·¢¸øËùÓĞÊä³öÏß³Ì
+ * ç”¨äºå¤„ç†è¾“å‡ºæ¶ˆæ¯çš„åˆ†å‘
+ * æ ¹æ®æ¶ˆæ¯çš„ç›®æ ‡æ•°é‡å’Œè¾“å‡ºçº¿ç¨‹æ•°é‡åšåˆ¤æ–­
+ * å¦‚æœç‚¹å¯¹ç‚¹å‘æ¶ˆæ¯åˆ™ç›´æ¥æœç´¢è¾“å‡ºçº¿ç¨‹
+ * å¦‚æœå¤§é‡ç¾¤å‘åˆ™å°†æ¶ˆæ¯ç¾¤å‘ç»™æ‰€æœ‰è¾“å‡ºçº¿ç¨‹
  */
 public class OutputerSwitcher {
     private ThreadResource threadResource;
@@ -25,9 +25,9 @@ public class OutputerSwitcher {
     private ContextHelper contextHelper;
 
     /**
-     * ·¢ËÍÏûÏ¢
+     * å‘é€æ¶ˆæ¯
      *
-     * @param message ·¢ËÍÏûÏ¢
+     * @param message å‘é€æ¶ˆæ¯
      */
     public void switchTo(Message message) {
 
@@ -36,14 +36,14 @@ public class OutputerSwitcher {
         int messgeDestCount = context.getReceivers().size();
         List<CommonRunnable> outputer = threadResource.getThreads(ThreadResourceType.OUTPUT_THREAD);
         int outputerCount = outputer.size();
-        //tricks: ÒòÎªÃ¿¸öOutputThread¶¼Ö»¶ÔÓ¦Ò»¸öÓÃ»§ËùÒÔ¿ÉÒÔÕâÃ´Íæ
+        //tricks: å› ä¸ºæ¯ä¸ªOutputThreadéƒ½åªå¯¹åº”ä¸€ä¸ªç”¨æˆ·æ‰€ä»¥å¯ä»¥è¿™ä¹ˆç©
         if (messgeDestCount > outputerCount) {
             for (CommonRunnable runnable : outputer) {
                 OutputThread ot = (OutputThread) runnable;
                 ot.send(message);
             }
         } else {
-            //´Ë´¦ÅÅÖØ±ØĞë×ö
+            //æ­¤å¤„æ’é‡å¿…é¡»åš
             HashSet<String> ots = new HashSet<String>();
             for (Client dest : context.getReceivers()) {
                 if (ots.contains(dest.getWriteThread())) {
