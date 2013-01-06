@@ -7,14 +7,17 @@
  */
 package net.ds3783.chatserver {
 import flash.events.EventDispatcher;
+import flash.net.registerClassAlias;
 
 import net.ds3783.chatserver.messages.ChannelListMessage;
 import net.ds3783.chatserver.messages.ClientListMessage;
 import net.ds3783.chatserver.messages.CommandMessage;
 import net.ds3783.chatserver.messages.LoginMessage;
+import net.ds3783.chatserver.messages.PrivateMessage;
 import net.ds3783.chatserver.messages.PublicMessage;
 import net.ds3783.chatserver.messages.SystemReplyMessage;
 import net.ds3783.chatserver.messages.model.ChannelModel;
+import net.ds3783.chatserver.messages.model.ClientModel;
 
 public class ChatServerClient extends EventDispatcher {
 
@@ -31,10 +34,24 @@ public class ChatServerClient extends EventDispatcher {
     public static const BEFORE_DISCONNECT:String = "BEFORE_DISCONNECT";
 
     public function ChatServerClient(autoJoin:Boolean = true) {
+
+
+        registerClassAlias("net.ds3783.chatserver.Message", Message);
+        registerClassAlias("net.ds3783.chatserver.messages.LoginMessage", LoginMessage);
+        registerClassAlias("net.ds3783.chatserver.messages.SystemReplyMessage", SystemReplyMessage);
+        registerClassAlias("net.ds3783.chatserver.messages.CommandMessage", CommandMessage);
+        registerClassAlias("net.ds3783.chatserver.messages.ChannelListMessage", ChannelListMessage);
+        registerClassAlias("net.ds3783.chatserver.messages.PublicMessage", PublicMessage);
+        registerClassAlias("net.ds3783.chatserver.messages.PrivateMessage", PrivateMessage);
+        registerClassAlias("net.ds3783.chatserver.messages.ClientListMessage", ClientListMessage);
+        registerClassAlias("net.ds3783.chatserver.messages.model.ChannelModel", ChannelModel);
+        registerClassAlias("net.ds3783.chatserver.messages.model.ClientModel", ClientModel);
+
         connType = CONN_TYPE_SOCKET;
         socket = new SocketClient();
         socket.addEventListener(SocketClient.EVENT_CONNECTED, onConnected);
         socket.addEventListener(SocketClient.EVENT_LOGIN, onLogined);
+        socket.addEventListener(SocketClient.EVENT_LOGIN_FAIL, onLoginFail);
         socket.addEventListener(SocketClient.EVENT_DISCONNECTED, onDisconnected);
         socket.addEventListener(SocketClient.EVENT_CLIENTMESSAGE, onChatMessage);
         autoJoinDefaultChannel = autoJoin;
@@ -91,6 +108,13 @@ public class ChatServerClient extends EventDispatcher {
         listChannels();
     }
 
+    private function onLoginFail(e:SocketEvent):void {
+        logined = false;
+        var evt:ChatEvent = new ChatEvent(LOGIN_ERROR);
+        evt.message = e.message;
+        dispatchEvent(evt);
+    }
+
     public function listChannels():void {
         var message:CommandMessage = new CommandMessage();
         message.command = CommandType.LIST_CHANNELS;
@@ -124,18 +148,27 @@ public class ChatServerClient extends EventDispatcher {
     }
 
 
-    public function sendPrivateMessage(id:String, text:String):void {
-
+    public function sendPrivateMessage(id:String, recvName:String, text:String):PrivateMessage {
+        if (!text || !id) {
+            return null;
+        }
+        var message:PrivateMessage = new PrivateMessage();
+        message.reveiverId = id;
+        message.content = text;
+        message.reveiverName = recvName;
+        socket.sendMessage(message);
+        return message;
     }
 
-    public function sendMessage(id:String, text:String):void {
+    public function sendMessage(id:String, text:String):PublicMessage {
         if (!text || !id) {
-            return;
+            return null;
         }
         var message:PublicMessage = new PublicMessage();
         message.channelId = Number(id);
         message.content = text;
         socket.sendMessage(message);
+        return message;
     }
 
     private function onChannelListUpdate(e:SocketEvent):void {

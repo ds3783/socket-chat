@@ -15,6 +15,7 @@ import net.ds3783.chatserver.messages.ChannelListMessage;
 import net.ds3783.chatserver.messages.ClientListMessage;
 import net.ds3783.chatserver.messages.CommandMessage;
 import net.ds3783.chatserver.messages.LoginMessage;
+import net.ds3783.chatserver.messages.PrivateMessage;
 import net.ds3783.chatserver.messages.PublicMessage;
 import net.ds3783.chatserver.messages.SystemReplyMessage;
 import net.ds3783.chatserver.messages.model.ChannelModel;
@@ -22,17 +23,7 @@ import net.ds3783.chatserver.messages.model.ClientModel;
 
 public class SocketClient extends EventDispatcher {
     public function SocketClient() {
-        registerClassAlias("net.ds3783.chatserver.MessageOld", MessageOld);
-
-        registerClassAlias("net.ds3783.chatserver.Message", Message);
-        registerClassAlias("net.ds3783.chatserver.messages.LoginMessage", LoginMessage);
-        registerClassAlias("net.ds3783.chatserver.messages.SystemReplyMessage", SystemReplyMessage);
-        registerClassAlias("net.ds3783.chatserver.messages.CommandMessage", CommandMessage);
-        registerClassAlias("net.ds3783.chatserver.messages.ChannelListMessage", ChannelListMessage);
-        registerClassAlias("net.ds3783.chatserver.messages.PublicMessage", PublicMessage);
-        registerClassAlias("net.ds3783.chatserver.messages.ClientListMessage", ClientListMessage);
-        registerClassAlias("net.ds3783.chatserver.messages.model.ChannelModel", ChannelModel);
-        registerClassAlias("net.ds3783.chatserver.messages.model.ClientModel", ClientModel);
+//        registerClassAlias("net.ds3783.chatserver.MessageOld", MessageOld);
     }
 
     private var socket:Socket = null;
@@ -220,7 +211,9 @@ public class SocketClient extends EventDispatcher {
                 dispatchEvent(new SocketEvent(EVENT_LOGIN));
                 break;
             case SystemReplyMessage.CODE_ERROR_WRONG_PASSWORD:
-                dispatchEvent(new SocketEvent(EVENT_LOGIN_FAIL));
+                var evt:SocketEvent = new SocketEvent(EVENT_LOGIN_FAIL);
+                evt.message = sysMsg;
+                dispatchEvent(evt);
                 break;
             case SystemReplyMessage.CODE_ERROR_USER_CUSTOM:
                 event = new SocketEvent(EVENT_USERERROR);

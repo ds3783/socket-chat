@@ -23,6 +23,7 @@
         import net.ds3783.chatserver.Message;
         import net.ds3783.chatserver.messages.ChannelListMessage;
         import net.ds3783.chatserver.messages.ClientListMessage;
+        import net.ds3783.chatserver.messages.PrivateMessage;
         import net.ds3783.chatserver.messages.PublicMessage;
         import net.ds3783.chatserver.messages.SystemReplyMessage;
         import net.ds3783.chatserver.messages.model.ChannelModel;
@@ -119,6 +120,9 @@
 
         public function logined(evt:ChatEvent):void {
             viewstack.selectedChild = view_chat;
+            if (ta_chat) {
+                ta_chat.removeAllChildren();
+            }
             gClient.addEventListener(ChatServerClient.CHANNEL_LIST_UPDATE, onChannelListUpdate);
             gClient.addEventListener(ChatServerClient.CLIENT_LIST_UPDATE, onClientListUpdate);
             gClient.addEventListener(ChatServerClient.MESSAGE, onMessage);
@@ -126,7 +130,11 @@
 
         public function loginedFail(evt:ChatEvent):void {
             viewstack.selectedChild = view_login;
-            Alert.show("Login rquest denied,PASSWORD wrong?", "Login ERROR!");
+            if (evt.message) {
+                Alert.show(evt.message.content);
+            } else {
+                Alert.show("Login rquest denied,PASSWORD wrong?", "Login ERROR!");
+            }
         }
 
         public function sendMessage():void {
@@ -134,8 +142,12 @@
             var text:String = tf_pubmsg.text || '';
             if (text) {
                 if (channel.isSecert) {
-                    trace('say to [' + channel.label + ']:' + text);
-                    gClient.sendPrivateMessage(channel.id, text);
+                    trace('say to [' + channel.name + ']:' + text);
+                    channelSelect.updateUserAccess(channel);
+                    var msg:PrivateMessage = gClient.sendPrivateMessage(channel.id, channel.name, text);
+                    if (msg) {
+                        addChatLog(msg, true);
+                    }
                 } else {
                     trace('say in channel [' + channel.label + ']:' + text);
                     gClient.sendMessage(channel.id, text);
@@ -143,6 +155,25 @@
             }
             tf_pubmsg.text = "";
         }
+
+        private function addChatLog(msg:Message, ismyself:Boolean):void {
+            if (ta_chat &amp;&amp; msg) {
+                while (ta_chat.getChildren().length > 300) {
+                    ta_chat.removeChildAt(0);
+                }
+                if (msg instanceof PublicMessage) {
+                    var publicView:PublicMessageView = new PublicMessageView(msg as PublicMessage);
+                    publicView.addEventListener(ChannelChangeEvent.CHANGE_CHANNEL, onViewChannelChange);
+                    ta_chat.addChild(publicView);
+                } else if (msg instanceof PrivateMessage) {
+                    var privateView:PrivateMessageView = new PrivateMessageView(msg as PrivateMessage, ismyself);
+                    privateView.addEventListener(ChannelChangeEvent.CHANGE_CHANNEL, onViewChannelChange);
+                    ta_chat.addChild(privateView);
+                }
+                ta_chat.verticalScrollPosition = ta_chat.height;
+            }
+        }
+
 
         private function onChannelListUpdate(e:ChatEvent):void {
             var msg:ChannelListMessage = e.message as ChannelListMessage;
@@ -175,32 +206,16 @@
             var msg:ClientListMessage = e.message as ClientListMessage;
             userList.removeAllChildren();
             for each (var clientModel:ClientModel in msg.clients) {
-                var client:Label = new Label();
-                client.text = clientModel.name;
-                client.name = clientModel.id;
-                if (clientModel.mySelf) {
-                    client.setStyle('color', 'blue');
-                } else if (clientModel.admin) {
-                    client.setStyle('color', 'red');
-                }
-                client.setStyle("paddingLeft", "10");
-                trace('client:' + client.text);
+                var client:ClientLabel = new ClientLabel(clientModel);
+                client.addEventListener(ChannelChangeEvent.CHANGE_CHANNEL, onViewChannelChange);
                 userList.addChild(client);
             }
         }
 
 
         private function onMessage(event:ChatEvent):void {
-            if (ta_chat) {
-                var msg:Message = event.message;
-                if (msg instanceof PublicMessage) {
-                    var publicView:PublicMessageView = new PublicMessageView(msg as PublicMessage);
-                    ta_chat.addChild(publicView);
-                }
-
-                trace("ta_chat:::" + ta_chat.getChildren().length);
-            }
-
+            var msg:Message = event.message;
+            addChatLog(msg, false);
         }
 
         private function onChannelChange(evt:Event):void {
@@ -223,6 +238,16 @@
             } else {
                 //exitChannel
                 gClient.exitChannel(currentCheckBox.name);
+            }
+        }
+
+        private function onViewChannelChange(event:ChannelChangeEvent):void {
+            if (channelSelect) {
+                if (event.isPrivate) {
+                    channelSelect.selectUser(event.name, event.id);
+                } else {
+                    channelSelect.selectChannel(Number(event.id));
+                }
             }
         }
 

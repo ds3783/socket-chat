@@ -9,13 +9,15 @@ package {
 public class ChannelLabel {
     public function ChannelLabel(id:String, name:String, b:Boolean) {
         this.id = id;
-        this.label = name;
+        this.label = b ? "Secert[" + name + "]" : name;
+        this.name = name;
         this.isSecert = b;
         this.lastAccessTime = new Date().getTime();
     }
 
 
     public var id:String;
+    public var name:String;
     public var label:String;
     public var isSecert:Boolean;
     public var lastAccessTime:Number;

@@ -14,6 +14,7 @@ import net.ds3783.chatserver.messages.model.ChannelModel;
 public class ChannelSelect extends ComboBox {
 
     private var secertChannels:Array;
+    private var publicChannels:Array;
     private var MAX_SRCERT:int = 5;
 
     public function ChannelSelect() {
@@ -25,10 +26,13 @@ public class ChannelSelect extends ComboBox {
         var channelModel:ChannelModel;
         var secertItem:ChannelLabel = null;
         var newData:Array = [];
+        this.publicChannels = [];
 
 
         for each (channelModel in channels) {
-            newData.push(new ChannelLabel(channelModel.id.toString(10), channelModel.name, false));
+            var label:ChannelLabel = new ChannelLabel(channelModel.id.toString(10), channelModel.name, false);
+            this.publicChannels.push(label);
+            newData.push(label);
         }
 
         for each(var channelObj:ChannelLabel  in this.secertChannels) {
@@ -40,47 +44,79 @@ public class ChannelSelect extends ComboBox {
     }
 
 
-    public function selectUser(userName:String, userId:String) {
-        if (
-                this.secertChannels.some(function (element:ChannelLabel, index:int, arr:Array) {
-                })
-                ) {
-            if (this.secertChannels.length > this.MAX_SRCERT && this.secertChannels.length > 0) {
-                this.secertChannels.sort(secertSort);
-                var idx:int = this.secertChannels.length - 1;
-                for (; idx >= 0; idx--) {
-                    var last:ChannelLabel = this.secertChannels[idx];
-                    var selected:ChannelLabel = this.selectedItem as ChannelLabel;
-                    if (!ChannelLabel.equals(last, selected)) {
-                        this.secertChannels.splice(idx, 1);
-                        break;
-                    }
-                }
-
+    public function selectUser(userName:String, userId:String):void {
+        var target:ChannelLabel = null;
+        if (!this.secertChannels.some(function (element:ChannelLabel, index:int, arr:Array) {
+            if (element.isSecert && element.id == userId) {
+                target = element;
+                return true;
+            } else {
+                return false;
             }
+        })) {
+            target = new ChannelLabel(userId, userName, true);
+            this.secertChannels.push(target);
         }
+        if (this.secertChannels.length > this.MAX_SRCERT && this.secertChannels.length > 0) {
+            this.secertChannels.sort(secertSort);
+            var idx:int = this.secertChannels.length - 1;
+            for (; idx >= 0; idx--) {
+                var last:ChannelLabel = this.secertChannels[idx];
+                var selected:ChannelLabel = this.selectedItem as ChannelLabel;
+                if (!ChannelLabel.equals(last, selected)) {
+                    this.secertChannels.splice(idx, 1);
+                    break;
+                }
+            }
 
-        this.secertChannels.push(new ChannelLabel(userId, "Secert[" + userName + "]", true));
+        }
         var newData:Array = [], channel:ChannelLabel;
 
-        for each(channel in this.data) {
-            if (!channel.isSecert) {
-                newData.push(channel);
-            }
+        for each(channel in this.publicChannels) {
+            newData.push(channel);
         }
         for each(channel in this.secertChannels) {
             newData.push(channel);
         }
-        updateData(newData, null);
+        updateData(newData, target);
     }
 
 
-    public function selectChannel(channelId:Number) {
-
+    public function selectChannel(channelId:Number):void {
+        if (!channelId) {
+            return;
+        }
+        var newData:Array = [], channel:ChannelLabel;
+        var target:ChannelLabel = null;
+        for each(channel in this.publicChannels) {
+            if (!channel.isSecert && channel.id == channelId.toString()) {
+                target = channel;
+            }
+            newData.push(channel);
+        }
+        for each(channel in this.secertChannels) {
+            newData.push(channel);
+        }
+        updateData(newData, target);
     }
 
     public function getCurrentChannel():ChannelLabel {
         return this.selectedItem as ChannelLabel;
+    }
+
+
+    public function updateUserAccess(channel:ChannelLabel):void {
+        var newData:Array = [], channel2:ChannelLabel;
+        for each(channel2 in this.publicChannels) {
+            newData.push(channel2);
+        }
+        for each(channel2 in this.secertChannels) {
+            if (ChannelLabel.equals(channel2, channel)) {
+                channel2.lastAccessTime = new Date().getTime();
+            }
+            newData.push(channel2);
+        }
+        updateData(newData, null);
     }
 
     private function updateData(newData:Array, selectedItem:ChannelLabel):void {
@@ -148,6 +184,5 @@ public class ChannelSelect extends ComboBox {
         }
         return 0;
     }
-
 }
 }
