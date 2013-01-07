@@ -103,7 +103,7 @@ public class XMLUtil {
         try {
             xml = new XML(data);
         }
-        catch(e:Error) {
+        catch (e:Error) {
             return false;
         }
 
@@ -150,7 +150,7 @@ public class XMLUtil {
         try {
             out = x.parent().children()[x.childIndex() + count];
         }
-        catch(e:Error) {
+        catch (e:Error) {
             return null;
         }
 

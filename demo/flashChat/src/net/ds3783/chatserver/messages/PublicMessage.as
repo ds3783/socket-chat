@@ -2,7 +2,7 @@
  * Created with IntelliJ IDEA.
  * User: Ds.3783
  * Date: 13-1-1
- * Time: ÏÂÎç9:57
+ * Time: ä¸‹åˆ9:57
  * To change this template use File | Settings | File Templates.
  */
 package net.ds3783.chatserver.messages {

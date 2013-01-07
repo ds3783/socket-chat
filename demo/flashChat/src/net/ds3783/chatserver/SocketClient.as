@@ -8,18 +8,10 @@ import flash.events.ProgressEvent;
 import flash.events.SecurityErrorEvent;
 import flash.net.ObjectEncoding;
 import flash.net.Socket;
-import flash.net.registerClassAlias;
 import flash.utils.ByteArray;
 
-import net.ds3783.chatserver.messages.ChannelListMessage;
-import net.ds3783.chatserver.messages.ClientListMessage;
-import net.ds3783.chatserver.messages.CommandMessage;
 import net.ds3783.chatserver.messages.LoginMessage;
-import net.ds3783.chatserver.messages.PrivateMessage;
-import net.ds3783.chatserver.messages.PublicMessage;
 import net.ds3783.chatserver.messages.SystemReplyMessage;
-import net.ds3783.chatserver.messages.model.ChannelModel;
-import net.ds3783.chatserver.messages.model.ClientModel;
 
 public class SocketClient extends EventDispatcher {
     public function SocketClient() {

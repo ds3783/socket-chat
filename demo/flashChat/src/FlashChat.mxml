@@ -80,12 +80,12 @@
             gClient.addEventListener(ChatServerClient.LOGIN_ERROR, loginedFail);
             gClient.addEventListener(ChatServerClient.ERROR, onError);
             gClient.addEventListener(ChatServerClient.DISCONNECTED, onDisconnected);
+            gClient.addEventListener(ChatServerClient.CONNECTED_ERROR, onConnectError);
 
         }
 
-        private function onDisconnected(e:Event):void {
+        private function cleanup():void {
             //reset all cavens
-            tf_username.text = "";
             tf_password.text = "";
             while (popups.length > 0) {
                 removePop(popups[0]);
@@ -96,7 +96,17 @@
             gClient.removeEventListener(ChatServerClient.CHANNEL_LIST_UPDATE, onChannelListUpdate);
             gClient.removeEventListener(ChatServerClient.CLIENT_LIST_UPDATE, onClientListUpdate);
             gClient.removeEventListener(ChatServerClient.MESSAGE, onMessage);
+        }
+
+        private function onDisconnected(e:Event):void {
+            cleanup();
             Alert.show("Connection lost!");
+        }
+
+
+        private function onConnectError(e:Event):void {
+            cleanup();
+            Alert.show("Unable to connect to Server!");
         }
 
         private function onError(e:ChatEvent):void {
@@ -177,7 +187,7 @@
 
         private function onChannelListUpdate(e:ChatEvent):void {
             var msg:ChannelListMessage = e.message as ChannelListMessage;
-            //更新roomList
+            //鏇存柊roomList
             roomList.removeAllChildren();
             var listeningChannels:Array = [];
             for each (var channelModel:ChannelModel in msg.channels) {
@@ -196,7 +206,7 @@
                 channel.addEventListener(Event.CHANGE, onChannelChange);
                 roomList.addChild(channel);
             }
-            //更新channelSelect
+            //鏇存柊channelSelect
             if (channelSelect) {
                 channelSelect.setChannelList(listeningChannels);
             }
@@ -233,7 +243,7 @@
                 return;
             }
             if (currentCheckBox.selected) {
-                //joinChannel  currentCheckBox.name 就是channelid
+                //joinChannel  currentCheckBox.name 灏辨槸channelid
                 gClient.joinChannel(currentCheckBox.name);
             } else {
                 //exitChannel
@@ -252,7 +262,7 @@
         }
 
         private function createRoom(e:Event):void {
-            //先整一个window
+            //鍏堟暣涓€涓獁indow
             var sprite:TitleWindow = new TitleWindow();
             sprite.showCloseButton = true;
             sprite.layout = "absolute";

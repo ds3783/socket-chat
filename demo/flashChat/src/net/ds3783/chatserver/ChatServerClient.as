@@ -2,7 +2,7 @@
  * Created by IntelliJ IDEA.
  * User: Ds3783
  * Date: 11-9-19
- * Time: ÏÂÎç11:07
+ * Time: ä¸‹åˆ11:07
  * To change this template use File | Settings | File Templates.
  */
 package net.ds3783.chatserver {
@@ -50,6 +50,7 @@ public class ChatServerClient extends EventDispatcher {
         connType = CONN_TYPE_SOCKET;
         socket = new SocketClient();
         socket.addEventListener(SocketClient.EVENT_CONNECTED, onConnected);
+        socket.addEventListener(SocketClient.EVENT_AUTHERROR, onConnectFail);
         socket.addEventListener(SocketClient.EVENT_LOGIN, onLogined);
         socket.addEventListener(SocketClient.EVENT_LOGIN_FAIL, onLoginFail);
         socket.addEventListener(SocketClient.EVENT_DISCONNECTED, onDisconnected);
@@ -95,6 +96,11 @@ public class ChatServerClient extends EventDispatcher {
         }
     }
 
+    private function onConnectFail(e:SocketEvent):void {
+        connected = true;
+        dispatchEvent(new SocketEvent(CONNECTED_ERROR));
+    }
+
     public function login(username:String, password:String):void {
         var message:LoginMessage = new LoginMessage();
         message.username = username;
@@ -130,7 +136,7 @@ public class ChatServerClient extends EventDispatcher {
     }
 
     public function exitChannel(channelId:String):void {
-        //todo::  ÉĞÎ´²âÊÔ
+        //todo::  å°šæœªæµ‹è¯•
         var message:CommandMessage = new CommandMessage();
         message.command = CommandType.EXIT_CHANNEL;
         message.content = channelId;
@@ -175,7 +181,7 @@ public class ChatServerClient extends EventDispatcher {
         var list:ChannelListMessage = e.message as ChannelListMessage;
         if (list) {
             if (list.listeningChannels) {
-                //Óë»º´æÄÚÈİÕÒ³ö²îÒì
+                //ä¸ç¼“å­˜å†…å®¹æ‰¾å‡ºå·®å¼‚
                 var misMach:Boolean = false;
                 if (this.listeningChannels.length != list.listeningChannels.length) {
                     misMach = true;
@@ -191,10 +197,10 @@ public class ChatServerClient extends EventDispatcher {
                         }
                     }
                 }
-                //Èç¹û´æÔÚ²îÒì
+                //å¦‚æœå­˜åœ¨å·®å¼‚
                 if (misMach) {
                     this.listeningChannels = list.listeningChannels;
-                    //·¢ËÍupdate client listÖ¸Áî
+                    //å‘é€update client listæŒ‡ä»¤
                     var message:CommandMessage = new CommandMessage();
                     message.command = CommandType.UPDATE_CLIENT_LIST;
                     socket.sendMessage(message);

@@ -219,7 +219,7 @@ public class MD5Stream {
         }
 
 
-        for (var i:int = arrProcessIndex; i < len; i += 16,arrProcessIndex += 16) {
+        for (var i:int = arrProcessIndex; i < len; i += 16, arrProcessIndex += 16) {
             // save previous values
             aa = a;
             bb = b;

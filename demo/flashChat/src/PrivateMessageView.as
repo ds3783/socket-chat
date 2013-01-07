@@ -17,8 +17,6 @@ import mx.formatters.DateFormatter;
 
 import net.ds3783.chatserver.messages.PrivateMessage;
 
-import net.ds3783.chatserver.messages.PublicMessage;
-
 public class PrivateMessageView extends Box {
     private var dateTime:Label;
     private var secert:Label;

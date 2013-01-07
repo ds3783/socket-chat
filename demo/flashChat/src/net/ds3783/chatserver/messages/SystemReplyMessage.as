@@ -2,7 +2,7 @@
  * Created by IntelliJ IDEA.
  * User: hongyu.pi
  * Date: 12-2-2
- * Time: ÉÏÎç11:45
+ * Time: ä¸Šåˆ11:45
  * To change this template use File | Settings | File Templates.
  */
 package net.ds3783.chatserver.messages {
@@ -13,16 +13,16 @@ public class SystemReplyMessage implements Message {
     public static const CODE_100:int = 100;
 
     public static const CODE_200:int = 200;
-    public static const CODE_LOGIN_SUCCESS:int = 201;//µÇÂ¼³É¹¦
-    public static const CODE_CHANNEL_LIST:int = 202;//ÆµµÀÁĞ±í
-    public static const CODE_CLIENT_LIST:int = 203;//ÓÃ»§ÁĞ±í
+    public static const CODE_LOGIN_SUCCESS:int = 201;//ç™»å½•æˆåŠŸ
+    public static const CODE_CHANNEL_LIST:int = 202;//é¢‘é“åˆ—è¡¨
+    public static const CODE_CLIENT_LIST:int = 203;//ç”¨æˆ·åˆ—è¡¨
 
-    public static const CODE_OTHER_USER_ONLINE:int = 301;//ÆäËûÓÃ»§µÇÂ¼
+    public static const CODE_OTHER_USER_ONLINE:int = 301;//å…¶ä»–ç”¨æˆ·ç™»å½•
 
-    public static const CODE_ERROR_NOT_LOGIN:int = 401;//ÉĞÎ´µÇÂ¼
-    public static const CODE_ERROR_WRONG_PASSWORD:int = 402;//µÇÂ¼ÓÃ»§Ãû»òÃÜÂë´íÎó
-    public static const CODE_ERROR_BLACKLIST:int = 403;//ÓÃ»§±»½ûÑÔ
-    public static const CODE_ERROR_USER_CUSTOM:int = 499;//ÓÃ»§²Ù×÷²úÉúµÄ´íÎó
+    public static const CODE_ERROR_NOT_LOGIN:int = 401;//å°šæœªç™»å½•
+    public static const CODE_ERROR_WRONG_PASSWORD:int = 402;//ç™»å½•ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯
+    public static const CODE_ERROR_BLACKLIST:int = 403;//ç”¨æˆ·è¢«ç¦è¨€
+    public static const CODE_ERROR_USER_CUSTOM:int = 499;//ç”¨æˆ·æ“ä½œäº§ç”Ÿçš„é”™è¯¯
 
     public function SystemReplyMessage() {
     }

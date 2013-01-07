@@ -2,11 +2,10 @@
  * Created with IntelliJ IDEA.
  * User: Ds.3783
  * Date: 13-1-3
- * Time: ÉÏÎç12:02
+ * Time: ä¸Šåˆ12:02
  * To change this template use File | Settings | File Templates.
  */
 package {
-import flash.events.Event;
 import flash.events.MouseEvent;
 
 import mx.containers.Box;

@@ -2,7 +2,7 @@
  * Created by IntelliJ IDEA.
  * User: hongyu.pi
  * Date: 12-2-2
- * Time: ÉÏÎç11:36
+ * Time: ä¸Šåˆ11:36
  * To change this template use File | Settings | File Templates.
  */
 package net.ds3783.chatserver.messages {

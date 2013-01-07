@@ -2,7 +2,7 @@
  * Created with IntelliJ IDEA.
  * User: hongyu.pi
  * Date: 13-1-6
- * Time: ÏÂÎç3:50
+ * Time: ä¸‹åˆ3:50
  * To change this template use File | Settings | File Templates.
  */
 package {

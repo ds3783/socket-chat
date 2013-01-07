@@ -2,26 +2,26 @@
  * Created by IntelliJ IDEA.
  * User: hongyu.pi
  * Date: 12-2-2
- * Time: ÉÏÎç11:32
+ * Time: ä¸Šåˆ11:32
  *
  */
 package net.ds3783.chatserver {
 /**
- *  ÏûÏ¢½Ó¿Ú£¬ËùÓĞÍ¨ĞÅµÄÏûÏ¢±ØĞëÊµÏÖ´Ë½Ó¿Ú
+ *  æ¶ˆæ¯æ¥å£ï¼Œæ‰€æœ‰é€šä¿¡çš„æ¶ˆæ¯å¿…é¡»å®ç°æ­¤æ¥å£
  */
 public interface Message {
     /**
-     * @return ÏûÏ¢ÀàĞÍ£¬ÓÃÓÚ±êÊ¶¸ÃÏûÏ¢µÄ¾ßÌåÀàĞÍ
+     * @return æ¶ˆæ¯ç±»å‹ï¼Œç”¨äºæ ‡è¯†è¯¥æ¶ˆæ¯çš„å…·ä½“ç±»å‹
      */
     function getType():String;
 
     /**
-     * @return ÊÇ·ñ¿ÉĞòÁĞ»¯
+     * @return æ˜¯å¦å¯åºåˆ—åŒ–
      */
     function isSerializable():Boolean;
 
     /**
-     * @return ÏûÏ¢µÄÄÚÈİ£¬Ä³Ğ©Ğ­Òé¶Ô²»¿ÉĞòÁĞ»¯µÄÏûÏ¢»áÊ¹ÓÃÆäÄÚÈİ×÷Îª´«ÊäÄÚÈİ
+     * @return æ¶ˆæ¯çš„å†…å®¹ï¼ŒæŸäº›åè®®å¯¹ä¸å¯åºåˆ—åŒ–çš„æ¶ˆæ¯ä¼šä½¿ç”¨å…¶å†…å®¹ä½œä¸ºä¼ è¾“å†…å®¹
      */
     function get content():String;
 

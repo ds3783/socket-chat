@@ -168,7 +168,7 @@ public class RFC2817Socket extends Socket {
 
     public override function addEventListener(type:String, listener:Function, useCapture:Boolean = false, priority:int = 0.0, useWeakReference:Boolean = false):void {
         if (type == Event.CONNECT || type == ProgressEvent.SOCKET_DATA) {
-            this.deferredEventHandlers[type] = {listener:listener,useCapture:useCapture, priority:priority, useWeakReference:useWeakReference};
+            this.deferredEventHandlers[type] = {listener: listener, useCapture: useCapture, priority: priority, useWeakReference: useWeakReference};
         }
         else {
             super.addEventListener(type, listener, useCapture, priority, useWeakReference);
