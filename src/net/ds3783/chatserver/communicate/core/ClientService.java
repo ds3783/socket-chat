@@ -1,5 +1,8 @@
 package net.ds3783.chatserver.communicate.core;
 
+import net.ds3783.chatserver.EventConstant;
+import net.ds3783.chatserver.communicate.delivery.InternalEvent;
+import net.ds3783.chatserver.communicate.delivery.MessageDispatcher;
 import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
 import org.apache.commons.logging.Log;
@@ -19,6 +22,8 @@ public class ClientService {
     private ThreadResource threadResource;
     private ClientDao clientDao;
 
+    private MessageDispatcher messageDispatcher;
+
     /**
      * 添加临时用户
      *
@@ -29,10 +34,6 @@ public class ClientService {
         client.setLogined(false);
         clientDao.addClient(client);
 
-    }
-
-    public void setClientDao(ClientDao clientDao) {
-        this.clientDao = clientDao;
     }
 
     public Client clientLogin(String uuid, String clientName, String authCode) {
@@ -59,11 +60,23 @@ public class ClientService {
         if (writeThread != null) {
             writeThread.remove(client.getUid());
         }
+        InternalEvent evt = new InternalEvent();
+        evt.setName(EventConstant.EVENT_CLIENT_OFFLINE);
+        evt.setClient(client);
+        this.messageDispatcher.dispatchEvent(evt);
         clientDao.removeClient(client);
         logger.info(client.getIp() + ":" + client.getPort() + "(" + client.getName() + ") 断开连接。");
 
     }
 
+
+    public void setClientDao(ClientDao clientDao) {
+        this.clientDao = clientDao;
+    }
+
+    public void setMessageDispatcher(MessageDispatcher messageDispatcher) {
+        this.messageDispatcher = messageDispatcher;
+    }
 
     public void setThreadResource(ThreadResource threadResource) {
         this.threadResource = threadResource;

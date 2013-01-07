@@ -1,9 +1,10 @@
 package net.ds3783.chatserver.extension.core;
 
-import net.ds3783.chatserver.MessageType;
+import net.ds3783.chatserver.EventConstant;
 import net.ds3783.chatserver.communicate.delivery.Event;
 import net.ds3783.chatserver.communicate.delivery.EventListener;
 import net.ds3783.chatserver.communicate.delivery.MessageDispatcher;
+import net.ds3783.chatserver.communicate.delivery.MessageEvent;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,10 +17,11 @@ public class ChatListener implements EventListener {
     private MessageDispatcher chatDispatcher;
     private MessageDispatcher messageDispatcher;
 
-    public boolean onEvent(Event event) {
-        if (MessageType.CHAT_MESSAGE.equals(event.getMessage().getType())) {
+    public boolean onEvent(Event messageEvent) {
+        MessageEvent event = (MessageEvent) messageEvent;
+        if (EventConstant.CHAT_MESSAGE.equals(event.getMessage().getType())) {
             //拦截所有CommandMessage
-            Event evt = new Event();
+            MessageEvent evt = new MessageEvent();
             evt.setName(event.getMessage().getClass().getSimpleName());
             evt.setMessage(event.getMessage());
             chatDispatcher.dispatchEvent(evt);
@@ -30,7 +32,7 @@ public class ChatListener implements EventListener {
     }
 
     public void init() {
-        messageDispatcher.addListener(MessageType.CHAT_MESSAGE, this);
+        messageDispatcher.addListener(EventConstant.CHAT_MESSAGE, this);
     }
 
     public void setChatDispatcher(MessageDispatcher chatDispatcher) {

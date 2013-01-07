@@ -8,5 +8,5 @@ package net.ds3783.chatserver.communicate.delivery;
  * To change this template use File | Settings | File Templates.
  */
 public interface EventListener {
-    public boolean onEvent(Event event);
+    public boolean onEvent(Event messageEvent);
 }

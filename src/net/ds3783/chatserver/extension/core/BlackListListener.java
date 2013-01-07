@@ -1,10 +1,11 @@
 package net.ds3783.chatserver.extension.core;
 
-import net.ds3783.chatserver.MessageType;
+import net.ds3783.chatserver.EventConstant;
 import net.ds3783.chatserver.communicate.ContextHelper;
 import net.ds3783.chatserver.communicate.delivery.Event;
 import net.ds3783.chatserver.communicate.delivery.EventListener;
 import net.ds3783.chatserver.communicate.delivery.MessageDispatcher;
+import net.ds3783.chatserver.communicate.delivery.MessageEvent;
 import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
 import net.ds3783.chatserver.messages.Message;
@@ -22,7 +23,8 @@ public class BlackListListener extends DefaultCoreListener implements EventListe
     private ClientDao clientDao;
     private ContextHelper contextHelper;
 
-    public boolean onEvent(Event event) {
+    public boolean onEvent(Event messageEvent) {
+        MessageEvent event = (MessageEvent) messageEvent;
         Message msg = event.getMessage();
         MessageContext context = contextHelper.getContext(msg);
         Client client = context.getSender();
@@ -49,6 +51,6 @@ public class BlackListListener extends DefaultCoreListener implements EventListe
     }
 
     public void init() {
-        messageDispatcher.addListener(MessageType.CHAT_MESSAGE, MessageDispatcher.PRIORITY_HIGHEST, this);
+        messageDispatcher.addListener(EventConstant.CHAT_MESSAGE, MessageDispatcher.PRIORITY_HIGHEST, this);
     }
 }

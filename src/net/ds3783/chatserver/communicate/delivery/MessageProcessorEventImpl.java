@@ -28,7 +28,7 @@ public class MessageProcessorEventImpl implements MessageProcessor {
 
 
     public void processMsg(Message msg, long now) {
-        Event evt = new Event();
+        MessageEvent evt = new MessageEvent();
         evt.setName(msg.getType());
         evt.setMessage(msg);
         try {

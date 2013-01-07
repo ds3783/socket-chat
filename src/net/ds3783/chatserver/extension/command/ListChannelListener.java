@@ -4,6 +4,7 @@ import net.ds3783.chatserver.CommandType;
 import net.ds3783.chatserver.communicate.ContextHelper;
 import net.ds3783.chatserver.communicate.delivery.Event;
 import net.ds3783.chatserver.communicate.delivery.EventListener;
+import net.ds3783.chatserver.communicate.delivery.MessageEvent;
 import net.ds3783.chatserver.dao.Channel;
 import net.ds3783.chatserver.dao.ChannelDao;
 import net.ds3783.chatserver.dao.ClientChannel;
@@ -28,19 +29,20 @@ public class ListChannelListener extends DefaultCommandListener implements Event
     private ChannelDao channelDao;
     private ChannelLogic channelLogic;
 
-    public boolean onEvent(Event event) {
-        if (!CommandType.LIST_CHANNELS.equals(event.getName())) {
+    public boolean onEvent(Event messageEvent) {
+        if (!CommandType.LIST_CHANNELS.equals(messageEvent.getName())) {
             //非ListChannel命令交由其他Listener处理
             return true;
         }
         ChannelListMessage reply = new ChannelListMessage();
+        MessageEvent event = (MessageEvent) messageEvent;
         CommandMessage command = (CommandMessage) event.getMessage();
         MessageContext context = contextHelper.getContext(command);
         //receivers
         MessageContext replyContext = contextHelper.registerMessage(reply, context.getSender());
         replyContext.getReceivers().add(context.getSender());
 
-        //获得所有Channel
+        //获得�?��Channel
         List<Channel> channels = channelDao.getChannels();
         ChannelModel[] chls = new ChannelModel[channels.size()];
         for (int i = 0; i < channels.size(); i++) {

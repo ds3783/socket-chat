@@ -1,10 +1,11 @@
 package net.ds3783.chatserver.extension.core;
 
-import net.ds3783.chatserver.MessageType;
+import net.ds3783.chatserver.EventConstant;
 import net.ds3783.chatserver.communicate.ContextHelper;
 import net.ds3783.chatserver.communicate.core.ClientService;
 import net.ds3783.chatserver.communicate.delivery.Event;
 import net.ds3783.chatserver.communicate.delivery.EventListener;
+import net.ds3783.chatserver.communicate.delivery.MessageEvent;
 import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
 import net.ds3783.chatserver.messages.LoginMessage;
@@ -26,8 +27,9 @@ public class LoginListener extends DefaultCoreListener implements EventListener 
     private ClientService clientService;
     private ContextHelper contextHelper;
 
-    public boolean onEvent(Event event) {
-        if (!MessageType.LOGIN_MESSAGE.equals(event.getMessage().getType())) {
+    public boolean onEvent(Event messageEvent) {
+        MessageEvent event = (MessageEvent) messageEvent;
+        if (!EventConstant.LOGIN_MESSAGE.equals(event.getMessage().getType())) {
             return true;
         }
         LoginMessage login = (LoginMessage) event.getMessage();
@@ -80,6 +82,6 @@ public class LoginListener extends DefaultCoreListener implements EventListener 
     }
 
     public void init() {
-        messageDispatcher.addListener(MessageType.LOGIN_MESSAGE, this);
+        messageDispatcher.addListener(EventConstant.LOGIN_MESSAGE, this);
     }
 }

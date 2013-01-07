@@ -5,6 +5,7 @@ import net.ds3783.chatserver.CommandType;
 import net.ds3783.chatserver.communicate.ContextHelper;
 import net.ds3783.chatserver.communicate.delivery.Event;
 import net.ds3783.chatserver.communicate.delivery.EventListener;
+import net.ds3783.chatserver.communicate.delivery.MessageEvent;
 import net.ds3783.chatserver.dao.Channel;
 import net.ds3783.chatserver.dao.ChannelDao;
 import net.ds3783.chatserver.dao.ClientChannel;
@@ -30,12 +31,13 @@ public class CreateChannelListener extends DefaultCommandListener implements Eve
     private ChannelDao channelDao;
     private ChannelLogic channelLogic;
 
-    public boolean onEvent(Event event) {
-        if (!CommandType.CREATE_CHANNEL.equals(event.getName())) {
+    public boolean onEvent(Event messageEvent) {
+        if (!CommandType.CREATE_CHANNEL.equals(messageEvent.getName())) {
             //非ListChannel命令交由其他Listener处理
             return true;
         }
         ChannelListMessage reply = new ChannelListMessage();
+        MessageEvent event = (MessageEvent) messageEvent;
         CommandMessage command = (CommandMessage) event.getMessage();
         MessageContext context = contextHelper.getContext(command);
 

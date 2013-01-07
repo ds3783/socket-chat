@@ -3,14 +3,14 @@ package net.ds3783.chatserver.extension.chat;
 import net.ds3783.chatserver.communicate.ContextHelper;
 import net.ds3783.chatserver.communicate.delivery.Event;
 import net.ds3783.chatserver.communicate.delivery.EventListener;
-import net.ds3783.chatserver.dao.*;
+import net.ds3783.chatserver.communicate.delivery.MessageEvent;
+import net.ds3783.chatserver.dao.Client;
+import net.ds3783.chatserver.dao.ClientDao;
 import net.ds3783.chatserver.extension.ClientException;
 import net.ds3783.chatserver.messages.MessageContext;
 import net.ds3783.chatserver.messages.PrivateMessage;
-import net.ds3783.chatserver.messages.PublicMessage;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,8 +23,9 @@ public class PrivateMessageListener extends DefaultChatListener implements Event
     private ContextHelper contextHelper;
     private ClientDao clientDao;
 
-    public boolean onEvent(Event event) {
-        if (event.getName().equals(PrivateMessage.class.getSimpleName())) {
+    public boolean onEvent(Event messageEvent) {
+        if (messageEvent.getName().equals(PrivateMessage.class.getSimpleName())) {
+            MessageEvent event = (MessageEvent) messageEvent;
             PrivateMessage message = (PrivateMessage) event.getMessage();
             MessageContext context = contextHelper.getContext(message);
             Client target = clientDao.getClient(message.getReveiverId());

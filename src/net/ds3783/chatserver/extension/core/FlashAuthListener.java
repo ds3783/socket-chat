@@ -1,10 +1,11 @@
 package net.ds3783.chatserver.extension.core;
 
 import net.ds3783.chatserver.Configuration;
-import net.ds3783.chatserver.MessageType;
+import net.ds3783.chatserver.EventConstant;
 import net.ds3783.chatserver.communicate.ContextHelper;
 import net.ds3783.chatserver.communicate.delivery.Event;
 import net.ds3783.chatserver.communicate.delivery.EventListener;
+import net.ds3783.chatserver.communicate.delivery.MessageEvent;
 import net.ds3783.chatserver.messages.FlashAuthMessage;
 import net.ds3783.chatserver.messages.MessageContext;
 
@@ -19,9 +20,10 @@ public class FlashAuthListener extends DefaultCoreListener implements EventListe
     private Configuration config;
     private ContextHelper contextHelper;
 
-    public boolean onEvent(Event event) {
+    public boolean onEvent(Event messageEvent) {
+        MessageEvent event = (MessageEvent) messageEvent;
         net.ds3783.chatserver.messages.Message msg = event.getMessage();
-        if (MessageType.AUTH_MESSAGE.equals(msg.getType())) {
+        if (EventConstant.AUTH_MESSAGE.equals(msg.getType())) {
             FlashAuthMessage reply = new FlashAuthMessage();
             reply.setContent("<?xml version=\"1.0\"?><cross-domain-policy><allow-access-from domain=\"" + config.getAddress() + "\" to-ports=\"" + config.getPort() + "\"/></cross-domain-policy>\r\n");
 
@@ -47,6 +49,6 @@ public class FlashAuthListener extends DefaultCoreListener implements EventListe
     }
 
     public void init() {
-        messageDispatcher.addListener(MessageType.AUTH_MESSAGE, this);
+        messageDispatcher.addListener(EventConstant.AUTH_MESSAGE, this);
     }
 }

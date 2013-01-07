@@ -18,13 +18,13 @@ public class ChannelListener implements EventListener {
     private MessageDispatcher messageDispatcher;
     private MessageDispatcher channelDispatcher;
 
-    public boolean onEvent(Event event) {
-        /*if (MessageType.CHAT_MESSAGE.equals(event.getMessage().getType())) {
+    public boolean onEvent(Event messageEvent) {
+        /*if (EventConstant.CHAT_MESSAGE.equals(messageEvent.getMessage().getType())) {
 
-            MessageContext context = contextHelper.getContext(event.getMessage());
-            Event evt = new Event();
+            MessageContext context = contextHelper.getContext(messageEvent.getMessage());
+            MessageEvent evt = new MessageEvent();
             evt.setName(context.getSender().getChannel());
-            evt.setMessage(event.getMessage());
+            evt.setMessage(messageEvent.getMessage());
             channelDispatcher.dispatchEvent(evt);
         }*/
         return true;
@@ -43,6 +43,6 @@ public class ChannelListener implements EventListener {
     }
 
     public void init() {
-        //messageDispatcher.addListener(MessageType.CHAT_MESSAGE, this);
+        //messageDispatcher.addListener(EventConstant.CHAT_MESSAGE, this);
     }
 }

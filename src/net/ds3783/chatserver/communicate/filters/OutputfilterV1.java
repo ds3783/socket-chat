@@ -1,8 +1,8 @@
 package net.ds3783.chatserver.communicate.filters;
 
 import com.google.gson.Gson;
+import net.ds3783.chatserver.EventConstant;
 import net.ds3783.chatserver.Message;
-import net.ds3783.chatserver.MessageType;
 import net.ds3783.chatserver.communicate.core.OutputFilter;
 import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
@@ -22,17 +22,17 @@ public class OutputfilterV1 extends OutputFilter {
     private ClientDao clientDao;
 
     public String marshal(Message message, String content) {
-        if (MessageType.AUTH_MESSAGE.equals(message.getType())) {
+        if (EventConstant.AUTH_MESSAGE.equals(message.getType())) {
             return (message.getContent() == null) ? "" : message.getContent();
         }
-        if (MessageType.LOGIN_MESSAGE.equals(message.getType())) {
+        if (EventConstant.LOGIN_MESSAGE.equals(message.getType())) {
             ReplyMessage rm = new ReplyMessage();
             rm.setCode("login");
             rm.setData(message.getContent());
             rm.setName(message.getChannel());
             return Utils.escape(gson.toJson(rm));
         }
-        if (MessageType.CHAT_MESSAGE.equals(message.getType())) {
+        if (EventConstant.CHAT_MESSAGE.equals(message.getType())) {
             ReplyMessage rm = new ReplyMessage();
 
             rm.setData(message.getContent());
@@ -70,7 +70,7 @@ public class OutputfilterV1 extends OutputFilter {
             String json = gson.toJson(rm);
             return Utils.escape(json);
         }
-        if (MessageType.COMMAND_MESSAGE.equals(message.getType())) {
+        if (EventConstant.COMMAND_MESSAGE.equals(message.getType())) {
             if ("EMPTYMSG".equals(message.getChannel())) {
                 ReplyMessage rm = new ReplyMessage();
                 rm.setCode("emptymsg");

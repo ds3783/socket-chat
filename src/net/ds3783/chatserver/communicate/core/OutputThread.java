@@ -1,7 +1,7 @@
 package net.ds3783.chatserver.communicate.core;
 
 import com.google.gson.Gson;
-import net.ds3783.chatserver.MessageType;
+import net.ds3783.chatserver.EventConstant;
 import net.ds3783.chatserver.communicate.ContextHelper;
 import net.ds3783.chatserver.communicate.protocol.OutputProtocal;
 import net.ds3783.chatserver.dao.Client;
@@ -51,7 +51,7 @@ public class OutputThread extends SlaveThread implements Runnable {
     public void send(Message message) {
         if (message != null) {
             try {
-                if (MessageType.AUTH_MESSAGE.equals(message.getType()) || MessageType.LOGIN_MESSAGE.equals(message.getType())) {
+                if (EventConstant.AUTH_MESSAGE.equals(message.getType()) || EventConstant.LOGIN_MESSAGE.equals(message.getType())) {
                     enmergencyMessages.put(message);
                 } else if (toSendMessages.size() < maxQueueLength) {
                     toSendMessages.put(message);

@@ -1,6 +1,6 @@
 package net.ds3783.chatserver.messages;
 
-import net.ds3783.chatserver.MessageType;
+import net.ds3783.chatserver.EventConstant;
 import net.ds3783.chatserver.messages.model.ChannelModel;
 
 /**
@@ -36,7 +36,7 @@ public class ChannelListMessage extends SystemReplyMessage implements Message {
     }
 
     public String getType() {
-        return MessageType.COMMAND_MESSAGE;
+        return EventConstant.COMMAND_MESSAGE;
     }
 
     public boolean isSerializable() {

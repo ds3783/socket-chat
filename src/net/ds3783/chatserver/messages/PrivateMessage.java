@@ -1,6 +1,6 @@
 package net.ds3783.chatserver.messages;
 
-import net.ds3783.chatserver.MessageType;
+import net.ds3783.chatserver.EventConstant;
 
 import java.util.Date;
 
@@ -20,7 +20,7 @@ public class PrivateMessage implements Message {
     private String content;
 
     public String getType() {
-        return MessageType.CHAT_MESSAGE;
+        return EventConstant.CHAT_MESSAGE;
     }
 
     public boolean isSerializable() {

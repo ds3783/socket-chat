@@ -2,8 +2,8 @@ package net.ds3783.chatserver.communicate.filters;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
+import net.ds3783.chatserver.EventConstant;
 import net.ds3783.chatserver.Message;
-import net.ds3783.chatserver.MessageType;
 import net.ds3783.chatserver.communicate.core.InputFilter;
 import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
@@ -32,7 +32,7 @@ public class InputFilterV1 extends InputFilter {
         message.setUserUuid(client.getUid());
         if (content.startsWith("<") && content.endsWith(">")) {
             message.setContent(content);
-            message.setType(MessageType.AUTH_MESSAGE);
+            message.setType(EventConstant.AUTH_MESSAGE);
             return message;
         }
         ClientMessage cMsg;
@@ -43,7 +43,7 @@ public class InputFilterV1 extends InputFilter {
             return message;
         }
         if ("login".equals(cMsg.getCommand())) {
-            message.setType(MessageType.LOGIN_MESSAGE);
+            message.setType(EventConstant.LOGIN_MESSAGE);
             //角色名字
             message.setChannel(cMsg.getData());
             message.setAuthCode(cMsg.getToken());
@@ -51,14 +51,14 @@ public class InputFilterV1 extends InputFilter {
         }
 
         if ("say".equals(cMsg.getCommand())) {
-            message.setType(MessageType.CHAT_MESSAGE);
+            message.setType(EventConstant.CHAT_MESSAGE);
             message.setChannel("BROADCAST");
             message.setContent(cMsg.getData());
             message.setAuthCode(cMsg.getToken());
         }
 
         if ("changeName".equals(cMsg.getCommand())) {
-            message.setType(MessageType.COMMAND_MESSAGE);
+            message.setType(EventConstant.COMMAND_MESSAGE);
             message.setContent(cMsg.getData());
             message.setChannel("CHANGENAME");
         }

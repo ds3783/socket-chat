@@ -31,20 +31,20 @@ public class MessageProcessorStupidImpl implements MessageProcessor {
 //        Client client = clientDao.getClient(msg.getUserUuid());
 
         //授权
-        /*if (MessageType.AUTH_MESSAGE.equals(msg.getType())) {
+        /*if (EventConstant.AUTH_MESSAGE.equals(msg.getType())) {
             msg.setContent("<cross-domain-policy><allow-access-from domain=\"" + config.getAddress() + "\" to-ports=\"" + config.getPort() + "\" /></cross-domain-policy>");
             client.setAuthed(true);
             destUsers.add(client.getUid());
             msg.setDestUserUids(destUsers);
             result.add(msg);
-        } else if (MessageType.LOGIN_MESSAGE.equals(msg.getType())) {
+        } else if (EventConstant.LOGIN_MESSAGE.equals(msg.getType())) {
             //登录
             destUsers.add(client.getUid());
             //登录成功
             if (clientDao.getClientByName(msg.getChannel()) != null) {
                 //通知此人有重名，并踢下线
                 msg.setDropClientAfterReply(true);
-                msg.setType(MessageType.CHAT_MESSAGE);
+                msg.setType(EventConstant.CHAT_MESSAGE);
                 msg.setChannel("SYSTEM");
                 msg.setContent("当前有重名用户");
                 destUsers.add(client.getUid());
@@ -60,16 +60,16 @@ public class MessageProcessorStupidImpl implements MessageProcessor {
                 //全局广播某人上线
                 Message broadCast = msg.simpleClone();
                 broadCast.setDestUserUids(new HashSet<String>(clientDao.getLoginClientUids()));
-                broadCast.setType(MessageType.CHAT_MESSAGE);
+                broadCast.setType(EventConstant.CHAT_MESSAGE);
                 broadCast.setChannel("SYSTEM");
                 broadCast.setContent(client.getName() + " 成功登录");
                 result.add(broadCast);
                 logger.debug(msg.getContent() + " online");
             }
-        } else if (MessageType.CHAT_MESSAGE.equals(msg.getType())) {
+        } else if (EventConstant.CHAT_MESSAGE.equals(msg.getType())) {
             if (clientDao.isInBlackList(client.getName(), now)) {
                 //黑名单处理
-                msg.setType(MessageType.CHAT_MESSAGE);
+                msg.setType(EventConstant.CHAT_MESSAGE);
                 msg.setChannel("SYSTEM");
                 msg.setContent("用户已被禁言");
                 destUsers.add(client.getUid());
@@ -85,10 +85,10 @@ public class MessageProcessorStupidImpl implements MessageProcessor {
                     //processThread.addOfflineUser(client);
                 }
             }
-        } else if (MessageType.COMMAND_MESSAGE.equals(msg.getType())) {
+        } else if (EventConstant.COMMAND_MESSAGE.equals(msg.getType())) {
             if (clientDao.isInBlackList(client.getName(), now)) {
                 //黑名单处理
-                msg.setType(MessageType.CHAT_MESSAGE);
+                msg.setType(EventConstant.CHAT_MESSAGE);
                 msg.setChannel("SYSTEM");
                 msg.setContent("用户已被禁言");
                 destUsers.add(client.getUid());
@@ -98,7 +98,7 @@ public class MessageProcessorStupidImpl implements MessageProcessor {
                 if ("CHANGENAME".equals(msg.getChannel())) {
                     if (clientDao.getClientByName(msg.getChannel()) != null) {
                         //通知重名，并提示更名失败
-                        msg.setType(MessageType.CHAT_MESSAGE);
+                        msg.setType(EventConstant.CHAT_MESSAGE);
                         msg.setChannel("SYSTEM");
                         msg.setContent("已有重名用户更名失败");
                         destUsers.add(client.getUid());
@@ -107,7 +107,7 @@ public class MessageProcessorStupidImpl implements MessageProcessor {
                     } else {
                         String oldName = client.getName();
                         clientDao.updateClientName(msg.getUserUuid(), msg.getContent());
-                        msg.setType(MessageType.CHAT_MESSAGE);
+                        msg.setType(EventConstant.CHAT_MESSAGE);
                         msg.setChannel("SYSTEM");
                         msg.setContent("登录名变更成功");
                         destUsers.add(client.getUid());
@@ -116,7 +116,7 @@ public class MessageProcessorStupidImpl implements MessageProcessor {
                         //全局广播某人更名
                         Message broadCast = msg.simpleClone();
                         broadCast.setDestUserUids(new HashSet<String>(clientDao.getLoginClientUids()));
-                        broadCast.setType(MessageType.CHAT_MESSAGE);
+                        broadCast.setType(EventConstant.CHAT_MESSAGE);
                         broadCast.setChannel("SYSTEM");
                         broadCast.setContent(oldName + " 已经使用新名字 " + msg.getContent());
                         result.add(broadCast);

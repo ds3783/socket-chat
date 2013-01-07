@@ -1,6 +1,6 @@
 package net.ds3783.chatserver.messages;
 
-import net.ds3783.chatserver.MessageType;
+import net.ds3783.chatserver.EventConstant;
 
 /**
  * Created by IntelliJ IDEA.
@@ -14,7 +14,7 @@ public class LoginMessage implements Message {
     private String password;
 
     public String getType() {
-        return MessageType.LOGIN_MESSAGE;
+        return EventConstant.LOGIN_MESSAGE;
     }
 
     public boolean isSerializable() {

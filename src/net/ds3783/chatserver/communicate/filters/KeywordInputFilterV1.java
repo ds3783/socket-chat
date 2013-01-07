@@ -1,6 +1,6 @@
 package net.ds3783.chatserver.communicate.filters;
 
-import net.ds3783.chatserver.MessageType;
+import net.ds3783.chatserver.EventConstant;
 import net.ds3783.chatserver.communicate.core.InputFilter;
 import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.messages.Message;
@@ -53,7 +53,7 @@ public class KeywordInputFilterV1 extends InputFilter {
         if (message == null) {
             return;
         }
-        if (MessageType.COMMAND_MESSAGE.equals(message.getType())) {
+        if (EventConstant.COMMAND_MESSAGE.equals(message.getType())) {
             return;
         }
         if (message.getContent() != null && message.getContent().length() > 0) {

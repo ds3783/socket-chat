@@ -1,6 +1,6 @@
 package net.ds3783.chatserver.messages;
 
-import net.ds3783.chatserver.MessageType;
+import net.ds3783.chatserver.EventConstant;
 
 /**
  * Created by IntelliJ IDEA.
@@ -14,7 +14,7 @@ public class CommandMessage implements Message {
     private String content;
 
     public String getType() {
-        return MessageType.COMMAND_MESSAGE;
+        return EventConstant.COMMAND_MESSAGE;
     }
 
     public boolean isSerializable() {
