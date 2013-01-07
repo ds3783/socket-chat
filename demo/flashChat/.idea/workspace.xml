@@ -14,13 +14,64 @@
     <option name="historyRevisionsNumber" value="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="e70535b8-47f5-4186-b18b-63b674d02f49" name="Default" comment="">
+    <list default="true" readonly="true" id="e70535b8-47f5-4186-b18b-63b674d02f49" name="Default" comment="JoinChannel">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/MessageType.as" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/MessageType.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flashChat.iml" afterPath="$PROJECT_DIR$/flashChat.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FlashChat.mxml" afterPath="$PROJECT_DIR$/src/FlashChat.mxml" />
     </list>
     <ignored path="$USER_HOME$/.griffon/" />
     <ignored path="$USER_HOME$/.grails/" />
+    <file path="/FlashChat.mxml" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357545578708" ignored="false" />
+    <file path="/a.dummy" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357556431348" ignored="false" />
+    <file path="/ChatServerClient.as" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357545971088" ignored="false" />
+    <file path="/Dummy.txt" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558317402" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/communicate/core/ServerThread.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357557478795" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/communicate/core/ClientService.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558319492" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/MessageType.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357555687567" ignored="false" />
+    <file path="/MessageType.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357555751890" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/EventConstant.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558319492" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/messages/LoginMessage.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357555692224" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/messages/SystemReplyMessage.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357555692224" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/extension/core/BlackListListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558319492" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/extension/core/ChatListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558319492" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/extension/core/FlashAuthListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558319492" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/messages/FlashAuthMessage.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357555693119" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/extension/core/LoginListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357557478795" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/communicate/core/OutputThread.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357555693119" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/communicate/filters/OutputfilterV1.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357555693119" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/messages/ChannelListMessage.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357555692225" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/messages/PrivateMessage.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357555692224" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/communicate/filters/InputFilterV1.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357555693119" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/communicate/core/ProcessThread.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357555693119" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/extension/core/CommandListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558319492" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/messages/PublicMessage.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357555693119" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/messages/CommandMessage.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357555692225" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/messages/ClientListMessage.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357555693119" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/communicate/filters/KeywordInputFilterV1.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357555692225" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/communicate/delivery/MessageProcessorStupidImpl.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357555693119" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/extension/core/ChannelListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558319492" ignored="false" />
+    <file path="/ClientService.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558084062" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/communicate/delivery/Event.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357556145876" ignored="false" />
+    <file path="/Event.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357556145226" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/extension/command/CreateChannelListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558319492" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/communicate/delivery/MessageDispatcher.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357556406520" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/communicate/delivery/MessageEvent.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357556137392" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/extension/command/UpdateClientListListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558319492" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/extension/command/ExitChannelListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558319492" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/communicate/delivery/MessageProcessorEventImpl.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357556075021" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/extension/command/ListChannelListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558319492" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/extension/chat/PrivateMessageListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558319492" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/extension/chat/PublicMessageListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558319492" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/communicate/delivery/EventListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357556412550" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/extension/command/JoinChannelListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558319492" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/communicate/delivery/InternalEvent.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357556388572" ignored="false" />
+    <file path="/InternalEvent.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357556383207" ignored="false" />
+    <file path="/PublicMessageListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357556458429" ignored="false" />
+    <file path="/BlackListListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357556530504" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/communicate/core/InputThread.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357557478795" ignored="false" />
+    <file path="/fragment.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357557124069" ignored="false" />
+    <file path="$PROJECT_DIR$/../../g-chat-server.iws" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558371049" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +86,8 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
         <option name="NOTIFY_UNCAUGHT" value="true" />
@@ -43,6 +95,7 @@
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
         <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
         <option name="COUNT_FILTER_ENABLED" value="false" />
         <option name="COUNT_FILTER" value="0" />
         <option name="CONDITION_ENABLED" value="false" />
@@ -58,6 +111,7 @@
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
         <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
         <option name="COUNT_FILTER_ENABLED" value="false" />
         <option name="COUNT_FILTER" value="0" />
         <option name="CONDITION_ENABLED" value="false" />
@@ -82,11 +136,12 @@
       <property name="field_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByClasses" value="true" />
       <property name="exception_breakpoints_viewId" value="TABLE" />
-      <property name="exception_breakpoints_groupByClasses" value="true" />
       <property name="field_breakpoints_viewId" value="TABLE" />
+      <property name="exception_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByMethods" value="false" />
     </ui_properties>
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="flashChat" />
   </component>
@@ -95,17 +150,54 @@
       <file leaf-file-name="ChatServerSocket.as" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/ChatServerSocket.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="14" selection-start="1215" selection-end="1215" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="38" column="0" selection-start="1322" selection-end="1322" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ChannelListMessage.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ChannelListMessage.as">
+      <file leaf-file-name="ChatServerClient.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/ChatServerClient.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="0" selection-start="811" selection-end="811" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="202" column="44" selection-start="7994" selection-end="7994" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChatEvent.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/ChatEvent.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChannelChangeEvent.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ChannelChangeEvent.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClientLabel.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ClientLabel.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -113,94 +205,116 @@
       <file leaf-file-name="FlashChat.mxml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FlashChat.mxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="45" selection-start="4288" selection-end="4288" vertical-scroll-proportion="-0.7096774">
+            <state line="82" column="54" selection-start="3445" selection-end="3445" vertical-scroll-proportion="-0.75">
               <folding>
-                <marker date="1354164493330" expanded="true" signature="282:655" placeholder="..." />
-                <marker date="1354164493330" expanded="true" signature="823:1235" placeholder="{...}" />
-                <marker date="1354164493330" expanded="true" signature="904:1223" placeholder="{...}" />
-                <marker date="1354164493330" expanded="true" signature="943:1209" placeholder="{...}" />
-                <marker date="1354164493330" expanded="true" signature="1084:1191" placeholder="{...}" />
-                <marker date="1354164493330" expanded="true" signature="1276:1492" placeholder="{...}" />
-                <marker date="1354164493330" expanded="true" signature="1535:1983" placeholder="{...}" />
-                <marker date="1354164493330" expanded="true" signature="1570:1612" placeholder="{...}" />
-                <marker date="1354164493330" expanded="true" signature="2037:2194" placeholder="{...}" />
-                <marker date="1354164493330" expanded="true" signature="2252:2392" placeholder="{...}" />
-                <marker date="1354164493330" expanded="true" signature="2457:3303" placeholder="{...}" />
-                <marker date="1354164493330" expanded="true" signature="2644:3293" placeholder="{...}" />
-                <marker date="1354164493330" expanded="true" signature="2909:3162" placeholder="{...}" />
-                <marker date="1354164493330" expanded="true" signature="2985:3144" placeholder="{...}" />
-                <marker date="1354164493330" expanded="true" signature="3042:3122" placeholder="{...}" />
-                <marker date="1354164493330" expanded="true" signature="3362:4164" placeholder="{...}" />
-                <marker date="1354164493330" expanded="true" signature="3546:3686" placeholder="{...}" />
-                <marker date="1354164493330" expanded="true" signature="3587:3672" placeholder="{...}" />
-                <marker date="1354164493330" expanded="true" signature="3716:3863" placeholder="{...}" />
-                <marker date="1354164493330" expanded="true" signature="3906:4044" placeholder="{...}" />
-                <marker date="1354164493330" expanded="true" signature="4050:4154" placeholder="{...}" />
-                <marker date="1354164493330" expanded="true" signature="4216:4647" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="1467:1742" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="1493:1705" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="1825:2103" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="1851:2066" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="1990:2052" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="2142:2988" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="2236:2482" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="2369:2468" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="2578:2976" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="2679:2814" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="2734:2796" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="2906:2960" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="3029:3489" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="3531:4028" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="3637:3690" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="4084:4162" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="4219:4309" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="4362:4539" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="4582:5030" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="4617:4659" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="5084:5497" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="5160:5220" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="5555:5814" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="5636:5700" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="5706:5804" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="5859:6620" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="6009:6577" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="6049:6402" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="6314:6384" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="6408:6563" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="6694:7607" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="6736:7597" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="6797:6862" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="6913:7187" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="7228:7518" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="7673:8800" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="7932:8647" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="8197:8516" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="8273:8498" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="8330:8476" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="8710:8790" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="8864:9282" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="9046:9272" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="9342:9434" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="9493:10296" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="9677:9817" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="9718:9803" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="9847:9994" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="10037:10176" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="10182:10286" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="10374:10649" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="10407:10639" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="10446:10533" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="10539:10625" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="10701:11812" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="11663:11800" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="11882:12678" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="12136:12319" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="12158:12229" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="12246:12305" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="12325:12406" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="12432:12496" placeholder="{...}" />
+                <marker date="1357546860528" expanded="true" signature="12502:12668" placeholder="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TitleWindow.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://D:/Tools/FDK/4.1/frameworks/projects/framework/src/mx/containers/TitleWindow.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="197" column="36" selection-start="5861" selection-end="5861" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Panel.as" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://D:/Tools/FDK/4.1/frameworks/projects/framework/src/mx/containers/Panel.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="483" column="13" selection-start="13849" selection-end="13849" vertical-scroll-proportion="0.33247423">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PopUpManager.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://D:/Tools/FDK/4.1/frameworks/projects/framework/src/mx/managers/PopUpManager.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="151" column="49" selection-start="5634" selection-end="5645" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/index.html">
+      <file leaf-file-name="PrivateMessageView.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PrivateMessageView.as">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#164#195#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PublicMessageView.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PublicMessageView.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="84" column="30" selection-start="2776" selection-end="2789" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#164#195#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MessageType.as" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/MessageType.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="37" selection-start="317" selection-end="317" vertical-scroll-proportion="0.23833543">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="flashChat_Flex_temp_flex_config.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flashChat_Flex_temp_flex_config.xml">
+      <file leaf-file-name="ChannelLabel.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ChannelLabel.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="35" selection-start="446" selection-end="455" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SocketClient.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/SocketClient.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="178" column="0" selection-start="6749" selection-end="6749" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SocketEvent.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/SocketEvent.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="20" selection-start="157" selection-end="157" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -215,8 +329,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/MessageType.as" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/Message.as" />
         <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/LoginMessage.as" />
         <option value="C:/Tools/FDK/4.6/frameworks/flex-config.xml" />
         <option value="$PROJECT_DIR$/flashChat_Flex_temp_flex_config.xml" />
@@ -228,9 +340,11 @@
         <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ChannelListMessage.as" />
         <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/SocketClient.as" />
         <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/ChatServerSocket.as" />
+        <option value="$PROJECT_DIR$/src/FlashChat.mxml" />
         <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/CommandType.as" />
         <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/ChatServerClient.as" />
-        <option value="$PROJECT_DIR$/src/FlashChat.mxml" />
+        <option value="$PROJECT_DIR$/src/PublicMessageView.as" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/MessageType.as" />
       </list>
     </option>
   </component>
@@ -277,20 +391,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="flashChat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="flashChat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -333,8 +433,48 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ds3783" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chatserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flashChat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flashChat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="projectFilesBackup" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flashChat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flashChat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -353,23 +493,48 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1" value="174" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="161" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth3" value="75" />
     <property name="project.structure.proportion" value="0.15" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2" value="191" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="recentsLimit" value="5" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth2" value="173" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder5" value="5" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="options.lastSelected" value="preferences.pluginManager" />
+    <property name="recentsLimit" value="5" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth1" value="156" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder4" value="4" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth0" value="143" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../.." />
-    <property name="project.structure.side.proportion" value="0.11655012" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth5" value="1068" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth4" value="144" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth3" value="143" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth4" value="140" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth5" value="1086" />
     <property name="GoToClass.includeLibraries" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder5" value="5" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder3" value="3" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder4" value="4" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2" value="2" />
+    <property name="project.structure.side.proportion" value="0.11655012" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0" value="0" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager" selected="Flash App.Flex Application">
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -378,13 +543,9 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
-    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" class_name="" method_name="" output_log_level="" package_name="" scope="Class">
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" output_log_level="null" package_name="" scope="Class">
       <option name="BCName" value="" />
       <option name="launcherParameters">
         <LauncherParameters>
@@ -395,30 +556,7 @@
       </option>
       <option name="moduleName" value="" />
       <option name="trusted" value="true" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" runner="idea" />
@@ -447,12 +585,20 @@
       <envs />
       <properties />
       <listeners />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" runner="idea" />
@@ -467,12 +613,7 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" runner="idea" />
@@ -494,22 +635,19 @@
       </option>
       <envs />
       <patterns />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
       <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
       <option name="adlOptions" value="" />
       <option name="airProgramParameters" value="" />
-      <option name="appDescriptorForEmulator" value="Generated" />
+      <option name="appDescriptorForEmulator" value="Android" />
       <option name="debugTransport" value="USB" />
       <option name="debuggerSdkRaw" value="BC SDK" />
       <option name="emulator" value="NexusOne" />
       <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
       <option name="fullScreenHeight" value="0" />
       <option name="fullScreenWidth" value="0" />
       <option name="launchUrl" value="false" />
@@ -526,26 +664,24 @@
       <option name="overriddenOutputFileName" value="" />
       <option name="overrideMainClass" value="false" />
       <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
       <option name="screenHeight" value="0" />
       <option name="screenWidth" value="0" />
       <option name="url" value="http://" />
       <option name="usbDebugPort" value="7936" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="false" name="Flex Application" type="FlashRunConfigurationType" factoryName="Flash App">
       <option name="BCName" value="Flex Application" />
+      <option name="IOSSimulatorSdkPath" value="" />
       <option name="adlOptions" value="" />
       <option name="airProgramParameters" value="" />
-      <option name="appDescriptorForEmulator" value="Generated" />
+      <option name="appDescriptorForEmulator" value="Android" />
       <option name="debugTransport" value="USB" />
       <option name="debuggerSdkRaw" value="BC SDK" />
       <option name="emulator" value="NexusOne" />
       <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
       <option name="fullScreenHeight" value="0" />
       <option name="fullScreenWidth" value="0" />
       <option name="launchUrl" value="false" />
@@ -562,6 +698,7 @@
       <option name="overriddenOutputFileName" value="" />
       <option name="overrideMainClass" value="false" />
       <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
       <option name="screenHeight" value="0" />
       <option name="screenWidth" value="0" />
       <option name="url" value="http://" />
@@ -685,27 +822,29 @@
     <frame x="-8" y="-8" width="1936" height="1014" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900944" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32588235" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46508875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20636792" sideWeight="0.49839228" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5065089" sideWeight="0.49785638" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5058824" sideWeight="0.49785638" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900944" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1656868" sideWeight="0.4934911" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16524065" sideWeight="0.67058825" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32700893" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -733,7 +872,6 @@
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
     <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="true" />
-    <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
@@ -743,9 +881,11 @@
     <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
     <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
+    <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
+    <option name="LIMIT_HISTORY" value="true" />
+    <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
     <option name="LAST_COMMIT_MESSAGE" value="JoinChannel" />
@@ -799,126 +939,209 @@
     </GetOptions>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="flex">
-          <url>file://$PROJECT_DIR$/src/FlashChat.mxml</url>
-          <line>112</line>
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="flex">
-          <url>file://$PROJECT_DIR$/src/FlashChat.mxml</url>
-          <line>121</line>
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <breakpoint-manager />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/messages/SystemReplyMessage.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="46" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/messages/model/ChannelModel.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="31" selection-start="434" selection-end="434" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/ChatEvent.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="94" selection-start="348" selection-end="348" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/CommandType.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="59" selection-start="508" selection-end="508" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/ChatServerClient.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="119" column="14" selection-start="4397" selection-end="4397" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/ChatServerSocket.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="14" selection-start="1215" selection-end="1215" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ChannelListMessage.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="0" selection-start="811" selection-end="811" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flashChat_Flex_temp_flex_config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="35" selection-start="446" selection-end="455" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/SocketClient.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="178" column="0" selection-start="6749" selection-end="6749" vertical-scroll-proportion="0.0" />
+        <state line="16" column="31" selection-start="746" selection-end="746" vertical-scroll-proportion="-9.777778">
+          <folding>
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/SocketEvent.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="20" selection-start="157" selection-end="157" vertical-scroll-proportion="0.0" />
+        <state line="7" column="20" selection-start="157" selection-end="157" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://D:/Tools/FDK/4.1/frameworks/projects/framework/src/mx/managers/PopUpManager.as">
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/SocketClient.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="151" column="49" selection-start="5634" selection-end="5645" vertical-scroll-proportion="0.0">
+        <state line="194" column="61" selection-start="7295" selection-end="7309" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/MessageOld.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/Message.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/CommandType.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="602" selection-end="602" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/ChatServerSocket.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="0" selection-start="1322" selection-end="1322" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/ChatServerClient.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="202" column="44" selection-start="7994" selection-end="7994" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/ChatEvent.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ChannelLabel.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ChannelChangeEvent.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ClientLabel.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FlashChat.mxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="45" selection-start="4288" selection-end="4288" vertical-scroll-proportion="-0.7096774">
+        <state line="82" column="54" selection-start="3445" selection-end="3445" vertical-scroll-proportion="-0.75">
           <folding>
-            <marker date="1354164493330" expanded="true" signature="282:655" placeholder="..." />
-            <marker date="1354164493330" expanded="true" signature="823:1235" placeholder="{...}" />
-            <marker date="1354164493330" expanded="true" signature="904:1223" placeholder="{...}" />
-            <marker date="1354164493330" expanded="true" signature="943:1209" placeholder="{...}" />
-            <marker date="1354164493330" expanded="true" signature="1084:1191" placeholder="{...}" />
-            <marker date="1354164493330" expanded="true" signature="1276:1492" placeholder="{...}" />
-            <marker date="1354164493330" expanded="true" signature="1535:1983" placeholder="{...}" />
-            <marker date="1354164493330" expanded="true" signature="1570:1612" placeholder="{...}" />
-            <marker date="1354164493330" expanded="true" signature="2037:2194" placeholder="{...}" />
-            <marker date="1354164493330" expanded="true" signature="2252:2392" placeholder="{...}" />
-            <marker date="1354164493330" expanded="true" signature="2457:3303" placeholder="{...}" />
-            <marker date="1354164493330" expanded="true" signature="2644:3293" placeholder="{...}" />
-            <marker date="1354164493330" expanded="true" signature="2909:3162" placeholder="{...}" />
-            <marker date="1354164493330" expanded="true" signature="2985:3144" placeholder="{...}" />
-            <marker date="1354164493330" expanded="true" signature="3042:3122" placeholder="{...}" />
-            <marker date="1354164493330" expanded="true" signature="3362:4164" placeholder="{...}" />
-            <marker date="1354164493330" expanded="true" signature="3546:3686" placeholder="{...}" />
-            <marker date="1354164493330" expanded="true" signature="3587:3672" placeholder="{...}" />
-            <marker date="1354164493330" expanded="true" signature="3716:3863" placeholder="{...}" />
-            <marker date="1354164493330" expanded="true" signature="3906:4044" placeholder="{...}" />
-            <marker date="1354164493330" expanded="true" signature="4050:4154" placeholder="{...}" />
-            <marker date="1354164493330" expanded="true" signature="4216:4647" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="1467:1742" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="1493:1705" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="1825:2103" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="1851:2066" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="1990:2052" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="2142:2988" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="2236:2482" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="2369:2468" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="2578:2976" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="2679:2814" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="2734:2796" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="2906:2960" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="3029:3489" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="3531:4028" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="3637:3690" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="4084:4162" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="4219:4309" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="4362:4539" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="4582:5030" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="4617:4659" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="5084:5497" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="5160:5220" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="5555:5814" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="5636:5700" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="5706:5804" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="5859:6620" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="6009:6577" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="6049:6402" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="6314:6384" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="6408:6563" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="6694:7607" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="6736:7597" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="6797:6862" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="6913:7187" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="7228:7518" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="7673:8800" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="7932:8647" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="8197:8516" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="8273:8498" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="8330:8476" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="8710:8790" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="8864:9282" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="9046:9272" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="9342:9434" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="9493:10296" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="9677:9817" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="9718:9803" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="9847:9994" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="10037:10176" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="10182:10286" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="10374:10649" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="10407:10639" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="10446:10533" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="10539:10625" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="10701:11812" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="11663:11800" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="11882:12678" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="12136:12319" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="12158:12229" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="12246:12305" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="12325:12406" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="12432:12496" placeholder="{...}" />
+            <marker date="1357546860528" expanded="true" signature="12502:12668" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Tools/FDK/4.1/frameworks/projects/framework/src/mx/containers/TitleWindow.as">
+    <entry file="file://$PROJECT_DIR$/src/PrivateMessageView.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="197" column="36" selection-start="5861" selection-end="5861" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#164#195#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Tools/FDK/4.1/frameworks/projects/framework/src/mx/containers/Panel.as">
+    <entry file="file://$PROJECT_DIR$/src/PublicMessageView.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="483" column="13" selection-start="13849" selection-end="13849" vertical-scroll-proportion="0.33247423">
+        <state line="84" column="30" selection-start="2776" selection-end="2789" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#164#195#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/MessageType.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="37" selection-start="317" selection-end="317" vertical-scroll-proportion="0.23833543">
           <folding />
         </state>
       </provider>
