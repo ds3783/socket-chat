@@ -66,4 +66,15 @@ public class ChannelDao extends HibernateDaoSupport {
         }
         return count > 0;
     }
+
+    public Long getClientsAmountInChannel(Long channelId) {
+        List rs = getHibernateTemplate().find("select count(*) as CT from ClientChannel c where c.channelId=?", channelId);
+        return (Long) rs.get(0);
+    }
+
+    public void deleteChannel(Long channelId) {
+        Channel channel = getChannel(channelId);
+        getHibernateTemplate().delete(channel);
+        getHibernateTemplate().flush();
+    }
 }

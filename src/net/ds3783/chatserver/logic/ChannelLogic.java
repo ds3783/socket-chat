@@ -103,8 +103,15 @@ public class ChannelLogic {
         return channel;
     }
 
-    public void exitChannel(ClientChannel inChannel) {
+    public boolean exitChannel(ClientChannel inChannel) {
         channelDao.deleteClientChannel(inChannel);
+        Long left = channelDao.getClientsAmountInChannel(inChannel.getChannelId());
+        if (left == null || left == 0) {
+            channelDao.deleteChannel(inChannel.getChannelId());
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void setChannelDao(ChannelDao channelDao) {
