@@ -1,8 +1,8 @@
 package net.ds3783.chatserver.communicate.core;
 
 import net.ds3783.chatserver.EventConstant;
+import net.ds3783.chatserver.communicate.delivery.Event;
 import net.ds3783.chatserver.communicate.delivery.InternalEvent;
-import net.ds3783.chatserver.communicate.delivery.MessageDispatcher;
 import net.ds3783.chatserver.dao.Client;
 import net.ds3783.chatserver.dao.ClientDao;
 import org.apache.commons.logging.Log;
@@ -22,7 +22,7 @@ public class ClientService {
     private ThreadResource threadResource;
     private ClientDao clientDao;
 
-    private MessageDispatcher messageDispatcher;
+    private Switcher<Event> processThreadSwitcher;
 
     /**
      * 添加临时用户
@@ -63,7 +63,7 @@ public class ClientService {
         InternalEvent evt = new InternalEvent();
         evt.setName(EventConstant.EVENT_CLIENT_OFFLINE);
         evt.setClient(client);
-        this.messageDispatcher.dispatchEvent(evt);
+        this.processThreadSwitcher.switchData(evt);
         clientDao.removeClient(client);
         logger.info(client.getIp() + ":" + client.getPort() + "(" + client.getName() + ") 断开连接。");
 
@@ -74,8 +74,8 @@ public class ClientService {
         this.clientDao = clientDao;
     }
 
-    public void setMessageDispatcher(MessageDispatcher messageDispatcher) {
-        this.messageDispatcher = messageDispatcher;
+    public void setProcessThreadSwitcher(Switcher<Event> processThreadSwitcher) {
+        this.processThreadSwitcher = processThreadSwitcher;
     }
 
     public void setThreadResource(ThreadResource threadResource) {

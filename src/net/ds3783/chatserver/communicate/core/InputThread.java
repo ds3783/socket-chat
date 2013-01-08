@@ -1,6 +1,8 @@
 package net.ds3783.chatserver.communicate.core;
 
 import net.ds3783.chatserver.communicate.ContextHelper;
+import net.ds3783.chatserver.communicate.delivery.Event;
+import net.ds3783.chatserver.communicate.delivery.MessageEvent;
 import net.ds3783.chatserver.communicate.pool.BytePool;
 import net.ds3783.chatserver.communicate.protocol.InputProtocal;
 import net.ds3783.chatserver.communicate.protocol.UnmarshalException;
@@ -36,7 +38,7 @@ public class InputThread extends SlaveThread implements Runnable {
     private ClientService clientService;
     private BytePool pool;
     private InputProtocal protocal;
-    private Switcher<Message> processThreadSwitcher;
+    private Switcher<Event> processThreadSwitcher;
 
     public void assign(SocketChannel client, String uuid) throws ClosedChannelException {
         SelectionKey key = client.register(channelSelector, SelectionKey.OP_READ);
@@ -103,7 +105,14 @@ public class InputThread extends SlaveThread implements Runnable {
                                         }
                                     }
                                 }
-                                processThreadSwitcher.switchData(messages);
+                                List<Event> events = new ArrayList<Event>();
+                                for (Message message : messages) {
+                                    MessageEvent evt = new MessageEvent();
+                                    evt.setName(message.getType());
+                                    evt.setMessage(message);
+                                    events.add(evt);
+                                }
+                                processThreadSwitcher.switchData(events);
                                 clientService.setLastMessageTime(client, now);
                             } catch (UnmarshalException e) {
                                 logger.error(e.getMessage(), e);
@@ -172,7 +181,7 @@ public class InputThread extends SlaveThread implements Runnable {
         this.protocal = protocal;
     }
 
-    public void setProcessThreadSwitcher(Switcher<Message> processThreadSwitcher) {
+    public void setProcessThreadSwitcher(Switcher<Event> processThreadSwitcher) {
         this.processThreadSwitcher = processThreadSwitcher;
     }
 

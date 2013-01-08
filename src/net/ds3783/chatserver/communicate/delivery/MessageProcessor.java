@@ -1,8 +1,6 @@
 package net.ds3783.chatserver.communicate.delivery;
 
 
-import net.ds3783.chatserver.messages.Message;
-
 /**
  * Created by IntelliJ IDEA.
  * User: Ds3783
@@ -11,5 +9,5 @@ import net.ds3783.chatserver.messages.Message;
  * 消息处理
  */
 public interface MessageProcessor {
-    public void processMsg(Message msg, long now);
+    public void process(Event evt, long now);
 }

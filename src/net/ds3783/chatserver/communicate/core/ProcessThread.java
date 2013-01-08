@@ -2,6 +2,8 @@ package net.ds3783.chatserver.communicate.core;
 
 import com.google.gson.Gson;
 import net.ds3783.chatserver.EventConstant;
+import net.ds3783.chatserver.communicate.delivery.Event;
+import net.ds3783.chatserver.communicate.delivery.MessageEvent;
 import net.ds3783.chatserver.communicate.delivery.MessageProcessor;
 import net.ds3783.chatserver.messages.Message;
 import net.ds3783.chatserver.tools.Utils;
@@ -16,27 +18,34 @@ import java.util.concurrent.LinkedBlockingQueue;
  * Date: 2009-9-16
  * Time: 15:40:48
  */
-public class ProcessThread extends CommonRunnable implements Runnable, Switchable<Message> {
+public class ProcessThread extends CommonRunnable implements Runnable, Switchable<Event> {
     private Log logger = LogFactory.getLog(ProcessThread.class);
-    private LinkedBlockingQueue<Message> receivedMessages = new LinkedBlockingQueue<Message>();
-    private LinkedBlockingQueue<Message> enmergencyMessages = new LinkedBlockingQueue<Message>();
+    private LinkedBlockingQueue<Event> receivedMessages = new LinkedBlockingQueue<Event>();
+    private LinkedBlockingQueue<Event> enmergencyMessages = new LinkedBlockingQueue<Event>();
 
     private MessageProcessor messageProcessor;
     private long maxMessageInQueue = 100;
     private int maxMessagePerTime = 100;
+    private Gson gson;
 
-    public void addMessage(Message message) {
+    public void addMessage(Event event) {
         try {
-            logger.debug("收到消息:" + new Gson().toJson(message));
-            if ((EventConstant.AUTH_MESSAGE.equals(message.getType()) || EventConstant.LOGIN_MESSAGE.equals(message.getType()))) {
-                enmergencyMessages.put(message);
-            } else if (receivedMessages.size() > maxMessageInQueue) {
+            if (event instanceof MessageEvent) {
+                Message message = ((MessageEvent) event).getMessage();
+                logger.debug("收到消息:" + gson.toJson(message));
+                if ((EventConstant.AUTH_MESSAGE.equals(message.getType()) || EventConstant.LOGIN_MESSAGE.equals(message.getType()))) {
+                    enmergencyMessages.put(event);
+                    return;
+                }
+            }
+            if (receivedMessages.size() > maxMessageInQueue) {
                 //超出最大消息数量限制
                 logger.fatal("系统负载大,待处理消息数量:" + receivedMessages.size());
-                logger.warn("Dropped Message:" + Utils.describeBean(message));
+                logger.warn("Dropped Message:" + Utils.describeBean(event));
             } else {
-                receivedMessages.put(message);
+                receivedMessages.put(event);
             }
+
         } catch (InterruptedException e) {
             logger.error(e.getMessage(), e);
         }
@@ -49,8 +58,8 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
             if (!enmergencyMessages.isEmpty()) nothingtodo = false;
             long now = System.currentTimeMillis();
             while (!enmergencyMessages.isEmpty()) {
-                Message msg = enmergencyMessages.poll();
-                deliverMessage(msg, now);
+                Event evt = enmergencyMessages.poll();
+                deliverEvent(evt, now);
             }
 
 
@@ -58,8 +67,8 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
             now = System.currentTimeMillis();
             int counter = 0;
             while (!receivedMessages.isEmpty()) {
-                Message msg = receivedMessages.poll();
-                deliverMessage(msg, now);
+                Event evt = receivedMessages.poll();
+                deliverEvent(evt, now);
                 counter++;
                 if (counter > maxMessagePerTime) {
                     break;
@@ -78,9 +87,9 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
 
     }
 
-    public void deliverMessage(Message msg, long now) {
-        if (msg == null) return;
-        messageProcessor.processMsg(msg, now);
+    public void deliverEvent(Event evt, long now) {
+        if (evt == null) return;
+        messageProcessor.process(evt, now);
     }
 
     public void destroy() throws Exception {
@@ -104,6 +113,10 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
         this.maxMessagePerTime = maxMessagePerTime;
     }
 
+    public void setGson(Gson gson) {
+        this.gson = gson;
+    }
+
     /**
      * 取得权重
      * 权重关系到选择器的选择结果
@@ -119,7 +132,7 @@ public class ProcessThread extends CommonRunnable implements Runnable, Switchabl
      *
      * @param data 传给控制器的消息
      */
-    public void receive(Message data) {
+    public void receive(Event data) {
         this.addMessage(data);
     }
 }

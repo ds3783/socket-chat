@@ -27,27 +27,33 @@ public class MessageProcessorEventImpl implements MessageProcessor {
     protected OutputerSwitcher outputerSwitcher;
 
 
-    public void processMsg(Message msg, long now) {
-        MessageEvent evt = new MessageEvent();
-        evt.setName(msg.getType());
-        evt.setMessage(msg);
+    public void process(Event evt, long now) {
+        Message msg = null;
+        if (evt instanceof MessageEvent) {
+            msg = ((MessageEvent) evt).getMessage();
+        }
         try {
             messageDispatcher.dispatchEvent(evt);
         } catch (ExtensionException e) {
-            logger.warn("Extension error occored during dispatchEvent:" + gson.toJson(evt) + "\r\n original Message is :" + gson.toJson(msg) + "\r\n errMsg:" + e.getMessage(), e);
+            logger.warn("Extension error occored during dispatchEvent:" + gson.toJson(evt) + "\r\n original Message is :" + (msg == null ? "" : gson.toJson(msg)) + "\r\n errMsg:" + e.getMessage(), e);
         } catch (ClientException e) {
-            SystemReplyMessage reply = new SystemReplyMessage();
-            reply.setCode(SystemReplyMessage.CODE_ERROR_USER_CUSTOM);
-            reply.setContent(e.getMessage());
-            MessageContext senderContext = contextHelper.getContext(msg);
-            MessageContext context = contextHelper.registerMessage(reply, senderContext.getSender());
-            context.getReceivers().add(senderContext.getSender());
-            outputerSwitcher.switchTo(reply);
-            logger.debug("Client error occored during dispatchEvent:" + gson.toJson(evt) + "\r\n original Message is :" + gson.toJson(msg) + "\r\n errMsg:" + e.getMessage(), e);
+            if (msg != null) {
+                SystemReplyMessage reply = new SystemReplyMessage();
+                reply.setCode(SystemReplyMessage.CODE_ERROR_USER_CUSTOM);
+                reply.setContent(e.getMessage());
+                MessageContext senderContext = contextHelper.getContext(msg);
+                MessageContext context = contextHelper.registerMessage(reply, senderContext.getSender());
+                context.getReceivers().add(senderContext.getSender());
+                outputerSwitcher.switchTo(reply);
+            }
+            logger.debug("Client error occored during dispatchEvent:" + gson.toJson(evt) + "\r\n original Message is :" + (msg == null ? "" : gson.toJson(msg)) + "\r\n errMsg:" + e.getMessage(), e);
+
         } catch (Exception e) {
-            logger.error("System error occored during dispatchEvent:" + gson.toJson(evt) + "\r\n original Message is :" + gson.toJson(msg) + "\r\n errMsg:" + e.getMessage(), e);
+            logger.error("System error occored during dispatchEvent:" + gson.toJson(evt) + "\r\n original Message is :" + (msg == null ? "" : gson.toJson(msg)) + "\r\n errMsg:" + e.getMessage(), e);
         } finally {
-            contextHelper.forget(msg);
+            if (msg != null) {
+                contextHelper.forget(msg);
+            }
         }
 
     }
