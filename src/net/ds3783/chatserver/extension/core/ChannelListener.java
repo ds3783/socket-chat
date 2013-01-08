@@ -23,7 +23,7 @@ public class ChannelListener implements EventListener {
 
             MessageContext context = contextHelper.getContext(messageEvent.getMessage());
             MessageEvent evt = new MessageEvent();
-            evt.setName(context.getSender().getChannel());
+            evt.setName(context.getSender().getChannels());
             evt.setMessage(messageEvent.getMessage());
             channelDispatcher.dispatchEvent(evt);
         }*/

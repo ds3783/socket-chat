@@ -42,7 +42,7 @@ public class ListChannelListener extends DefaultCommandListener implements Event
         MessageContext replyContext = contextHelper.registerMessage(reply, context.getSender());
         replyContext.getReceivers().add(context.getSender());
 
-        //获得�?��Channel
+        //获得 所有Channel
         List<Channel> channels = channelDao.getChannels();
         ChannelModel[] chls = new ChannelModel[channels.size()];
         for (int i = 0; i < channels.size(); i++) {

@@ -1,15 +1,19 @@
 package net.ds3783.chatserver.extension.internal;
 
 import net.ds3783.chatserver.EventConstant;
+import net.ds3783.chatserver.communicate.ContextHelper;
+import net.ds3783.chatserver.communicate.core.OutputerSwitcher;
 import net.ds3783.chatserver.communicate.delivery.Event;
 import net.ds3783.chatserver.communicate.delivery.EventListener;
 import net.ds3783.chatserver.communicate.delivery.InternalEvent;
 import net.ds3783.chatserver.communicate.delivery.MessageDispatcher;
-import net.ds3783.chatserver.dao.ChannelDao;
-import net.ds3783.chatserver.dao.Client;
-import net.ds3783.chatserver.dao.ClientChannel;
-import net.ds3783.chatserver.dao.ClientDao;
+import net.ds3783.chatserver.dao.*;
 import net.ds3783.chatserver.logic.ChannelLogic;
+import net.ds3783.chatserver.messages.ChannelLostMessage;
+import net.ds3783.chatserver.messages.ClientLostMessage;
+import net.ds3783.chatserver.messages.MessageContext;
+import net.ds3783.chatserver.messages.model.ChannelModel;
+import net.ds3783.chatserver.messages.model.ClientModel;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -25,6 +29,8 @@ import java.util.List;
 public class ChannelCleanListener implements EventListener {
 
     protected MessageDispatcher messageDispatcher;
+    protected ContextHelper contextHelper;
+    protected OutputerSwitcher outputerSwitcher;
     protected ClientDao clientDao;
     protected ChannelDao channelDao;
     protected ChannelLogic channelLogic;
@@ -35,15 +41,15 @@ public class ChannelCleanListener implements EventListener {
             InternalEvent event = (InternalEvent) evt;
             Client client = event.getClient();
             List<Long> bcChannels = new ArrayList<Long>();
-            boolean hasChannelDeleted = false;
+            List<Channel> lostedChannels = new ArrayList<Channel>();
             if (client != null) {
                 List<ClientChannel> channels = channelDao.getMyChannels(client.getUid());
                 for (ClientChannel channel : channels) {
-                    boolean isChannelDeleted = channelLogic.exitChannel(channel);
-                    if (!isChannelDeleted) {
-                        bcChannels.add(channel.getChannelId());
+                    Channel deletedChannel = channelLogic.exitChannel(channel);
+                    if (deletedChannel != null) {
+                        lostedChannels.add(deletedChannel);
                     } else {
-                        hasChannelDeleted = true;
+                        bcChannels.add(channel.getChannelId());
                     }
                 }
             }
@@ -57,11 +63,32 @@ public class ChannelCleanListener implements EventListener {
                     }
                 }
             }
-            if (hasChannelDeleted) {
-                //TODO: 对所有人发送update channel List
+            if (lostedChannels.size() > 0) {
+                //对所有人发送channel 删除消息
+                ChannelLostMessage message = new ChannelLostMessage();
+                //receivers
+                MessageContext replyContext = contextHelper.registerMessage(message, null);
+                replyContext.getReceivers().addAll(clientDao.getAllClients());
+
+                ChannelModel[] chls = new ChannelModel[lostedChannels.size()];
+                for (int i = 0; i < lostedChannels.size(); i++) {
+                    Channel channel = lostedChannels.get(i);
+                    chls[i] = new ChannelModel(channel);
+                }
+                message.setChannels(chls);
+
+
+                outputerSwitcher.switchTo(message);
+
             }
             if (clients.size() > 0) {
-                //TODO:: 对clients 发送ClientExitMessage
+                // 对clients 发送ClientExitMessage
+                ClientLostMessage message = new ClientLostMessage();
+                MessageContext replyContext = contextHelper.registerMessage(message, null);
+                replyContext.getReceivers().addAll(clients);
+                ClientModel c = new ClientModel(client, false);
+                message.setClient(c);
+                outputerSwitcher.switchTo(message);
             }
         }
         return true;
@@ -85,5 +112,9 @@ public class ChannelCleanListener implements EventListener {
 
     public void setClientDao(ClientDao clientDao) {
         this.clientDao = clientDao;
+    }
+
+    public void setContextHelper(ContextHelper contextHelper) {
+        this.contextHelper = contextHelper;
     }
 }

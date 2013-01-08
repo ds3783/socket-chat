@@ -10,7 +10,9 @@ import flash.events.EventDispatcher;
 import flash.net.registerClassAlias;
 
 import net.ds3783.chatserver.messages.ChannelListMessage;
+import net.ds3783.chatserver.messages.ChannelLostMessage;
 import net.ds3783.chatserver.messages.ClientListMessage;
+import net.ds3783.chatserver.messages.ClientLostMessage;
 import net.ds3783.chatserver.messages.CommandMessage;
 import net.ds3783.chatserver.messages.LoginMessage;
 import net.ds3783.chatserver.messages.PrivateMessage;
@@ -46,6 +48,8 @@ public class ChatServerClient extends EventDispatcher {
         registerClassAlias("net.ds3783.chatserver.messages.ClientListMessage", ClientListMessage);
         registerClassAlias("net.ds3783.chatserver.messages.model.ChannelModel", ChannelModel);
         registerClassAlias("net.ds3783.chatserver.messages.model.ClientModel", ClientModel);
+        registerClassAlias("net.ds3783.chatserver.messages.model.ClientLostMessage", ClientLostMessage);
+        registerClassAlias("net.ds3783.chatserver.messages.model.ChannelLostMessage", ChannelLostMessage);
 
         connType = CONN_TYPE_SOCKET;
         socket = new SocketClient();
@@ -136,7 +140,7 @@ public class ChatServerClient extends EventDispatcher {
     }
 
     public function exitChannel(channelId:String):void {
-        //todo::  尚未测试
+        //尚未测试
         var message:CommandMessage = new CommandMessage();
         message.command = CommandType.EXIT_CHANNEL;
         message.content = channelId;
