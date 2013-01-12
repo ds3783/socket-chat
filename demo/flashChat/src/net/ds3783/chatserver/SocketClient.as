@@ -37,6 +37,8 @@ public class SocketClient extends EventDispatcher {
     public static const EVENT_USERERROR:String = "ON_USERERROR";
     public static const EVENT_CHANNEL_LIST_UPDATE:String = "ON_CHANNEL_LIST_UPDATE";
     public static const EVENT_CLIENT_LIST_UPDATE:String = "ON_CLIENT_LIST_UPDATE";
+    public static const EVENT_CLIENT_LOST:String = "ON_CLIENT_LOST";
+    public static const EVENT_CHANNEL_LOST:String = "ON_CHANNEL_LOST";
 
     public function connect(host:String, port:int):void {
         socket = new Socket();
@@ -219,6 +221,16 @@ public class SocketClient extends EventDispatcher {
                 break;
             case SystemReplyMessage.CODE_CLIENT_LIST:
                 event = new SocketEvent(EVENT_CLIENT_LIST_UPDATE);
+                event.message = sysMsg;
+                dispatchEvent(event);
+                break;
+            case SystemReplyMessage.CODE_CLIENT_LOST:
+                event = new SocketEvent(EVENT_CLIENT_LOST);
+                event.message = sysMsg;
+                dispatchEvent(event);
+                break;
+            case SystemReplyMessage.CODE_CHANNEL_LOST:
+                event = new SocketEvent(EVENT_CHANNEL_LOST);
                 event.message = sysMsg;
                 dispatchEvent(event);
                 break;

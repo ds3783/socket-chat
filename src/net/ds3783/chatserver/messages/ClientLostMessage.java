@@ -1,7 +1,6 @@
 package net.ds3783.chatserver.messages;
 
 import net.ds3783.chatserver.EventConstant;
-import net.ds3783.chatserver.messages.model.ChannelModel;
 import net.ds3783.chatserver.messages.model.ClientModel;
 
 /**
@@ -13,6 +12,10 @@ import net.ds3783.chatserver.messages.model.ClientModel;
  */
 public class ClientLostMessage extends SystemReplyMessage implements Message {
     private ClientModel client;
+
+    public ClientLostMessage() {
+        this.setCode(SystemReplyMessage.CODE_CLIENT_LOST);
+    }
 
     public ClientModel getClient() {
         return client;

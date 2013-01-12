@@ -16,6 +16,8 @@ public class SystemReplyMessage implements Message {
     public static const CODE_LOGIN_SUCCESS:int = 201;//登录成功
     public static const CODE_CHANNEL_LIST:int = 202;//频道列表
     public static const CODE_CLIENT_LIST:int = 203;//用户列表
+    public static const CODE_CLIENT_LOST:int = 204;//用户离线
+    public static const CODE_CHANNEL_LOST:int = 205;//channel被删除
 
     public static const CODE_OTHER_USER_ONLINE:int = 301;//其他用户登录
 

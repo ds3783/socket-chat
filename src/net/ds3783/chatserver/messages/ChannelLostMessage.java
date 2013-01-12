@@ -13,6 +13,10 @@ import net.ds3783.chatserver.messages.model.ChannelModel;
 public class ChannelLostMessage extends SystemReplyMessage implements Message {
     private ChannelModel[] channels;
 
+    public ChannelLostMessage() {
+        this.setCode(SystemReplyMessage.CODE_CHANNEL_LOST);
+    }
+
     public ChannelModel[] getChannels() {
         return channels;
     }

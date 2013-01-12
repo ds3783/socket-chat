@@ -7,6 +7,8 @@
     <bean id="loginListener" class="net.ds3783.chatserver.extension.core.LoginListener" init-method="init"/>
     <bean id="blackListListener" class="net.ds3783.chatserver.extension.core.BlackListListener"
           init-method="init"/>
+    <bean id="channelCleanListener" class="net.ds3783.chatserver.extension.internal.ChannelCleanListener"
+          init-method="init"/>
 
 
     <bean id="listChannelListener" class="net.ds3783.chatserver.extension.command.ListChannelListener"

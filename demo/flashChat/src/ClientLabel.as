@@ -39,5 +39,12 @@ public class ClientLabel extends Label {
         evt.isPrivate = true;
         this.dispatchEvent(evt);
     }
+
+    public function am(client:ClientModel):Boolean {
+        if (!client || !this.data) {
+            return false;
+        }
+        return client.id == this.data.id;
+    }
 }
 }

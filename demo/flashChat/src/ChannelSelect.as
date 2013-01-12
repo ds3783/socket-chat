@@ -119,6 +119,39 @@ public class ChannelSelect extends ComboBox {
         updateData(newData, null);
     }
 
+
+    public function deleteChannels(channels:Array):void {
+        if (!channels) {
+            return;
+        }
+        var hasDelete:Boolean = false;
+        for each (var channelModel:ChannelModel in channels) {
+            var idxs:Array = [];
+            for (var i:int = 0; i < this.publicChannels.length; i++) {
+                var chanelLabel:ChannelLabel = this.publicChannels[i];
+                if (chanelLabel.id == channelModel.id) {
+                    idxs.push(i);
+                }
+            }
+            if (idxs.length > 0) {
+                for each (var i1:int in idxs) {
+                    hasDelete = true;
+                    this.publicChannels.splice(i1, 1);
+                }
+            }
+        }
+        if (hasDelete) {
+            var newData:Array = [], channel:ChannelLabel;
+            for each(channel in this.publicChannels) {
+                newData.push(channel);
+            }
+            for each(channel in this.secertChannels) {
+                newData.push(channel);
+            }
+            this.updateData(newData, null);
+        }
+    }
+
     private function updateData(newData:Array, selectedItem:ChannelLabel):void {
         if (!newData) {
             newData = [];
@@ -184,5 +217,6 @@ public class ChannelSelect extends ComboBox {
         }
         return 0;
     }
+
 }
 }

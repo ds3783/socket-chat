@@ -13,6 +13,7 @@ import net.ds3783.chatserver.messages.ChannelListMessage;
 import net.ds3783.chatserver.messages.ChannelLostMessage;
 import net.ds3783.chatserver.messages.ClientListMessage;
 import net.ds3783.chatserver.messages.ClientLostMessage;
+import net.ds3783.chatserver.messages.ClientLostMessage;
 import net.ds3783.chatserver.messages.CommandMessage;
 import net.ds3783.chatserver.messages.LoginMessage;
 import net.ds3783.chatserver.messages.PrivateMessage;
@@ -31,6 +32,8 @@ public class ChatServerClient extends EventDispatcher {
     public static const CHANNEL_LIST_UPDATE:String = "CHANNEL_LIST_UPDATE";
     public static const CLIENT_LIST_UPDATE:String = "CLIENT_LIST_UPDATE";
     public static const CHANNEL_JOINED:String = "CHANNEL_JOINED";
+    public static const CLIENT_LOST:String = "CLIENT_LOST";
+    public static const CHANNEL_LOST:String = "CHANNEL_LOST";
     public static const MESSAGE:String = "MESSAGE";
     public static const ERROR:String = "ERROR";
     public static const BEFORE_DISCONNECT:String = "BEFORE_DISCONNECT";
@@ -85,6 +88,8 @@ public class ChatServerClient extends EventDispatcher {
         this.listeningChannels = new Array();
         socket.addEventListener(SocketClient.EVENT_CHANNEL_LIST_UPDATE, onChannelListUpdate);
         socket.addEventListener(SocketClient.EVENT_CLIENT_LIST_UPDATE, onClientListUpdate);
+        socket.addEventListener(SocketClient.EVENT_CLIENT_LOST, onClientLost);
+        socket.addEventListener(SocketClient.EVENT_CHANNEL_LOST, onChannelLost);
         socket.addEventListener(SocketClient.EVENT_USERERROR, onError);
         socket.connect(_connHost, _connPort);
     }
@@ -232,6 +237,20 @@ public class ChatServerClient extends EventDispatcher {
     private function onClientListUpdate(e:SocketEvent):void {
         var msg:ClientListMessage = e.message as ClientListMessage;
         var event:ChatEvent = new ChatEvent(CLIENT_LIST_UPDATE);
+        event.message = msg;
+        dispatchEvent(event);
+    }
+
+    private function onClientLost(e:SocketEvent):void {
+        var msg:ClientLostMessage = e.message as ClientLostMessage;
+        var event:ChatEvent = new ChatEvent(CLIENT_LOST);
+        event.message = msg;
+        dispatchEvent(event);
+    }
+
+    private function onChannelLost(e:SocketEvent):void {
+        var msg:ClientLostMessage = e.message as ClientLostMessage;
+        var event:ChatEvent = new ChatEvent(CHANNEL_LOST);
         event.message = msg;
         dispatchEvent(event);
     }

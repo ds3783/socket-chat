@@ -22,7 +22,9 @@
         import net.ds3783.chatserver.ChatServerClient;
         import net.ds3783.chatserver.Message;
         import net.ds3783.chatserver.messages.ChannelListMessage;
+        import net.ds3783.chatserver.messages.ChannelLostMessage;
         import net.ds3783.chatserver.messages.ClientListMessage;
+        import net.ds3783.chatserver.messages.ClientLostMessage;
         import net.ds3783.chatserver.messages.PrivateMessage;
         import net.ds3783.chatserver.messages.PublicMessage;
         import net.ds3783.chatserver.messages.SystemReplyMessage;
@@ -95,6 +97,8 @@
 
             gClient.removeEventListener(ChatServerClient.CHANNEL_LIST_UPDATE, onChannelListUpdate);
             gClient.removeEventListener(ChatServerClient.CLIENT_LIST_UPDATE, onClientListUpdate);
+            gClient.removeEventListener(ChatServerClient.CLIENT_LOST, onClientLost);
+            gClient.removeEventListener(ChatServerClient.CHANNEL_LOST, onChannelLost);
             gClient.removeEventListener(ChatServerClient.MESSAGE, onMessage);
         }
 
@@ -220,6 +224,22 @@
                 client.addEventListener(ChannelChangeEvent.CHANGE_CHANNEL, onViewChannelChange);
                 userList.addChild(client);
             }
+        }
+
+        private function onClientLost(e:ChatEvent):void {
+            var msg:ClientLostMessage = e.message as ClientLostMessage;
+            var client:ClientModel = msg.client;
+            var users:Array = userList.getChildren();
+            for each (var clientLabel:ClientLabel in users) {
+                if (clientLabel.am(client)) {
+                    userList.removeChild(clientLabel);
+                }
+            }
+        }
+
+        private function onChannelLost(e:ChatEvent):void {
+            var msg:ChannelLostMessage = e.message as ChannelLostMessage;
+            channelSelect.deleteChannels(msg.channels);
         }
 
 
