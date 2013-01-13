@@ -24,6 +24,9 @@
     <bean id="updateClientListListener" class="net.ds3783.chatserver.extension.command.UpdateClientListListener"
           init-method="init"/>
 
+    <bean id="disconnectListener" class="net.ds3783.chatserver.extension.command.DisconnectListener"
+          init-method="init"/>
+
 
     <bean id="publicMessageListener" class="net.ds3783.chatserver.extension.chat.PublicMessageListener"
           init-method="init"/>

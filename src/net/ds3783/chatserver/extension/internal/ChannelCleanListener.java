@@ -117,4 +117,8 @@ public class ChannelCleanListener implements EventListener {
     public void setContextHelper(ContextHelper contextHelper) {
         this.contextHelper = contextHelper;
     }
+
+    public void setOutputerSwitcher(OutputerSwitcher outputerSwitcher) {
+        this.outputerSwitcher = outputerSwitcher;
+    }
 }

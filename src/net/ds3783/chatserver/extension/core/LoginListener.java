@@ -49,14 +49,6 @@ public class LoginListener extends DefaultCoreListener implements EventListener 
             return false;
         } else {
             context.getSender().setName(login.getUsername());
-            SystemReplyMessage reply2 = new SystemReplyMessage();
-            //全局广播某人上线
-            reply2.setContent(context.getSender().getName() + " 成功登录");
-            MessageContext replyContext2 = contextHelper.registerMessage(reply2, context.getSender());
-            replyContext2.getReceivers().addAll(clientDao.getAllClients());
-            reply2.setCode(SystemReplyMessage.CODE_OTHER_USER_ONLINE);
-            outputerSwitcher.switchTo(reply2);
-
             Client client = clientService.clientLogin(context.getSender().getUid(), login.getUsername(), Utils.newUuid());
             reply.setCode(SystemReplyMessage.CODE_LOGIN_SUCCESS);
             replyContext.getReceivers().add(client);

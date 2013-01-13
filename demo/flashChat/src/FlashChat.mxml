@@ -23,6 +23,7 @@
         import net.ds3783.chatserver.Message;
         import net.ds3783.chatserver.messages.ChannelListMessage;
         import net.ds3783.chatserver.messages.ChannelLostMessage;
+        import net.ds3783.chatserver.messages.ClientJoinChannelMessage;
         import net.ds3783.chatserver.messages.ClientListMessage;
         import net.ds3783.chatserver.messages.ClientLostMessage;
         import net.ds3783.chatserver.messages.PrivateMessage;
@@ -73,6 +74,9 @@
                 btn_send.addEventListener(MouseEvent.CLICK, function (e:MouseEvent):void {
                     sendMessage();
                 });
+                btn_out.addEventListener(MouseEvent.CLICK, function (e:MouseEvent) {
+                    logOut();
+                });
             });
         }
 
@@ -81,8 +85,9 @@
             gClient.addEventListener(ChatServerClient.LOGINED, logined);
             gClient.addEventListener(ChatServerClient.LOGIN_ERROR, loginedFail);
             gClient.addEventListener(ChatServerClient.ERROR, onError);
-            gClient.addEventListener(ChatServerClient.DISCONNECTED, onDisconnected);
+            gClient.addEventListener(ChatServerClient.CONNECTION_LOST, onConnectionLost);
             gClient.addEventListener(ChatServerClient.CONNECTED_ERROR, onConnectError);
+            gClient.addEventListener(ChatServerClient.DISCONNECT, onDisconnect);
 
         }
 
@@ -99,12 +104,17 @@
             gClient.removeEventListener(ChatServerClient.CLIENT_LIST_UPDATE, onClientListUpdate);
             gClient.removeEventListener(ChatServerClient.CLIENT_LOST, onClientLost);
             gClient.removeEventListener(ChatServerClient.CHANNEL_LOST, onChannelLost);
+            gClient.removeEventListener(ChatServerClient.CLIENT_JOIN, onClientJoin);
             gClient.removeEventListener(ChatServerClient.MESSAGE, onMessage);
         }
 
-        private function onDisconnected(e:Event):void {
+        private function onConnectionLost(e:Event):void {
             cleanup();
             Alert.show("Connection lost!");
+        }
+
+        private function onDisconnect(e:Event):void {
+            cleanup();
         }
 
 
@@ -139,6 +149,9 @@
             }
             gClient.addEventListener(ChatServerClient.CHANNEL_LIST_UPDATE, onChannelListUpdate);
             gClient.addEventListener(ChatServerClient.CLIENT_LIST_UPDATE, onClientListUpdate);
+            gClient.addEventListener(ChatServerClient.CLIENT_LOST, onClientLost);
+            gClient.addEventListener(ChatServerClient.CHANNEL_LOST, onChannelLost);
+            gClient.addEventListener(ChatServerClient.CLIENT_JOIN, onClientJoin);
             gClient.addEventListener(ChatServerClient.MESSAGE, onMessage);
         }
 
@@ -168,6 +181,10 @@
                 }
             }
             tf_pubmsg.text = "";
+        }
+
+        public function logOut():void {
+            gClient.disconnect();
         }
 
         private function addChatLog(msg:Message, ismyself:Boolean):void {
@@ -240,6 +257,21 @@
         private function onChannelLost(e:ChatEvent):void {
             var msg:ChannelLostMessage = e.message as ChannelLostMessage;
             channelSelect.deleteChannels(msg.channels);
+        }
+
+        private function onClientJoin(e:ChatEvent):void {
+            var msg:ClientJoinChannelMessage = e.message as ClientJoinChannelMessage;
+            if (userList) {
+                for each (var label:ClientLabel in userList.getChildren()) {
+                    if (label.am(msg.client)) {
+                        return;
+                    }
+                }
+                var client:ClientLabel = new ClientLabel(msg.client);
+                client.addEventListener(ChannelChangeEvent.CHANGE_CHANNEL, onViewChannelChange);
+                userList.addChild(client);
+            }
+
         }
 
 

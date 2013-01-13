@@ -18,6 +18,7 @@ public class SystemReplyMessage implements Message {
     public static const CODE_CLIENT_LIST:int = 203;//用户列表
     public static const CODE_CLIENT_LOST:int = 204;//用户离线
     public static const CODE_CHANNEL_LOST:int = 205;//channel被删除
+    public static const CODE_DISCONNECT:int = 206;//连接断开
 
     public static const CODE_OTHER_USER_ONLINE:int = 301;//其他用户登录
 

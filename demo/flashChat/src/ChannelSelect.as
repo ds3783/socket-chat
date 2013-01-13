@@ -129,7 +129,7 @@ public class ChannelSelect extends ComboBox {
             var idxs:Array = [];
             for (var i:int = 0; i < this.publicChannels.length; i++) {
                 var chanelLabel:ChannelLabel = this.publicChannels[i];
-                if (chanelLabel.id == channelModel.id) {
+                if (chanelLabel.id as Number == channelModel.id) {
                     idxs.push(i);
                 }
             }

@@ -16,5 +16,6 @@ public class CommandType {
     public static const EXIT_CHANNEL:String = "EXIT_CHANNEL";
     //更新客户列表
     public static const UPDATE_CLIENT_LIST:String = "UPDATE_CLIENT_LIST";
+    public static const DISCONNECT:String = "DISCONNECT";
 }
 }

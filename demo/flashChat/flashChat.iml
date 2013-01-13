@@ -12,7 +12,7 @@
               <dependency linkage="Merged" />
             </entry>
           </entries>
-          <sdk name="4.1" />
+          <sdk name="FlexSDK4.1" />
         </dependencies>
         <compiler-options>
           <map>
@@ -33,9 +33,9 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="4.1" jdkType="Flex SDK Type (new)" />
+    <orderEntry type="jdk" jdkName="FlexSDK4.1" jdkType="Flex SDK Type (new)" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library name="Imported from Flash/Flex Builder: libs" type="flex">
         <properties id="a06b9514-35d2-4a61-bcdf-49a3dfb5de2f" />
         <CLASSES>
@@ -46,7 +46,7 @@
         <jarDirectory url="file://$MODULE_DIR$/libs" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="module-library" scope="RUNTIME">
+    <orderEntry type="module-library" exported="" scope="RUNTIME">
       <library type="flex">
         <properties id="fa025647-c581-4f77-92b2-c3aa94589cd4" />
         <CLASSES>

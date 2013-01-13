@@ -27,7 +27,7 @@ public class SocketClient extends EventDispatcher {
     private var messageBuffer:Array = new Array();
 
     public static const EVENT_CONNECTED:String = "ON_CONNECTED";
-    public static const EVENT_DISCONNECTED:String = "ON_DISCONNECTED";
+    public static const EVENT_CONNECTION_LOST:String = "ON_CONNECTION_LOST";
     public static const EVENT_LOGIN:String = "ON_LOGIN";
     public static const EVENT_LOGIN_FAIL:String = "ON_LOGIN_FAIL";
     public static const EVENT_CLIENTMESSAGE:String = "ON_CLIENT";
@@ -39,6 +39,8 @@ public class SocketClient extends EventDispatcher {
     public static const EVENT_CLIENT_LIST_UPDATE:String = "ON_CLIENT_LIST_UPDATE";
     public static const EVENT_CLIENT_LOST:String = "ON_CLIENT_LOST";
     public static const EVENT_CHANNEL_LOST:String = "ON_CHANNEL_LOST";
+    public static const EVENT_OTHER_CLIENT_JOIN:String = "ON_OTHER_CLIENT_JOIN";
+    public static const EVENT_DISCONNECT:String = "ON_DISCONNECT";
 
     public function connect(host:String, port:int):void {
         socket = new Socket();
@@ -55,7 +57,7 @@ public class SocketClient extends EventDispatcher {
 
     }
 
-    public function close():void {
+    private function close():void {
         this.connected = false;
         this.logined = false;
         if (socket.connected) {
@@ -84,7 +86,7 @@ public class SocketClient extends EventDispatcher {
         if (!socket.connected) {
             if (this.connected) {
                 this.connected = false;
-                dispatchEvent(new SocketEvent(EVENT_DISCONNECTED));
+                dispatchEvent(new SocketEvent(EVENT_CONNECTION_LOST));
             } else {
                 throw new ChatServerError("Not Connected!");
             }
@@ -233,6 +235,17 @@ public class SocketClient extends EventDispatcher {
                 event = new SocketEvent(EVENT_CHANNEL_LOST);
                 event.message = sysMsg;
                 dispatchEvent(event);
+                break;
+            case SystemReplyMessage.CODE_OTHER_USER_ONLINE:
+                event = new SocketEvent(EVENT_OTHER_CLIENT_JOIN);
+                event.message = sysMsg;
+                dispatchEvent(event);
+                break;
+            case SystemReplyMessage.CODE_DISCONNECT:
+                event = new SocketEvent(EVENT_DISCONNECT);
+                event.message = sysMsg;
+                dispatchEvent(event);
+                this.close();
                 break;
         }
     }

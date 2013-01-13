@@ -5,15 +5,15 @@ import net.ds3783.chatserver.communicate.ContextHelper;
 import net.ds3783.chatserver.communicate.delivery.Event;
 import net.ds3783.chatserver.communicate.delivery.EventListener;
 import net.ds3783.chatserver.communicate.delivery.MessageEvent;
-import net.ds3783.chatserver.dao.Channel;
-import net.ds3783.chatserver.dao.ChannelDao;
-import net.ds3783.chatserver.dao.ClientChannel;
+import net.ds3783.chatserver.dao.*;
 import net.ds3783.chatserver.extension.ClientException;
 import net.ds3783.chatserver.logic.ChannelLogic;
 import net.ds3783.chatserver.messages.ChannelListMessage;
+import net.ds3783.chatserver.messages.ClientJoinChannelMessage;
 import net.ds3783.chatserver.messages.CommandMessage;
 import net.ds3783.chatserver.messages.MessageContext;
 import net.ds3783.chatserver.messages.model.ChannelModel;
+import net.ds3783.chatserver.messages.model.ClientModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +27,7 @@ import java.util.List;
  */
 public class JoinChannelListener extends DefaultCommandListener implements EventListener {
     private ContextHelper contextHelper;
+    private ClientDao clientDao;
     private ChannelDao channelDao;
     private ChannelLogic channelLogic;
 
@@ -57,6 +58,18 @@ public class JoinChannelListener extends DefaultCommandListener implements Event
         if (joinChannel == null) {
             throw new ClientException("Unable to locate the channel!");
         }
+
+        ClientJoinChannelMessage reply2 = new ClientJoinChannelMessage();
+        MessageContext reply2Context = contextHelper.registerMessage(reply2, context.getSender());
+        List<ClientChannel> ccs = channelDao.getClientsByChannel(channelid);
+        List<Client> cs = new ArrayList<Client>(ccs.size());
+        for (ClientChannel cc : ccs) {
+            Client client = clientDao.getClient(cc.getClientId());
+            cs.add(client);
+        }
+        reply2Context.getReceivers().addAll(cs);
+        reply2.setClient(new ClientModel(context.getSender(), false));
+
         ClientChannel newChannel = channelLogic.joinChannel(context.getSender(), joinChannel);
 
         List<Channel> channels = channelDao.getChannels();
@@ -76,6 +89,8 @@ public class JoinChannelListener extends DefaultCommandListener implements Event
 
 
         outputerSwitcher.switchTo(reply);
+        outputerSwitcher.switchTo(reply2);
+
         //阻止其他Listener
         return false;
     }
@@ -95,5 +110,9 @@ public class JoinChannelListener extends DefaultCommandListener implements Event
 
     public void setChannelLogic(ChannelLogic channelLogic) {
         this.channelLogic = channelLogic;
+    }
+
+    public void setClientDao(ClientDao clientDao) {
+        this.clientDao = clientDao;
     }
 }

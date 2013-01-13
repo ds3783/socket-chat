@@ -106,9 +106,10 @@ public class ChannelLogic {
     public Channel exitChannel(ClientChannel inChannel) {
         channelDao.deleteClientChannel(inChannel);
         Long left = channelDao.getClientsAmountInChannel(inChannel.getChannelId());
-        if (left == null || left == 0) {
-            return channelDao.deleteChannel(inChannel.getChannelId());
-
+        Channel channel = channelDao.getChannel(inChannel.getChannelId());
+        if ((!channel.isInternal()) && (left == null || left == 0)) {
+            channelDao.deleteChannel(channel);
+            return channel;
         } else {
             return null;
         }

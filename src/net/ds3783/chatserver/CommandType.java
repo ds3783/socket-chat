@@ -16,6 +16,7 @@ public class CommandType {
 
     //更新客户列表
     public static final String UPDATE_CLIENT_LIST = "UPDATE_CLIENT_LIST";
+    public static final String DISCONNECT = "DISCONNECT";
 
     public static String LOGOUT = "LOGOUT";
 }

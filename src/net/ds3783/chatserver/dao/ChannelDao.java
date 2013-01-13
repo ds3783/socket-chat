@@ -72,10 +72,8 @@ public class ChannelDao extends HibernateDaoSupport {
         return (Long) rs.get(0);
     }
 
-    public Channel deleteChannel(Long channelId) {
-        Channel channel = getChannel(channelId);
+    public void deleteChannel(Channel channel) {
         getHibernateTemplate().delete(channel);
         getHibernateTemplate().flush();
-        return channel;
     }
 }

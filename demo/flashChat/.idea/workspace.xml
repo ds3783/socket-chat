@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/net/ds3783/chatserver/ChatServerClient.as" line="264" mnemonic="1" />
+  </component>
   <component name="CCaseConfig">
     <option name="checkoutReserved" value="false" />
     <option name="markExternalChangeAsUpToDate" value="true" />
@@ -15,16 +18,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="e70535b8-47f5-4186-b18b-63b674d02f49" name="Default" comment="JoinChannel">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/MessageType.as" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/MessageType.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ClientJoinChannelMessage.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ChannelSelect.as" afterPath="$PROJECT_DIR$/src/ChannelSelect.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/ChatServerClient.as" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/ChatServerClient.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/CommandType.as" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/CommandType.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FlashChat.mxml" afterPath="$PROJECT_DIR$/src/FlashChat.mxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/SocketClient.as" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/SocketClient.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/SystemReplyMessage.as" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/SystemReplyMessage.as" />
+    </list>
+    <list id="cda2de86-6a79-4e70-996e-09a8f535c9d5" name="ProjectConfig" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flashChat.iml" afterPath="$PROJECT_DIR$/flashChat.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$USER_HOME$/.griffon/" />
     <ignored path="$USER_HOME$/.grails/" />
-    <file path="/FlashChat.mxml" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357545578708" ignored="false" />
-    <file path="/a.dummy" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357556431348" ignored="false" />
-    <file path="/ChatServerClient.as" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357545971088" ignored="false" />
+    <file path="/FlashChat.mxml" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1358080334174" ignored="false" />
+    <file path="/a.dummy" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1358079682408" ignored="false" />
+    <file path="/ChatServerClient.as" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1358080195662" ignored="false" />
     <file path="/Dummy.txt" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558317402" ignored="false" />
     <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/communicate/core/ServerThread.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357557478795" ignored="false" />
     <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/communicate/core/ClientService.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558319492" ignored="false" />
@@ -32,12 +42,12 @@
     <file path="/MessageType.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357555751890" ignored="false" />
     <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/EventConstant.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558319492" ignored="false" />
     <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/messages/LoginMessage.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357555692224" ignored="false" />
-    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/messages/SystemReplyMessage.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357555692224" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/messages/SystemReplyMessage.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1358077005805" ignored="false" />
     <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/extension/core/BlackListListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558319492" ignored="false" />
     <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/extension/core/ChatListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558319492" ignored="false" />
     <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/extension/core/FlashAuthListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558319492" ignored="false" />
     <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/messages/FlashAuthMessage.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357555693119" ignored="false" />
-    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/extension/core/LoginListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357557478795" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/extension/core/LoginListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357971936803" ignored="false" />
     <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/communicate/core/OutputThread.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357555693119" ignored="false" />
     <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/communicate/filters/OutputfilterV1.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357555693119" ignored="false" />
     <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/messages/ChannelListMessage.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357555692225" ignored="false" />
@@ -64,14 +74,37 @@
     <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/extension/chat/PrivateMessageListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558319492" ignored="false" />
     <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/extension/chat/PublicMessageListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558319492" ignored="false" />
     <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/communicate/delivery/EventListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357556412550" ignored="false" />
-    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/extension/command/JoinChannelListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558319492" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/extension/command/JoinChannelListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357996520121" ignored="false" />
     <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/communicate/delivery/InternalEvent.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357556388572" ignored="false" />
     <file path="/InternalEvent.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357556383207" ignored="false" />
     <file path="/PublicMessageListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357556458429" ignored="false" />
     <file path="/BlackListListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357556530504" ignored="false" />
     <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/communicate/core/InputThread.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357557478795" ignored="false" />
-    <file path="/fragment.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357557124069" ignored="false" />
+    <file path="/fragment.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357567689228" ignored="false" />
     <file path="$PROJECT_DIR$/../../g-chat-server.iws" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357558371049" ignored="false" />
+    <file path="/fragment.js2" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357996538140" ignored="false" />
+    <file path="/ClientLostMessage.as" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357657864400" ignored="false" />
+    <file path="/ChannelLostMessage.as" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357657939970" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/dao/Channel.hbm.xml" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357660616250" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/dao/Client.hbm.xml" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357660616250" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/extend-beans.xml" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1358080453601" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/messages/ClientLostMessage.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357967358742" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/messages/ChannelLostMessage.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357967358742" ignored="false" />
+    <file path="/ChannelSelect.as" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357967623473" ignored="false" />
+    <file path="/SocketClient.as" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1358078476015" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/messages/ClientJoinChannelMessage.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357989329679" ignored="false" />
+    <file path="/ClientJoinChannelMessage.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357989324427" ignored="false" />
+    <file path="/JoinChannelListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1357996418799" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/dao/ChannelDao.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1358067494712" ignored="false" />
+    <file path="/ChannelDao.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1358067494712" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/logic/ChannelLogic.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1358067552856" ignored="false" />
+    <file path="/ChannelLogic.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1358067551877" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/extension/internal/ChannelCleanListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1358069816523" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/CommandType.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1358076212608" ignored="false" />
+    <file path="$PROJECT_DIR$/../../src/net/ds3783/chatserver/extension/command/DisconnectListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1358080433822" ignored="false" />
+    <file path="/DisconnectListener.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1358076969784" ignored="false" />
+    <file path="/SystemReplyMessage.java" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1358077005805" ignored="false" />
+    <file path="/extend-beans.xml" changelist="e70535b8-47f5-4186-b18b-63b674d02f49" time="1358080453601" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +119,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -121,25 +153,9 @@
         <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
-    <ui_properties>
-      <property name="line_breakpoints_groupByMethods" value="false" />
-      <property name="line_breakpoints_viewId" value="TABLE" />
-      <property name="exception_breakpoints_flattenPackages" value="true" />
-      <property name="method_breakpoints_flattenPackages" value="true" />
-      <property name="field_breakpoints_flattenPackages" value="true" />
-      <property name="exception_breakpoints_groupByMethods" value="false" />
-      <property name="line_breakpoints_groupByClasses" value="true" />
-      <property name="method_breakpoints_viewId" value="TABLE" />
-      <property name="field_breakpoints_groupByMethods" value="false" />
-      <property name="line_breakpoints_flattenPackages" value="true" />
-      <property name="field_breakpoints_groupByClasses" value="true" />
-      <property name="method_breakpoints_groupByClasses" value="true" />
-      <property name="exception_breakpoints_viewId" value="TABLE" />
-      <property name="field_breakpoints_viewId" value="TABLE" />
-      <property name="exception_breakpoints_groupByClasses" value="true" />
-      <property name="method_breakpoints_groupByMethods" value="false" />
-    </ui_properties>
+    <ui_properties />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -147,13 +163,105 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ChatServerSocket.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/ChatServerSocket.as">
+      <file leaf-file-name="FlashChat.mxml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/FlashChat.mxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="0" selection-start="1322" selection-end="1322" vertical-scroll-proportion="0.0">
+            <state line="116" column="22" selection-start="4923" selection-end="4923" vertical-scroll-proportion="0.9618768">
               <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <marker date="1358080339351" expanded="true" signature="298:1429" placeholder="..." />
+                <marker date="1358080339351" expanded="true" signature="1670:1945" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="1696:1908" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="2028:2306" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="2054:2269" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="2193:2255" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="2345:3326" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="2439:2685" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="2572:2671" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="2781:3314" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="2882:3017" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="2937:2999" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="3109:3163" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="3249:3298" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="3367:3913" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="3955:4709" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="4061:4114" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="4767:4845" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="4899:4933" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="4990:5080" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="5133:5310" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="5353:5801" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="5388:5430" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="5855:6516" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="5931:5991" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="6574:6833" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="6655:6719" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="6725:6823" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="6878:7639" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="7028:7596" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="7068:7421" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="7333:7403" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="7427:7582" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="7679:7724" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="7798:8711" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="7840:8701" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="7901:7966" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="8017:8291" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="8332:8622" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="8777:9904" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="9036:9751" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="9301:9620" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="9377:9602" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="9434:9580" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="9814:9894" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="9968:10386" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="10150:10376" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="10444:10825" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="10681:10815" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="10727:10801" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="10884:11025" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="11083:11630" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="11197:11619" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="11274:11395" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="11322:11377" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="11690:11782" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="11841:12644" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="12025:12165" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="12066:12151" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="12195:12342" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="12385:12524" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="12530:12634" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="12722:12997" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="12755:12987" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="12794:12881" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="12887:12973" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="13049:14160" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="14011:14148" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="14230:15026" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="14484:14667" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="14506:14577" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="14594:14653" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="14673:14754" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="14780:14844" placeholder="{...}" />
+                <marker date="1358080339351" expanded="true" signature="14850:15016" placeholder="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChannelSelect.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ChannelSelect.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="131" column="44" selection-start="4259" selection-end="4259" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClientLostMessage.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ClientLostMessage.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="34" column="4" selection-start="364" selection-end="830" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -161,160 +269,65 @@
       <file leaf-file-name="ChatServerClient.as" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/ChatServerClient.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="202" column="44" selection-start="7994" selection-end="7994" vertical-scroll-proportion="0.0">
+            <state line="264" column="54" selection-start="10843" selection-end="10853" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
+                <element signature="e#184#220#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ChatEvent.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/ChatEvent.as">
+      <file leaf-file-name="CommandType.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/CommandType.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ChannelChangeEvent.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ChannelChangeEvent.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientLabel.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ClientLabel.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FlashChat.mxml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/FlashChat.mxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="82" column="54" selection-start="3445" selection-end="3445" vertical-scroll-proportion="-0.75">
-              <folding>
-                <marker date="1357546860528" expanded="true" signature="1467:1742" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="1493:1705" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="1825:2103" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="1851:2066" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="1990:2052" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="2142:2988" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="2236:2482" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="2369:2468" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="2578:2976" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="2679:2814" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="2734:2796" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="2906:2960" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="3029:3489" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="3531:4028" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="3637:3690" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="4084:4162" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="4219:4309" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="4362:4539" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="4582:5030" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="4617:4659" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="5084:5497" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="5160:5220" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="5555:5814" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="5636:5700" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="5706:5804" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="5859:6620" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="6009:6577" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="6049:6402" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="6314:6384" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="6408:6563" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="6694:7607" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="6736:7597" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="6797:6862" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="6913:7187" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="7228:7518" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="7673:8800" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="7932:8647" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="8197:8516" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="8273:8498" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="8330:8476" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="8710:8790" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="8864:9282" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="9046:9272" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="9342:9434" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="9493:10296" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="9677:9817" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="9718:9803" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="9847:9994" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="10037:10176" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="10182:10286" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="10374:10649" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="10407:10639" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="10446:10533" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="10539:10625" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="10701:11812" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="11663:11800" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="11882:12678" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="12136:12319" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="12158:12229" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="12246:12305" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="12325:12406" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="12432:12496" placeholder="{...}" />
-                <marker date="1357546860528" expanded="true" signature="12502:12668" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PrivateMessageView.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PrivateMessageView.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#164#195#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PublicMessageView.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PublicMessageView.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="30" selection-start="2776" selection-end="2789" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#164#195#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MessageType.as" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/MessageType.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="37" selection-start="317" selection-end="317" vertical-scroll-proportion="0.23833543">
+            <state line="17" column="36" selection-start="560" selection-end="560" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ChannelLabel.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ChannelLabel.as">
+      <file leaf-file-name="MessageType.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/MessageType.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+            <state line="7" column="60" selection-start="317" selection-end="317" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommandMessage.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/messages/CommandMessage.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="13" selection-start="289" selection-end="289" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SocketClient.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/SocketClient.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="42" column="40" selection-start="1926" selection-end="1926" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClientJoinChannelMessage.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ClientJoinChannelMessage.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="37" selection-start="346" selection-end="370" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SystemReplyMessage.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/messages/SystemReplyMessage.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="39" selection-start="742" selection-end="757" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -329,22 +342,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/LoginMessage.as" />
-        <option value="C:/Tools/FDK/4.6/frameworks/flex-config.xml" />
-        <option value="$PROJECT_DIR$/flashChat_Flex_temp_flex_config.xml" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/CommandMessage.as" />
         <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/model/ChannelModel.as" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/SystemReplyMessage.as" />
         <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/SocketEvent.as" />
         <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/ChatEvent.as" />
         <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ChannelListMessage.as" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/SocketClient.as" />
         <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/ChatServerSocket.as" />
-        <option value="$PROJECT_DIR$/src/FlashChat.mxml" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/CommandType.as" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/ChatServerClient.as" />
         <option value="$PROJECT_DIR$/src/PublicMessageView.as" />
         <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/MessageType.as" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ClientLostMessage.as" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ChannelLostMessage.as" />
+        <option value="$PROJECT_DIR$/src/ChannelSelect.as" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ClientJoinChannelMessage.as" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/CommandType.as" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/SystemReplyMessage.as" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/SocketClient.as" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/ChatServerClient.as" />
+        <option value="$PROJECT_DIR$/src/FlashChat.mxml" />
       </list>
     </option>
   </component>
@@ -356,7 +369,7 @@
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
-    <option name="height" value="1014" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -391,6 +404,30 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flashChat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flashChat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -459,32 +496,38 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="projectFilesBackup" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ds3783" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chatserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="messages" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="flashChat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="flashChat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="projectFilesBackup" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -535,6 +578,11 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateActionScriptClassDialog.DESTINATION_PACKAGE_RECENT_KEY">
+      <recent name="net.ds3783.chatserver.messages" />
+    </key>
   </component>
   <component name="RunManager" selected="Flash App.Flex Application">
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -745,7 +793,7 @@
     <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
     <option name="FORCE_UPDATE" value="false" />
     <option name="IGNORE_EXTERNALS" value="false" />
-    <configuration useDefault="true">C:\Users\hongyu.pi\AppData\Roaming\Subversion</configuration>
+    <configuration useDefault="true">C:\Users\Ds.3783\AppData\Roaming\Subversion</configuration>
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
     <supportedVersion>125</supportedVersion>
   </component>
@@ -771,16 +819,16 @@
     <option name="myMappingRoots">
       <list>
         <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="C:\Projects\MY\g-chat-server\demo\flashChat" />
-          <option name="myCopyRoot" value="C:\Projects\MY\g-chat-server\demo\flashChat" />
+          <option name="myVcsRoot" value="C:\Projects\My\g-chat-server\demo\flashChat" />
+          <option name="myCopyRoot" value="C:\Projects\My\g-chat-server\demo\flashChat" />
         </SvnCopyRootSimple>
       </list>
     </option>
     <option name="myMoreRealMappingRoots">
       <list>
         <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="C:\Projects\MY\g-chat-server\demo\flashChat" />
-          <option name="myCopyRoot" value="C:\Projects\MY\g-chat-server\demo\flashChat" />
+          <option name="myVcsRoot" value="C:\Projects\My\g-chat-server\demo\flashChat" />
+          <option name="myCopyRoot" value="C:\Projects\My\g-chat-server\demo\flashChat" />
         </SvnCopyRootSimple>
       </list>
     </option>
@@ -819,34 +867,34 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1014" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900944" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32588235" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32542372" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46508875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4644068" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20636792" sideWeight="0.49839228" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5058824" sideWeight="0.49785638" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.50508475" sideWeight="0.49785638" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900944" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16524065" sideWeight="0.67058825" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23497854" sideWeight="0.49491525" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -939,210 +987,222 @@
     </GetOptions>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="flex">
+          <url>file://$PROJECT_DIR$/src/FlashChat.mxml</url>
+          <line>265</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="flex">
+          <url>file://$PROJECT_DIR$/src/FlashChat.mxml</url>
+          <line>263</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="flex">
+          <url>file://$PROJECT_DIR$/src/net/ds3783/chatserver/ChatServerClient.as</url>
+          <line>278</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="flex">
+          <url>file://$PROJECT_DIR$/src/FlashChat.mxml</url>
+          <line>262</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="5" />
+    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/index.html">
+    <entry file="file://$PROJECT_DIR$/src/ChannelChangeEvent.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="31" selection-start="746" selection-end="746" vertical-scroll-proportion="-9.777778">
-          <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ClientLabel.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/SocketEvent.as">
+    <entry file="file://$PROJECT_DIR$/src/PrivateMessageView.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="20" selection-start="157" selection-end="157" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PublicMessageView.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="30" selection-start="2776" selection-end="2789" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ClientListMessage.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="17" selection-start="374" selection-end="374" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ChannelLostMessage.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="31" selection-start="289" selection-end="307" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ChannelSelect.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="131" column="44" selection-start="4259" selection-end="4259" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ClientLostMessage.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="4" selection-start="364" selection-end="830" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ClientJoinChannelMessage.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="37" selection-start="346" selection-end="370" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/messages/CommandMessage.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="289" selection-end="289" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/CommandType.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="36" selection-start="560" selection-end="560" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/MessageType.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="60" selection-start="317" selection-end="317" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/messages/SystemReplyMessage.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="39" selection-start="742" selection-end="757" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/SocketClient.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="194" column="61" selection-start="7295" selection-end="7309" vertical-scroll-proportion="0.0">
+        <state line="42" column="40" selection-start="1926" selection-end="1926" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/MessageOld.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/Message.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/CommandType.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="602" selection-end="602" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/ChatServerSocket.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="0" selection-start="1322" selection-end="1322" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/ChatServerClient.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="202" column="44" selection-start="7994" selection-end="7994" vertical-scroll-proportion="0.0">
+        <state line="264" column="54" selection-start="10843" selection-end="10853" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/ChatEvent.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ChannelLabel.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ChannelChangeEvent.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ClientLabel.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#184#220#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FlashChat.mxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="54" selection-start="3445" selection-end="3445" vertical-scroll-proportion="-0.75">
+        <state line="116" column="22" selection-start="4923" selection-end="4923" vertical-scroll-proportion="0.9618768">
           <folding>
-            <marker date="1357546860528" expanded="true" signature="1467:1742" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="1493:1705" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="1825:2103" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="1851:2066" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="1990:2052" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="2142:2988" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="2236:2482" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="2369:2468" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="2578:2976" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="2679:2814" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="2734:2796" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="2906:2960" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="3029:3489" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="3531:4028" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="3637:3690" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="4084:4162" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="4219:4309" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="4362:4539" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="4582:5030" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="4617:4659" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="5084:5497" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="5160:5220" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="5555:5814" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="5636:5700" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="5706:5804" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="5859:6620" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="6009:6577" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="6049:6402" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="6314:6384" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="6408:6563" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="6694:7607" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="6736:7597" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="6797:6862" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="6913:7187" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="7228:7518" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="7673:8800" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="7932:8647" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="8197:8516" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="8273:8498" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="8330:8476" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="8710:8790" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="8864:9282" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="9046:9272" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="9342:9434" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="9493:10296" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="9677:9817" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="9718:9803" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="9847:9994" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="10037:10176" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="10182:10286" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="10374:10649" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="10407:10639" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="10446:10533" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="10539:10625" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="10701:11812" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="11663:11800" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="11882:12678" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="12136:12319" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="12158:12229" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="12246:12305" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="12325:12406" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="12432:12496" placeholder="{...}" />
-            <marker date="1357546860528" expanded="true" signature="12502:12668" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="298:1429" placeholder="..." />
+            <marker date="1358080339351" expanded="true" signature="1670:1945" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="1696:1908" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="2028:2306" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="2054:2269" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="2193:2255" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="2345:3326" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="2439:2685" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="2572:2671" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="2781:3314" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="2882:3017" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="2937:2999" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="3109:3163" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="3249:3298" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="3367:3913" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="3955:4709" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="4061:4114" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="4767:4845" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="4899:4933" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="4990:5080" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="5133:5310" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="5353:5801" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="5388:5430" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="5855:6516" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="5931:5991" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="6574:6833" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="6655:6719" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="6725:6823" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="6878:7639" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="7028:7596" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="7068:7421" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="7333:7403" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="7427:7582" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="7679:7724" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="7798:8711" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="7840:8701" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="7901:7966" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="8017:8291" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="8332:8622" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="8777:9904" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="9036:9751" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="9301:9620" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="9377:9602" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="9434:9580" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="9814:9894" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="9968:10386" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="10150:10376" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="10444:10825" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="10681:10815" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="10727:10801" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="10884:11025" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="11083:11630" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="11197:11619" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="11274:11395" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="11322:11377" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="11690:11782" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="11841:12644" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="12025:12165" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="12066:12151" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="12195:12342" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="12385:12524" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="12530:12634" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="12722:12997" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="12755:12987" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="12794:12881" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="12887:12973" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="13049:14160" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="14011:14148" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="14230:15026" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="14484:14667" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="14506:14577" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="14594:14653" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="14673:14754" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="14780:14844" placeholder="{...}" />
+            <marker date="1358080339351" expanded="true" signature="14850:15016" placeholder="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PrivateMessageView.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#164#195#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PublicMessageView.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="30" selection-start="2776" selection-end="2789" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#164#195#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/MessageType.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="37" selection-start="317" selection-end="317" vertical-scroll-proportion="0.23833543">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1203,7 +1263,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.11655012" />
+                <option value="0.093023255" />
               </list>
             </option>
           </splitter-proportions>

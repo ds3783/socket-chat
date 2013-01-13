@@ -11,8 +11,8 @@ import flash.net.registerClassAlias;
 
 import net.ds3783.chatserver.messages.ChannelListMessage;
 import net.ds3783.chatserver.messages.ChannelLostMessage;
+import net.ds3783.chatserver.messages.ClientJoinChannelMessage;
 import net.ds3783.chatserver.messages.ClientListMessage;
-import net.ds3783.chatserver.messages.ClientLostMessage;
 import net.ds3783.chatserver.messages.ClientLostMessage;
 import net.ds3783.chatserver.messages.CommandMessage;
 import net.ds3783.chatserver.messages.LoginMessage;
@@ -26,7 +26,7 @@ public class ChatServerClient extends EventDispatcher {
 
     public static const LOGINED:String = "LOGINED";
     public static const CONNECTED:String = "CONNECTED";
-    public static const DISCONNECTED:String = "DISCONNECTED";
+    public static const CONNECTION_LOST:String = "CONNECTION_LOST";
     public static const CONNECTED_ERROR:String = "CONNECTED_ERROR";
     public static const LOGIN_ERROR:String = "LOGIN_ERROR";
     public static const CHANNEL_LIST_UPDATE:String = "CHANNEL_LIST_UPDATE";
@@ -34,9 +34,10 @@ public class ChatServerClient extends EventDispatcher {
     public static const CHANNEL_JOINED:String = "CHANNEL_JOINED";
     public static const CLIENT_LOST:String = "CLIENT_LOST";
     public static const CHANNEL_LOST:String = "CHANNEL_LOST";
+    public static const CLIENT_JOIN:String = "CLIENT_JOIN";
     public static const MESSAGE:String = "MESSAGE";
     public static const ERROR:String = "ERROR";
-    public static const BEFORE_DISCONNECT:String = "BEFORE_DISCONNECT";
+    public static const DISCONNECT:String = "DISCONNECT";
 
     public function ChatServerClient(autoJoin:Boolean = true) {
 
@@ -51,8 +52,9 @@ public class ChatServerClient extends EventDispatcher {
         registerClassAlias("net.ds3783.chatserver.messages.ClientListMessage", ClientListMessage);
         registerClassAlias("net.ds3783.chatserver.messages.model.ChannelModel", ChannelModel);
         registerClassAlias("net.ds3783.chatserver.messages.model.ClientModel", ClientModel);
-        registerClassAlias("net.ds3783.chatserver.messages.model.ClientLostMessage", ClientLostMessage);
-        registerClassAlias("net.ds3783.chatserver.messages.model.ChannelLostMessage", ChannelLostMessage);
+        registerClassAlias("net.ds3783.chatserver.messages.ClientLostMessage", ClientLostMessage);
+        registerClassAlias("net.ds3783.chatserver.messages.ChannelLostMessage", ChannelLostMessage);
+        registerClassAlias("net.ds3783.chatserver.messages.ClientJoinChannelMessage", ClientJoinChannelMessage);
 
         connType = CONN_TYPE_SOCKET;
         socket = new SocketClient();
@@ -60,7 +62,7 @@ public class ChatServerClient extends EventDispatcher {
         socket.addEventListener(SocketClient.EVENT_AUTHERROR, onConnectFail);
         socket.addEventListener(SocketClient.EVENT_LOGIN, onLogined);
         socket.addEventListener(SocketClient.EVENT_LOGIN_FAIL, onLoginFail);
-        socket.addEventListener(SocketClient.EVENT_DISCONNECTED, onDisconnected);
+        socket.addEventListener(SocketClient.EVENT_CONNECTION_LOST, onConnectionLost);
         socket.addEventListener(SocketClient.EVENT_CLIENTMESSAGE, onChatMessage);
         autoJoinDefaultChannel = autoJoin;
     }
@@ -90,7 +92,9 @@ public class ChatServerClient extends EventDispatcher {
         socket.addEventListener(SocketClient.EVENT_CLIENT_LIST_UPDATE, onClientListUpdate);
         socket.addEventListener(SocketClient.EVENT_CLIENT_LOST, onClientLost);
         socket.addEventListener(SocketClient.EVENT_CHANNEL_LOST, onChannelLost);
+        socket.addEventListener(SocketClient.EVENT_OTHER_CLIENT_JOIN, onOtherClientJoin);
         socket.addEventListener(SocketClient.EVENT_USERERROR, onError);
+        socket.addEventListener(SocketClient.EVENT_DISCONNECT, onDisconnect);
         socket.connect(_connHost, _connPort);
     }
 
@@ -186,6 +190,14 @@ public class ChatServerClient extends EventDispatcher {
         return message;
     }
 
+
+
+    public function disconnect():void {
+        var msg:CommandMessage =new CommandMessage();
+        msg.command=CommandType.DISCONNECT;
+        socket.sendMessage(msg);
+    }
+
     private function onChannelListUpdate(e:SocketEvent):void {
         var list:ChannelListMessage = e.message as ChannelListMessage;
         if (list) {
@@ -248,9 +260,23 @@ public class ChatServerClient extends EventDispatcher {
         dispatchEvent(event);
     }
 
+    private function onDisconnect(e:SocketEvent):void {
+        var msg:SystemReplyMessage = e.message as SystemReplyMessage;
+        var event:ChatEvent = new ChatEvent(DISCONNECT);
+        event.message = msg;
+        dispatchEvent(event);
+    }
+
     private function onChannelLost(e:SocketEvent):void {
         var msg:ClientLostMessage = e.message as ClientLostMessage;
         var event:ChatEvent = new ChatEvent(CHANNEL_LOST);
+        event.message = msg;
+        dispatchEvent(event);
+    }
+
+    private function onOtherClientJoin(e:SocketEvent):void {
+        var msg:ClientJoinChannelMessage = e.message as ClientJoinChannelMessage;
+        var event:ChatEvent = new ChatEvent(CLIENT_JOIN);
         event.message = msg;
         dispatchEvent(event);
     }
@@ -269,8 +295,8 @@ public class ChatServerClient extends EventDispatcher {
         dispatchEvent(event);
     }
 
-    private function onDisconnected(e:SocketEvent):void {
-        dispatchEvent(new ChatEvent(DISCONNECTED));
+    private function onConnectionLost(e:SocketEvent):void {
+        dispatchEvent(new ChatEvent(CONNECTION_LOST));
     }
 
 
@@ -289,6 +315,5 @@ public class ChatServerClient extends EventDispatcher {
     public function get password():String {
         return _password;
     }
-
 }
 }

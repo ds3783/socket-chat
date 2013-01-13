@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/ClientService.java" line="63" mnemonic="1" />
+  </component>
   <component name="CCaseConfig">
     <option name="checkoutReserved" value="false" />
     <option name="markExternalChangeAsUpToDate" value="true" />
@@ -15,93 +18,57 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" name="Default" comment="bugfix:fix fatal error when duplicate client in a message context receivers and all receivers is controlled by a same output thread.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/wrapper/wrap/linuxwrapper.conf" afterPath="$PROJECT_DIR$/build/wrapper/wrap/linuxwrapper.conf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/wrapper/wrap/winwrapper.conf" afterPath="$PROJECT_DIR$/build/wrapper/wrap/winwrapper.conf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/BlackList.hbm.xml" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/BlackList.hbm.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/BlackList.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/BlackList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/core/BlackListListener.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/core/BlackListListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/pool/BytePool.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/pool/BytePool.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/pool/BytePoolImpl.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/pool/BytePoolImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/net/ds3783/chatserver/pooltest/BytePoolTest.java" afterPath="$PROJECT_DIR$/test/net/ds3783/chatserver/pooltest/BytePoolTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/Channel.hbm.xml" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/Channel.hbm.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/delivery/Channel.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/delivery/Channel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/Channel.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/Channel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ClientJoinChannelMessage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/DisconnectListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/internal/ChannelCleanListener.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/internal/ChannelCleanListener.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/ChannelDao.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/ChannelDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ChannelListMessage.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ChannelListMessage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/core/ChannelListener.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/core/ChannelListener.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/logic/ChannelLogic.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/logic/ChannelLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/model/ChannelModel.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/model/ChannelModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/core/ChatListener.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/core/ChatListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/Client.hbm.xml" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/Client.hbm.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/ClientChannel.hbm.xml" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/ClientChannel.hbm.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/ClientChannel.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/ClientChannel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/net/ds3783/chatserver/dao/ClientDaoTest.java" afterPath="$PROJECT_DIR$/test/net/ds3783/chatserver/dao/ClientDaoTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/ClientException.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/ClientException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ClientListMessage.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ClientListMessage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/model/ClientModel.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/model/ClientModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/ClientService.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/ClientService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/core/CommandListener.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/core/CommandListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/CommandMessage.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/CommandMessage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/CommandType.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/CommandType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/ContextHelper.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/ContextHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/CreateChannelListener.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/CreateChannelListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/chat/DefaultChatListener.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/chat/DefaultChatListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/DefaultCommandListener.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/DefaultCommandListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/core/DefaultCoreListener.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/core/DefaultCoreListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/delivery/Event.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/delivery/Event.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/delivery/EventListener.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/delivery/EventListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/ExitChannelListener.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/ExitChannelListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/ExtensionException.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/ExtensionException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/core/FlashAuthListener.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/core/FlashAuthListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/FlashAuthMessage.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/FlashAuthMessage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/GuardThread.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/GuardThread.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/filters/InputFilterV1.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/filters/InputFilterV1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/protocol/InputProtocal.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/protocol/InputProtocal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/InputThread.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/InputThread.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/JoinChannelListener.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/JoinChannelListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/filters/KeywordInputFilterV1.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/filters/KeywordInputFilterV1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/ListChannelListener.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/ListChannelListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/LoadBalanceSwitcher.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/LoadBalanceSwitcher.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/core/LoginListener.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/core/LoginListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/LoginMessage.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/LoginMessage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/Main.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/Message.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/Message.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/MessageContext.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/MessageContext.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/delivery/MessageDispatcher.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/delivery/MessageDispatcher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/MessageFactory.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/MessageFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/delivery/MessageProcessor.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/delivery/MessageProcessor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/delivery/MessageProcessorEventImpl.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/delivery/MessageProcessorEventImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/delivery/MessageProcessorStupidImpl.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/delivery/MessageProcessorStupidImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/protocol/OutputProtocal.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/protocol/OutputProtocal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/OutputThread.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/OutputThread.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/OutputerSwitcher.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/OutputerSwitcher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/filters/OutputfilterV1.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/filters/OutputfilterV1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/PrivateMessage.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/PrivateMessage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/chat/PrivateMessageListener.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/chat/PrivateMessageListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/ProcessThread.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/ProcessThread.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/PublicMessage.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/PublicMessage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/chat/PublicMessageListener.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/chat/PublicMessageListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/ServerThread.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/ServerThread.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/Switchable.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/Switchable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/Switcher.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/Switcher.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/SystemReplyMessage.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/SystemReplyMessage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/ThreadResourceType.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/ThreadResourceType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/filters/TreeNode.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/filters/TreeNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/protocol/UnZippedAmf3InputProtocal.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/protocol/UnZippedAmf3InputProtocal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/protocol/UnZippedAmf3OutputProtocal.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/protocol/UnZippedAmf3OutputProtocal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/UpdateClientListListener.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/UpdateClientListListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ds3783/chatserver/tools/Utils.java" afterPath="$PROJECT_DIR$/src/net/ds3783/chatserver/tools/Utils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/wrapper/chatserver.sh" afterPath="$PROJECT_DIR$/build/wrapper/chatserver.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core-beans.xml" afterPath="$PROJECT_DIR$/src/core-beans.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/extend-beans.xml" afterPath="$PROJECT_DIR$/src/extend-beans.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/wrapper/startChatServer.sh" afterPath="$PROJECT_DIR$/build/wrapper/startChatServer.sh" />
     </list>
     <list id="3759f12a-f0b0-4abd-9481-389d055ff4a3" name="unCommit" comment="" />
-    <list id="19a4f830-c4f7-443b-9485-74fc0b9b63b5" name="NotCommit" comment="" />
+    <list id="19a4f830-c4f7-443b-9485-74fc0b9b63b5" name="NotCommit" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/g-chat-server.ipr" afterPath="$PROJECT_DIR$/g-chat-server.ipr" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/g-chat-server.iws" afterPath="$PROJECT_DIR$/g-chat-server.iws" />
+    </list>
     <ignored path="$USER_HOME$/.griffon/" />
     <ignored path="g-chat-server.iws" />
     <ignored path="$USER_HOME$/.grails/" />
     <ignored path=".idea/workspace.xml" />
+    <file path="/fragment.js2" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1357996538140" ignored="false" />
+    <file path="/fragment.java" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1357567689228" ignored="false" />
+    <file path="/ListChannelListener.java" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1357656969400" ignored="false" />
+    <file path="/ChannelCleanListener.java" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1357657791594" ignored="false" />
+    <file path="/ChannelLogic.java" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1358067551879" ignored="false" />
+    <file path="/ChannelDao.java" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1358067494432" ignored="false" />
+    <file path="/ChannelLostMessage.java" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1357657545088" ignored="false" />
+    <file path="/ClientLostMessage.java" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1357657650607" ignored="false" />
+    <file path="$PROJECT_DIR$/demo/flashChat/src/net/ds3783/chatserver/messages/ClientLostMessage.as" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1357657866500" ignored="false" />
+    <file path="/ClientLostMessage.as" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1357657864400" ignored="false" />
+    <file path="$PROJECT_DIR$/demo/flashChat/src/net/ds3783/chatserver/ChatServerClient.as" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1358080199261" ignored="false" />
+    <file path="$PROJECT_DIR$/demo/flashChat/src/net/ds3783/chatserver/messages/ChannelLostMessage.as" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1357657943388" ignored="false" />
+    <file path="/ChannelLostMessage.as" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1357657939970" ignored="false" />
+    <file path="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/Channel.hbm.xml" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1357660616169" ignored="false" />
+    <file path="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/Client.hbm.xml" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1357660616169" ignored="false" />
+    <file path="$PROJECT_DIR$/demo/flashChat/src/net/ds3783/chatserver/messages/SystemReplyMessage.as" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1358078056870" ignored="false" />
+    <file path="$PROJECT_DIR$/demo/flashChat/src/net/ds3783/chatserver/SocketClient.as" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1358078720705" ignored="false" />
+    <file path="$PROJECT_DIR$/demo/flashChat/src/FlashChat.mxml" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1358080338144" ignored="false" />
+    <file path="$PROJECT_DIR$/demo/flashChat/src/ChannelSelect.as" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1357967626137" ignored="false" />
+    <file path="/ChannelSelect.as" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1357967623473" ignored="false" />
+    <file path="/SocketClient.as" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1358078476015" ignored="false" />
+    <file path="/ClientJoinChannelMessage.java" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1357989324427" ignored="false" />
+    <file path="/JoinChannelListener.java" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1357996418799" ignored="false" />
+    <file path="$PROJECT_DIR$/demo/flashChat/src/net/ds3783/chatserver/messages/ClientJoinChannelMessage.as" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1357996570075" ignored="false" />
+    <file path="/ChatServerClient.as" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1358080195662" ignored="false" />
+    <file path="/FlashChat.mxml" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1358080334174" ignored="false" />
+    <file path="/a.dummy" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1358079682408" ignored="false" />
+    <file path="$PROJECT_DIR$/demo/flashChat/src/net/ds3783/chatserver/CommandType.as" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1358076202845" ignored="false" />
+    <file path="/DisconnectListener.java" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1358076969784" ignored="false" />
+    <file path="/SystemReplyMessage.java" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1358077005805" ignored="false" />
+    <file path="/extend-beans.xml" changelist="aaf1e8be-5efe-4683-8419-e356e3a8e6ef" time="1358080453601" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,24 +124,7 @@
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
-    <ui_properties>
-      <property name="line_breakpoints_groupByMethods" value="false" />
-      <property name="line_breakpoints_viewId" value="TABLE" />
-      <property name="exception_breakpoints_flattenPackages" value="true" />
-      <property name="method_breakpoints_flattenPackages" value="true" />
-      <property name="field_breakpoints_flattenPackages" value="true" />
-      <property name="exception_breakpoints_groupByMethods" value="false" />
-      <property name="line_breakpoints_groupByClasses" value="true" />
-      <property name="method_breakpoints_viewId" value="TABLE" />
-      <property name="field_breakpoints_groupByMethods" value="false" />
-      <property name="line_breakpoints_flattenPackages" value="true" />
-      <property name="field_breakpoints_groupByClasses" value="true" />
-      <property name="method_breakpoints_groupByClasses" value="true" />
-      <property name="exception_breakpoints_viewId" value="TABLE" />
-      <property name="exception_breakpoints_groupByClasses" value="true" />
-      <property name="field_breakpoints_viewId" value="TABLE" />
-      <property name="method_breakpoints_groupByMethods" value="false" />
-    </ui_properties>
+    <ui_properties />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -182,91 +132,95 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="OutputThread.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/OutputThread.java">
+      <file leaf-file-name="ClientJoinChannelMessage.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ClientJoinChannelMessage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="205" column="5" selection-start="7160" selection-end="7160" vertical-scroll-proportion="0.0">
+            <state line="12" column="37" selection-start="310" selection-end="334" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SlaveThread.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/SlaveThread.java">
+      <file leaf-file-name="JoinChannelListener.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/JoinChannelListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="47" selection-start="585" selection-end="585" vertical-scroll-proportion="0.0">
+            <state line="27" column="0" selection-start="1024" selection-end="1024" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#2782#2790#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="extend-beans.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/extend-beans.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="46" selection-start="1226" selection-end="1226" vertical-scroll-proportion="0.53584903">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommonRunnable.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/CommonRunnable.java">
+      <file leaf-file-name="ChannelCleanListener.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/extension/internal/ChannelCleanListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="37" selection-start="1569" selection-end="1569" vertical-scroll-proportion="0.3077859">
+            <state line="120" column="72" selection-start="4665" selection-end="4665" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OutputerSwitcher.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/OutputerSwitcher.java">
+      <file leaf-file-name="CommandType.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/CommandType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="21" selection-start="1452" selection-end="1452" vertical-scroll-proportion="0.0">
+            <state line="18" column="41" selection-start="587" selection-end="597" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InputThread.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/InputThread.java">
+      <file leaf-file-name="DisconnectListener.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/DisconnectListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="98" column="79" selection-start="4195" selection-end="4195" vertical-scroll-proportion="0.0">
+            <state line="28" column="31" selection-start="1079" selection-end="1097" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SystemReplyMessage.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/messages/SystemReplyMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="13" selection-start="251" selection-end="251" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="core-beans.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core-beans.xml">
+      <file leaf-file-name="ExitChannelListener.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/ExitChannelListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="4" selection-start="7490" selection-end="7490" vertical-scroll-proportion="0.0">
+            <state line="104" column="8" selection-start="1042" selection-end="3869" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginListener.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/extension/core/LoginListener.java">
+      <file leaf-file-name="ChannelLogic.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/logic/ChannelLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="59" selection-start="2985" selection-end="2985" vertical-scroll-proportion="0.0">
+            <state line="114" column="26" selection-start="3850" selection-end="3850" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ContextHelper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/ContextHelper.java">
+      <file leaf-file-name="ChannelDao.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/dao/ChannelDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="50" selection-start="438" selection-end="438" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Client.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/dao/Client.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="156" column="47" selection-start="3144" selection-end="3144" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Client.hbm.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/dao/Client.hbm.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="8" selection-start="334" selection-end="334" vertical-scroll-proportion="0.0">
+            <state line="74" column="16" selection-start="2588" selection-end="2588" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -282,22 +236,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/ClientException.java" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/JoinChannelListener.java" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/CreateChannelListener.java" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/delivery/MessageDispatcher.java" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/SystemReplyMessage.java" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/delivery/MessageProcessorEventImpl.java" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/ExitChannelListener.java" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/ClientDao.java" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/MessageContext.java" />
-        <option value="$PROJECT_DIR$/src/core-beans.xml" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/Client.java" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/core/LoginListener.java" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/CommonRunnable.java" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/ContextHelper.java" />
-        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/OutputThread.java" />
         <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/OutputerSwitcher.java" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/CommonRunnable.java" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/ProcessThread.java" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/ListChannelListener.java" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ChannelLostMessage.java" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ClientLostMessage.java" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/core/LoginListener.java" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ClientJoinChannelMessage.java" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/JoinChannelListener.java" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/dao/ChannelDao.java" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/logic/ChannelLogic.java" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/internal/ChannelCleanListener.java" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/CommandType.java" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/messages/SystemReplyMessage.java" />
+        <option value="$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/DisconnectListener.java" />
+        <option value="$PROJECT_DIR$/src/extend-beans.xml" />
       </list>
     </option>
   </component>
@@ -312,7 +266,7 @@
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
-    <option name="height" value="1014" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -563,16 +517,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -601,7 +546,221 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ds3783" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chatserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pooltest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g-chat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g-chat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ds3783" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chatserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g-chat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g-chat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g-chat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g-chat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ds3783" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chatserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g-chat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g-chat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ds3783" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chatserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="messages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g-chat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g-chat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ds3783" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chatserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extension" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g-chat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g-chat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ds3783" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chatserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extension" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="internal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g-chat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g-chat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ds3783" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chatserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extension" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="command" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -613,15 +772,15 @@
   </component>
   <component name="PropertiesComponent">
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1" value="256" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="237" />
     <property name="project.structure.last.edited" value="SDKs" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit3" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="237" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth3" value="45" />
-    <property name="OverrideImplement.combined" value="true" />
-    <property name="project.structure.proportion" value="0.15" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit3" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2" value="256" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1" value="1" />
+    <property name="project.structure.proportion" value="0.097345136" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder0" value="0" />
     <property name="RunManagerConfig.showSettingsBeforeRunnig" value="true" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder3" value="3" />
@@ -642,18 +801,18 @@
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="options.lastSelected" value="project.propSubversion" />
+    <property name="options.lastSelected" value="reference.projectsettings.compiler.javacompiler" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder4" value="4" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder1" value="1" />
-    <property name="project.structure.side.proportion" value="0.2" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2" value="2" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="project.structure.side.proportion" value="0.10729614" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0" value="0" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLanguage" value="Java" />
-    <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -838,6 +997,19 @@
       <option name="trusted" value="true" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" runner="idea" />
       <module name="" />
@@ -864,19 +1036,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -979,7 +1138,7 @@
     <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
     <option name="FORCE_UPDATE" value="false" />
     <option name="IGNORE_EXTERNALS" value="false" />
-    <configuration useDefault="true">C:\Users\hongyu.pi\AppData\Roaming\Subversion</configuration>
+    <configuration useDefault="true">C:\Users\Ds.3783\AppData\Roaming\Subversion</configuration>
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
     <supportedVersion>125</supportedVersion>
   </component>
@@ -987,16 +1146,16 @@
     <option name="myMappingRoots">
       <list>
         <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="C:\Projects\MY\g-chat-server" />
-          <option name="myCopyRoot" value="C:\Projects\MY\g-chat-server" />
+          <option name="myVcsRoot" value="C:\Projects\My\g-chat-server" />
+          <option name="myCopyRoot" value="C:\Projects\My\g-chat-server" />
         </SvnCopyRootSimple>
       </list>
     </option>
     <option name="myMoreRealMappingRoots">
       <list>
         <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="C:\Projects\MY\g-chat-server" />
-          <option name="myCopyRoot" value="C:\Projects\MY\g-chat-server" />
+          <option name="myVcsRoot" value="C:\Projects\My\g-chat-server" />
+          <option name="myCopyRoot" value="C:\Projects\My\g-chat-server" />
         </SvnCopyRootSimple>
       </list>
     </option>
@@ -1057,7 +1216,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1014" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32742316" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
@@ -1066,17 +1225,19 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.52578616" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33599088" sideWeight="0.0" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3352081" sideWeight="0.0" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299356" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32827735" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3183352" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32827735" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32994652" sideWeight="0.53954494" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6287393" sideWeight="0.66312057" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20976394" sideWeight="0.6647919" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46282527" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -1085,8 +1246,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Properties" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32962137" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32269505" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31914893" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32170978" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
@@ -1220,102 +1380,118 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/messages/LoginMessage.java">
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/messages/model/ClientModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="13" selection-start="249" selection-end="249" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/extension/core/DefaultCoreListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="19" selection-start="405" selection-end="405" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/dao/ClientChannel.hbm.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/delivery/MessageProcessorEventImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="58" selection-start="1929" selection-end="1929" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/messages/MessageContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="74" selection-start="651" selection-end="651" vertical-scroll-proportion="-17.518518" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="35" selection-start="3308" selection-end="3315" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/SlaveThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="47" selection-start="585" selection-end="585" vertical-scroll-proportion="0.0">
+        <state line="19" column="11" selection-start="441" selection-end="441" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core-beans.xml">
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ChannelLostMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="4" selection-start="7490" selection-end="7490" vertical-scroll-proportion="0.0">
+        <state line="18" column="35" selection-start="405" selection-end="413" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/dao/Client.hbm.xml">
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/ListChannelListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="8" selection-start="334" selection-end="334" vertical-scroll-proportion="0.0">
+        <state line="36" column="20" selection-start="1376" selection-end="1376" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/InputThread.java">
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ChannelListMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="98" column="79" selection-start="4195" selection-end="4195" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/OutputThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="205" column="5" selection-start="7160" selection-end="7160" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/OutputerSwitcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="21" selection-start="1452" selection-end="1452" vertical-scroll-proportion="0.0">
+        <state line="12" column="46" selection-start="344" selection-end="344" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/extension/core/LoginListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="59" selection-start="2985" selection-end="2985" vertical-scroll-proportion="0.0">
+        <state line="54" column="103" selection-start="2553" selection-end="2553" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/ContextHelper.java">
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ClientLostMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="50" selection-start="438" selection-end="438" vertical-scroll-proportion="0.0">
+        <state line="41" column="11" selection-start="380" selection-end="913" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/dao/Client.java">
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/dao/ChannelDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="156" column="47" selection-start="3144" selection-end="3144" vertical-scroll-proportion="0.0">
+        <state line="74" column="16" selection-start="2588" selection-end="2588" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/communicate/core/CommonRunnable.java">
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/logic/ChannelLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="37" selection-start="1569" selection-end="1569" vertical-scroll-proportion="0.3077859">
+        <state line="114" column="26" selection-start="3850" selection-end="3850" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/messages/ClientJoinChannelMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="37" selection-start="310" selection-end="334" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/extension/internal/ChannelCleanListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="120" column="72" selection-start="4665" selection-end="4665" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/CommandType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="41" selection-start="587" selection-end="597" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/ExitChannelListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="104" column="8" selection-start="1042" selection-end="3869" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/messages/SystemReplyMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="251" selection-end="251" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/DisconnectListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="31" selection-start="1079" selection-end="1097" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/ds3783/chatserver/extension/command/JoinChannelListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="0" selection-start="1024" selection-end="1024" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#2782#2790#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/extend-beans.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="46" selection-start="1226" selection-end="1226" vertical-scroll-proportion="0.53584903">
           <folding />
         </state>
       </provider>
@@ -1342,7 +1518,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.10729614" />
               </list>
             </option>
           </splitter-proportions>
@@ -1365,7 +1541,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.10729614" />
               </list>
             </option>
           </splitter-proportions>
@@ -1377,8 +1553,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
-                <option value="0.5" />
+                <option value="0.10729614" />
               </list>
             </option>
           </splitter-proportions>
@@ -1390,7 +1565,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.10729614" />
               </list>
             </option>
           </splitter-proportions>
